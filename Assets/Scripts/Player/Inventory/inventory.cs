@@ -18,10 +18,10 @@ public class inventory : MonoBehaviour
     {
         //Get the buttons to click on.
         button = transform.GetChild(0).GetChild(2).gameObject;
-        List<InventoryButtons> inventoryButtons = new List<InventoryButtons>();
-        for(int i = 0; i <= transform.GetChild(0).GetChild(0).childCount; i++)
+        List<InventoryButtons> inventoryButtons = new List<InventoryButtons>(12);
+        for(int i = 0; i <= transform.GetChild(0).GetChild(0).childCount - 1; i++)
         {
-            inventoryButtons[i] = transform.GetChild(0).GetChild(0).GetChild(i).GetComponent<InventoryButtons>();
+            inventoryButtons.Add(transform.GetChild(0).GetChild(0).GetChild(i).GetComponent<InventoryButtons>());
             inventoryButtons[i].Inventory = this;
         }
     }
@@ -66,15 +66,19 @@ public class inventory : MonoBehaviour
             if(!inventoryItems.Contains(trashtype))
             {
                 inventoryItems.Add(trashtype);
-                for(int i = 0; i < inventoryItems.Capacity; i++)
+                for(int i = 0; i <= amount.Length; i++)
                 {
                     if(trashtype.inventorySprite != null)
                     {
-                        //if the item is not already in the inventory, and it has an assigned sprite, then present the sprite and let it know the data of the thing in the slot
-                        images[i].sprite = inventoryItems[i].inventorySprite;
-                        images[i].GetComponent<InventoryButtons>().item = trashtype;
-                        images[i].GetComponent<InventoryButtons>().selectable = true;
-                        images[i].color = Color.white;
+                        if(images[i].sprite == null)
+                        {
+                            //if the item is not already in the inventory, and it has an assigned sprite, then present the sprite and let it know the data of the thing in the slot
+                            images[i].sprite = inventoryItems[i].inventorySprite;
+                            images[i].GetComponent<InventoryButtons>().item = trashtype;
+                            images[i].GetComponent<InventoryButtons>().selectable = true;
+                            images[i].color = Color.white;
+                            break;
+                        }
                     }
                     else return;
                 }
@@ -83,11 +87,12 @@ public class inventory : MonoBehaviour
             {
                 //if the item is already in the inventory, then add to the amt
                 Debug.Log("Add amount");
-                for(int i = 0; i <= inventoryItems.Capacity; i++)
+                for(int i = 0; i < inventoryItems.Capacity; i++)
                 {
                     if(inventoryItems[i] == trashtype)
                     {
                         amount[i]++;
+                        break;
                     }
                 }
             }
@@ -157,8 +162,8 @@ public class inventory : MonoBehaviour
    
     public void PutInBin(Bin bin)
     {
-        Debug.Log("B");
-        for(int i = 0; i <= selected.Capacity; i++)
+        //Debug.Log("B");
+        for(int i = 0; i <= selected.Capacity - 1; i++)
         {
             PutInBinB(i, bin);
         }
@@ -168,7 +173,7 @@ public class inventory : MonoBehaviour
     {
         //this goes in an event
         PutInBin(currentBin);
-        selected.Clear();
+        //selected.Clear();
     } 
     public void PutInBinB(int i, Bin bin)
     {
