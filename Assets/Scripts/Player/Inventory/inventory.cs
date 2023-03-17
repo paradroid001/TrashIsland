@@ -37,12 +37,15 @@ public class inventory : MonoBehaviour
             inventoryItems.Capacity = images.Capacity;
         }
     }
+    
     public void Return(GameObject Inventory)
     {
         //Get out of inventory menu
+        reason = InventoryReason.Look;
+        button.SetActive(false);
+        Inventory.SetActive(false);
         Time.timeScale = 1;
-        Inventory.transform.GetChild(2).gameObject.SetActive(false);
-        Inventory.transform.GetChild(1).gameObject.SetActive(false);
+        
     }
     public void Update()
     {
