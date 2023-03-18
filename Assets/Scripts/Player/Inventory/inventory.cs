@@ -117,7 +117,7 @@ public class inventory : MonoBehaviour
                             RoboInventory.roboInventory.images[i].GetComponent<RoboIntventoryButtons>().item = trashtype;
                             RoboInventory.roboInventory.images[i].GetComponent<RoboIntventoryButtons>().selectable = true;
                             RoboInventory.roboInventory.images[i].color = Color.white;
-                            
+                            break;
                         }
                         else return;
                     }
@@ -259,8 +259,8 @@ public class inventory : MonoBehaviour
                             inventoryItems.Remove(selected[i].item);
                         }
                         Debug.Log(ind);
-                        }
-                    }                
+                    }
+                }                
             }
             else if(selected[i].item.typeOfTrash == InventoryItem.TypeOfTrash.Garbage)
             {

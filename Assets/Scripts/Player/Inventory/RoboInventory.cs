@@ -7,6 +7,8 @@ public class RoboInventory : MonoBehaviour
 {
     public int capacity;
     public static RoboInventory roboInventory;
+    public enum RoboInventoryReason{Not, Look, Bin, Process}
+    public RoboInventoryReason reason;
     public GameObject menu;
     public List<Image> images;
     public int[] amount; 
@@ -34,11 +36,26 @@ public class RoboInventory : MonoBehaviour
     }
     public void Return(GameObject leave)
     {
+        reason = RoboInventoryReason.Not;
         leave.SetActive(false);
         Time.timeScale = 1;
     }
     void Update()
     {
-        
+        switch(reason)
+        {
+            case RoboInventoryReason.Not:
+                menu.SetActive(false);
+                break;
+            case RoboInventoryReason.Look:
+                menu.SetActive(true);
+                break;
+            case RoboInventoryReason.Bin:
+                menu.SetActive(true);
+                break;
+            case RoboInventoryReason.Process:
+
+                break;
+        }
     }
 }
