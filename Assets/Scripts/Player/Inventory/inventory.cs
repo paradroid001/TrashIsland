@@ -303,7 +303,7 @@ public class inventory : MonoBehaviour
                     }
                     GameManager.instance.recyclePoints += 10;
                 }
-                if(bin.binType == Bin.BinType.Recycle)
+                else if(bin.binType == Bin.BinType.Organic)
                 {
                     if(inventoryItems.Contains(selected[i].item))
                     {
@@ -341,6 +341,243 @@ public class inventory : MonoBehaviour
                         Debug.Log(ind);
                     }
                     GameManager.instance.recyclePoints -= 10;
+                }
+                else if(bin.binType == Bin.BinType.Recycle)
+                {
+                    if(inventoryItems.Contains(selected[i].item))
+                    {
+                        int ind = inventoryItems.IndexOf(selected[i].item);
+                        if(amount[ind] > 0)
+                        {
+                            if(!GameManager.instance.trashTypesinBin.Contains(selected[i].item))
+                            {
+                                GameManager.instance.trashTypesinBin.Add(selected[i].item);
+                                GameManager.instance.trashTypesinBinAmt.Add(1);
+                            }
+                            else
+                            {
+                                int indexInManager = GameManager.instance.trashTypesinBin.IndexOf(selected[i].item);
+                                GameManager.instance.trashTypesinBinAmt[indexInManager]++;
+                            }
+                            amount[ind]--;
+                        }
+                        else if(amount[ind] == 0)
+                        {
+                            if(!GameManager.instance.trashTypesinBin.Contains(selected[i].item))
+                            {
+                                GameManager.instance.trashTypesinBin.Add(selected[i].item);
+                                GameManager.instance.trashTypesinBinAmt.Add(1);
+                            }
+                            else
+                            {
+                                int indexInManager = GameManager.instance.trashTypesinBin.IndexOf(selected[i].item);
+                                GameManager.instance.trashTypesinBinAmt[indexInManager]++;
+                            }
+                            selected[i].GetComponent<Image>().sprite = null;
+                            selected[i].GetComponent<Image>().color = Color.red;
+                            inventoryItems.Remove(selected[i].item);
+                        }
+                        Debug.Log(ind);
+                        }
+                    GameManager.instance.recyclePoints -= 10;
+                }
+                else if(bin.binType == Bin.BinType.Organic)
+                {
+                    if(inventoryItems.Contains(selected[i].item))
+                    {
+                        int ind = inventoryItems.IndexOf(selected[i].item);
+                        if(amount[ind] > 0)
+                        {
+                            if(!GameManager.instance.trashTypesinBin.Contains(selected[i].item))
+                            {
+                                GameManager.instance.trashTypesinBin.Add(selected[i].item);
+                                GameManager.instance.trashTypesinBinAmt.Add(1);
+                            }
+                            else
+                            {
+                                int indexInManager = GameManager.instance.trashTypesinBin.IndexOf(selected[i].item);
+                                GameManager.instance.trashTypesinBinAmt[indexInManager]++;
+                            }
+                            amount[ind]--;
+                        }
+                        else if(amount[ind] == 0)
+                        {
+                            if(!GameManager.instance.trashTypesinBin.Contains(selected[i].item))
+                            {
+                                GameManager.instance.trashTypesinBin.Add(selected[i].item);
+                                GameManager.instance.trashTypesinBinAmt.Add(1);
+                            }
+                            else
+                            {
+                                int indexInManager = GameManager.instance.trashTypesinBin.IndexOf(selected[i].item);
+                                GameManager.instance.trashTypesinBinAmt[indexInManager]++;
+                            }
+                            selected[i].GetComponent<Image>().sprite = null;
+                            selected[i].GetComponent<Image>().color = Color.red;
+                            inventoryItems.Remove(selected[i].item);
+                        }
+                        Debug.Log(ind);
+                    }
+                    GameManager.instance.recyclePoints -= 10;
+                }
+            }
+            else if(selected[i].item.typeOfTrash == InventoryItem.TypeOfTrash.Garbage)
+            {
+                if(bin.binType == Bin.BinType.Garbage)
+                {
+                    if(inventoryItems.Contains(selected[i].item))
+                    {
+                        int ind = inventoryItems.IndexOf(selected[i].item);
+                        if(amount[ind] > 0)
+                        {
+                            if(!GameManager.instance.trashTypesinBin.Contains(selected[i].item))
+                            {
+                                GameManager.instance.trashTypesinBin.Add(selected[i].item);
+                                GameManager.instance.trashTypesinBinAmt.Add(1);
+                            }
+                            else
+                            {
+                                int indexInManager = GameManager.instance.trashTypesinBin.IndexOf(selected[i].item);
+                                GameManager.instance.trashTypesinBinAmt[indexInManager]++;
+                            }
+                            amount[ind]--;
+                        }
+                        else
+                        {
+                            if(!GameManager.instance.trashTypesinBin.Contains(selected[i].item))
+                            {
+                                GameManager.instance.trashTypesinBin.Add(selected[i].item);
+                                GameManager.instance.trashTypesinBinAmt.Add(1);
+                            }
+                            else
+                            {
+                                int indexInManager = GameManager.instance.trashTypesinBin.IndexOf(selected[i].item);
+                                GameManager.instance.trashTypesinBinAmt[indexInManager]++;
+                            }
+                            selected[i].GetComponent<Image>().sprite = null;
+                            selected[i].GetComponent<Image>().color = Color.red;
+                            inventoryItems.Remove(selected[i].item);
+                        }
+                        Debug.Log(ind);
+                    }
+                    GameManager.instance.recyclePoints += 10;
+                }
+                else if(bin.binType == Bin.BinType.Organic)
+                {
+                    if(inventoryItems.Contains(selected[i].item))
+                    {
+                        int ind = inventoryItems.IndexOf(selected[i].item);
+                        if(amount[ind] > 0)
+                        {
+                            if(!GameManager.instance.trashTypesinBin.Contains(selected[i].item))
+                            {
+                                GameManager.instance.trashTypesinBin.Add(selected[i].item);
+                                GameManager.instance.trashTypesinBinAmt.Add(1);
+                            }
+                            else
+                            {
+                                int indexInManager = GameManager.instance.trashTypesinBin.IndexOf(selected[i].item);
+                                GameManager.instance.trashTypesinBinAmt[indexInManager]++;
+                            }
+                            amount[ind]--;
+                        }
+                        else if(amount[ind] == 0)
+                        {
+                            if(!GameManager.instance.trashTypesinBin.Contains(selected[i].item))
+                            {
+                                GameManager.instance.trashTypesinBin.Add(selected[i].item);
+                                GameManager.instance.trashTypesinBinAmt.Add(1);
+                            }
+                            else
+                            {
+                                int indexInManager = GameManager.instance.trashTypesinBin.IndexOf(selected[i].item);
+                                GameManager.instance.trashTypesinBinAmt[indexInManager]++;
+                            }
+                            selected[i].GetComponent<Image>().sprite = null;
+                            selected[i].GetComponent<Image>().color = Color.red;
+                            inventoryItems.Remove(selected[i].item);
+                        }
+                        Debug.Log(ind);
+                    }
+                    GameManager.instance.recyclePoints -= 10;
+                }
+                else if(bin.binType == Bin.BinType.Recycle)
+                {
+                    if(inventoryItems.Contains(selected[i].item))
+                    {
+                        int ind = inventoryItems.IndexOf(selected[i].item);
+                        if(amount[ind] > 0)
+                        {
+                            if(!GameManager.instance.trashTypesinBin.Contains(selected[i].item))
+                            {
+                                GameManager.instance.trashTypesinBin.Add(selected[i].item);
+                                GameManager.instance.trashTypesinBinAmt.Add(1);
+                            }
+                            else
+                            {
+                                int indexInManager = GameManager.instance.trashTypesinBin.IndexOf(selected[i].item);
+                                GameManager.instance.trashTypesinBinAmt[indexInManager]++;
+                            }
+                            amount[ind]--;
+                        }
+                        else if(amount[ind] == 0)
+                        {
+                            if(!GameManager.instance.trashTypesinBin.Contains(selected[i].item))
+                            {
+                                GameManager.instance.trashTypesinBin.Add(selected[i].item);
+                                GameManager.instance.trashTypesinBinAmt.Add(1);
+                            }
+                            else
+                            {
+                                int indexInManager = GameManager.instance.trashTypesinBin.IndexOf(selected[i].item);
+                                GameManager.instance.trashTypesinBinAmt[indexInManager]++;
+                            }
+                            selected[i].GetComponent<Image>().sprite = null;
+                            selected[i].GetComponent<Image>().color = Color.red;
+                            inventoryItems.Remove(selected[i].item);
+                        }
+                        Debug.Log(ind);
+                        }
+                    GameManager.instance.recyclePoints -= 10;
+                }
+                else if(bin.binType == Bin.BinType.Organic)
+                {
+                    if(inventoryItems.Contains(selected[i].item))
+                    {
+                        int ind = inventoryItems.IndexOf(selected[i].item);
+                        if(amount[ind] > 0)
+                        {
+                            if(!GameManager.instance.trashTypesinBin.Contains(selected[i].item))
+                            {
+                                GameManager.instance.trashTypesinBin.Add(selected[i].item);
+                                GameManager.instance.trashTypesinBinAmt.Add(1);
+                            }
+                            else
+                            {
+                                int indexInManager = GameManager.instance.trashTypesinBin.IndexOf(selected[i].item);
+                                GameManager.instance.trashTypesinBinAmt[indexInManager]++;
+                            }
+                            amount[ind]--;
+                        }
+                        else if(amount[ind] == 0)
+                        {
+                            if(!GameManager.instance.trashTypesinBin.Contains(selected[i].item))
+                            {
+                                GameManager.instance.trashTypesinBin.Add(selected[i].item);
+                                GameManager.instance.trashTypesinBinAmt.Add(1);
+                            }
+                            else
+                            {
+                                int indexInManager = GameManager.instance.trashTypesinBin.IndexOf(selected[i].item);
+                                GameManager.instance.trashTypesinBinAmt[indexInManager]++;
+                            }
+                            selected[i].GetComponent<Image>().sprite = null;
+                            selected[i].GetComponent<Image>().color = Color.red;
+                            inventoryItems.Remove(selected[i].item);
+                        }
+                        Debug.Log(ind);
+                    }
+                    GameManager.instance.recyclePoints += 10;
                 }
             }
         }

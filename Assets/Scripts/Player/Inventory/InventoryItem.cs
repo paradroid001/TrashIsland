@@ -6,7 +6,7 @@ using UnityEngine;
 public class InventoryItem : ScriptableObject 
 {
     public Sprite inventorySprite;
-    public enum IsTrash{Trash, NotTrash};
+    public enum IsTrash{Trash, NotTrash}; 
     public IsTrash isTrash;
     public enum TypeOfTrash{Garbage, Recycle, Organic};
     public TypeOfTrash typeOfTrash;

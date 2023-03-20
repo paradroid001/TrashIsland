@@ -4,16 +4,19 @@ using UnityEngine;
 
 public class Organics : Bin
 {
-    // Start is called before the first frame update
-    void Start()
+    public float waitTime;
+    public Compost compost;
+    void Awake()
     {
-        
+        binType = BinType.Organic;
     }
-
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        
+        if(hasThings == true && sent == false)
+        {
+            StartCoroutine(SendToCompost());
+            sent = true;
+        }
     }
     public void OnTriggerEnter(Collider other)
     {
@@ -44,5 +47,16 @@ public class Organics : Bin
             GameManager.instance.invent.currentBin = this;
             Time.timeScale = 0;
         }
+    }
+    public IEnumerator SendToCompost()
+    {
+        yield return new WaitForSeconds(waitTime);
+        Debug.Log(waitTime);
+        for(int i = 0; i < inBin.Capacity; i++)
+        {
+            compost.thingsIn.Add(inBin[i]);
+        }
+        inBin.Clear();
+        hasThings = false;
     }
 }

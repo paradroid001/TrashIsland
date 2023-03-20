@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GrowLand : MonoBehaviour
 {
-    public List<> grow;
+    public List<Seed> grow;
     void Start()
     {
         

@@ -9,7 +9,7 @@ public class Recycle : Bin
         binType = BinType.Recycle;
         //GameManager.instance.recycles.Add(this);
     }
-    void Update()
+    void FixedUpdate()
     {
         
     }

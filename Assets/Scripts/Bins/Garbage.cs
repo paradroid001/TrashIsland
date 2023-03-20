@@ -9,7 +9,7 @@ public class Garbage : Bin
         binType = BinType.Garbage;
         //GameManager.instance.garbages.Add(this);
     }
-    void Update()
+    void FixedUpdate()
     {
 
     }

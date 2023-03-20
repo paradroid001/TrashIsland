@@ -97,6 +97,11 @@ public class Player : MonoBehaviour
                     RobotCompanion robot = Interactables[currentInteract].GetComponent<RobotCompanion>();
                     robot.Interact();
                 }
+                else if(Interactables[currentInteract].GetComponent<Compost>() != null)
+                {
+                    Compost compost = Interactables[currentInteract].GetComponent<Compost>();
+                    compost.Interact();
+                }
             }
     }
 }
