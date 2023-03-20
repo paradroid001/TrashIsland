@@ -102,6 +102,11 @@ public class Player : MonoBehaviour
                     Compost compost = Interactables[currentInteract].GetComponent<Compost>();
                     compost.Interact();
                 }
+                else if(Interactables[currentInteract].GetComponent<GrowLand>())
+                {
+                    GrowLand land = Interactables[currentInteract].GetComponent<GrowLand>();
+                    land.Interact();
+                }
             }
     }
 }

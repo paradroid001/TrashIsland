@@ -7,4 +7,6 @@ public class Seed : InventoryItem
 {
     public enum SeedType{Apple, Carrot, Potato};
     public SeedType seedType;
+    public int growth;
+    public int maxGrowth;
 }
