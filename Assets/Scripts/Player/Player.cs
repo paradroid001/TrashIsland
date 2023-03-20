@@ -63,6 +63,13 @@ public class Player : MonoBehaviour
                     garbage.Interact();
                     //Destroy(hold.GetChild(0).gameObject);
                 }
+                else if(Interactables[currentInteract].GetComponent<Organics>() != null)
+                {
+                    //Trash trash = hold.GetChild(0).GetComponent<Trash>();
+                    Organics organics = Interactables[currentInteract].GetComponent<Organics>();
+                    organics.Interact();
+                    //Destroy(hold.GetChild(0).gameObject);
+                }
                 else if(Interactables[currentInteract].GetComponent<PickupEvent>() != null)
                 {
                     PickupEvent pickup = Interactables[currentInteract].GetComponent<PickupEvent>();

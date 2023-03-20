@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Trash : MonoBehaviour
 {
-    public enum TrashType1 {recycle, garbage};
+    public enum TrashType1 {recycle, garbage, organic};
     public TrashType1 trashType;
     public TrashType typeOf;
     public void OnTriggerEnter(Collider other)

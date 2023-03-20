@@ -2,16 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Garbage : Bin
+public class Organics : Bin
 {
-    void Awake()
+    // Start is called before the first frame update
+    void Start()
     {
-        binType = BinType.Garbage;
-        //GameManager.instance.garbages.Add(this);
+        
     }
+
+    // Update is called once per frame
     void Update()
     {
-
+        
     }
     public void OnTriggerEnter(Collider other)
     {
@@ -42,14 +44,5 @@ public class Garbage : Bin
             GameManager.instance.invent.currentBin = this;
             Time.timeScale = 0;
         }
-        /*switch (trash.trashType)
-        {
-            case Trash.TrashType1.recycle:
-                GameManager.instance.recyclePoints -= 10;
-                break;
-            case Trash.TrashType1.garbage:
-                GameManager.instance.recyclePoints += 10;
-                break;
-        }*/
     }
 }

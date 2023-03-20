@@ -5,18 +5,18 @@ using UnityEngine;
 public class RobotCompanion : Companion
 {
     public GameObject inventoryA;
-    public inventory inventoryB;
+    public RoboInventory inventoryB;
     public GameObject inventoryC;
     public List<InventoryItem> robotInventory;
     public void Start()
     {
-        inventoryB = inventoryA.transform.parent.GetComponent<inventory>();
-        inventoryC = inventoryA.transform.parent.GetChild(2).gameObject;
+        inventoryB = inventoryA.GetComponent<RoboInventory>();
+        inventoryC = inventoryA.transform.GetChild(2).gameObject;
     }
     public void Interact()
     {
         inventoryC.SetActive(true);
-        //inventoryB.reason = inventory.InventoryReason.Look;
+        inventoryB.reason = RoboInventory.RoboInventoryReason.Look;
         Time.timeScale = 0;
     }
     public void OnTriggerEnter(Collider other)

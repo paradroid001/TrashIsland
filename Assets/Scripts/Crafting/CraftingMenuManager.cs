@@ -32,7 +32,7 @@ public class CraftingMenuManager : MonoBehaviour
             {
                 // get the buttons from the crafting menu
                 boxes.Add(lines[i].transform.GetChild(j).gameObject);
-                buttons.Add(boxes[j].GetComponent<CraftingMenuButton>());
+                buttons.Add(lines[i].transform.GetChild(j).GetComponent<CraftingMenuButton>());
             }
         }
     }
