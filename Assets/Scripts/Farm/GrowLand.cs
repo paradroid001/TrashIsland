@@ -34,25 +34,35 @@ public class GrowLand : MonoBehaviour
     }
     public void Interact()
     {
-        for(int i = 0; i <= GameManager.instance.invent.inventoryItems.Capacity; i++)
+        if(grow == null)
         {
-            if(GameManager.instance.invent.inventoryItems[i].seed != null)
+            for(int i = 0; i <= GameManager.instance.invent.inventoryItems.Capacity; i++)
             {
-                grow = GameManager.instance.invent.inventoryItems[i].seed;
-                StartCoroutine(Grow());
-                break;
+                if(GameManager.instance.invent.inventoryItems[i].seed != null)
+                {
+                    grow = GameManager.instance.invent.inventoryItems[i].seed;
+                    GameManager.instance.invent.inventoryItems.Remove(GameManager.instance.invent.inventoryItems[i]);
+                    StartCoroutine(Grow());
+                    break;
+                }
             }
+            Debug.Log("Plant");
         }
-        Debug.Log("Plant");
+        else if(growth >= grow.maxGrowth)
+        {
+            GameManager.instance.invent.AddToInventory(grow.food);
+        }
+        
     }
     public IEnumerator Grow()
     {
         yield return new WaitForSeconds(10);
         growth++;
-        Debug.Log("grow");
-        if(growth < grow.maxGrowth)
+        
+        if(growth <= grow.maxGrowth)
         {
             StartCoroutine(Grow());
+            Debug.Log("grow");
         }
     }
 }

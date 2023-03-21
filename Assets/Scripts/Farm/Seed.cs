@@ -9,4 +9,5 @@ public class Seed : InventoryItem
     public SeedType seedType;
     public int growth;
     public int maxGrowth;
+    public Food food;
 }
