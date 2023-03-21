@@ -42,6 +42,8 @@ public class GrowLand : MonoBehaviour
                 {
                     grow = GameManager.instance.invent.inventoryItems[i].seed;
                     GameManager.instance.invent.inventoryItems.Remove(GameManager.instance.invent.inventoryItems[i]);
+                    GameManager.instance.invent.images[i].sprite = null;
+                    GameManager.instance.invent.images[i].color = Color.red;
                     StartCoroutine(Grow());
                     break;
                 }
