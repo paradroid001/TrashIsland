@@ -18,11 +18,7 @@ public class Furnace : ProductionMachine
             StartCoroutine(Interact());
         }
     }
-    public IEnumerator Interact()
-    {
-        interacted = true;
-        yield return new WaitForSeconds(3);
-    }
+    
     public void PutIntoMachine()
     {
         

@@ -23,8 +23,6 @@ public class ProductionMachine : MonoBehaviour
     {
         
     }
-
-    // Update is called once per frame
     void Update()
     {
         
@@ -50,5 +48,19 @@ public class ProductionMachine : MonoBehaviour
     public void PutIn(InventoryItem item)
     {
         contains.Add(item.trashType);
+    }
+    public IEnumerator Interact()
+    {
+        interacted = true;
+        yield return new WaitForSeconds(3);
+        Debug.Log("Compressed");
+        for(int i = 0; i < contains.Capacity; i++)
+        {
+            GameManager.instance.materials.Add(produces);
+            Debug.Log("0");
+        }
+        contains.Clear();
+        interacting = false;
+        interacted = false;
     }
 }

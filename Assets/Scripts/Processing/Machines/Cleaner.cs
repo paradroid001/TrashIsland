@@ -18,8 +18,5 @@ public class Cleaner : ProductionMachine
             StartCoroutine(Interact());
         }
     }
-    public IEnumerator Interact()
-    {
-        yield return new WaitForSeconds(3);
-    }
+    
 }

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Compressor : ProductionMachine
 {
-    // Start is called before the first frame update
     void Start()
     {
         
@@ -18,15 +17,5 @@ public class Compressor : ProductionMachine
             StartCoroutine(Interact());
         }
     }
-    public IEnumerator Interact()
-    {
-        interacted = true;
-        yield return new WaitForSeconds(3);
-        Debug.Log("Compressed");
-        for(int i = 0; i < contains.Capacity; i++)
-        {
-            GameManager.instance.materials.Add(produces);
-        }
-        interacting = false;
-    }
+    
 }
