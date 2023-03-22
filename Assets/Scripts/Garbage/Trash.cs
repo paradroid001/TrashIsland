@@ -30,9 +30,9 @@ public class Trash : MonoBehaviour
         if(player.holding != true)
         {
             Debug.Log("Interact");
-            if(player.inventory.Capacity <= 12)
+            if(GameManager.instance.invent.inventoryItems.Capacity <= 12)
             {
-                player.inventory.Add(typeOf);
+                //GameManager.instance.invent.inventoryItems.Add(typeOf);
                 player.interactable = false;
                 player.Interactables.Remove(gameObject);
                 gameObject.SetActive(false);

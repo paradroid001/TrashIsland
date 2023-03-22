@@ -14,7 +14,6 @@ public class Player : MonoBehaviour
     public List<GameObject> Interactables;
     public int currentInteract;
     public Transform hold;
-    public List<ScriptableObject> inventory;
     void Start()
     {
         //hold = transform.GetChild(0);
@@ -87,9 +86,10 @@ public class Player : MonoBehaviour
                     {
                         machine.interacting = true;
                     }
-                    else
+                    else if(machine.contains.Capacity == 0)
                     {
-                        //machine
+                        GameManager.instance.invent.currentMachine = machine;
+                        GameManager.instance.invent.reason = inventory.InventoryReason.Process;
                     }
                 }
                 else if(Interactables[currentInteract].GetComponent<RobotCompanion>() != null)

@@ -9,15 +9,20 @@ public class inventory : MonoBehaviour
     public enum InventoryReason{Look, Bin, Process};
     public InventoryReason reason;
     public GameObject button;
+    public GameObject processButton;
+    public GameObject backButton;
     public List<Image> images;
     public int[] amount; 
     public List<InventoryItem> inventoryItems;
     public List<InventoryButtons> selected;
     public Bin currentBin;
+    public ProductionMachine currentMachine;
     public void Start()
     {
         //Get the buttons to click on.
         button = transform.GetChild(0).GetChild(2).gameObject;
+        processButton = transform.GetChild(0).GetChild(3).gameObject;
+        backButton = transform.GetChild(0).GetChild(1).gameObject;
         List<InventoryButtons> inventoryButtons = new List<InventoryButtons>(12);
         for(int i = 0; i <= transform.GetChild(0).GetChild(0).childCount - 1; i++)
         {
@@ -53,12 +58,19 @@ public class inventory : MonoBehaviour
         {
             case InventoryReason.Look:
                 button.SetActive(false);
+                processButton.SetActive(false);
+                backButton.SetActive(false);
+                Time.timeScale = 1;
                 break;
             case InventoryReason.Bin:
                 button.SetActive(true);
+                backButton.SetActive(true);
+                Time.timeScale = 0;
                 break;
             case InventoryReason.Process:
-                
+                processButton.SetActive(true);
+                backButton.SetActive(true);
+                Time.timeScale = 0;
                 break;
         }
     }
@@ -119,7 +131,6 @@ public class inventory : MonoBehaviour
                             RoboInventory.roboInventory.images[i].color = Color.white;
                             break;
                         }
-                        else return;
                     }
                 }
                 else
@@ -215,6 +226,7 @@ public class inventory : MonoBehaviour
                                 int indexInManager = GameManager.instance.trashTypesinBin.IndexOf(selected[i].item);
                                 GameManager.instance.trashTypesinBinAmt[indexInManager]++;
                             }
+                            selected[i].item = null;
                             selected[i].GetComponent<Image>().sprite = null;
                             selected[i].GetComponent<Image>().color = Color.red;
                             inventoryItems.Remove(selected[i].item);
@@ -254,6 +266,7 @@ public class inventory : MonoBehaviour
                                 int indexInManager = GameManager.instance.trashTypesinBin.IndexOf(selected[i].item);
                                 GameManager.instance.trashTypesinBinAmt[indexInManager]++;
                             }
+                            selected[i].item = null;
                             selected[i].GetComponent<Image>().sprite = null;
                             selected[i].GetComponent<Image>().color = Color.red;
                             inventoryItems.Remove(selected[i].item);
@@ -295,6 +308,7 @@ public class inventory : MonoBehaviour
                                 int indexInManager = GameManager.instance.trashTypesinBin.IndexOf(selected[i].item);
                                 GameManager.instance.trashTypesinBinAmt[indexInManager]++;
                             }
+                            selected[i].item = null;
                             selected[i].GetComponent<Image>().sprite = null;
                             selected[i].GetComponent<Image>().color = Color.red;
                             inventoryItems.Remove(selected[i].item);
@@ -334,6 +348,7 @@ public class inventory : MonoBehaviour
                                 int indexInManager = GameManager.instance.trashTypesinBin.IndexOf(selected[i].item);
                                 GameManager.instance.trashTypesinBinAmt[indexInManager]++;
                             }
+                            selected[i].item = null;
                             selected[i].GetComponent<Image>().sprite = null;
                             selected[i].GetComponent<Image>().color = Color.red;
                             inventoryItems.Remove(selected[i].item);
@@ -373,6 +388,7 @@ public class inventory : MonoBehaviour
                                 int indexInManager = GameManager.instance.trashTypesinBin.IndexOf(selected[i].item);
                                 GameManager.instance.trashTypesinBinAmt[indexInManager]++;
                             }
+                            selected[i].item = null;
                             selected[i].GetComponent<Image>().sprite = null;
                             selected[i].GetComponent<Image>().color = Color.red;
                             inventoryItems.Remove(selected[i].item);
@@ -412,6 +428,7 @@ public class inventory : MonoBehaviour
                                 int indexInManager = GameManager.instance.trashTypesinBin.IndexOf(selected[i].item);
                                 GameManager.instance.trashTypesinBinAmt[indexInManager]++;
                             }
+                            selected[i].item = null;
                             selected[i].GetComponent<Image>().sprite = null;
                             selected[i].GetComponent<Image>().color = Color.red;
                             inventoryItems.Remove(selected[i].item);
@@ -454,6 +471,7 @@ public class inventory : MonoBehaviour
                                 int indexInManager = GameManager.instance.trashTypesinBin.IndexOf(selected[i].item);
                                 GameManager.instance.trashTypesinBinAmt[indexInManager]++;
                             }
+                            selected[i].item = null;
                             selected[i].GetComponent<Image>().sprite = null;
                             selected[i].GetComponent<Image>().color = Color.red;
                             inventoryItems.Remove(selected[i].item);
@@ -493,6 +511,7 @@ public class inventory : MonoBehaviour
                                 int indexInManager = GameManager.instance.trashTypesinBin.IndexOf(selected[i].item);
                                 GameManager.instance.trashTypesinBinAmt[indexInManager]++;
                             }
+                            selected[i].item = null;
                             selected[i].GetComponent<Image>().sprite = null;
                             selected[i].GetComponent<Image>().color = Color.red;
                             inventoryItems.Remove(selected[i].item);
@@ -532,6 +551,7 @@ public class inventory : MonoBehaviour
                                 int indexInManager = GameManager.instance.trashTypesinBin.IndexOf(selected[i].item);
                                 GameManager.instance.trashTypesinBinAmt[indexInManager]++;
                             }
+                            selected[i].item = null;
                             selected[i].GetComponent<Image>().sprite = null;
                             selected[i].GetComponent<Image>().color = Color.red;
                             inventoryItems.Remove(selected[i].item);
@@ -571,6 +591,7 @@ public class inventory : MonoBehaviour
                                 int indexInManager = GameManager.instance.trashTypesinBin.IndexOf(selected[i].item);
                                 GameManager.instance.trashTypesinBinAmt[indexInManager]++;
                             }
+                            selected[i].item = null;
                             selected[i].GetComponent<Image>().sprite = null;
                             selected[i].GetComponent<Image>().color = Color.red;
                             inventoryItems.Remove(selected[i].item);
@@ -586,5 +607,24 @@ public class inventory : MonoBehaviour
 
         }
         bin.inBin.Add(selected[i].item);
+    }
+    public void PutInProcessor()
+    {
+        for(int i = 0; i <= selected.Capacity; i++)
+        {
+            if(selected[i].item.trashType != null)
+            {
+                Debug.Log("IUB");
+                if(currentMachine.takes.HasFlag(selected[i].item.trashType.typeofMaterial))
+                {
+                    Debug.Log("Process");
+                    currentMachine.PutIn(selected[i].item);
+                    selected[i].item = null;
+                    selected[i].GetComponent<Image>().sprite = null;
+                    selected[i].GetComponent<Image>().color = Color.red;
+                    inventoryItems.Remove(selected[i].item);
+                }
+            }
+        }
     }
 }

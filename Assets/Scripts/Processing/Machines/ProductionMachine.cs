@@ -4,6 +4,16 @@ using UnityEngine;
 
 public class ProductionMachine : MonoBehaviour
 {
+    [System.Flags]
+    public enum Takes
+    {
+        none = 0,
+        plastic = 1,
+        metal = 2,
+        wood = 4, 
+        wires = 8
+    }
+    public Takes takes;
     public List<TrashType> contains;
     public int capacity;
     public MaterialItem produces;
@@ -36,5 +46,9 @@ public class ProductionMachine : MonoBehaviour
             player.interactable = false;
             player.Interactables.Remove(gameObject);
         }
+    }
+    public void PutIn(InventoryItem item)
+    {
+        contains.Add(item.trashType);
     }
 }
