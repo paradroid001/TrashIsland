@@ -88,7 +88,7 @@ public class inventory : MonoBehaviour
                         if(images[i].sprite == null)
                         {
                             //if the item is not already in the inventory, and it has an assigned sprite, then present the sprite and let it know the data of the thing in the slot
-                            images[i].sprite = inventoryItems[i].inventorySprite;
+                            images[i].sprite = trashtype.inventorySprite;
                             images[i].GetComponent<InventoryButtons>().item = trashtype;
                             images[i].GetComponent<InventoryButtons>().selectable = true;
                             images[i].color = Color.white;
@@ -230,6 +230,7 @@ public class inventory : MonoBehaviour
                             selected[i].GetComponent<Image>().sprite = null;
                             selected[i].GetComponent<Image>().color = Color.red;
                             inventoryItems.Remove(selected[i].item);
+                            selected[i].item = null;
                         }
                         Debug.Log(ind);
                     }
