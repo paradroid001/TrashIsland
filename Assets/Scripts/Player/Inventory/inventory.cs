@@ -439,7 +439,7 @@ public class inventory : MonoBehaviour
                     GameManager.instance.recyclePoints -= 10;
                 }
             }
-            else if(selected[i].item.typeOfTrash == InventoryItem.TypeOfTrash.Garbage)
+            else if(selected[i].item.typeOfTrash == InventoryItem.TypeOfTrash.Organic)
             {
                 if(bin.binType == Bin.BinType.Garbage)
                 {
