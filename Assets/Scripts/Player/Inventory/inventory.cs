@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class inventory : MonoBehaviour
+public class Inventory : MonoBehaviour
 {
     public int capacity;
     public enum InventoryReason{Look, Bin, Process};
@@ -27,7 +27,7 @@ public class inventory : MonoBehaviour
         for(int i = 0; i <= transform.GetChild(0).GetChild(0).childCount - 1; i++)
         {
             inventoryButtons.Add(transform.GetChild(0).GetChild(0).GetChild(i).GetComponent<InventoryButtons>());
-            inventoryButtons[i].Inventory = this;
+            inventoryButtons[i].inventory = this;
         }
     }
     public void OnValidate() 
@@ -615,15 +615,51 @@ public class inventory : MonoBehaviour
         {
             if(selected[i].item.trashType != null)
             {
-                Debug.Log("IUB");
-                if(currentMachine.takes.HasFlag(selected[i].item.trashType.typeofMaterial))
+                if(currentMachine.contains.Capacity == 0 )
                 {
-                    Debug.Log("Process");
-                    currentMachine.PutIn(selected[i].item);
-                    selected[i].item = null;
-                    selected[i].GetComponent<Image>().sprite = null;
-                    selected[i].GetComponent<Image>().color = Color.red;
-                    inventoryItems.Remove(selected[i].item);
+                    Debug.Log("IUB");
+                    if(currentMachine.takes.HasFlag(selected[i].item.trashType.typeofMaterial))
+                    {
+                        if(amount[i] == 0)
+                        {
+                            Debug.Log("Process");
+                            inventoryItems.Remove(selected[i].item);
+                            currentMachine.PutIn(selected[i].item);
+                            selected[i].item = null;
+                            selected[i].GetComponent<Image>().sprite = null;
+                            selected[i].GetComponent<Image>().color = Color.red;
+                            
+                        }
+                        else if(amount[i] >= 1)
+                        {
+                            currentMachine.PutIn(selected[i].item);
+                            amount[i]--;
+                        }
+                    }
+                }
+                else if(currentMachine.contains.Capacity >= 1)
+                {
+                    if(selected[i].item.trashType == currentMachine.contains[0])
+                    {
+                        if(currentMachine.takes.HasFlag(selected[i].item.trashType.typeofMaterial))
+                        {
+                            if(amount[i] == 0)
+                            {
+                                Debug.Log("Process");
+                                inventoryItems.Remove(selected[i].item);
+                                currentMachine.PutIn(selected[i].item);
+                                selected[i].item = null;
+                                selected[i].GetComponent<Image>().sprite = null;
+                                selected[i].GetComponent<Image>().color = Color.red;
+                                
+                            }
+                            else if(amount[i] >= 1)
+                            {
+                                currentMachine.PutIn(selected[i].item);
+                                amount[i]--;
+                            }
+                        }
+                    }
                 }
             }
         }

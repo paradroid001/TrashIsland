@@ -9,10 +9,16 @@ public class ProductionMachine : MonoBehaviour
     {
         none = 0,
         plastic = 1,
-        metal = 2,
+        aluminium = 2,
         wood = 4, 
-        wires = 8
+        wires = 8,
+        glass = 16, 
+        cardboard = 32,
+        paper = 64,
+        steel = 128
     }
+    public int hp;
+    public bool broken;
     public Takes takes;
     public List<TrashType> contains;
     public int capacity;
@@ -54,12 +60,18 @@ public class ProductionMachine : MonoBehaviour
         interacted = true;
         yield return new WaitForSeconds(3);
         Debug.Log("Compressed");
-        for(int i = 0; i < contains.Capacity; i++)
+        for(int i = 0; i <= contains.Capacity; i++)
         {
+            hp -= contains[i].hpCost;
             GameManager.instance.materials.Add(produces);
             Debug.Log("0");
+            if(hp == 0)
+            {
+                broken = true;
+            }
         }
         contains.Clear();
+        
         interacting = false;
         interacted = false;
     }

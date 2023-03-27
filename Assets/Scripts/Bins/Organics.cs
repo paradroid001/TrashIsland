@@ -38,7 +38,7 @@ public class Organics : Bin
     }
     public void Interact()
     {
-        GameManager.instance.invent.reason = inventory.InventoryReason.Bin;
+        GameManager.instance.invent.reason = Inventory.InventoryReason.Bin;
         if(GameManager.instance.invent.inventoryItems.Capacity <= 12)
         {
             Debug.Log("Interact");

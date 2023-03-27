@@ -89,7 +89,7 @@ public class Player : MonoBehaviour
                     else if(machine.contains.Capacity == 0)
                     {
                         GameManager.instance.invent.currentMachine = machine;
-                        GameManager.instance.invent.reason = inventory.InventoryReason.Process;
+                        GameManager.instance.invent.reason = Inventory.InventoryReason.Process;
                     }
                 }
                 else if(Interactables[currentInteract].GetComponent<RobotCompanion>() != null)

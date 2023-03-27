@@ -5,13 +5,13 @@ using UnityEngine.EventSystems;
 
 public class InventoryButtons : MonoBehaviour, IPointerClickHandler
 {
-    public inventory Inventory;
+    public Inventory inventory;
     public InventoryItem item;
     public bool selectable;
     public bool selected;
     public void Start()
     {
-        Inventory = transform.parent.parent.parent.GetComponent<inventory>();
+        inventory = transform.parent.parent.parent.GetComponent<Inventory>();
     }
     public void OnPointerClick(PointerEventData eventData)
     {
@@ -21,12 +21,12 @@ public class InventoryButtons : MonoBehaviour, IPointerClickHandler
             if(selected == false)
             {
                 selected = true;
-                Inventory.selected.Add(this);
+                inventory.selected.Add(this);
             }
             else 
             {
                 selected = false;
-                Inventory.selected.Remove(this);
+                inventory.selected.Remove(this);
             }
         }
     }

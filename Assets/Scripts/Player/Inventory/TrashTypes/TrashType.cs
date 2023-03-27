@@ -4,6 +4,7 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "TrashType", menuName = "Inventory/Trash/TrashType", order = 0)]
 public class TrashType : InventoryItem {
+    public int hpCost;
     public GameObject thisObject;
     public string trashName;
     

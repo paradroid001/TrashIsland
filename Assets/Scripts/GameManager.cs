@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     public int recyclePoints;
     public Player player;
     public GameObject inventory;
-    public inventory invent;
+    public Inventory invent;
     public List<Trash> trash;
     public List<Recycle> recycles;
     public List<Garbage> garbages;
