@@ -33,13 +33,13 @@ public class Inventory : MonoBehaviour
     public void OnValidate() 
     {
         //Maintain the ratio of inventory slots to the amount list
-        if(images.Capacity == 0)
+        if(images.Count == 0)
         {
             for(int i = 0; i < transform.GetChild(0).GetChild(0).childCount; i++)
             {
                 images.Add(transform.GetChild(0).GetChild(0).GetChild(i).GetComponent<Image>());
             }
-            inventoryItems.Capacity = images.Capacity;
+            inventoryItems.Capacity = images.Count;
         }
     }
     
@@ -76,12 +76,12 @@ public class Inventory : MonoBehaviour
     }
     public void AddToInventory(InventoryItem trashtype)
     {
-        if(inventoryItems.Capacity <= capacity)
+        if(inventoryItems.Count <= capacity)
         {
             if(!inventoryItems.Contains(trashtype))
             {
                 inventoryItems.Add(trashtype);
-                for(int i = 0; i <= amount.Length; i++)
+                for(int i = 0; i <= images.Count; i++)
                 {
                     if(trashtype.inventorySprite != null)
                     {
@@ -102,7 +102,7 @@ public class Inventory : MonoBehaviour
             {
                 //if the item is already in the inventory, then add to the amt
                 Debug.Log("Add amount");
-                for(int i = 0; i < inventoryItems.Capacity; i++)
+                for(int i = 0; i < inventoryItems.Count; i++)
                 {
                     if(inventoryItems[i] == trashtype)
                     {
@@ -114,12 +114,12 @@ public class Inventory : MonoBehaviour
         }
         else 
         {
-            if(RoboInventory.roboInventory.inventoryItems.Capacity < RoboInventory.roboInventory.capacity)
+            if(RoboInventory.roboInventory.inventoryItems.Count < RoboInventory.roboInventory.capacity)
             {
                 if(!RoboInventory.roboInventory.inventoryItems.Contains(trashtype))
                 {
                     RoboInventory.roboInventory.inventoryItems.Add(trashtype);
-                    for(int i = 0; i < RoboInventory.roboInventory.images.Capacity; i++)
+                    for(int i = 0; i < RoboInventory.roboInventory.images.Count; i++)
                     {
                         if(trashtype.inventorySprite != null)
                         {
@@ -177,7 +177,7 @@ public class Inventory : MonoBehaviour
     public void PutInBin(Bin bin)
     {
         //Debug.Log("B");
-        for(int i = 0; i <= selected.Capacity - 1; i++)
+        for(int i = 0; i < selected.Count; i++)
         {
             PutInBinB(i, bin);
         }
@@ -611,7 +611,7 @@ public class Inventory : MonoBehaviour
     }
     public void PutInProcessor()
     {
-        for(int i = 0; i <= selected.Capacity; i++)
+        for(int i = 0; i < selected.Count; i++)
         {
             if(selected[i].item.trashType != null)
             {

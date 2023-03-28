@@ -84,7 +84,7 @@ public class Player : MonoBehaviour
                     ProductionMachine machine = Interactables[currentInteract].GetComponent<ProductionMachine>();
                     if(machine.contains.Capacity != 0)
                     {
-                        machine.interacting = true;
+                        StartCoroutine(machine.Interact());
                     }
                     else if(machine.contains.Capacity == 0)
                     {

@@ -60,11 +60,11 @@ public class ProductionMachine : MonoBehaviour
         interacted = true;
         yield return new WaitForSeconds(3);
         Debug.Log("Compressed");
-        for(int i = 0; i <= contains.Capacity; i++)
+        for(int i = 0; i < contains.Count; i++)
         {
-            hp -= contains[i].hpCost;
             GameManager.instance.materials.Add(produces);
             Debug.Log("0");
+            hp -= contains[i].hpCost;
             if(hp == 0)
             {
                 broken = true;
