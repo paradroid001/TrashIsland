@@ -671,10 +671,20 @@ public class Inventory : MonoBehaviour
         spawned.transform.parent = GameManager.instance.player.transform;
         spawned.transform.localPosition = Vector3.forward;
         spawned.transform.parent = null;
-        inventoryItems.Remove(selected[0].item);
-        selected[0].item = null;
-        selected[0].GetComponent<Image>().sprite = null;
-        selected[0].GetComponent<Image>().color = Color.red;
-
+        if(inventoryItems.Contains(selected[0].item))
+        {
+            int amtIndex = inventoryItems.IndexOf(selected[0].item);
+            if(amount[amtIndex] >= 1)
+            {
+                amount[amtIndex]--;
+            }
+            else if(amount[amtIndex] == 0)
+            {
+                inventoryItems.Remove(selected[0].item);
+                selected[0].item = null;
+                selected[0].GetComponent<Image>().sprite = null;
+                selected[0].GetComponent<Image>().color = Color.red;
+            }
+        }
     }
 }

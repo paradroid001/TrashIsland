@@ -47,7 +47,9 @@ public class InventoryButtons : MonoBehaviour, IPointerClickHandler
                 else
                 {
                     inventory.selected.Remove(this);
+                    inventory.dropButton.SetActive(false);
                 }
+
             }
         }
         
