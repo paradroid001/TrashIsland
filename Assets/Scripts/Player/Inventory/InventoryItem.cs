@@ -13,4 +13,5 @@ public class InventoryItem : ScriptableObject
     public IsTrash isTrash;
     public enum TypeOfTrash{Garbage, Recycle, Organic};
     public TypeOfTrash typeOfTrash;
+    public GameObject objectOfTrash;
 }

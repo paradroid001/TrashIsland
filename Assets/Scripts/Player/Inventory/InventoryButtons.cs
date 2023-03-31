@@ -17,17 +17,39 @@ public class InventoryButtons : MonoBehaviour, IPointerClickHandler
     {
         if(selectable == true)
         {
-            Debug.Log("Clicked: " + eventData.pointerCurrentRaycast.gameObject.name);
-            if(selected == false)
+            if(inventory.reason == Inventory.InventoryReason.Bin || inventory.reason == Inventory.InventoryReason.Process)
             {
-                selected = true;
-                inventory.selected.Add(this);
+                Debug.Log("Clicked: " + eventData.pointerCurrentRaycast.gameObject.name);
+                if(selected == false)
+                {
+                    selected = true;
+                    inventory.selected.Add(this);
+                }
+                else 
+                {
+                    selected = false;
+                    inventory.selected.Remove(this);
+                }
             }
-            else 
+            else if(inventory.reason == Inventory.InventoryReason.Look)
             {
-                selected = false;
-                inventory.selected.Remove(this);
+                if(!inventory.selected.Contains(this))
+                {
+                    if(inventory.selected.Count == 0)
+                    {
+                        inventory.selected.Add(this);
+                        inventory.dropButton.SetActive(true);
+                        inventory.dropButton.transform.SetParent(transform);
+                        inventory.dropButton.transform.localPosition = new Vector2(0, 100);
+                        inventory.dropButton.transform.SetParent(inventory.dropButton.GetComponent<DropButton>().firstParent);
+                    }
+                }
+                else
+                {
+                    inventory.selected.Remove(this);
+                }
             }
         }
+        
     }
 }

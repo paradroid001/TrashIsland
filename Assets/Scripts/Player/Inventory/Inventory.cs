@@ -17,6 +17,7 @@ public class Inventory : MonoBehaviour
     public List<InventoryButtons> selected;
     public Bin currentBin;
     public ProductionMachine currentMachine;
+    public GameObject dropButton;
     public void Start()
     {
         //Get the buttons to click on.
@@ -663,5 +664,17 @@ public class Inventory : MonoBehaviour
                 }
             }
         }
+    }
+    public void DropItem()
+    {
+        GameObject spawned = GameObject.Instantiate(selected[0].item.objectOfTrash);
+        spawned.transform.parent = GameManager.instance.player.transform;
+        spawned.transform.localPosition = Vector3.forward;
+        spawned.transform.parent = null;
+        inventoryItems.Remove(selected[0].item);
+        selected[0].item = null;
+        selected[0].GetComponent<Image>().sprite = null;
+        selected[0].GetComponent<Image>().color = Color.red;
+
     }
 }
