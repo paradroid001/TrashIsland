@@ -14,10 +14,14 @@ namespace TrashIsland
         //parameter to evaluate at.
         public float currentParameter = 0;
 
-        public float currentValue {
-            get { return Mathf.Clamp(
-                            ((maxValue-minValue)*ramp.Evaluate(currentParameter)),
-                            minValue, maxValue);}
+        public float currentValue
+        {
+            get
+            {
+                return Mathf.Clamp(
+                            ((maxValue - minValue) * ramp.Evaluate(currentParameter)),
+                            minValue, maxValue);
+            }
         }
     }
 
@@ -29,18 +33,21 @@ namespace TrashIsland
         public float movementThreshold = 0.1f;
         public FloatRamp currentSpeed;
 
-        public Vector3 currentMovement{
-            get {return _currentMovement;}
+        public Vector3 currentMovement
+        {
+            get { return _currentMovement; }
         }
 
-        public Vector3 currentDestination{
-            get {return _currentDestination;}
-            set {_currentDestination = value;}
+        public Vector3 currentDestination
+        {
+            get { return _currentDestination; }
+            set { _currentDestination = value; }
         }
 
-        public Vector3 relativeDestination {
-            get {return _currentDestination - transform.position;}
-            set {_currentDestination = transform.position + value; Debug.Log(_currentDestination);}
+        public Vector3 relativeDestination
+        {
+            get { return _currentDestination - transform.position; }
+            set { _currentDestination = transform.position + value; /*Debug.Log(_currentDestination);*/}
         }
 
         // Start is called before the first frame update
@@ -61,9 +68,9 @@ namespace TrashIsland
         protected virtual void MoveToward()
         {
             currentSpeed.currentParameter = 1.0f;
-            _currentMovement = (_currentDestination-transform.position).normalized 
+            _currentMovement = (_currentDestination - transform.position).normalized
                                * currentSpeed.currentValue;
-                               
+
             transform.position += _currentMovement * Time.deltaTime;
         }
 
