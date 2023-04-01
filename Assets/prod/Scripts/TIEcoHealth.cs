@@ -42,7 +42,7 @@ namespace TrashIsland
             {
                 Debug.Log("terrain already initialised");
             }
-            if (ecoHealth == null)
+            if (_ecoHealth == null)
             {
                 if (_terrain == null)
                 {
@@ -50,10 +50,10 @@ namespace TrashIsland
                 }
                 else
                 {
-                    _ecoHealth = new float[_terrainData.size.x, _terrainData.size.z];
-                    for (int x = 0; x < _terrainData.size.x; x++)
+                    _ecoHealth = new float[_terrainData.alphamapWidth, _terrainData.alphamapHeight];
+                    for (int x = 0; x < _terrainData.alphamapWidth; x++)
                     {
-                        for (int y = 0; y < _terrainData.size.z; y++)
+                        for (int y = 0; y < _terrainData.alphamapHeight; y++)
                         {
                             _ecoHealth[x, y] = 0.0f; //default value
                         }

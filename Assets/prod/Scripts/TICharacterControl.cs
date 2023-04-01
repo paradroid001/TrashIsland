@@ -21,7 +21,10 @@ namespace TrashIsland
             {
                 float h = Input.GetAxisRaw("Horizontal");
                 float v = Input.GetAxisRaw("Vertical");
-                _movement.relativeDestination = transform.forward * v + transform.right * h; // + transform.up * transform.position.y;
+                if (v != 0 || h != 0)
+                {
+                    _movement.relativeDestination = transform.forward * v + transform.right * h; // + transform.up * transform.position.y;
+                }
             }
         }
     }
