@@ -28,6 +28,11 @@ namespace TrashIsland
             _frameCount += 1;
             if (_timer > 0)
                 _fps = _frameCount / _timer;
+            if (_timer > 3)
+            {
+                _timer = 0;
+                _frameCount = 0;
+            }
             return _fps;
         }
     }
