@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     public List<int> trashTypesinBinAmt;
     public List<MaterialItem> materials;
     public RoboInventory roboInventory;
+    public GameObject floor;
     void Start()
     {
         instance = this;

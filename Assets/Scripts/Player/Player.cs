@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     public List<GameObject> Interactables;
     public int currentInteract;
     public Transform hold;
+    public ToolScriptableObject equippedTool;
     void Start()
     {
         //hold = transform.GetChild(0);
@@ -106,6 +107,15 @@ public class Player : MonoBehaviour
                 {
                     GrowLand land = Interactables[currentInteract].GetComponent<GrowLand>();
                     land.Interact();
+                }
+                else if(Interactables[currentInteract].GetComponent<Crate>())
+                {
+                    
+                }
+                else if(Interactables[currentInteract].GetComponent<TrashMound>())
+                {
+                    TrashMound mound = Interactables[currentInteract].GetComponent<TrashMound>();
+                    mound.Interact();
                 }
             }
     }

@@ -7,6 +7,7 @@ public class Trash : MonoBehaviour
     public enum TrashType1 {recycle, garbage, organic};
     public TrashType1 trashType;
     public TrashType typeOf;
+    public BuriedTrash buriedTrash;
     public void OnTriggerEnter(Collider other)
     {
         if(other.tag == "Player")
@@ -32,11 +33,33 @@ public class Trash : MonoBehaviour
             Debug.Log("Interact");
             if(GameManager.instance.invent.inventoryItems.Capacity <= 12)
             {
-                //GameManager.instance.invent.inventoryItems.Add(typeOf);
-                player.interactable = false;
-                player.Interactables.Remove(gameObject);
-                gameObject.SetActive(false);
-                GameManager.instance.invent.AddToInventory(typeOf);
+                if(buriedTrash == null)
+                {
+                    //GameManager.instance.invent.inventoryItems.Add(typeOf);
+                    player.interactable = false;
+                    player.Interactables.Remove(gameObject);
+                    gameObject.SetActive(false);
+                    GameManager.instance.invent.AddToInventory(typeOf);
+                }
+                else if(buriedTrash != null)
+                {
+                    if(buriedTrash.buried == true)
+                    {
+                        if(GameManager.instance.player.equippedTool.name == "Shovel")
+                        {
+                            //play digging animation
+                            transform.position = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
+                            buriedTrash.buried = false;
+                        }
+                    }
+                    else 
+                    {
+                        player.interactable = false;
+                        player.Interactables.Remove(gameObject);
+                        gameObject.SetActive(false);
+                        GameManager.instance.invent.AddToInventory(typeOf);
+                    }
+                }
                 
             }
             //transform.parent = player.hold;
