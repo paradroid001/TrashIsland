@@ -12,6 +12,10 @@ public class Trash : MonoBehaviour
     {
         if(other.tag == "Player")
         {
+            if(buriedTrash != null)
+            {
+                buriedTrash.near = true;
+            }
             Player player = other.GetComponent<Player>();
             player.interactable = true;
             player.Interactables.Add(gameObject);
@@ -21,6 +25,10 @@ public class Trash : MonoBehaviour
     {
         if(other.tag == "Player")
         {
+            if(buriedTrash != null)
+            {
+                buriedTrash.near = false;
+            }
             Player player = other.GetComponent<Player>();
             player.interactable = false;
             player.Interactables.Remove(gameObject);
