@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     public int currentInteract;
     public Transform hold;
     public ToolScriptableObject equippedTool;
+    public DialogueUI dialogueUI;
     void Start()
     {
         //hold = transform.GetChild(0);
@@ -116,6 +117,11 @@ public class Player : MonoBehaviour
                 {
                     TrashMound mound = Interactables[currentInteract].GetComponent<TrashMound>();
                     mound.Interact();
+                }
+                else if(Interactables[currentInteract].GetComponent<DialogueActivator>())
+                {
+                    DialogueActivator activator = Interactables[currentInteract].GetComponent<DialogueActivator>();
+                    activator.Interact(this);
                 }
             }
     }
