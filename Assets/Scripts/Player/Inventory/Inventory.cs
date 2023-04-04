@@ -686,5 +686,6 @@ public class Inventory : MonoBehaviour
                 selected[0].GetComponent<Image>().color = Color.red;
             }
         }
+        
     }
 }
