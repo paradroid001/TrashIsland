@@ -7,6 +7,7 @@ public class ToolScriptableObject : InventoryItem
 {
     public enum ToolType{Shovel, Grabber};
     public ToolType toolType;
+    public int indexAsChild;
     public void OnValidate()
     {
         toolsType = this;
