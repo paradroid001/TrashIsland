@@ -10,4 +10,5 @@ public class DropButton : MonoBehaviour
         firstParent = transform.parent;
         gameObject.SetActive(false);
     }
+    
 }

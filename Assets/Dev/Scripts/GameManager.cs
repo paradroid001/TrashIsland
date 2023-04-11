@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour
     public List<MaterialItem> materials;
     public RoboInventory roboInventory;
     public GameObject floor;
+    public ToolScriptableObject shovel;
+    public ToolScriptableObject pick;
     void Start()
     {
         instance = this;
@@ -27,6 +29,8 @@ public class GameManager : MonoBehaviour
         recycles = new List<Recycle>(recycle);
         Garbage[] garbage = FindObjectsOfType<Garbage>();
         garbages = new List<Garbage>(garbage);
+        invent.AddToInventory(shovel);
+        invent.AddToInventory(pick);
     }
     public void RemoveFromTrashIvent(InventoryItem item)
     {

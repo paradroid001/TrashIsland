@@ -18,6 +18,7 @@ public class Inventory : MonoBehaviour
     public Bin currentBin;
     public ProductionMachine currentMachine;
     public GameObject dropButton;
+    public Image equipImg;
     public void Start()
     {
         //Get the buttons to click on.
@@ -61,7 +62,7 @@ public class Inventory : MonoBehaviour
                 button.SetActive(false);
                 processButton.SetActive(false);
                 backButton.SetActive(false);
-                Time.timeScale = 1;
+                //Time.timeScale = 1;
                 break;
             case InventoryReason.Bin:
                 button.SetActive(true);
@@ -687,5 +688,13 @@ public class Inventory : MonoBehaviour
             }
         }
         
+    }
+    public void EquipTool()
+    {
+        if(selected[0].item.toolsType != null)
+        {
+            GameManager.instance.player.equippedTool = selected[0].item.toolsType;
+            equipImg.sprite = selected[0].item.inventorySprite;
+        }
     }
 }
