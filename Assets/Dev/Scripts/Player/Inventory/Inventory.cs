@@ -698,4 +698,23 @@ public class Inventory : MonoBehaviour
             GameManager.instance.player.hold.GetChild(selected[0].item.toolsType.indexAsChild).gameObject.SetActive(true);
         }
     }
+    public void PlaceBuilding()
+    {
+        GridDetector detector = GameManager.instance.player.detector;
+        if(detector.inFront.Count <= 1)
+        {
+            if(selected[0].item.buildType)
+            {
+                GridSquare squareInFront = detector.inFront[0];
+                GameObject built = GameObject.Instantiate<GameObject>(selected[0].item.buildType.building);
+                built.transform.SetParent(detector.inFront[0].transform);
+                built.transform.localPosition = Vector3.zero;
+                squareInFront.built = true;
+                inventoryItems.Remove(selected[0].item);
+                selected[0].item = null;
+                selected[0].GetComponent<Image>().sprite = null;
+                selected[0].GetComponent<Image>().color = Color.red;
+            }
+        }
+    }
 }

@@ -9,6 +9,7 @@ public class InventoryItem : ScriptableObject
     public MaterialItem materialItem;
     public TrashType trashType;
     public ToolScriptableObject toolsType;
+    public BuildingAsset buildType;
     public Sprite inventorySprite;
     public enum IsTrash{Trash, NotTrash}; 
     public IsTrash isTrash;

@@ -35,10 +35,10 @@ RectTransform:
   m_Father: {fileID: 8129741104829021350}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 130, y: 50}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 90, y: -121.4}
+  m_SizeDelta: {x: 160, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3184936890020800849
 CanvasRenderer:
@@ -3834,6 +3834,7 @@ GameObject:
   - component: {fileID: 8129741104829021348}
   - component: {fileID: 8129741104829021349}
   - component: {fileID: 8129741104829021371}
+  - component: {fileID: 9104270135022362986}
   m_Layer: 5
   m_Name: DropButton
   m_TagString: Untagged
@@ -3914,6 +3915,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firstParent: {fileID: 0}
+--- !u!114 &9104270135022362986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8129741104829021351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 10
+    m_Right: 0
+    m_Top: 3
+    m_Bottom: 0
+  m_ChildAlignment: 0
+  m_Spacing: 0
+  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandHeight: 1
+  m_ChildControlWidth: 0
+  m_ChildControlHeight: 0
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
+  m_ReverseArrangement: 0
 --- !u!1 &8129741104865711405
 GameObject:
   m_ObjectHideFlags: 0
@@ -4727,7 +4754,6 @@ MonoBehaviour:
   currentBin: {fileID: 0}
   currentMachine: {fileID: 0}
   dropButton: {fileID: 8129741104829021351}
-  equippedTool: {fileID: 0}
   equipImg: {fileID: 4426169194905743045}
 --- !u!114 &8129741105003074638
 MonoBehaviour:

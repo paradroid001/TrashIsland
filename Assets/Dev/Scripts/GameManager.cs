@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     public GameObject floor;
     public ToolScriptableObject shovel;
     public ToolScriptableObject pick;
+    public BuildingAsset build;
     void Start()
     {
         instance = this;
@@ -31,6 +32,7 @@ public class GameManager : MonoBehaviour
         garbages = new List<Garbage>(garbage);
         invent.AddToInventory(shovel);
         invent.AddToInventory(pick);
+        invent.AddToInventory(build);
     }
     public void RemoveFromTrashIvent(InventoryItem item)
     {

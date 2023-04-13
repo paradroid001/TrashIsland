@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
     public Transform hold;
     public ToolScriptableObject equippedTool;
     public DialogueUI dialogueUI;
+    public GridDetector detector;
     void Start()
     {
         //hold = transform.GetChild(0);
