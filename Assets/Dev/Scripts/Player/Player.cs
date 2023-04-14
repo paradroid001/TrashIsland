@@ -124,6 +124,11 @@ public class Player : MonoBehaviour
                     DialogueActivator activator = Interactables[currentInteract].GetComponent<DialogueActivator>();
                     activator.Interact(this);
                 }
+                else if(Interactables[currentInteract].GetComponent<Closet>())
+                {
+                    Closet closet = Interactables[currentInteract].GetComponent<Closet>();
+                    closet.Interact();
+                }
             }
     }
 }
