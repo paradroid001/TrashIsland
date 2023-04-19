@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     public ToolScriptableObject shovel;
     public ToolScriptableObject pick;
     public BuildingAsset build;
+    public bool inDialogue;
     void Start()
     {
         instance = this;

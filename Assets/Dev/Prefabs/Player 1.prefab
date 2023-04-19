@@ -167,6 +167,9 @@ MonoBehaviour:
   equippedTool: {fileID: 11400000, guid: 5e393d72239e2d2439801c8f4903e973, type: 2}
   dialogueUI: {fileID: 0}
   detector: {fileID: 0}
+  playerCanvas: {fileID: 0}
+  interactButtonTemplate: {fileID: 3859136943093447025, guid: dcb060e5bd67b0041927880a8d85c4b4, type: 3}
+  interacting: {fileID: 0}
 --- !u!54 &7250559925549458702
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -219,3 +222,5 @@ MonoBehaviour:
   donePants: {fileID: 0}
   pantsDone: 1
   shoes: {fileID: 0}
+  doneShoes: {fileID: 0}
+  shoesDone: 0

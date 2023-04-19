@@ -16,4 +16,5 @@ public class Bin : MonoBehaviour
             hasThings = true;
         }
     }
+    public GameObject button;
 }
