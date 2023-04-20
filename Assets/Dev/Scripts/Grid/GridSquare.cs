@@ -19,6 +19,10 @@ public class GridSquare : MonoBehaviour
                 neighbours.Add(other.gameObject.GetComponent<GridSquare>());
             }
         }
+        if(other.tag == "Build")
+        {
+            built = true;
+        }
     }
     void Update()
     {

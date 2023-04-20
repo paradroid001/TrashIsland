@@ -3,14 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Paulie : MonoBehaviour
+public class Paulie : NPC
 {
-    public NavMeshAgent agent;
     public Transform sparc;
     public bool following = true;
     void Start()
     {
-        agent = GetComponent<NavMeshAgent>();
     }
     void Update()
     {

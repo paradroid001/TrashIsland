@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 7250559925549458696}
   - component: {fileID: 7250559925549458702}
   - component: {fileID: 7250559925549458691}
+  - component: {fileID: 5503337497736526216}
   m_Layer: 0
   m_Name: Player 1
   m_TagString: Player
@@ -165,6 +166,10 @@ MonoBehaviour:
   hold: {fileID: 8227615824162327883}
   equippedTool: {fileID: 11400000, guid: 5e393d72239e2d2439801c8f4903e973, type: 2}
   dialogueUI: {fileID: 0}
+  detector: {fileID: 0}
+  playerCanvas: {fileID: 0}
+  interactButtonTemplate: {fileID: 3859136943093447025, guid: dcb060e5bd67b0041927880a8d85c4b4, type: 3}
+  interacting: {fileID: 0}
 --- !u!54 &7250559925549458702
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -195,3 +200,27 @@ CapsuleCollider:
   m_Height: 2.1427894
   m_Direction: 1
   m_Center: {x: 0, y: 0.000000059604645, z: 0}
+--- !u!114 &5503337497736526216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7250559925549458711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1278ee0583754b45baa54930f9d0d2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hair: {fileID: 1159408847930383148, guid: 3e56e22b0694bbc4f92973ea9e3e7484, type: 3}
+  doneHair: {fileID: 0}
+  hairDone: 1
+  shirt: {fileID: 6129572323573913519, guid: 0da0a395fc1a94e4f9b2d5bbc20b08c4, type: 3}
+  doneShirt: {fileID: 0}
+  shirtDone: 1
+  pants: {fileID: 7814941916249953583, guid: 8a63ea4485118a3478710b8b3bb6f63e, type: 3}
+  donePants: {fileID: 0}
+  pantsDone: 1
+  shoes: {fileID: 0}
+  doneShoes: {fileID: 0}
+  shoesDone: 0
