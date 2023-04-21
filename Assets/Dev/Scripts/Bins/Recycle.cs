@@ -72,12 +72,13 @@ public class Recycle : Bin
     public IEnumerator SendToRecycle()
     {
         yield return new WaitForSeconds(waitTime);
+        DroneManager.instance.SendToBin(this);
         Debug.Log(waitTime);
-        for(int i = 0; i < inBin.Capacity; i++)
+        for(int i = 0; i < inBin.Count; i++)
         {
             deposit.deposited.Add(inBin[i]);
         }
-        inBin.Clear();
+        //inBin.Clear();
         hasThings = false;
     }
 }

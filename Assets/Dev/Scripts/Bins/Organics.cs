@@ -60,12 +60,13 @@ public class Organics : Bin
     public IEnumerator SendToCompost()
     {
         yield return new WaitForSeconds(waitTime);
+        DroneManager.instance.SendToBin(this);
         Debug.Log(waitTime);
         for(int i = 0; i < inBin.Capacity; i++)
         {
             compost.thingsIn.Add(inBin[i]);
         }
-        inBin.Clear();
+        //inBin.Clear();
         hasThings = false;
     }
 }

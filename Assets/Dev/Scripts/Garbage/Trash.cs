@@ -41,6 +41,7 @@ public class Trash : MonoBehaviour
             Player player = other.GetComponent<Player>();
             player.interactable = false;
             player.Interactables.Remove(gameObject);
+            GameObject.Destroy(button);
         }
     }
     public void Interact(Player player)

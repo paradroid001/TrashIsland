@@ -12,7 +12,11 @@ public class Garbage : Bin
     }
     void FixedUpdate()
     {
-
+        if(hasThings == true && sent == false)
+        {
+            StartCoroutine(SendToLandfill());
+            sent = true;
+        }
     }
     public void OnTriggerEnter(Collider other)
     {
@@ -25,7 +29,7 @@ public class Garbage : Bin
             button.transform.SetParent(GameManager.instance.player.playerCanvas.transform.GetChild(0));
             button.transform.localPosition = Vector2.zero;
             TextMeshProUGUI buttontext = button.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
-            buttontext.text = "S.P.A.R.C.";
+            buttontext.text = "Landfill Bin";
             InteractButtons interactButton = button.GetComponent<InteractButtons>();
             interactButton.correspond = gameObject;
         }
@@ -60,5 +64,14 @@ public class Garbage : Bin
                 GameManager.instance.recyclePoints += 10;
                 break;
         }*/
+    }
+    public float waitTime;
+    public IEnumerator SendToLandfill()
+    {
+        yield return new WaitForSeconds(waitTime);
+        DroneManager.instance.SendToBin(this);
+        Debug.Log(waitTime);
+        //inBin.Clear();
+        hasThings = false;
     }
 }

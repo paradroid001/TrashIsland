@@ -202,32 +202,14 @@ public class Inventory : MonoBehaviour
                     if(inventoryItems.Contains(selected[i].item))
                     {
                         int ind = inventoryItems.IndexOf(selected[i].item);
-                        if(amount[ind] > 0)
+                        if(amount[ind] >= 1)
                         {
-                            if(!GameManager.instance.trashTypesinBin.Contains(selected[i].item))
-                            {
-                                GameManager.instance.trashTypesinBin.Add(selected[i].item);
-                                GameManager.instance.trashTypesinBinAmt.Add(1);
-                            }
-                            else
-                            {
-                                int indexInManager = GameManager.instance.trashTypesinBin.IndexOf(selected[i].item);
-                                GameManager.instance.trashTypesinBinAmt[indexInManager]++;
-                            }
+                            bin.inBin.Add(selected[i].item);
                             amount[ind]--;
                         }
-                        else
+                        else if(amount[ind] == 0)
                         {
-                            if(!GameManager.instance.trashTypesinBin.Contains(selected[i].item))
-                            {
-                                GameManager.instance.trashTypesinBin.Add(selected[i].item);
-                                GameManager.instance.trashTypesinBinAmt.Add(1);
-                            }
-                            else
-                            {
-                                int indexInManager = GameManager.instance.trashTypesinBin.IndexOf(selected[i].item);
-                                GameManager.instance.trashTypesinBinAmt[indexInManager]++;
-                            }
+                            bin.inBin.Add(selected[i].item);
                             selected[i].item = null;
                             selected[i].GetComponent<Image>().sprite = null;
                             selected[i].GetComponent<Image>().color = Color.red;
@@ -243,32 +225,14 @@ public class Inventory : MonoBehaviour
                     if(inventoryItems.Contains(selected[i].item))
                     {
                         int ind = inventoryItems.IndexOf(selected[i].item);
-                        if(amount[ind] > 0)
+                        if(amount[ind] >= 1)
                         {
-                            if(!GameManager.instance.trashTypesinBin.Contains(selected[i].item))
-                            {
-                                GameManager.instance.trashTypesinBin.Add(selected[i].item);
-                                GameManager.instance.trashTypesinBinAmt.Add(1);
-                            }
-                            else
-                            {
-                                int indexInManager = GameManager.instance.trashTypesinBin.IndexOf(selected[i].item);
-                                GameManager.instance.trashTypesinBinAmt[indexInManager]++;
-                            }
+                            bin.inBin.Add(selected[i].item);
                             amount[ind]--;
                         }
-                        else
+                        else if(amount[ind] == 0)
                         {
-                            if(!GameManager.instance.trashTypesinBin.Contains(selected[i].item))
-                            {
-                                GameManager.instance.trashTypesinBin.Add(selected[i].item);
-                                GameManager.instance.trashTypesinBinAmt.Add(1);
-                            }
-                            else
-                            {
-                                int indexInManager = GameManager.instance.trashTypesinBin.IndexOf(selected[i].item);
-                                GameManager.instance.trashTypesinBinAmt[indexInManager]++;
-                            }
+                            bin.inBin.Add(selected[i].item);
                             selected[i].item = null;
                             selected[i].GetComponent<Image>().sprite = null;
                             selected[i].GetComponent<Image>().color = Color.red;
@@ -276,7 +240,29 @@ public class Inventory : MonoBehaviour
                         }
                         Debug.Log(ind);
                     }
-                }                
+                }   
+                else if(bin.binType == Bin.BinType.Organic)
+                {
+                    if(inventoryItems.Contains(selected[i].item))
+                    {
+                        int ind = inventoryItems.IndexOf(selected[i].item);
+                        if(amount[ind] >= 1)
+                        {
+                            bin.inBin.Add(selected[i].item);
+                            amount[ind]--;
+                        }
+                        else if(amount[ind] == 0)
+                        {
+                            bin.inBin.Add(selected[i].item);
+                            selected[i].item = null;
+                            selected[i].GetComponent<Image>().sprite = null;
+                            selected[i].GetComponent<Image>().color = Color.red;
+                            inventoryItems.Remove(selected[i].item);
+                        }
+                        Debug.Log(ind);
+                    }
+                    GameManager.instance.recyclePoints -= 10;
+                }
             }
             else if(selected[i].item.typeOfTrash == InventoryItem.TypeOfTrash.Garbage)
             {
@@ -285,32 +271,14 @@ public class Inventory : MonoBehaviour
                     if(inventoryItems.Contains(selected[i].item))
                     {
                         int ind = inventoryItems.IndexOf(selected[i].item);
-                        if(amount[ind] > 0)
+                        if(amount[ind] >= 1)
                         {
-                            if(!GameManager.instance.trashTypesinBin.Contains(selected[i].item))
-                            {
-                                GameManager.instance.trashTypesinBin.Add(selected[i].item);
-                                GameManager.instance.trashTypesinBinAmt.Add(1);
-                            }
-                            else
-                            {
-                                int indexInManager = GameManager.instance.trashTypesinBin.IndexOf(selected[i].item);
-                                GameManager.instance.trashTypesinBinAmt[indexInManager]++;
-                            }
+                            bin.inBin.Add(selected[i].item);
                             amount[ind]--;
                         }
-                        else
+                        else if(amount[ind] == 0)
                         {
-                            if(!GameManager.instance.trashTypesinBin.Contains(selected[i].item))
-                            {
-                                GameManager.instance.trashTypesinBin.Add(selected[i].item);
-                                GameManager.instance.trashTypesinBinAmt.Add(1);
-                            }
-                            else
-                            {
-                                int indexInManager = GameManager.instance.trashTypesinBin.IndexOf(selected[i].item);
-                                GameManager.instance.trashTypesinBinAmt[indexInManager]++;
-                            }
+                            bin.inBin.Add(selected[i].item);
                             selected[i].item = null;
                             selected[i].GetComponent<Image>().sprite = null;
                             selected[i].GetComponent<Image>().color = Color.red;
@@ -325,32 +293,14 @@ public class Inventory : MonoBehaviour
                     if(inventoryItems.Contains(selected[i].item))
                     {
                         int ind = inventoryItems.IndexOf(selected[i].item);
-                        if(amount[ind] > 0)
+                        if(amount[ind] >= 1)
                         {
-                            if(!GameManager.instance.trashTypesinBin.Contains(selected[i].item))
-                            {
-                                GameManager.instance.trashTypesinBin.Add(selected[i].item);
-                                GameManager.instance.trashTypesinBinAmt.Add(1);
-                            }
-                            else
-                            {
-                                int indexInManager = GameManager.instance.trashTypesinBin.IndexOf(selected[i].item);
-                                GameManager.instance.trashTypesinBinAmt[indexInManager]++;
-                            }
+                            bin.inBin.Add(selected[i].item);
                             amount[ind]--;
                         }
                         else if(amount[ind] == 0)
                         {
-                            if(!GameManager.instance.trashTypesinBin.Contains(selected[i].item))
-                            {
-                                GameManager.instance.trashTypesinBin.Add(selected[i].item);
-                                GameManager.instance.trashTypesinBinAmt.Add(1);
-                            }
-                            else
-                            {
-                                int indexInManager = GameManager.instance.trashTypesinBin.IndexOf(selected[i].item);
-                                GameManager.instance.trashTypesinBinAmt[indexInManager]++;
-                            }
+                            bin.inBin.Add(selected[i].item);
                             selected[i].item = null;
                             selected[i].GetComponent<Image>().sprite = null;
                             selected[i].GetComponent<Image>().color = Color.red;
@@ -365,39 +315,21 @@ public class Inventory : MonoBehaviour
                     if(inventoryItems.Contains(selected[i].item))
                     {
                         int ind = inventoryItems.IndexOf(selected[i].item);
-                        if(amount[ind] > 0)
+                        if(amount[ind] >= 1)
                         {
-                            if(!GameManager.instance.trashTypesinBin.Contains(selected[i].item))
-                            {
-                                GameManager.instance.trashTypesinBin.Add(selected[i].item);
-                                GameManager.instance.trashTypesinBinAmt.Add(1);
-                            }
-                            else
-                            {
-                                int indexInManager = GameManager.instance.trashTypesinBin.IndexOf(selected[i].item);
-                                GameManager.instance.trashTypesinBinAmt[indexInManager]++;
-                            }
+                            bin.inBin.Add(selected[i].item);
                             amount[ind]--;
                         }
                         else if(amount[ind] == 0)
                         {
-                            if(!GameManager.instance.trashTypesinBin.Contains(selected[i].item))
-                            {
-                                GameManager.instance.trashTypesinBin.Add(selected[i].item);
-                                GameManager.instance.trashTypesinBinAmt.Add(1);
-                            }
-                            else
-                            {
-                                int indexInManager = GameManager.instance.trashTypesinBin.IndexOf(selected[i].item);
-                                GameManager.instance.trashTypesinBinAmt[indexInManager]++;
-                            }
+                            bin.inBin.Add(selected[i].item);
                             selected[i].item = null;
                             selected[i].GetComponent<Image>().sprite = null;
                             selected[i].GetComponent<Image>().color = Color.red;
                             inventoryItems.Remove(selected[i].item);
                         }
                         Debug.Log(ind);
-                        }
+                    }
                     GameManager.instance.recyclePoints -= 10;
                 }
                 else if(bin.binType == Bin.BinType.Organic)
@@ -405,32 +337,14 @@ public class Inventory : MonoBehaviour
                     if(inventoryItems.Contains(selected[i].item))
                     {
                         int ind = inventoryItems.IndexOf(selected[i].item);
-                        if(amount[ind] > 0)
+                        if(amount[ind] >= 1)
                         {
-                            if(!GameManager.instance.trashTypesinBin.Contains(selected[i].item))
-                            {
-                                GameManager.instance.trashTypesinBin.Add(selected[i].item);
-                                GameManager.instance.trashTypesinBinAmt.Add(1);
-                            }
-                            else
-                            {
-                                int indexInManager = GameManager.instance.trashTypesinBin.IndexOf(selected[i].item);
-                                GameManager.instance.trashTypesinBinAmt[indexInManager]++;
-                            }
+                            bin.inBin.Add(selected[i].item);
                             amount[ind]--;
                         }
                         else if(amount[ind] == 0)
                         {
-                            if(!GameManager.instance.trashTypesinBin.Contains(selected[i].item))
-                            {
-                                GameManager.instance.trashTypesinBin.Add(selected[i].item);
-                                GameManager.instance.trashTypesinBinAmt.Add(1);
-                            }
-                            else
-                            {
-                                int indexInManager = GameManager.instance.trashTypesinBin.IndexOf(selected[i].item);
-                                GameManager.instance.trashTypesinBinAmt[indexInManager]++;
-                            }
+                            bin.inBin.Add(selected[i].item);
                             selected[i].item = null;
                             selected[i].GetComponent<Image>().sprite = null;
                             selected[i].GetComponent<Image>().color = Color.red;
@@ -448,32 +362,14 @@ public class Inventory : MonoBehaviour
                     if(inventoryItems.Contains(selected[i].item))
                     {
                         int ind = inventoryItems.IndexOf(selected[i].item);
-                        if(amount[ind] > 0)
+                        if(amount[ind] >= 1)
                         {
-                            if(!GameManager.instance.trashTypesinBin.Contains(selected[i].item))
-                            {
-                                GameManager.instance.trashTypesinBin.Add(selected[i].item);
-                                GameManager.instance.trashTypesinBinAmt.Add(1);
-                            }
-                            else
-                            {
-                                int indexInManager = GameManager.instance.trashTypesinBin.IndexOf(selected[i].item);
-                                GameManager.instance.trashTypesinBinAmt[indexInManager]++;
-                            }
+                            bin.inBin.Add(selected[i].item);
                             amount[ind]--;
                         }
-                        else
+                        else if(amount[ind] == 0)
                         {
-                            if(!GameManager.instance.trashTypesinBin.Contains(selected[i].item))
-                            {
-                                GameManager.instance.trashTypesinBin.Add(selected[i].item);
-                                GameManager.instance.trashTypesinBinAmt.Add(1);
-                            }
-                            else
-                            {
-                                int indexInManager = GameManager.instance.trashTypesinBin.IndexOf(selected[i].item);
-                                GameManager.instance.trashTypesinBinAmt[indexInManager]++;
-                            }
+                            bin.inBin.Add(selected[i].item);
                             selected[i].item = null;
                             selected[i].GetComponent<Image>().sprite = null;
                             selected[i].GetComponent<Image>().color = Color.red;
@@ -488,32 +384,14 @@ public class Inventory : MonoBehaviour
                     if(inventoryItems.Contains(selected[i].item))
                     {
                         int ind = inventoryItems.IndexOf(selected[i].item);
-                        if(amount[ind] > 0)
+                        if(amount[ind] >= 1)
                         {
-                            if(!GameManager.instance.trashTypesinBin.Contains(selected[i].item))
-                            {
-                                GameManager.instance.trashTypesinBin.Add(selected[i].item);
-                                GameManager.instance.trashTypesinBinAmt.Add(1);
-                            }
-                            else
-                            {
-                                int indexInManager = GameManager.instance.trashTypesinBin.IndexOf(selected[i].item);
-                                GameManager.instance.trashTypesinBinAmt[indexInManager]++;
-                            }
+                            bin.inBin.Add(selected[i].item);
                             amount[ind]--;
                         }
                         else if(amount[ind] == 0)
                         {
-                            if(!GameManager.instance.trashTypesinBin.Contains(selected[i].item))
-                            {
-                                GameManager.instance.trashTypesinBin.Add(selected[i].item);
-                                GameManager.instance.trashTypesinBinAmt.Add(1);
-                            }
-                            else
-                            {
-                                int indexInManager = GameManager.instance.trashTypesinBin.IndexOf(selected[i].item);
-                                GameManager.instance.trashTypesinBinAmt[indexInManager]++;
-                            }
+                            bin.inBin.Add(selected[i].item);
                             selected[i].item = null;
                             selected[i].GetComponent<Image>().sprite = null;
                             selected[i].GetComponent<Image>().color = Color.red;
@@ -523,44 +401,26 @@ public class Inventory : MonoBehaviour
                     }
                     GameManager.instance.recyclePoints -= 10;
                 }
-                else if(bin.binType == Bin.BinType.Recycle)
+                else if(bin.binType == Bin.BinType.Organic)
                 {
                     if(inventoryItems.Contains(selected[i].item))
                     {
                         int ind = inventoryItems.IndexOf(selected[i].item);
-                        if(amount[ind] > 0)
+                        if(amount[ind] >= 1)
                         {
-                            if(!GameManager.instance.trashTypesinBin.Contains(selected[i].item))
-                            {
-                                GameManager.instance.trashTypesinBin.Add(selected[i].item);
-                                GameManager.instance.trashTypesinBinAmt.Add(1);
-                            }
-                            else
-                            {
-                                int indexInManager = GameManager.instance.trashTypesinBin.IndexOf(selected[i].item);
-                                GameManager.instance.trashTypesinBinAmt[indexInManager]++;
-                            }
+                            bin.inBin.Add(selected[i].item);
                             amount[ind]--;
                         }
                         else if(amount[ind] == 0)
                         {
-                            if(!GameManager.instance.trashTypesinBin.Contains(selected[i].item))
-                            {
-                                GameManager.instance.trashTypesinBin.Add(selected[i].item);
-                                GameManager.instance.trashTypesinBinAmt.Add(1);
-                            }
-                            else
-                            {
-                                int indexInManager = GameManager.instance.trashTypesinBin.IndexOf(selected[i].item);
-                                GameManager.instance.trashTypesinBinAmt[indexInManager]++;
-                            }
+                            bin.inBin.Add(selected[i].item);
                             selected[i].item = null;
                             selected[i].GetComponent<Image>().sprite = null;
                             selected[i].GetComponent<Image>().color = Color.red;
                             inventoryItems.Remove(selected[i].item);
                         }
                         Debug.Log(ind);
-                        }
+                    }
                     GameManager.instance.recyclePoints -= 10;
                 }
                 else if(bin.binType == Bin.BinType.Organic)
@@ -568,32 +428,14 @@ public class Inventory : MonoBehaviour
                     if(inventoryItems.Contains(selected[i].item))
                     {
                         int ind = inventoryItems.IndexOf(selected[i].item);
-                        if(amount[ind] > 0)
+                        if(amount[ind] >= 1)
                         {
-                            if(!GameManager.instance.trashTypesinBin.Contains(selected[i].item))
-                            {
-                                GameManager.instance.trashTypesinBin.Add(selected[i].item);
-                                GameManager.instance.trashTypesinBinAmt.Add(1);
-                            }
-                            else
-                            {
-                                int indexInManager = GameManager.instance.trashTypesinBin.IndexOf(selected[i].item);
-                                GameManager.instance.trashTypesinBinAmt[indexInManager]++;
-                            }
+                            bin.inBin.Add(selected[i].item);
                             amount[ind]--;
                         }
                         else if(amount[ind] == 0)
                         {
-                            if(!GameManager.instance.trashTypesinBin.Contains(selected[i].item))
-                            {
-                                GameManager.instance.trashTypesinBin.Add(selected[i].item);
-                                GameManager.instance.trashTypesinBinAmt.Add(1);
-                            }
-                            else
-                            {
-                                int indexInManager = GameManager.instance.trashTypesinBin.IndexOf(selected[i].item);
-                                GameManager.instance.trashTypesinBinAmt[indexInManager]++;
-                            }
+                            bin.inBin.Add(selected[i].item);
                             selected[i].item = null;
                             selected[i].GetComponent<Image>().sprite = null;
                             selected[i].GetComponent<Image>().color = Color.red;
@@ -609,7 +451,7 @@ public class Inventory : MonoBehaviour
         {
 
         }
-        bin.inBin.Add(selected[i].item);
+        //bin.inBin.Add(selected[i].item);
     }
     public void PutInProcessor()
     {
