@@ -20,5 +20,9 @@ public class InteractButtons : MonoBehaviour
         }
         GameManager.instance.player.interacting = correspond;
         GameManager.instance.player.Interact();
+        if(correspond.GetComponent<Trash>() == true)
+        {
+            GameObject.Destroy(gameObject);
+        }
     }
 }

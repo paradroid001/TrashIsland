@@ -5,14 +5,20 @@ using TMPro;
 
 public class Recycle : Bin
 {
+    public RecycleDeposit deposit;
     void Awake()
     {
         binType = BinType.Recycle;
+        deposit = GameObject.FindObjectOfType<RecycleDeposit>();
         //GameManager.instance.recycles.Add(this);
     }
     void FixedUpdate()
     {
-        
+        if(hasThings == true && sent == false)
+        {
+            StartCoroutine(SendToRecycle());
+            sent = true;
+        }
     }
     public void OnTriggerEnter(Collider other)
     {
@@ -60,5 +66,18 @@ public class Recycle : Bin
                 GameManager.instance.recyclePoints -= 10;
                 break;
         }*/
+    }
+
+    public float waitTime;
+    public IEnumerator SendToRecycle()
+    {
+        yield return new WaitForSeconds(waitTime);
+        Debug.Log(waitTime);
+        for(int i = 0; i < inBin.Capacity; i++)
+        {
+            deposit.deposited.Add(inBin[i]);
+        }
+        inBin.Clear();
+        hasThings = false;
     }
 }

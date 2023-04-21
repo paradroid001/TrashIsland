@@ -9,7 +9,7 @@ public class Drone : NPC
     public enum WhichBin{Recycle, Landfill, Organic};
     public WhichBin whichBin;
     public List<InventoryItem> carrying;
-    void Awake()
+    void Start()
     {
         DroneManager.instance.drones.Add(this);
     }
@@ -22,5 +22,9 @@ public class Drone : NPC
         {
             carrying = bin.inBin;
         }
+    }
+    public void GoToBin(Bin bin)
+    {
+        agent.SetDestination(bin.transform.position);
     }
 }
