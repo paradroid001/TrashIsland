@@ -559,4 +559,8 @@ public class Inventory : MonoBehaviour
             }
         }
     }
+    public void CloseBin(Bin bin)
+    {
+        bin.anim.SetBool("Open", false);
+    }
 }

@@ -64,10 +64,12 @@ public class Player : MonoBehaviour
                     if(interacting == null)
                     {
                         recycle = Interactables[currentInteract].GetComponent<Recycle>();
+                        recycle.interact = true;
                     }
                     else 
                     {
                         recycle = interacting.GetComponent<Recycle>();
+                        recycle.interact = true;
                     }
                     holding = false;
                     recycle.Interact();
@@ -79,10 +81,12 @@ public class Player : MonoBehaviour
                     if(interacting == null)
                     {
                         garbage1 = Interactables[currentInteract].GetComponent<Garbage>();
+                        garbage1.interact = true;
                     }
                     else 
                     {
                         garbage1 = interacting.GetComponent<Garbage>();
+                        garbage1.interact = true;
                     }
                     //Trash trash = hold.GetChild(0).GetComponent<Trash>();
                     //Garbage garbage = Interactables[currentInteract].GetComponent<Garbage>();
@@ -95,10 +99,12 @@ public class Player : MonoBehaviour
                     if(interacting == null)
                     {
                         organics = Interactables[currentInteract].GetComponent<Organics>();
+                        organics.interact = true;
                     }
                     else 
                     {
                         organics = interacting.GetComponent<Organics>();
+                        organics.interact = true;
                     }
                     //Trash trash = hold.GetChild(0).GetComponent<Trash>();
                     //Organics organics = Interactables[currentInteract].GetComponent<Organics>();
