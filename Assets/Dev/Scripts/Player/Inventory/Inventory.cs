@@ -116,31 +116,7 @@ public class Inventory : MonoBehaviour
         }
         else 
         {
-            if(RoboInventory.roboInventory.inventoryItems.Count < RoboInventory.roboInventory.capacity)
-            {
-                if(!RoboInventory.roboInventory.inventoryItems.Contains(trashtype))
-                {
-                    RoboInventory.roboInventory.inventoryItems.Add(trashtype);
-                    for(int i = 0; i < RoboInventory.roboInventory.images.Count; i++)
-                    {
-                        if(trashtype.inventorySprite != null)
-                        {
-                            Debug.Log("W");
-                            //if the item is not already in the inventory, and it has an assigned sprite, then present the sprite and let it know the data of the thing in the slot
-                            RoboInventory.roboInventory.images[i].sprite = trashtype.inventorySprite;
-                            RoboInventory.roboInventory.images[i].GetComponent<RoboIntventoryButtons>().item = trashtype;
-                            RoboInventory.roboInventory.images[i].GetComponent<RoboIntventoryButtons>().selectable = true;
-                            RoboInventory.roboInventory.images[i].color = Color.white;
-                            break;
-                        }
-                    }
-                }
-                else
-                {
-                    int amtIndex = RoboInventory.roboInventory.inventoryItems.IndexOf(trashtype);
-                    RoboInventory.roboInventory.amount[amtIndex]++;
-                }
-            }
+            AddToRoboInventory(trashtype);
         }
     }
     public void AddToRoboInventory(InventoryItem trashtype)
@@ -154,7 +130,7 @@ public class Inventory : MonoBehaviour
                         {
                             for(int i = 0; i < RoboInventory.roboInventory.images.Capacity; i++)
                             {
-                                if(RoboInventory.roboInventory.images[i].sprite == null)
+                                if(RoboInventory.roboInventory.roboInventoryButtons[i].used == false)
                                 {
                                      Debug.Log("W");
                                     //if the item is not already in the inventory, and it has an assigned sprite, then present the sprite and let it know the data of the thing in the slot
@@ -162,6 +138,7 @@ public class Inventory : MonoBehaviour
                                     RoboInventory.roboInventory.images[i].GetComponent<RoboIntventoryButtons>().item = trashtype;
                                     RoboInventory.roboInventory.images[i].GetComponent<RoboIntventoryButtons>().selectable = true;
                                     RoboInventory.roboInventory.images[i].color = Color.white;
+                                    RoboInventory.roboInventory.roboInventoryButtons[i].used = true;
                                     break;
                                 }
                             }

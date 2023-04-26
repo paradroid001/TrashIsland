@@ -5457,6 +5457,42 @@ PrefabInstance:
       propertyPath: m_Name
       value: Image (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 8129741105924509480, guid: a870d85c7f423f24a807d2c038aa9640, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8129741105924509480, guid: a870d85c7f423f24a807d2c038aa9640, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8129741105924509480, guid: a870d85c7f423f24a807d2c038aa9640, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 927023683}
+    - target: {fileID: 8129741105924509480, guid: a870d85c7f423f24a807d2c038aa9640, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8129741105924509480, guid: a870d85c7f423f24a807d2c038aa9640, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: AddToRoboInventory
+      objectReference: {fileID: 0}
+    - target: {fileID: 8129741105924509480, guid: a870d85c7f423f24a807d2c038aa9640, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: Inventory, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8129741105924509480, guid: a870d85c7f423f24a807d2c038aa9640, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 11400000, guid: 5a2a1a27b2c7f68479e96a7e531cd33f, type: 2}
+    - target: {fileID: 8129741105924509480, guid: a870d85c7f423f24a807d2c038aa9640, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: InventoryItem, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8129741105924509482, guid: a870d85c7f423f24a807d2c038aa9640, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8129741105940998531, guid: a870d85c7f423f24a807d2c038aa9640, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
