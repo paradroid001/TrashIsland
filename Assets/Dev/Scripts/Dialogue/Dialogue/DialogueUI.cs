@@ -20,7 +20,7 @@ public class DialogueUI : MonoBehaviour
         typeWriterEffect = GetComponent<TypeWriterEffect>();
         responseHandler = GetComponent<ResponseHandler>();
         //ShowDialogue(testDialogue);
-        CloseDialogueBox();
+        //CloseDialogueBox();
     }
     public void ShowDialogue(DialogueOBJ dialogueOBJ)
     {
@@ -78,6 +78,7 @@ public class DialogueUI : MonoBehaviour
     }
     public void CloseDialogueBox()
     {
+        GameManager.instance.inDialogue = false;
         IsOpen = false;
         dialogueBox.SetActive(false);
         charSprite.sprite = null;
@@ -85,6 +86,7 @@ public class DialogueUI : MonoBehaviour
         charName.transform.parent.gameObject.SetActive(true);
         charName.text = null;
         textLabel.text = string.Empty;
+        
     }
     private IEnumerator RunTypingEffect(string dialogue)
     {

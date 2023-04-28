@@ -7,6 +7,9 @@ public class DroneManager : MonoBehaviour
 {
     public static DroneManager instance;
     public List<Drone> drones;
+    public RecycleDeposit recycleDeposit;
+    public Compost compost;
+    public Vector3 landfill;
     public void OnValidate()
     {
         instance = this;
@@ -26,6 +29,18 @@ public class DroneManager : MonoBehaviour
             {
                 Debug.Log("0");
                 drones[i].bin = bin;
+                switch(bin.binType)
+                {
+                    case Bin.BinType.Recycle:
+                        drones[i].whichBin = Drone.WhichBin.Recycle;
+                    break;
+                    case Bin.BinType.Garbage:
+                        drones[i].whichBin = Drone.WhichBin.Landfill;
+                    break;
+                    case Bin.BinType.Organic:
+                        drones[i].whichBin = Drone.WhichBin.Organic;
+                    break;
+                }
                 drones[i].agent.SetDestination(bin.transform.position);
                 break;
             }

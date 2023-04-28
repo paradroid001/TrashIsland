@@ -12,8 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 798a5a8511dfc784b8973eb8d44fb554, type: 3}
   m_Name: Organic
   m_EditorClassIdentifier: 
-  inventorySprite: {fileID: 0}
+  seed: {fileID: 0}
+  materialItem: {fileID: 0}
+  trashType: {fileID: 11400000}
+  toolsType: {fileID: 0}
+  buildType: {fileID: 0}
+  inventorySprite: {fileID: 21300000, guid: 18f1ec8c4a3237f41a1652be73cd8887, type: 3}
   isTrash: 0
   typeOfTrash: 2
+  objectOfTrash: {fileID: 0}
+  hpCost: 0
   thisObject: {fileID: 0}
   trashName: 
+  typeofMaterial: 0
