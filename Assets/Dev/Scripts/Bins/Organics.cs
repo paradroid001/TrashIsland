@@ -23,7 +23,7 @@ public class Organics : Bin
     {
         if (other.tag == "Player")
         {
-            Player player = other.GetComponent<Player>();
+            Player player = other.transform.parent.parent.parent.GetComponent<Player>();
             player.interactable = true;
             player.Interactables.Add(gameObject);
             button = GameObject.Instantiate<GameObject>(GameManager.instance.player.interactButtonTemplate);
@@ -39,7 +39,7 @@ public class Organics : Bin
     {
         if (other.tag == "Player")
         {
-            Player player = other.GetComponent<Player>();
+            Player player = other.transform.parent.parent.parent.GetComponent<Player>();
             player.interactable = false;
             player.Interactables.Remove(gameObject);
             GameObject.Destroy(button);
@@ -60,12 +60,13 @@ public class Organics : Bin
     public IEnumerator SendToCompost()
     {
         yield return new WaitForSeconds(waitTime);
+        DroneManager.instance.SendToBin(this);
         Debug.Log(waitTime);
         for(int i = 0; i < inBin.Capacity; i++)
         {
             compost.thingsIn.Add(inBin[i]);
         }
-        inBin.Clear();
+        //inBin.Clear();
         hasThings = false;
     }
 }

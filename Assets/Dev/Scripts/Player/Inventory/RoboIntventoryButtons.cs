@@ -7,6 +7,7 @@ public class RoboIntventoryButtons : MonoBehaviour
 {
     public InventoryItem item;
     public RoboInventory inventory;
+    public bool used;
     public bool selectable;
     void Start()
     {

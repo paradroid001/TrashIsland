@@ -32,6 +32,7 @@ namespace TrashIsland
         //how far until a destination is considered 'reached'
         public float movementThreshold = 0.1f;
         public FloatRamp currentSpeed;
+        public Animator animator; 
 
         public Vector3 currentMovement
         {
@@ -62,12 +63,27 @@ namespace TrashIsland
             if (!CheckDistance())
             {
                 MoveToward();
+                RotateTowardCurrentMovement();
             }
+            else
+            {
+                currentSpeed.currentParameter = 0.0f;
+            }
+            if (animator != null)
+            {
+                animator.SetFloat("speed", currentSpeed.currentValue);
+            }
+        }
+
+        protected virtual void RotateTowardCurrentMovement()
+        {
+            float heading = Mathf.Atan2(_currentMovement.x, _currentMovement.z);
+            transform.rotation = Quaternion.EulerAngles(0, heading, 0);
         }
 
         protected virtual void MoveToward()
         {
-            currentSpeed.currentParameter = 1.0f;
+            currentSpeed.currentParameter = 1.0f; //todo should be ramped up in value
             _currentMovement = (_currentDestination - transform.position).normalized
                                * currentSpeed.currentValue;
 

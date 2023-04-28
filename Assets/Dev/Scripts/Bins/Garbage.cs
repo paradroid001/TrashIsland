@@ -12,20 +12,24 @@ public class Garbage : Bin
     }
     void FixedUpdate()
     {
-
+        if(hasThings == true && sent == false)
+        {
+            StartCoroutine(SendToLandfill());
+            sent = true;
+        }
     }
     public void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
         {
-            Player player = other.GetComponent<Player>();
+            Player player = other.transform.parent.parent.parent.GetComponent<Player>();
             player.interactable = true;
             player.Interactables.Add(gameObject);
             button = GameObject.Instantiate<GameObject>(GameManager.instance.player.interactButtonTemplate);
             button.transform.SetParent(GameManager.instance.player.playerCanvas.transform.GetChild(0));
             button.transform.localPosition = Vector2.zero;
             TextMeshProUGUI buttontext = button.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
-            buttontext.text = "S.P.A.R.C.";
+            buttontext.text = "Landfill Bin";
             InteractButtons interactButton = button.GetComponent<InteractButtons>();
             interactButton.correspond = gameObject;
         }
@@ -34,7 +38,7 @@ public class Garbage : Bin
     {
         if (other.tag == "Player")
         {
-            Player player = other.GetComponent<Player>();
+            Player player = other.transform.parent.parent.parent.GetComponent<Player>();
             player.interactable = false;
             player.Interactables.Remove(gameObject);
             GameObject.Destroy(button);
@@ -60,5 +64,14 @@ public class Garbage : Bin
                 GameManager.instance.recyclePoints += 10;
                 break;
         }*/
+    }
+    public float waitTime;
+    public IEnumerator SendToLandfill()
+    {
+        yield return new WaitForSeconds(waitTime);
+        DroneManager.instance.SendToBin(this);
+        Debug.Log(waitTime);
+        //inBin.Clear();
+        hasThings = false;
     }
 }

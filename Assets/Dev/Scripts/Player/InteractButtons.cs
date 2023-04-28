@@ -14,8 +14,15 @@ public class InteractButtons : MonoBehaviour
     {
         Debug.Log(correspond);
         Canvas grndParent = transform.parent.parent.GetComponent<Canvas>();
-        follower.GetComponent<Canvas>().sortingOrder = 2;
+        if(correspond.GetComponent<Trash>() == false && correspond.GetComponent<TrashMound>() == false)
+        {
+            follower.GetComponent<Canvas>().sortingOrder = 2;
+        }
         GameManager.instance.player.interacting = correspond;
         GameManager.instance.player.Interact();
+        if(correspond.GetComponent<Trash>() == true)
+        {
+            GameObject.Destroy(gameObject);
+        }
     }
 }
