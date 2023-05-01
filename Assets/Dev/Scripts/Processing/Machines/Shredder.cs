@@ -2,15 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Furnace : ProductionMachine
+public class Shredder : ProductionMachine
 {
-    // Start is called before the first frame update
     void Start()
     {
-        furnace = this;
+        shredder = this;
     }
-
-    // Update is called once per frame
     void Update()
     {
         if(interacting == true && interacted == false)
@@ -20,13 +17,13 @@ public class Furnace : ProductionMachine
     }
     public void DoThing(TrashType thing)
     {
-        if(thing.plastic != null)
+        if(thing.plastic != null && thing.plastic.shredded == false)
         {
             GameManager.instance.invent.AddToInventory(ProcessManager.instance.cleanPlastic);
         }
-        if(thing.metal != null)
+        if(thing.metal != null && thing.metal.shredded == false)
         {
-            GameManager.instance.invent.AddToInventory(ProcessManager.instance.cleanMetal);
+            GameManager.instance.invent.AddToInventory(ProcessManager.instance.shreddedMetal);
         }
     }
 }

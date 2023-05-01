@@ -15,10 +15,12 @@ public class DialogueUI : MonoBehaviour
     private ResponseHandler responseHandler;
     public Image charSprite;
     public TextMeshProUGUI charName;
+    public Canvas canvas;
     public void Start()
     {
         typeWriterEffect = GetComponent<TypeWriterEffect>();
         responseHandler = GetComponent<ResponseHandler>();
+        canvas = transform.GetComponent<Canvas>();
         //ShowDialogue(testDialogue);
         //CloseDialogueBox();
     }
@@ -79,6 +81,7 @@ public class DialogueUI : MonoBehaviour
     public void CloseDialogueBox()
     {
         GameManager.instance.inDialogue = false;
+        canvas.sortingOrder = 0;
         IsOpen = false;
         dialogueBox.SetActive(false);
         charSprite.sprite = null;
