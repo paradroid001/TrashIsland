@@ -542,6 +542,13 @@ public class Inventory : MonoBehaviour
     }
     public void BinFollow()
     {
-        currentBin.following = true;
+        if(currentBin.following == false)
+        {
+            currentBin.following = true;
+        }
+        else
+        {
+            currentBin.following = false;
+        }
     }
 }
