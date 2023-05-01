@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Furnace : ProductionMachine
+public class Furnace : ProductionMachine 
 {
     // Start is called before the first frame update
     void Start()
@@ -20,13 +20,13 @@ public class Furnace : ProductionMachine
     }
     public void DoThing(TrashType thing)
     {
-        if(thing.plastic != null)
+        if(thing.plastic != null && thing.plastic.shredded && thing.plastic.clean)
         {
-            GameManager.instance.invent.AddToInventory(ProcessManager.instance.cleanPlastic);
+            GameManager.instance.invent.AddToInventory(thing.materialItemA);
         }
-        if(thing.metal != null)
+        if(thing.metal != null && thing.metal.shredded && thing.metal.clean)
         {
-            GameManager.instance.invent.AddToInventory(ProcessManager.instance.cleanMetal);
+            GameManager.instance.invent.AddToInventory(thing.materialItemA);
         }
     }
 }

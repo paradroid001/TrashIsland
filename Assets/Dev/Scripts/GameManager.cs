@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
     public ToolScriptableObject pick;
     public BuildingAsset build;
     public bool inDialogue;
+    public Transform sparc;
     void Start()
     {
         instance = this;

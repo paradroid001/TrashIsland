@@ -540,4 +540,8 @@ public class Inventory : MonoBehaviour
     {
         bin.anim.SetBool("Open", false);
     }
+    public void BinFollow()
+    {
+        currentBin.following = true;
+    }
 }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.AI;
 
 public class Recycle : Bin
 {
@@ -9,6 +10,7 @@ public class Recycle : Bin
     void Awake()
     {
         binType = BinType.Recycle;
+        agent = transform.GetComponent<NavMeshAgent>();
         deposit = GameObject.FindObjectOfType<RecycleDeposit>();
         //GameManager.instance.recycles.Add(this);
     }

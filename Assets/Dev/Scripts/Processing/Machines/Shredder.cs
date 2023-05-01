@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Shredder : ProductionMachine
+public class Shredder : ProductionMachine 
 {
     void Start()
     {
@@ -19,7 +19,7 @@ public class Shredder : ProductionMachine
     {
         if(thing.plastic != null && thing.plastic.shredded == false)
         {
-            GameManager.instance.invent.AddToInventory(ProcessManager.instance.cleanPlastic);
+            GameManager.instance.invent.AddToInventory(ProcessManager.instance.shreddedPlastic);
         }
         if(thing.metal != null && thing.metal.shredded == false)
         {

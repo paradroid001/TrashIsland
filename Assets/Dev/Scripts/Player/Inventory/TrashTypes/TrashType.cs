@@ -7,6 +7,7 @@ public class TrashType : InventoryItem {
     public int hpCost;
     public GameObject thisObject;
     public string trashName;
+    public MaterialItem materialItemA;
     public Plastic plastic;
     public Metal metal;
     
