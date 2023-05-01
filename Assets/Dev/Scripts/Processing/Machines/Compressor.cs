@@ -6,7 +6,7 @@ public class Compressor : ProductionMachine
 {
     void Start()
     {
-        
+        compressor = this;
     }
 
     // Update is called once per frame
@@ -15,6 +15,17 @@ public class Compressor : ProductionMachine
         if(interacting == true && interacted == false)
         {
             StartCoroutine(Interact());
+        }
+    }
+    public void DoThing(TrashType thing)
+    {
+        if(thing.plastic != null)
+        {
+            GameManager.instance.invent.AddToInventory(ProcessManager.instance.cleanPlastic);
+        }
+        if(thing.metal != null)
+        {
+            GameManager.instance.invent.AddToInventory(ProcessManager.instance.shreddedMetal);
         }
     }
     

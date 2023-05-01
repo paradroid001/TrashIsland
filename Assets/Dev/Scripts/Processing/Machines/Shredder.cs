@@ -2,15 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Furnace : ProductionMachine
+public class Shredder : ProductionMachine
 {
-    // Start is called before the first frame update
     void Start()
     {
-        furnace = this;
+        shredder = this;
     }
-
-    // Update is called once per frame
     void Update()
     {
         if(interacting == true && interacted == false)
