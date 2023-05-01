@@ -20,7 +20,7 @@ public class Cleaner : ProductionMachine
     }
     public void DoThing(TrashType thing)
     {
-        if(thing.plastic != null && thing.plastic.clean == false)
+        if(thing.plastic != null && thing.plastic.clean == false && thing.plastic.shredded == true)
         {
             GameManager.instance.invent.AddToInventory(ProcessManager.instance.cleanPlastic);
         }
