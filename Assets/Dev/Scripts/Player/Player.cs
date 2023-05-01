@@ -29,9 +29,9 @@ public class Player : MonoBehaviour
     void Update()
     {
         vert = Input.GetAxis("Vertical");
-        //anim.SetFloat("Y", vert);
+        anim.SetFloat("Y", vert);
         hori = Input.GetAxis("Horizontal");
-        //anim.SetFloat("X", hori);
+        anim.SetFloat("X", hori);
         dir = new Vector3(hori, 0, vert);
         if(vert != 0 || hori != 0)
         {
