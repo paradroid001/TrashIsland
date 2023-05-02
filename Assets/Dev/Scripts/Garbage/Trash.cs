@@ -53,6 +53,7 @@ public class Trash : MonoBehaviour
             {
                 if(buriedTrash == null)
                 {
+                    GameManager.instance.player.anim.Play("Pickup");
                     //GameManager.instance.invent.inventoryItems.Add(typeOf);
                     player.interactable = false;
                     player.Interactables.Remove(gameObject);
