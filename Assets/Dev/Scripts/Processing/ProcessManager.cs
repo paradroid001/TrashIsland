@@ -5,12 +5,30 @@ using UnityEngine;
 public class ProcessManager : MonoBehaviour
 {
     public static ProcessManager instance;
-    public Plastic plastic;
+    public MaterialItem plastic;
+    public Plastic plasticLid;
+    public Plastic plasticBottle;
+    public Plastic plasticContainer;
     public Plastic cleanPlastic;
+    public Plastic cleanPlasticLid;
+    public Plastic cleanPlasticBottle;
+    public Plastic cleanPlasticContainer;
     public Plastic shreddedPlastic;
-    public Metal metal;
+    public Plastic shreddedPlasticLid;
+    public Plastic shreddedPlasticBottle;
+    public Plastic shreddedPlasticContainer;
+    public MaterialItem metal;
+    public Metal metalLid;
+    public Metal metalCan;
+    public Metal metalTin;
     public Metal shreddedMetal;
+    public Metal shreddedMetalLid;
+    public Metal shreddedMetalCan;
+    public Metal shreddedMetalTin;
     public Metal cleanMetal;
+    public Metal cleanMetalLid;
+    public Metal cleanMetalCan;
+    public Metal cleanMetalTin;
     void Start()
     {
         instance = this;

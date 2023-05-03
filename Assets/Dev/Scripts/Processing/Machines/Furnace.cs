@@ -20,11 +20,11 @@ public class Furnace : ProductionMachine
     }
     public void DoThing(TrashType thing)
     {
-        if(thing.plastic != null && thing.plastic.shredded && thing.plastic.clean)
+        if(thing.plastic != null && thing.plastic.shredded && thing.plastic.clean && thing.recyclable == true)
         {
             GameManager.instance.invent.AddToInventory(thing.materialItemA);
         }
-        if(thing.metal != null && thing.metal.shredded && thing.metal.clean)
+        if(thing.metal != null && thing.metal.shredded && thing.metal.clean && thing.recyclable == true)
         {
             GameManager.instance.invent.AddToInventory(thing.materialItemA);
         }

@@ -80,13 +80,13 @@ public class ProductionMachine : MonoBehaviour
             {
                 cleaner.DoThing(contains[i]);
             }
-            else if(compressor != null)
+            else if(shredder != null)
             {
-
+                shredder.DoThing(contains[i]);
             }
             else if(furnace != null)
             {
-
+                furnace.DoThing(contains[i]);
             }
             GameManager.instance.materials.Add(produces);
             Debug.Log("0");

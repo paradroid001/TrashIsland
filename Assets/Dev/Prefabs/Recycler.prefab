@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3385042520124231428}
   - component: {fileID: 3385042520124231435}
   - component: {fileID: 7565464151363374596}
+  - component: {fileID: 7769294928452515390}
   m_Layer: 0
   m_Name: Recycler
   m_TagString: Build
@@ -71,6 +72,10 @@ MonoBehaviour:
   produces: {fileID: 11400000, guid: b51a6308c6d78ca41bcbf967c8c195ff, type: 2}
   interacting: 0
   interacted: 0
+  cleaner: {fileID: 0}
+  compressor: {fileID: 0}
+  furnace: {fileID: 0}
+  shredder: {fileID: 0}
 --- !u!54 &7565464151363374596
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -87,6 +92,30 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &7769294928452515390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2466705878575303781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f5ce48b178719d45818d37ffcad947b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 10
+  broken: 0
+  takes: 0
+  contains: []
+  capacity: 10
+  produces: {fileID: 0}
+  interacting: 0
+  interacted: 0
+  cleaner: {fileID: 7769294928452515390}
+  compressor: {fileID: 0}
+  furnace: {fileID: 0}
+  shredder: {fileID: 0}
 --- !u!1 &3259354128327445155
 GameObject:
   m_ObjectHideFlags: 0

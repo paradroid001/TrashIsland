@@ -238,6 +238,11 @@ public class Player : MonoBehaviour
                     Closet closet = Interactables[currentInteract].GetComponent<Closet>();
                     closet.Interact();
                 }
+                else if(interacting.GetComponent<EnterBuildings>())
+                {
+                    EnterBuildings enter = interacting.GetComponent<EnterBuildings>();
+                    enter.Interact();
+                }
                 interacting = null;
     }
 }

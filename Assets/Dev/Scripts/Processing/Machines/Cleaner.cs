@@ -20,13 +20,36 @@ public class Cleaner : ProductionMachine
     }
     public void DoThing(TrashType thing)
     {
-        if(thing.plastic != null && thing.plastic.clean == false && thing.plastic.shredded == true)
+        if(thing.plastic != null && thing.plastic.shredded == true && thing.plastic.clean == false && thing.recyclable == true)
         {
-            GameManager.instance.invent.AddToInventory(ProcessManager.instance.cleanPlastic);
+            switch(thing.plastic.plasticType)
+            {
+                case Plastic.PlasticType.Lid:
+                    GameManager.instance.invent.AddToInventory(ProcessManager.instance.cleanPlasticLid);
+                    break;
+                case Plastic.PlasticType.Container:
+                    GameManager.instance.invent.AddToInventory(ProcessManager.instance.cleanPlasticContainer);
+                    break;
+                case Plastic.PlasticType.Bottle:
+                    GameManager.instance.invent.AddToInventory(ProcessManager.instance.cleanPlasticBottle);
+                    break;
+            }
         }
-        if(thing.metal != null && thing.metal.shredded == true && thing.plastic.clean == false)
+        else if(thing.metal != null && thing.metal.shredded == true && thing.metal.clean == false && thing.recyclable == true)
         {
-            GameManager.instance.invent.AddToInventory(ProcessManager.instance.cleanMetal);
+            Debug.Log(thing.name);
+            switch(thing.metal.metalType)
+            {
+                case Metal.MetalType.Lid:
+                    GameManager.instance.invent.AddToInventory(ProcessManager.instance.cleanMetalLid);
+                    break;
+                case Metal.MetalType.Tin:
+                    GameManager.instance.invent.AddToInventory(ProcessManager.instance.cleanMetalTin);
+                    break;
+                case Metal.MetalType.Can:
+                    GameManager.instance.invent.AddToInventory(ProcessManager.instance.cleanMetalCan);
+                    break;
+            }
         }
     }
 }

@@ -436,32 +436,11 @@ public class Inventory : MonoBehaviour
         {
             if(selected[i].item.trashType != null)
             {
-                if(currentMachine.contains.Capacity == 0 )
+                if(selected[i].item.trashType.recyclable)
                 {
-                    Debug.Log("IUB");
-                    if(currentMachine.takes.HasFlag(selected[i].item.trashType.typeofMaterial))
+                    if(currentMachine.contains.Capacity == 0 )
                     {
-                        if(amount[i] == 0)
-                        {
-                            Debug.Log("Process");
-                            inventoryItems.Remove(selected[i].item);
-                            currentMachine.PutIn(selected[i].item);
-                            selected[i].item = null;
-                            selected[i].GetComponent<Image>().sprite = null;
-                            selected[i].GetComponent<Image>().color = Color.red;
-                            
-                        }
-                        else if(amount[i] >= 1)
-                        {
-                            currentMachine.PutIn(selected[i].item);
-                            amount[i]--;
-                        }
-                    }
-                }
-                else if(currentMachine.contains.Capacity >= 1)
-                {
-                    if(selected[i].item.trashType == currentMachine.contains[0])
-                    {
+                        Debug.Log("IUB");
                         if(currentMachine.takes.HasFlag(selected[i].item.trashType.typeofMaterial))
                         {
                             if(amount[i] == 0)
@@ -472,7 +451,7 @@ public class Inventory : MonoBehaviour
                                 selected[i].item = null;
                                 selected[i].GetComponent<Image>().sprite = null;
                                 selected[i].GetComponent<Image>().color = Color.red;
-                                
+
                             }
                             else if(amount[i] >= 1)
                             {
@@ -481,7 +460,32 @@ public class Inventory : MonoBehaviour
                             }
                         }
                     }
+                    else if(currentMachine.contains.Capacity >= 1)
+                    {
+                        if(selected[i].item.trashType == currentMachine.contains[0])
+                        {
+                            if(currentMachine.takes.HasFlag(selected[i].item.trashType.typeofMaterial))
+                            {
+                                if(amount[i] == 0)
+                                {
+                                    Debug.Log("Process");
+                                    inventoryItems.Remove(selected[i].item);
+                                    currentMachine.PutIn(selected[i].item);
+                                    selected[i].item = null;
+                                    selected[i].GetComponent<Image>().sprite = null;
+                                    selected[i].GetComponent<Image>().color = Color.red;
+
+                                }
+                                else if(amount[i] >= 1)
+                                {
+                                    currentMachine.PutIn(selected[i].item);
+                                    amount[i]--;
+                                }
+                            }
+                        }
+                    }
                 }
+                
             }
         }
     }
