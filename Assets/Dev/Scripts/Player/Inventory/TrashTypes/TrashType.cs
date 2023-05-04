@@ -10,8 +10,8 @@ public class TrashType : InventoryItem {
     public MaterialItem materialItemA;
     public Plastic plastic;
     public Metal metal;
+    public Glass glass;
     public bool recyclable;
-    
     public ProductionMachine.Takes typeofMaterial;
     public void OnValidate()
     {

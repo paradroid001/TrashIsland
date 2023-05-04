@@ -88,6 +88,10 @@ public class ProductionMachine : MonoBehaviour
             {
                 furnace.DoThing(contains[i]);
             }
+            else if(compressor != null)
+            {
+                compressor.DoThing(contains[i]);
+            }
             GameManager.instance.materials.Add(produces);
             Debug.Log("0");
             hp -= contains[i].hpCost;

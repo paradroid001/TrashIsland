@@ -19,13 +19,17 @@ public class Compressor : ProductionMachine
     }
     public void DoThing(TrashType thing)
     {
-        if(thing.plastic != null)
+        if(thing.glass != null && thing.glass.crushed == false && thing.glass.clean == false && thing.glass.recyclable == true)
         {
-            GameManager.instance.invent.AddToInventory(ProcessManager.instance.cleanPlastic);
-        }
-        if(thing.metal != null)
-        {
-            GameManager.instance.invent.AddToInventory(ProcessManager.instance.shreddedMetal);
+            switch(thing.glass.glassType)
+            {
+                case Glass.GlassType.Jar:
+                GameManager.instance.invent.AddToInventory(ProcessManager.instance.glassJarCompressed);
+                    break;
+                case Glass.GlassType.Bottle:
+                GameManager.instance.invent.AddToInventory(ProcessManager.instance.glassBottleCompressed);
+                    break;
+            }
         }
     }
     

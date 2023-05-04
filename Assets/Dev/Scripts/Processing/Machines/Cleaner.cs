@@ -4,13 +4,10 @@ using UnityEngine;
 
 public class Cleaner : ProductionMachine 
 {
-    // Start is called before the first frame update
     void Start()
     {
         cleaner = this;
     }
-
-    // Update is called once per frame
     void Update()
     {
         if(interacting == true)
@@ -48,6 +45,18 @@ public class Cleaner : ProductionMachine
                     break;
                 case Metal.MetalType.Can:
                     GameManager.instance.invent.AddToInventory(ProcessManager.instance.cleanMetalCan);
+                    break;
+            }
+        }
+        else if(thing.glass != null &&  thing.glass.crushed == true && thing.glass.clean == false && thing.glass.recyclable == true)
+        {
+            switch(thing.glass.glassType)
+            {
+                case Glass.GlassType.Jar:
+                GameManager.instance.invent.AddToInventory(ProcessManager.instance.glassJarWashed);
+                    break;
+                case Glass.GlassType.Bottle:
+                GameManager.instance.invent.AddToInventory(ProcessManager.instance.glassBottleWashed);
                     break;
             }
         }

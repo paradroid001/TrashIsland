@@ -29,6 +29,12 @@ public class ProcessManager : MonoBehaviour
     public Metal cleanMetalLid;
     public Metal cleanMetalCan;
     public Metal cleanMetalTin;
+    public Glass glassBottle;
+    public Glass glassJar;
+    public Glass glassJarCompressed;
+    public Glass glassBottleCompressed;
+    public Glass glassJarWashed;
+    public Glass glassBottleWashed;
     void Start()
     {
         instance = this;
