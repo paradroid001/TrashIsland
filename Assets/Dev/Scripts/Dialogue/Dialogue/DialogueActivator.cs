@@ -13,6 +13,7 @@ public class DialogueActivator : MonoBehaviour, Iinteractable
     public string nameOf;
     public bool hasE;
     GameObject button;
+    public DiaEvents[] diaEvents;
     public void Start()
     {
         dialogueResponse = GetComponent<DialogueResponseEvents>();
@@ -51,6 +52,7 @@ public class DialogueActivator : MonoBehaviour, Iinteractable
     {
         if(dialogueUI.IsOpen == false)
         {
+            dialogueUI.speaker = gameObject;
             GameManager.instance.inDialogue = true;
             foreach(DialogueResponseEvents responseEvents in GetComponents<DialogueResponseEvents>())
             {
