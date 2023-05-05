@@ -18,7 +18,7 @@ public class GrowLand : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            Player player = other.GetComponent<Player>();
+            Player player = other.transform.parent.parent.parent.GetComponent<Player>();
             player.interactable = true;
             player.Interactables.Add(gameObject);
         }

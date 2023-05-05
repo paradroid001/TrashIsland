@@ -7,7 +7,7 @@ public class Furnace : ProductionMachine
     // Start is called before the first frame update
     void Start()
     {
-        
+        furnace = this;
     }
 
     // Update is called once per frame
@@ -18,9 +18,15 @@ public class Furnace : ProductionMachine
             StartCoroutine(Interact());
         }
     }
-    
-    public void PutIntoMachine()
+    public void DoThing(TrashType thing)
     {
-        
+        if(thing.plastic != null)
+        {
+            GameManager.instance.invent.AddToInventory(ProcessManager.instance.cleanPlastic);
+        }
+        if(thing.metal != null)
+        {
+            GameManager.instance.invent.AddToInventory(ProcessManager.instance.cleanMetal);
+        }
     }
 }

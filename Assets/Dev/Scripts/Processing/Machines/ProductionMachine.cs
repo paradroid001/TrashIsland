@@ -27,6 +27,10 @@ public class ProductionMachine : MonoBehaviour
     public bool interacting;
     public bool interacted;
     GameObject button;
+    public Cleaner cleaner;
+    public Compressor compressor;
+    public Furnace furnace;
+    public Shredder shredder;
     void Start()
     {
         
@@ -72,6 +76,18 @@ public class ProductionMachine : MonoBehaviour
         Debug.Log("Compressed");
         for(int i = 0; i < contains.Count; i++)
         {
+            if(cleaner != null)
+            {
+                cleaner.DoThing(contains[i]);
+            }
+            else if(compressor != null)
+            {
+
+            }
+            else if(furnace != null)
+            {
+
+            }
             GameManager.instance.materials.Add(produces);
             Debug.Log("0");
             hp -= contains[i].hpCost;

@@ -7,7 +7,7 @@ public class Cleaner : ProductionMachine
     // Start is called before the first frame update
     void Start()
     {
-        
+        cleaner = this;
     }
 
     // Update is called once per frame
@@ -18,5 +18,15 @@ public class Cleaner : ProductionMachine
             StartCoroutine(Interact());
         }
     }
-    
+    public void DoThing(TrashType thing)
+    {
+        if(thing.plastic != null && thing.plastic.clean == false && thing.plastic.shredded == true)
+        {
+            GameManager.instance.invent.AddToInventory(ProcessManager.instance.cleanPlastic);
+        }
+        if(thing.metal != null && thing.metal.shredded == true && thing.plastic.clean == false)
+        {
+            GameManager.instance.invent.AddToInventory(ProcessManager.instance.cleanMetal);
+        }
+    }
 }

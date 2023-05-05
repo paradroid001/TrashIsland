@@ -30,6 +30,7 @@ public class Closet : MonoBehaviour
             Player player = other.transform.parent.parent.parent.GetComponent<Player>();
             player.interactable = false;
             player.Interactables.Remove(gameObject);
+            GameObject.Destroy(button);
         }
     }
     public void Interact()

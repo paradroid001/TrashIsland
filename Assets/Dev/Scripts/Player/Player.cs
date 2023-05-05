@@ -20,14 +20,18 @@ public class Player : MonoBehaviour
     public GameObject playerCanvas;
     public GameObject interactButtonTemplate;
     public GameObject interacting;
+    public Animator anim;
     void Start()
     {
         //hold = transform.GetChild(0);
+        anim = transform.GetComponent<Animator>();
     }
     void Update()
     {
         vert = Input.GetAxis("Vertical");
+        //anim.SetFloat("Y", vert);
         hori = Input.GetAxis("Horizontal");
+        //anim.SetFloat("X", hori);
         dir = new Vector3(hori, 0, vert);
         if(vert != 0 || hori != 0)
         {
