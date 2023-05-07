@@ -2,16 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using TMPro;
 
-public class InventoryButtons : MonoBehaviour, IPointerClickHandler
+public class InventoryButtons : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
     public Inventory inventory;
     public InventoryItem item;
+    public TextMeshProUGUI number;
     public bool selectable;
     public bool selected;
     public void Start()
     {
         inventory = transform.parent.parent.parent.GetComponent<Inventory>();
+        number = transform.GetChild(0).GetComponent<TextMeshProUGUI>();
     }
     public void OnPointerClick(PointerEventData eventData)
     {
@@ -53,5 +56,23 @@ public class InventoryButtons : MonoBehaviour, IPointerClickHandler
             }
         }
         
+    }
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        if(selectable && item != null)
+        {
+            Debug.Log("A");
+            TextMeshProUGUI nameDisplay = GameManager.instance.invent.nameDisplay.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+            nameDisplay.transform.parent.gameObject.SetActive(true);
+            nameDisplay.text = item.name;
+        }
+    }
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        if(item != null && selectable)
+        {
+            TextMeshProUGUI nameDisplay = GameManager.instance.invent.nameDisplay.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+            nameDisplay.transform.parent.gameObject.SetActive(false);
+        }
     }
 }

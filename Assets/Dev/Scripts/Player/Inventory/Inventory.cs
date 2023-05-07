@@ -19,6 +19,7 @@ public class Inventory : MonoBehaviour
     public ProductionMachine currentMachine;
     public GameObject dropButton;
     public Image equipImg;
+    public GameObject nameDisplay;
     public void Start()
     {
         //Get the buttons to click on.
@@ -91,10 +92,13 @@ public class Inventory : MonoBehaviour
                         {
                             //if the item is not already in the inventory, and it has an assigned sprite, then present the sprite and let it know the data of the thing in the slot
                             trashtype.button = images[i].GetComponent<InventoryButtons>();
+                            int amtIndex = inventoryItems.IndexOf(trashtype);
+                            amount[amtIndex]++;
                             images[i].sprite = trashtype.inventorySprite;
                             images[i].GetComponent<InventoryButtons>().item = trashtype;
                             images[i].GetComponent<InventoryButtons>().selectable = true;
                             images[i].color = Color.white;
+                            images[i].GetComponent<InventoryButtons>().number.text = amount[amtIndex].ToString();
                             break;
                         }
                     }
@@ -110,6 +114,7 @@ public class Inventory : MonoBehaviour
                     if(inventoryItems[i] == trashtype)
                     {
                         amount[i]++;
+                        images[i].GetComponent<InventoryButtons>().number.text = amount[i].ToString();
                         break;
                     }
                 }
