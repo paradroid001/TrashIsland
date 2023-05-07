@@ -27,6 +27,7 @@ public class CraftingManager : MonoBehaviour
     public void UnlockRecipe(CraftingRecipe recipe)
     {
         craftingRecipes.Add(recipe);
+        CraftingMenuManager.instance.UpdateMenu();
     }
     public void OnTriggerEnter(Collider other)
     {

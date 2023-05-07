@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     public Vector3 dir;
     public bool interactable;
     public bool holding;
+    public bool acting;
     public List<GameObject> Interactables;
     public int currentInteract;
     public Transform hold;
@@ -33,15 +34,19 @@ public class Player : MonoBehaviour
         hori = Input.GetAxis("Horizontal");
         anim.SetFloat("X", hori);
         dir = new Vector3(hori, 0, vert);
-        if(vert != 0 || hori != 0)
+        if(anim.GetCurrentAnimatorClipInfo(0)[0].clip.name != "Pickup")
         {
-            transform.Translate(dir * speed * Time.deltaTime, Space.World);
+            if(vert != 0 || hori != 0)
+            {
+                transform.Translate(dir * speed * Time.deltaTime, Space.World);
+            }
+            if (dir != Vector3.zero)
+            {
+                Quaternion toRotation = Quaternion.LookRotation(dir, Vector3.up);
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotSpd * Time.deltaTime);
+            }
         }
-        if (dir != Vector3.zero)
-        {
-            Quaternion toRotation = Quaternion.LookRotation(dir, Vector3.up);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotSpd * Time.deltaTime);
-        }
+        
         /*if(Input.GetKeyDown(KeyCode.E))
         {
             Interact();
@@ -64,6 +69,7 @@ public class Player : MonoBehaviour
                 else if (interacting.GetComponent<Recycle>())
                 {
                     Recycle recycle;
+                    
                     //Trash trash = hold.GetChild(0).GetComponent<Trash>();
                     if(interacting == null)
                     {

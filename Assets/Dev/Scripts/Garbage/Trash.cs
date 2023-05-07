@@ -59,6 +59,7 @@ public class Trash : MonoBehaviour
                     player.Interactables.Remove(gameObject);
                     gameObject.SetActive(false);
                     GameManager.instance.invent.AddToInventory(typeOf);
+                    player.acting = false;
                 }
                 else if(buriedTrash != null)
                 {

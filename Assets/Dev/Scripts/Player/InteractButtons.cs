@@ -20,7 +20,7 @@ public class InteractButtons : MonoBehaviour
         }
         GameManager.instance.player.interacting = correspond;
         GameManager.instance.player.Interact();
-        if(correspond.GetComponent<Trash>() == true)
+        if(correspond.GetComponent<Trash>() == true || correspond.GetComponent<PickupEvent>() == true)
         {
             GameObject.Destroy(gameObject);
         }

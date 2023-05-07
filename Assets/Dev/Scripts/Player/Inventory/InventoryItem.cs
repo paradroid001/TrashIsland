@@ -7,6 +7,7 @@ public class InventoryItem : ScriptableObject
 {
     public Seed seed;
     public MaterialItem materialItem;
+    public InventoryButtons button;
     public TrashType trashType;
     public ToolScriptableObject toolsType;
     public BuildingAsset buildType;

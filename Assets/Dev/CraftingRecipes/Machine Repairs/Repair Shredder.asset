@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0a1a307422e6e942aeda5809c19a84e, type: 3}
   m_Name: Repair Shredder
   m_EditorClassIdentifier: 
-  needed: []
-  amtneeded: 
-  makes: {fileID: 0}
+  needed:
+  - {fileID: 11400000, guid: c0d63b0849676604db99cffe9b189f79, type: 2}
+  - {fileID: 11400000, guid: 0c27736da6258b34ab257fd3abfdbef6, type: 2}
+  amtneeded: 0100000002000000
+  makes: {fileID: 11400000, guid: 234cd69adfdf6d444a341fd9819f5a47, type: 2}
   icon: {fileID: 0}

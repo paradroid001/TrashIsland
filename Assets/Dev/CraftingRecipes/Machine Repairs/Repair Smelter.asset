@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0a1a307422e6e942aeda5809c19a84e, type: 3}
   m_Name: Repair Smelter
   m_EditorClassIdentifier: 
-  needed: []
-  amtneeded: 
+  needed:
+  - {fileID: 11400000, guid: bfa245028de0529468bf6904b7a653c7, type: 2}
+  - {fileID: 11400000, guid: bf510d390717fbd4b9929372a4fcf89d, type: 2}
+  amtneeded: 0200000001000000
   makes: {fileID: 0}
   icon: {fileID: 0}

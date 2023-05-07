@@ -39,15 +39,14 @@ public class CraftingMenuManager : MonoBehaviour
     public void UpdateMenu()
     {
         //change the icons when you get new crafting recipes
-        bool done = false;
         for(int i = 0; i < buttons.Capacity; i++)
         {
-            if(buttons[i].recipe == null && done == false)
+            if(buttons[i].recipe == null)
             {
                 buttons[i].recipe = CraftingManager.instance.craftingRecipes[i];
                 Image img = buttons[i].GetComponent<Image>();
                 img.sprite = CraftingManager.instance.craftingRecipes[i].icon;
-                done = true;
+                break;
             }
         }
     }

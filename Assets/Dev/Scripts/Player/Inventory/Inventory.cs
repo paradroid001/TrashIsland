@@ -90,6 +90,7 @@ public class Inventory : MonoBehaviour
                         if(images[i].sprite == null)
                         {
                             //if the item is not already in the inventory, and it has an assigned sprite, then present the sprite and let it know the data of the thing in the slot
+                            trashtype.button = images[i].GetComponent<InventoryButtons>();
                             images[i].sprite = trashtype.inventorySprite;
                             images[i].GetComponent<InventoryButtons>().item = trashtype;
                             images[i].GetComponent<InventoryButtons>().selectable = true;
@@ -430,6 +431,24 @@ public class Inventory : MonoBehaviour
         }
         //bin.inBin.Add(selected[i].item);
     }
+    public void RemoveFromInvent(InventoryItem item)
+    {
+        if(inventoryItems.Contains(item))
+        {
+            int ind = inventoryItems.IndexOf(item);
+            if(amount[ind] >= 1)
+            {
+                amount[ind]--;
+            }
+            else if(amount[ind] == 0)
+            {
+                //item.button = null;
+                item.button.GetComponent<Image>().sprite = null;
+                item.button.GetComponent<Image>().color = Color.red;
+                inventoryItems.Remove(item);
+            }
+        }
+    }
     public void PutInProcessor()
     {
         for(int i = 0; i < selected.Count; i++)
@@ -443,7 +462,8 @@ public class Inventory : MonoBehaviour
                         Debug.Log("IUB");
                         if(currentMachine.takes.HasFlag(selected[i].item.trashType.typeofMaterial))
                         {
-                            if(amount[i] == 0)
+                            int ind = inventoryItems.IndexOf(selected[i].item);
+                            if(amount[ind] == 0)
                             {
                                 Debug.Log("Process");
                                 inventoryItems.Remove(selected[i].item);
@@ -453,20 +473,21 @@ public class Inventory : MonoBehaviour
                                 selected[i].GetComponent<Image>().color = Color.red;
 
                             }
-                            else if(amount[i] >= 1)
+                            else if(amount[ind] >= 1)
                             {
                                 currentMachine.PutIn(selected[i].item);
-                                amount[i]--;
+                                amount[ind]--;
                             }
                         }
                     }
                     else if(currentMachine.contains.Capacity >= 1)
                     {
+                        int ind = inventoryItems.IndexOf(selected[i].item);
                         if(selected[i].item.trashType == currentMachine.contains[0])
                         {
                             if(currentMachine.takes.HasFlag(selected[i].item.trashType.typeofMaterial))
                             {
-                                if(amount[i] == 0)
+                                if(amount[ind] == 0)
                                 {
                                     Debug.Log("Process");
                                     inventoryItems.Remove(selected[i].item);
@@ -476,10 +497,10 @@ public class Inventory : MonoBehaviour
                                     selected[i].GetComponent<Image>().color = Color.red;
 
                                 }
-                                else if(amount[i] >= 1)
+                                else if(amount[ind] >= 1)
                                 {
                                     currentMachine.PutIn(selected[i].item);
-                                    amount[i]--;
+                                    amount[ind]--;
                                 }
                             }
                         }
@@ -488,6 +509,7 @@ public class Inventory : MonoBehaviour
                 
             }
         }
+        selected.Clear();
     }
     public void DropItem()
     {

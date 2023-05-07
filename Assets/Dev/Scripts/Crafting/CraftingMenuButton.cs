@@ -17,7 +17,7 @@ public class CraftingMenuButton : MonoBehaviour, IPointerEnterHandler, IPointerC
             Image imageBox = CraftingMenuManager.instance.displayBox.GetComponent<Image>();
             imageBox.sprite = recipe.icon;
             need = CraftingMenuManager.instance.needed;
-            for(int i = 0; i < need.Capacity; i++)
+            for(int i = 0; i < need.Count; i++)
             {
                 if(recipe.needed[i] != null)
                 {
@@ -36,22 +36,26 @@ public class CraftingMenuButton : MonoBehaviour, IPointerEnterHandler, IPointerC
     public void OnPointerClick(PointerEventData eventData)
     {
         //on click, perform crafting. remove from the trash, add new thing to inventory
-        for(int i = 0; i < recipe.needed.Capacity; i++)
+        for(int i = 0; i < recipe.needed.Count; i++)
         {
-            if(GameManager.instance.trashTypesinBin.Contains(recipe.needed[i]))
+            if(GameManager.instance.invent.inventoryItems.Contains(recipe.needed[i]))
             {
-                int amtHaveInd = GameManager.instance.trashTypesinBin.IndexOf(recipe.needed[i]);
-                int amtHave = GameManager.instance.trashTypesinBinAmt[amtHaveInd];
-                if(amtHave >= recipe.amtneeded[i])
+                int amtHaveInd = GameManager.instance.invent.inventoryItems.IndexOf(recipe.needed[i]);
+                int amtHave = GameManager.instance.invent.amount[amtHaveInd];
+                if(amtHave >= recipe.amtneeded[i] - 1)
                 {
-                    GameManager.instance.RemoveFromTrashIvent(recipe.needed[i]);
+                    GameManager.instance.invent.RemoveFromInvent(recipe.needed[i]);
                     GameManager.instance.invent.AddToInventory(recipe.makes);
                 }
                 else
                 {
+                    Debug.Log("A");
                     return;
                 }
-
+            }
+            else
+            {
+                Debug.Log("B");
             }
         }
     }

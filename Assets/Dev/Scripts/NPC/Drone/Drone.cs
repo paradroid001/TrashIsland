@@ -22,18 +22,24 @@ public class Drone : NPC
     {
         if(other.tag == "Recycle" || other.tag == "Garbage" || other.tag == "Organic")
         {
-            if(other.GetComponent<Recycle>() != null && other.GetComponent<Recycle>() == bin && other.isTrigger == false)
+            if(other.tag == "Recycle" && other.GetComponent<Recycle>() == bin && other.isTrigger == false)
             {
+                Debug.Log("POIU");
                 //play pickup animmation
                 carrying = bin.inBin;
                 agent.SetDestination(DroneManager.instance.recycleDeposit.transform.position);
-                if(agent.remainingDistance <= 0.005f)
+                if(agent.remainingDistance <= 0.05f)
                 {
                     //play drop animation
-                    agent.SetDestination(startPoint);
+                    
                 }
             }
-            else if(other.GetComponent<Garbage>() != null && other.GetComponent<Garbage>() == bin && other.isTrigger == false)
+            else if(other.GetComponent<RecycleDeposit>() != null)
+            {
+                carrying.Clear();
+                agent.SetDestination(startPoint);
+            }
+            else if(other.tag == "Garbage" && other.GetComponent<Garbage>() == bin && other.isTrigger == false)
             {
                 //play pick up animation
                 carrying = bin.inBin;
@@ -44,7 +50,7 @@ public class Drone : NPC
                     agent.SetDestination(startPoint);
                 }
             }
-            else if(other.GetComponent<Organics>() != null && other.GetComponent<Organics>() == bin && other.isTrigger == false)
+            else if(other.tag == "Organic" && other.GetComponent<Organics>() == bin && other.isTrigger == false)
             {
                 //play pickup animation
                 carrying = bin.inBin;
