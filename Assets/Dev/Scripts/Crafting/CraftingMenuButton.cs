@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
 
-public class CraftingMenuButton : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler
+public class CraftingMenuButton : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler, IPointerExitHandler
 {
     public CraftingRecipe recipe;
     public List<GameObject> need = new List<GameObject>();
@@ -57,6 +57,14 @@ public class CraftingMenuButton : MonoBehaviour, IPointerEnterHandler, IPointerC
             {
                 Debug.Log("B");
             }
+        }
+    }
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        for(int i = 0; i < need.Count; i++)
+        {
+            need[i].GetComponent<TextMeshProUGUI>().text = "";
+            need[i].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "0";
         }
     }
 }

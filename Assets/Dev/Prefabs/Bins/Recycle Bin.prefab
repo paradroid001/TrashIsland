@@ -466,6 +466,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2292454894832677300}
   - component: {fileID: 7081288618434917584}
+  - component: {fileID: 5813343693664465943}
   m_Layer: 0
   m_Name: wheelTread
   m_TagString: Untagged
@@ -544,6 +545,20 @@ SkinnedMeshRenderer:
     m_Center: {x: 0, y: 0.2163581, z: 0.016894996}
     m_Extent: {x: 0.75171053, y: 0.21005124, z: 0.5354447}
   m_DirtyAABB: 0
+--- !u!114 &5813343693664465943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3627336097769615443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78a923bfd7d265643918797363e2e531, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scrollX: 0
+  scrollY: 0.15
 --- !u!1 &3691129516057985894
 GameObject:
   m_ObjectHideFlags: 0
@@ -812,7 +827,9 @@ MonoBehaviour:
   hasThings: 0
   sent: 0
   interact: 0
+  agent: {fileID: 0}
   following: 0
+  sparc: {fileID: 0}
   button: {fileID: 0}
   deposit: {fileID: 0}
   waitTime: 5

@@ -5,7 +5,7 @@ using UnityEngine;
 public class DisplayBoxFollow : MonoBehaviour
 {
     public Vector3 mousePos;
-    void Update()
+    void LateUpdate()
     {
         mousePos = Input.mousePosition;
         mousePos.z = Camera.main.nearClipPlane;

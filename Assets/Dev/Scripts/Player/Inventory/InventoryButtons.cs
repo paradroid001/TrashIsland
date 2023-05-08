@@ -61,7 +61,7 @@ public class InventoryButtons : MonoBehaviour, IPointerClickHandler, IPointerEnt
     {
         if(selectable && item != null)
         {
-            Debug.Log("A");
+            //Debug.Log("A");
             TextMeshProUGUI nameDisplay = GameManager.instance.invent.nameDisplay.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
             nameDisplay.transform.parent.gameObject.SetActive(true);
             nameDisplay.text = item.name;
