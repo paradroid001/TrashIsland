@@ -4,5 +4,11 @@ using UnityEngine;
 
 public class CraftingList : MonoBehaviour
 {
-    public List<CraftingList> manuals;
+    public static CraftingList instance;
+    public int whichOne;
+    public List<CraftingRecipe> manuals;
+    public void OnValidate()
+    {
+        instance = this;
+    }
 }

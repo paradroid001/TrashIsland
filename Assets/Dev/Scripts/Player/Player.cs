@@ -158,11 +158,11 @@ public class Player : MonoBehaviour
                     {
                         machine = interacting.GetComponent<ProductionMachine>();
                     } 
-                    if(machine.contains.Capacity != 0)
+                    if(machine.contains.Count != 0)
                     {
                         StartCoroutine(machine.Interact());
                     }
-                    else if(machine.contains.Capacity == 0)
+                    else if(machine.contains.Count == 0)
                     {
                         GameManager.instance.invent.currentMachine = machine;
                         GameManager.instance.invent.reason = Inventory.InventoryReason.Process;

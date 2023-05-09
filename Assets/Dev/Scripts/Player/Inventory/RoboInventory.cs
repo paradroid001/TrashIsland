@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class RoboInventory : MonoBehaviour
 {
@@ -26,7 +27,7 @@ public class RoboInventory : MonoBehaviour
             for(int j = 0; j < transform.GetChild(2).GetChild(0).GetChild(i).childCount; j++)
             {
                 images.Add(transform.GetChild(2).GetChild(0).GetChild(i).GetChild(j).GetComponent<Image>());
-                roboInventoryButtons.Add(images[j].GetComponent<RoboIntventoryButtons>());
+                roboInventoryButtons.Add(transform.GetChild(2).GetChild(0).GetChild(i).GetChild(j).GetComponent<RoboIntventoryButtons>());
             }
         }
     }

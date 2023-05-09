@@ -120,6 +120,21 @@ public class Inventory : MonoBehaviour
                 }
             }
         }
+        else if(inventoryItems.Contains(trashtype) && inventoryItems.Count >= capacity)
+            {
+                //if the item is already in the inventory, then add to the amt
+                Debug.Log("Add amount");
+                //Debug.Log("its workin'")
+                for(int i = 0; i < inventoryItems.Count; i++)
+                {
+                    if(inventoryItems[i] == trashtype)
+                    {
+                        amount[i]++;
+                        images[i].GetComponent<InventoryButtons>().number.text = amount[i].ToString();
+                        break;
+                    }
+                }
+            }
         else 
         {
             AddToRoboInventory(trashtype);
@@ -127,7 +142,7 @@ public class Inventory : MonoBehaviour
     }
     public void AddToRoboInventory(InventoryItem trashtype)
     {
-        if(RoboInventory.roboInventory.inventoryItems.Capacity < RoboInventory.roboInventory.capacity)
+        if(RoboInventory.roboInventory.inventoryItems.Count <= RoboInventory.roboInventory.capacity)
             {
                 if(!RoboInventory.roboInventory.inventoryItems.Contains(trashtype))
                 {
@@ -139,12 +154,15 @@ public class Inventory : MonoBehaviour
                                 if(RoboInventory.roboInventory.roboInventoryButtons[i].used == false)
                                 {
                                      Debug.Log("W");
+                                    int amtIndex = RoboInventory.roboInventory.inventoryItems.IndexOf(trashtype);
+                                    RoboInventory.roboInventory.amount[amtIndex]++;
                                     //if the item is not already in the inventory, and it has an assigned sprite, then present the sprite and let it know the data of the thing in the slot
                                     RoboInventory.roboInventory.images[i].sprite = trashtype.inventorySprite;
                                     RoboInventory.roboInventory.images[i].GetComponent<RoboIntventoryButtons>().item = trashtype;
                                     RoboInventory.roboInventory.images[i].GetComponent<RoboIntventoryButtons>().selectable = true;
                                     RoboInventory.roboInventory.images[i].color = Color.white;
                                     RoboInventory.roboInventory.roboInventoryButtons[i].used = true;
+                                    RoboInventory.roboInventory.roboInventoryButtons[i].number.text = RoboInventory.roboInventory.amount[amtIndex].ToString();
                                     break;
                                 }
                             }
@@ -155,6 +173,7 @@ public class Inventory : MonoBehaviour
                 {
                     int amtIndex = RoboInventory.roboInventory.inventoryItems.IndexOf(trashtype);
                     RoboInventory.roboInventory.amount[amtIndex]++;
+                    RoboInventory.roboInventory.roboInventoryButtons[amtIndex].number.text = RoboInventory.roboInventory.amount[amtIndex].ToString();
                 }
             }
     }
@@ -577,58 +596,24 @@ public class Inventory : MonoBehaviour
     }
     public void PutInProcessor()
     {
-        for(int i = 0; i < selected.Count; i++)
+        if(!currentMachine.broken)
         {
-            if(selected[i].item.trashType != null)
+            for(int i = 0; i < selected.Count; i++)
             {
-                if(selected[i].item.trashType.recyclable)
+                if(selected[i].item.trashType != null)
                 {
-                    if(currentMachine.contains.Count == 0 )
+                    if(selected[i].item.trashType.recyclable)
                     {
-                        Debug.Log("IUB");
-                        if(currentMachine.takes.HasFlag(selected[i].item.trashType.typeofMaterial))
+                        if(currentMachine.contains.Count == 0 )
                         {
-                            
-                            int ind = inventoryItems.IndexOf(selected[i].item);
-                            if(amount[ind] == 0)
+                            Debug.Log("IUB");
+                            if(currentMachine.takes.HasFlag(selected[i].item.trashType.typeofMaterial))
                             {
-                                Debug.Log(ind);
-                                Debug.Log("Process");
-                                inventoryItems.Remove(selected[i].item);
-                                currentMachine.PutIn(selected[i].item);
-                                selected[i].item = null;
-                                selected[i].GetComponent<Image>().sprite = null;
-                                selected[i].GetComponent<Image>().color = Color.red;
-                                selected[i].GetComponent<InventoryButtons>().number.text = amount[ind].ToString();
-                            }
-                            else if(amount[ind] >= 1)
-                            {
-                                currentMachine.PutIn(selected[i].item);
-                                amount[ind]--;
-                                selected[i].GetComponent<InventoryButtons>().number.text = amount[ind].ToString();
+                                
+                                int ind = inventoryItems.IndexOf(selected[i].item);
                                 if(amount[ind] == 0)
                                 {
                                     Debug.Log(ind);
-                                    Debug.Log("Process");
-                                    inventoryItems.Remove(selected[i].item);
-                                    //currentMachine.PutIn(selected[i].item);
-                                    selected[i].item = null;
-                                    selected[i].GetComponent<Image>().sprite = null;
-                                    selected[i].GetComponent<Image>().color = Color.red;
-                                    selected[i].GetComponent<InventoryButtons>().number.text = amount[ind].ToString();
-                                }
-                            }
-                        }
-                    }
-                    else if(currentMachine.contains.Count >= 1)
-                    {
-                        int ind = inventoryItems.IndexOf(selected[i].item);
-                        if(selected[i].item.trashType == currentMachine.contains[0])
-                        {
-                            if(currentMachine.takes.HasFlag(selected[i].item.trashType.typeofMaterial))
-                            {
-                                if(amount[ind] == 0)
-                                {
                                     Debug.Log("Process");
                                     inventoryItems.Remove(selected[i].item);
                                     currentMachine.PutIn(selected[i].item);
@@ -636,7 +621,6 @@ public class Inventory : MonoBehaviour
                                     selected[i].GetComponent<Image>().sprite = null;
                                     selected[i].GetComponent<Image>().color = Color.red;
                                     selected[i].GetComponent<InventoryButtons>().number.text = amount[ind].ToString();
-
                                 }
                                 else if(amount[ind] >= 1)
                                 {
@@ -645,7 +629,6 @@ public class Inventory : MonoBehaviour
                                     selected[i].GetComponent<InventoryButtons>().number.text = amount[ind].ToString();
                                     if(amount[ind] == 0)
                                     {
-                                        Debug.Log("K:JB");
                                         Debug.Log(ind);
                                         Debug.Log("Process");
                                         inventoryItems.Remove(selected[i].item);
@@ -658,10 +641,51 @@ public class Inventory : MonoBehaviour
                                 }
                             }
                         }
+                        else if(currentMachine.contains.Count >= 1)
+                        {
+                            int ind = inventoryItems.IndexOf(selected[i].item);
+                            if(selected[i].item.trashType == currentMachine.contains[0])
+                            {
+                                if(currentMachine.takes.HasFlag(selected[i].item.trashType.typeofMaterial))
+                                {
+                                    if(amount[ind] == 0)
+                                    {
+                                        Debug.Log("Process");
+                                        inventoryItems.Remove(selected[i].item);
+                                        currentMachine.PutIn(selected[i].item);
+                                        selected[i].item = null;
+                                        selected[i].GetComponent<Image>().sprite = null;
+                                        selected[i].GetComponent<Image>().color = Color.red;
+                                        selected[i].GetComponent<InventoryButtons>().number.text = amount[ind].ToString();
+                                    }
+                                    else if(amount[ind] >= 1)
+                                    {
+                                        currentMachine.PutIn(selected[i].item);
+                                        amount[ind]--;
+                                        selected[i].GetComponent<InventoryButtons>().number.text = amount[ind].ToString();
+                                        if(amount[ind] == 0)
+                                        {
+                                            Debug.Log("K:JB");
+                                            Debug.Log(ind);
+                                            Debug.Log("Process");
+                                            inventoryItems.Remove(selected[i].item);
+                                            //currentMachine.PutIn(selected[i].item);
+                                            selected[i].item = null;
+                                            selected[i].GetComponent<Image>().sprite = null;
+                                            selected[i].GetComponent<Image>().color = Color.red;
+                                            selected[i].GetComponent<InventoryButtons>().number.text = amount[ind].ToString();
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
-                
             }
+        }
+        else
+        {
+
         }
         selected.Clear();
     }
