@@ -71,38 +71,41 @@ public class ProductionMachine : MonoBehaviour
     }
     public IEnumerator Interact()
     {
-        interacted = true;
-        yield return new WaitForSeconds(3);
-        Debug.Log("Compressed");
-        for(int i = 0; i < contains.Count; i++)
+        if(compressor != null && compressor.repaired == true || cleaner != null && cleaner.repaired == true || furnace != null && furnace.repaired == true || shredder != null && shredder.repaired == true)
         {
-            if(cleaner != null)
+            interacted = true;
+            yield return new WaitForSeconds(3);
+            Debug.Log("Compressed");
+            for(int i = 0; i < contains.Count; i++)
             {
-                cleaner.DoThing(contains[i]);
+                if(cleaner != null)
+                {
+                    cleaner.DoThing(contains[i]);
+                }
+                else if(shredder != null)
+                {
+                    shredder.DoThing(contains[i]);
+                }
+                else if(furnace != null)
+                {
+                    furnace.DoThing(contains[i]);
+                }
+                else if(compressor != null)
+                {
+                    compressor.DoThing(contains[i]);
+                }
+                GameManager.instance.materials.Add(produces);
+                Debug.Log("0");
+                hp -= contains[i].hpCost;
+                if(hp == 0)
+                {
+                    broken = true;
+                }
             }
-            else if(shredder != null)
-            {
-                shredder.DoThing(contains[i]);
-            }
-            else if(furnace != null)
-            {
-                furnace.DoThing(contains[i]);
-            }
-            else if(compressor != null)
-            {
-                compressor.DoThing(contains[i]);
-            }
-            GameManager.instance.materials.Add(produces);
-            Debug.Log("0");
-            hp -= contains[i].hpCost;
-            if(hp == 0)
-            {
-                broken = true;
-            }
+            contains.Clear();
+
+            interacting = false;
+            interacted = false;
         }
-        contains.Clear();
-        
-        interacting = false;
-        interacted = false;
     }
 }

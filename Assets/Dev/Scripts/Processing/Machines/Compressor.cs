@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Compressor : ProductionMachine
 {
+    public bool repaired;
     void Start()
     {
         compressor = this;

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Furnace : ProductionMachine 
 {
+    public bool repaired;
     // Start is called before the first frame update
     void Start()
     {

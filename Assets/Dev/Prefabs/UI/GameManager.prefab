@@ -67,6 +67,10 @@ MonoBehaviour:
   build: {fileID: 11400000, guid: ee0c3f19c455c5144a56f25b25f7d1f7, type: 2}
   inDialogue: 0
   sparc: {fileID: 0}
+  crusherRepair: {fileID: 11400000, guid: 56edf658382b9384da2518f254f18f33, type: 2}
+  shredderRepair: {fileID: 11400000, guid: 234cd69adfdf6d444a341fd9819f5a47, type: 2}
+  smelterRepair: {fileID: 11400000, guid: 1aa4cfdefceaf8f42ae6c948cda8ab94, type: 2}
+  washerRepair: {fileID: 11400000, guid: d970b05ac1b13554db693a3df06fd3ae, type: 2}
 --- !u!114 &5553413221946971023
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -172,4 +176,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e795550e2ee0b04080bf7b32e0bd0bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  whichOne: 0
   manuals: []

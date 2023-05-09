@@ -23,6 +23,10 @@ public class GameManager : MonoBehaviour
     public BuildingAsset build;
     public bool inDialogue;
     public Transform sparc;
+    public InventoryItem crusherRepair;
+    public InventoryItem shredderRepair;
+    public InventoryItem smelterRepair;
+    public InventoryItem washerRepair;
     void Start()
     {
         instance = this;
@@ -35,6 +39,7 @@ public class GameManager : MonoBehaviour
         invent.AddToInventory(shovel);
         invent.AddToInventory(pick);
         invent.AddToInventory(build);
+        //invent.AddToInventory(crusherRepair);
     }
     public void RemoveFromTrashIvent(InventoryItem item)
     {

@@ -164,8 +164,43 @@ public class Player : MonoBehaviour
                     }
                     else if(machine.contains.Count == 0)
                     {
-                        GameManager.instance.invent.currentMachine = machine;
-                        GameManager.instance.invent.reason = Inventory.InventoryReason.Process;
+                        if(machine.compressor != null && machine.compressor.repaired == true|| machine.cleaner != null && machine.cleaner.repaired == true|| machine.shredder != null && machine.shredder.repaired == true|| machine.furnace != null && machine.furnace.repaired == true)
+                        {
+                            GameManager.instance.invent.currentMachine = machine;
+                            GameManager.instance.invent.reason = Inventory.InventoryReason.Process;
+                        }
+                        else if(machine.compressor != null && machine.compressor.repaired == false)
+                        {
+                            if(GameManager.instance.invent.inventoryItems.Contains(GameManager.instance.crusherRepair))
+                            {
+                                machine.compressor.repaired = true;
+                                GameManager.instance.invent.RemoveFromInvent(GameManager.instance.crusherRepair);
+                            }
+                        }
+                        else if(machine.furnace != null && machine.furnace.repaired == false)
+                        {
+                            if(GameManager.instance.invent.inventoryItems.Contains(GameManager.instance.smelterRepair))
+                            {
+                                machine.furnace.repaired = true;
+                                GameManager.instance.invent.RemoveFromInvent(GameManager.instance.smelterRepair);
+                            }
+                        }
+                        else if(machine.shredder != null && machine.shredder.repaired == false)
+                        {
+                            if(GameManager.instance.invent.inventoryItems.Contains(GameManager.instance.shredderRepair))
+                            {
+                                machine.shredder.repaired = true;
+                                GameManager.instance.invent.RemoveFromInvent(GameManager.instance.shredderRepair);
+                            }
+                        }
+                        else if(machine.cleaner != null && machine.cleaner.repaired == false)
+                        {
+                            if(GameManager.instance.invent.inventoryItems.Contains(GameManager.instance.washerRepair))
+                            {
+                                machine.cleaner.repaired = true;
+                                GameManager.instance.invent.RemoveFromInvent(GameManager.instance.washerRepair);
+                            }
+                        }
                     }
                 }
                 else if(interacting.GetComponent<RobotCompanion>())

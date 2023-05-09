@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Cleaner : ProductionMachine 
 {
+    public bool repaired;
     void Start()
     {
         cleaner = this;

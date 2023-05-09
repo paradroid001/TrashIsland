@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Shredder : ProductionMachine 
 {
+    public bool repaired;
     void Start()
     {
         shredder = this;
