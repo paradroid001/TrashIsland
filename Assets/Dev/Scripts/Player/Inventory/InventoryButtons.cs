@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using TMPro;
 
-public class InventoryButtons : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
+public class InventoryButtons : InvButtons, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
     public Inventory inventory;
     public InventoryItem item;
@@ -16,11 +16,15 @@ public class InventoryButtons : MonoBehaviour, IPointerClickHandler, IPointerEnt
         inventory = transform.parent.parent.parent.GetComponent<Inventory>();
         number = transform.GetChild(0).GetComponent<TextMeshProUGUI>();
     }
+    public void OnValidate()
+    {
+        inventoryButtons = this;
+    }
     public void OnPointerClick(PointerEventData eventData)
     {
         if(selectable == true)
         {
-            if(inventory.reason == Inventory.InventoryReason.Bin || inventory.reason == Inventory.InventoryReason.Process)
+            if(inventory.reason == Inventory.InventoryReason.Bin && inventory.organise == false|| inventory.reason == Inventory.InventoryReason.Process && inventory.organise == false)
             {
                 Debug.Log("Clicked: " + eventData.pointerCurrentRaycast.gameObject.name);
                 if(selected == false)
@@ -34,7 +38,7 @@ public class InventoryButtons : MonoBehaviour, IPointerClickHandler, IPointerEnt
                     inventory.selected.Remove(this);
                 }
             }
-            else if(inventory.reason == Inventory.InventoryReason.Look)
+            else if(inventory.reason == Inventory.InventoryReason.Look && inventory.organise == false)
             {
                 if(!inventory.selected.Contains(this))
                 {
@@ -53,6 +57,30 @@ public class InventoryButtons : MonoBehaviour, IPointerClickHandler, IPointerEnt
                     inventory.dropButton.SetActive(false);
                 }
 
+            }
+            else if(inventory.reason == Inventory.InventoryReason.Look && inventory.organise == true)
+            {
+                //Debug.Log("L");
+                if(inventory.swap.Count != 0)
+                {
+                    //swap the things
+                    if(inventory.swap.Contains(this))
+                    {
+                        inventory.swap.Remove(this);
+                    }
+                    else
+                    {
+                        inventory.swap.Add(this);
+                        inventory.MoveStuff();
+                    }
+                }
+                else if(inventory.swap.Count == 0)
+                {
+                    if(!inventory.swap.Contains(this))
+                    {
+                        inventory.swap.Add(this);
+                    }
+                }
             }
         }
         

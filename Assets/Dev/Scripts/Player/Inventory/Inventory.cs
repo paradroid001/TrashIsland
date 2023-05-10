@@ -8,6 +8,8 @@ public class Inventory : MonoBehaviour
     public int capacity;
     public enum InventoryReason{Look, Bin, Process};
     public InventoryReason reason;
+    public RoboInventory roboInventory;
+    public bool organise;
     public GameObject button;
     public GameObject processButton;
     public GameObject backButton;
@@ -20,6 +22,7 @@ public class Inventory : MonoBehaviour
     public GameObject dropButton;
     public Image equipImg;
     public GameObject nameDisplay;
+    public List<InvButtons> swap;
     public void Start()
     {
         //Get the buttons to click on.
@@ -45,11 +48,110 @@ public class Inventory : MonoBehaviour
             inventoryItems.Capacity = images.Count;
         }
     }
-    
+    public void Organise()
+    {
+        if(organise == false)
+        {
+            organise = true;
+            roboInventory.organise = true;
+        }
+        else if(organise)
+        {
+            organise = false;
+            roboInventory.organise = false;
+        }
+    }
+    public void MoveStuff()
+    {
+        Debug.Log("AAAAA");
+        InvButtons button1 = swap[0];
+        InventoryItem item1 = null;
+        int ind1 = 0;
+        int amt1 = 0;
+        int ind2 = 0;
+        int amt2 = 0;
+        if(button1.roboIntventoryButtons != null)
+        {
+            item1 = button1.roboIntventoryButtons.item;
+            ind1 = roboInventory.inventoryItems.IndexOf(item1);
+            amt1 = roboInventory.amount[ind1];
+        }
+        else if (button1.inventoryButtons != null)
+        {
+            item1 = button1.inventoryButtons.item;
+            ind1 = inventoryItems.IndexOf(item1);
+            amt1 = amount[ind1];
+        }
+        InvButtons button2 = swap[1];
+        InventoryItem item2 = null;
+        if(button2.roboIntventoryButtons != null)
+        {
+            item2 = button2.roboIntventoryButtons.item;
+            ind2 = roboInventory.inventoryItems.IndexOf(item2);
+            amt2 = roboInventory.amount[ind2];
+        }
+        else if (button2.inventoryButtons != null)
+        {
+            item2 = button2.inventoryButtons.item;
+            ind2 = inventoryItems.IndexOf(item2);
+            amt2 = amount[ind2];
+        }
+
+        //do the swap
+
+        if(button1.roboIntventoryButtons != null && button2.roboIntventoryButtons)
+        {
+            button1.roboIntventoryButtons.item = item2;
+            roboInventory.amount[ind1] = amt2;
+            button2.roboIntventoryButtons.item = item1;
+            roboInventory.amount[ind2] = amt1;
+            button1.GetComponent<Image>().sprite = item2.inventorySprite; 
+            button1.roboIntventoryButtons.number.text = amt2.ToString();
+            button2.GetComponent<Image>().sprite = item1.inventorySprite;
+            button2.roboIntventoryButtons.number.text = amt1.ToString();
+
+        }
+        else if(button1.roboIntventoryButtons != null && button2.inventoryButtons != null)
+        {
+            button1.roboIntventoryButtons.item = item2;
+            roboInventory.amount[ind1] = amt2;
+            button2.inventoryButtons.item = item1;
+            amount[ind2] = amt1;
+            button1.GetComponent<Image>().sprite = item2.inventorySprite;
+            button1.roboIntventoryButtons.number.text = amt2.ToString();
+            button2.GetComponent<Image>().sprite = item1.inventorySprite;
+            button2.inventoryButtons.number.text = amt1.ToString();
+        }
+        else if(button1.inventoryButtons != null && button2.roboIntventoryButtons != null)
+        {
+            button1.inventoryButtons.item = item2;
+            amount[ind1] = amt2;
+            button2.roboIntventoryButtons.item = item1;
+            roboInventory.amount[ind2] = amt1;
+            button1.GetComponent<Image>().sprite = item2.inventorySprite;
+            button1.inventoryButtons.number.text = amt2.ToString();
+            button2.GetComponent<Image>().sprite = item1.inventorySprite;
+            button2.roboIntventoryButtons.number.text = amt1.ToString();
+        }
+        else if(button1.inventoryButtons != null && button2.inventoryButtons != null)
+        {
+            button1.inventoryButtons.item = item2;
+            amount[ind1] = amt2;
+            button2.inventoryButtons.item = item1;
+            amount[ind2] = amt1;
+            button1.GetComponent<Image>().sprite = item2.inventorySprite;
+            button1.inventoryButtons.number.text = amt2.ToString();
+            button2.GetComponent<Image>().sprite = item1.inventorySprite;
+            button2.inventoryButtons.number.text = amt1.ToString();
+        }
+        swap.Clear();
+    }
     public void Return(GameObject Inventory)
     {
         //Get out of inventory menu
         reason = InventoryReason.Look;
+        organise = false;
+        roboInventory.organise = false;
         button.SetActive(false);
         Inventory.SetActive(false);
         Time.timeScale = 1;
@@ -79,9 +181,9 @@ public class Inventory : MonoBehaviour
     }
     public void AddToInventory(InventoryItem trashtype)
     {
-        if(inventoryItems.Count <= capacity)
+        if(!inventoryItems.Contains(trashtype) )
         {
-            if(!inventoryItems.Contains(trashtype))
+            if(inventoryItems.Count < capacity)
             {
                 inventoryItems.Add(trashtype);
                 for(int i = 0; i <= images.Count; i++)
@@ -105,8 +207,8 @@ public class Inventory : MonoBehaviour
                     else return;
                 }
             }
-            else if(inventoryItems.Contains(trashtype))
-            {
+            else if(inventoryItems.Count >= capacity)
+            {/*
                 //if the item is already in the inventory, then add to the amt
                 Debug.Log("Add amount");
                 for(int i = 0; i < inventoryItems.Count; i++)
@@ -117,25 +219,26 @@ public class Inventory : MonoBehaviour
                         images[i].GetComponent<InventoryButtons>().number.text = amount[i].ToString();
                         break;
                     }
+                }*/
+                AddToRoboInventory(trashtype);
+            }
+        }
+        else if(inventoryItems.Contains(trashtype))
+        {
+            //if the item is already in the inventory, then add to the amt
+            Debug.Log("Add amount");
+            //Debug.Log("its workin'")
+            for(int i = 0; i < inventoryItems.Count; i++)
+            {
+                if(inventoryItems[i] == trashtype)
+                {
+                    amount[i]++;
+                    images[i].GetComponent<InventoryButtons>().number.text = amount[i].ToString();
+                    break;
                 }
             }
         }
-        else if(inventoryItems.Contains(trashtype) && inventoryItems.Count >= capacity)
-            {
-                //if the item is already in the inventory, then add to the amt
-                Debug.Log("Add amount");
-                //Debug.Log("its workin'")
-                for(int i = 0; i < inventoryItems.Count; i++)
-                {
-                    if(inventoryItems[i] == trashtype)
-                    {
-                        amount[i]++;
-                        images[i].GetComponent<InventoryButtons>().number.text = amount[i].ToString();
-                        break;
-                    }
-                }
-            }
-        else 
+        else
         {
             AddToRoboInventory(trashtype);
         }

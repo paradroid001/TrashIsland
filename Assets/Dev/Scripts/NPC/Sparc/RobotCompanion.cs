@@ -13,7 +13,7 @@ public class RobotCompanion : Companion
     public void Start()
     {
         inventoryB = inventoryA.GetComponent<RoboInventory>();
-        inventoryC = inventoryA.transform.GetChild(2).gameObject;
+        inventoryC = inventoryA.transform.GetChild(0).GetChild(8).gameObject;
     }
     public void Interact()
     {
