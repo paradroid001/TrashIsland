@@ -7,6 +7,8 @@ public class Trash : MonoBehaviour
 {
     public enum TrashType1 {recycle, garbage, organic};
     public TrashType1 trashType;
+    public enum TrashColour {Red, Green, Blue};
+    public TrashColour trashColour;
     public TrashType typeOf;
     public BuriedTrash buriedTrash;
     GameObject button;
@@ -25,6 +27,19 @@ public class Trash : MonoBehaviour
             button.transform.SetParent(GameManager.instance.player.playerCanvas.transform.GetChild(0));
             button.transform.localPosition = Vector2.zero;
             TextMeshProUGUI buttontext = button.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+            switch(trashColour)
+            {
+                case TrashColour.Red:
+                buttontext.color = Color.red;
+                break;
+                case TrashColour.Green:
+                buttontext.color = Color.green;
+                break;
+                case TrashColour.Blue:
+                buttontext.color = Color.blue;
+                break;
+            }
+            
             buttontext.text = typeOf.trashName;
             InteractButtons interactButton = button.GetComponent<InteractButtons>();
             interactButton.correspond = gameObject;
