@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Drone : NPC
 {
@@ -13,6 +14,7 @@ public class Drone : NPC
     void Awake()
     {
         DroneManager.instance.drones.Add(this);
+        //agent = transform.GetChild(0).GetComponent<NavMeshAgent>();
         startPoint = transform.position;
     }
     void Update()
@@ -27,7 +29,9 @@ public class Drone : NPC
                 Debug.Log("POIU");
                 //play pickup animmation
                 carrying = bin.inBin;
+                agent.baseOffset = 0;
                 agent.SetDestination(DroneManager.instance.recycleDeposit.transform.position);
+                agent.baseOffset = 0.11f;
                 if(agent.remainingDistance <= 0.05f)
                 {
                     //play drop animation
@@ -65,6 +69,7 @@ public class Drone : NPC
     }
     public void GoToBin(Bin bin)
     {
+        
         agent.SetDestination(bin.transform.position);
     }
 }
