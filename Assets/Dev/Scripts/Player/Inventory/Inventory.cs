@@ -103,8 +103,10 @@ public class Inventory : MonoBehaviour
         {
             button1.roboIntventoryButtons.item = item2;
             roboInventory.amount[ind1] = amt2;
+            roboInventory.inventoryItems[ind1] = item2;
             button2.roboIntventoryButtons.item = item1;
             roboInventory.amount[ind2] = amt1;
+            roboInventory.inventoryItems[ind2] = item1;
             button1.GetComponent<Image>().sprite = item2.inventorySprite; 
             button1.roboIntventoryButtons.number.text = amt2.ToString();
             button2.GetComponent<Image>().sprite = item1.inventorySprite;
@@ -115,7 +117,9 @@ public class Inventory : MonoBehaviour
         {
             button1.roboIntventoryButtons.item = item2;
             roboInventory.amount[ind1] = amt2;
+            roboInventory.inventoryItems[ind1] = item2;
             button2.inventoryButtons.item = item1;
+            inventoryItems[ind2] = item1;
             amount[ind2] = amt1;
             button1.GetComponent<Image>().sprite = item2.inventorySprite;
             button1.roboIntventoryButtons.number.text = amt2.ToString();
@@ -126,8 +130,10 @@ public class Inventory : MonoBehaviour
         {
             button1.inventoryButtons.item = item2;
             amount[ind1] = amt2;
+            inventoryItems[ind1] = item2;
             button2.roboIntventoryButtons.item = item1;
             roboInventory.amount[ind2] = amt1;
+            roboInventory.inventoryItems[ind2] = item1;
             button1.GetComponent<Image>().sprite = item2.inventorySprite;
             button1.inventoryButtons.number.text = amt2.ToString();
             button2.GetComponent<Image>().sprite = item1.inventorySprite;
@@ -137,8 +143,10 @@ public class Inventory : MonoBehaviour
         {
             button1.inventoryButtons.item = item2;
             amount[ind1] = amt2;
+            inventoryItems[ind1] = item2;
             button2.inventoryButtons.item = item1;
             amount[ind2] = amt1;
+            inventoryItems[ind2] = item1;
             button1.GetComponent<Image>().sprite = item2.inventorySprite;
             button1.inventoryButtons.number.text = amt2.ToString();
             button2.GetComponent<Image>().sprite = item1.inventorySprite;
@@ -193,8 +201,9 @@ public class Inventory : MonoBehaviour
                         if(images[i].sprite == null)
                         {
                             //if the item is not already in the inventory, and it has an assigned sprite, then present the sprite and let it know the data of the thing in the slot
-                            trashtype.button = images[i].GetComponent<InventoryButtons>();
+                            
                             int amtIndex = inventoryItems.IndexOf(trashtype);
+                            trashtype.button = images[amtIndex].GetComponent<InventoryButtons>();
                             amount[amtIndex]++;
                             images[i].sprite = trashtype.inventorySprite;
                             images[i].GetComponent<InventoryButtons>().item = trashtype;
@@ -313,22 +322,24 @@ public class Inventory : MonoBehaviour
                             amount[ind]--;
                             selected[i].GetComponent<InventoryButtons>().number.text = amount[ind].ToString();
                             if(amount[ind] == 0)
-                            {                            
+                            {   
+                                inventoryItems.Remove(selected[i].item);                         
                                 selected[i].item = null;
                                 selected[i].GetComponent<Image>().sprite = null;
                                 selected[i].GetComponent<Image>().color = Color.red;
-                                inventoryItems.Remove(selected[i].item);
+                                
                                 //selected[i].GetComponent<InventoryButtons>().number.text = amount[ind].ToString();
                                 selected[i].item = null;
                             }
                         }
                         else if(amount[ind] == 0)
                         {
+                            inventoryItems.Remove(selected[i].item);
                             bin.inBin.Add(selected[i].item);
                             selected[i].item = null;
                             selected[i].GetComponent<Image>().sprite = null;
                             selected[i].GetComponent<Image>().color = Color.red;
-                            inventoryItems.Remove(selected[i].item);
+                            
                             selected[i].GetComponent<InventoryButtons>().number.text = amount[ind].ToString();
                             selected[i].item = null;
                         }
@@ -347,22 +358,24 @@ public class Inventory : MonoBehaviour
                             amount[ind]--;
                             selected[i].GetComponent<InventoryButtons>().number.text = amount[ind].ToString();
                             if(amount[ind] == 0)
-                            {                            
+                            {   
+                                inventoryItems.Remove(selected[i].item);                         
                                 selected[i].item = null;
                                 selected[i].GetComponent<Image>().sprite = null;
                                 selected[i].GetComponent<Image>().color = Color.red;
-                                inventoryItems.Remove(selected[i].item);
+                                
                                 //selected[i].GetComponent<InventoryButtons>().number.text = amount[ind].ToString();
                                 selected[i].item = null;
                             }
                         }
                         else if(amount[ind] == 0)
                         {
+                            inventoryItems.Remove(selected[i].item);
                             bin.inBin.Add(selected[i].item);
                             selected[i].item = null;
                             selected[i].GetComponent<Image>().sprite = null;
                             selected[i].GetComponent<Image>().color = Color.red;
-                            inventoryItems.Remove(selected[i].item);
+                            
                             selected[i].GetComponent<InventoryButtons>().number.text = amount[ind].ToString();
                         }
                         Debug.Log(ind);
@@ -379,22 +392,24 @@ public class Inventory : MonoBehaviour
                             amount[ind]--;
                             selected[i].GetComponent<InventoryButtons>().number.text = amount[ind].ToString();
                             if(amount[ind] == 0)
-                            {                            
+                            {   
+                                inventoryItems.Remove(selected[i].item);                         
                                 selected[i].item = null;
                                 selected[i].GetComponent<Image>().sprite = null;
                                 selected[i].GetComponent<Image>().color = Color.red;
-                                inventoryItems.Remove(selected[i].item);
+                                
                                 //selected[i].GetComponent<InventoryButtons>().number.text = amount[ind].ToString();
                                 selected[i].item = null;
                             }
                         }
                         else if(amount[ind] == 0)
                         {
+                            inventoryItems.Remove(selected[i].item);
                             bin.inBin.Add(selected[i].item);
                             selected[i].item = null;
                             selected[i].GetComponent<Image>().sprite = null;
                             selected[i].GetComponent<Image>().color = Color.red;
-                            inventoryItems.Remove(selected[i].item);
+                            
                             selected[i].GetComponent<InventoryButtons>().number.text = amount[ind].ToString();
                         }
                         Debug.Log(ind);
@@ -415,22 +430,24 @@ public class Inventory : MonoBehaviour
                             amount[ind]--;
                             selected[i].GetComponent<InventoryButtons>().number.text = amount[ind].ToString();
                             if(amount[ind] == 0)
-                            {                            
+                            {   
+                                inventoryItems.Remove(selected[i].item);                         
                                 selected[i].item = null;
                                 selected[i].GetComponent<Image>().sprite = null;
                                 selected[i].GetComponent<Image>().color = Color.red;
-                                inventoryItems.Remove(selected[i].item);
+                                
                                 //selected[i].GetComponent<InventoryButtons>().number.text = amount[ind].ToString();
                                 selected[i].item = null;
                             }
                         }
                         else if(amount[ind] == 0)
                         {
+                            inventoryItems.Remove(selected[i].item);
                             bin.inBin.Add(selected[i].item);
                             selected[i].item = null;
                             selected[i].GetComponent<Image>().sprite = null;
                             selected[i].GetComponent<Image>().color = Color.red;
-                            inventoryItems.Remove(selected[i].item);
+                            
                             selected[i].GetComponent<InventoryButtons>().number.text = amount[ind].ToString();
                         }
                         Debug.Log(ind);
@@ -448,22 +465,24 @@ public class Inventory : MonoBehaviour
                             amount[ind]--;
                             selected[i].GetComponent<InventoryButtons>().number.text = amount[ind].ToString();
                             if(amount[ind] == 0)
-                            {                            
+                            {   
+                                inventoryItems.Remove(selected[i].item);                         
                                 selected[i].item = null;
                                 selected[i].GetComponent<Image>().sprite = null;
                                 selected[i].GetComponent<Image>().color = Color.red;
-                                inventoryItems.Remove(selected[i].item);
+                                
                                 //selected[i].GetComponent<InventoryButtons>().number.text = amount[ind].ToString();
                                 selected[i].item = null;
                             }
                         }
                         else if(amount[ind] == 0)
                         {
+                            inventoryItems.Remove(selected[i].item);
                             bin.inBin.Add(selected[i].item);
                             selected[i].item = null;
                             selected[i].GetComponent<Image>().sprite = null;
                             selected[i].GetComponent<Image>().color = Color.red;
-                            inventoryItems.Remove(selected[i].item);
+                            
                             selected[i].GetComponent<InventoryButtons>().number.text = amount[ind].ToString();
                         }
                         Debug.Log(ind);
@@ -481,22 +500,24 @@ public class Inventory : MonoBehaviour
                             amount[ind]--;
                             selected[i].GetComponent<InventoryButtons>().number.text = amount[ind].ToString();
                             if(amount[ind] == 0)
-                            {                            
+                            {   
+                                inventoryItems.Remove(selected[i].item);                         
                                 selected[i].item = null;
                                 selected[i].GetComponent<Image>().sprite = null;
                                 selected[i].GetComponent<Image>().color = Color.red;
-                                inventoryItems.Remove(selected[i].item);
+                                
                                 //selected[i].GetComponent<InventoryButtons>().number.text = amount[ind].ToString();
                                 selected[i].item = null;
                             }
                         }
                         else if(amount[ind] == 0)
                         {
+                            inventoryItems.Remove(selected[i].item);
                             bin.inBin.Add(selected[i].item);
                             selected[i].item = null;
                             selected[i].GetComponent<Image>().sprite = null;
                             selected[i].GetComponent<Image>().color = Color.red;
-                            inventoryItems.Remove(selected[i].item);
+                            
                             selected[i].GetComponent<InventoryButtons>().number.text = amount[ind].ToString();
                         }
                         Debug.Log(ind);
@@ -514,22 +535,24 @@ public class Inventory : MonoBehaviour
                             amount[ind]--;
                             selected[i].GetComponent<InventoryButtons>().number.text = amount[ind].ToString();
                             if(amount[ind] == 0)
-                            {                            
+                            {   
+                                inventoryItems.Remove(selected[i].item);                         
                                 selected[i].item = null;
                                 selected[i].GetComponent<Image>().sprite = null;
                                 selected[i].GetComponent<Image>().color = Color.red;
-                                inventoryItems.Remove(selected[i].item);
+                                
                                 //selected[i].GetComponent<InventoryButtons>().number.text = amount[ind].ToString();
                                 selected[i].item = null;
                             }
                         }
                         else if(amount[ind] == 0)
                         {
+                            inventoryItems.Remove(selected[i].item);
                             bin.inBin.Add(selected[i].item);
                             selected[i].item = null;
                             selected[i].GetComponent<Image>().sprite = null;
                             selected[i].GetComponent<Image>().color = Color.red;
-                            inventoryItems.Remove(selected[i].item);
+                            
                             selected[i].GetComponent<InventoryButtons>().number.text = amount[ind].ToString();
                         }
                         Debug.Log(ind);
@@ -550,22 +573,24 @@ public class Inventory : MonoBehaviour
                             amount[ind]--;
                             selected[i].GetComponent<InventoryButtons>().number.text = amount[ind].ToString();
                             if(amount[ind] == 0)
-                            {                            
+                            {   
+                                inventoryItems.Remove(selected[i].item);                         
                                 selected[i].item = null;
+                                
                                 selected[i].GetComponent<Image>().sprite = null;
                                 selected[i].GetComponent<Image>().color = Color.red;
-                                inventoryItems.Remove(selected[i].item);
                                 //selected[i].GetComponent<InventoryButtons>().number.text = amount[ind].ToString();
                                 selected[i].item = null;
                             }
                         }
                         else if(amount[ind] == 0)
                         {
+                            inventoryItems.Remove(selected[i].item);
                             bin.inBin.Add(selected[i].item);
                             selected[i].item = null;
                             selected[i].GetComponent<Image>().sprite = null;
                             selected[i].GetComponent<Image>().color = Color.red;
-                            inventoryItems.Remove(selected[i].item);
+                            
                             selected[i].GetComponent<InventoryButtons>().number.text = amount[ind].ToString();
                         }
                         Debug.Log(ind);
@@ -583,22 +608,24 @@ public class Inventory : MonoBehaviour
                             amount[ind]--;
                             selected[i].GetComponent<InventoryButtons>().number.text = amount[ind].ToString();
                             if(amount[ind] == 0)
-                            {                            
+                            {   
+                                inventoryItems.Remove(selected[i].item);                         
                                 selected[i].item = null;
                                 selected[i].GetComponent<Image>().sprite = null;
                                 selected[i].GetComponent<Image>().color = Color.red;
-                                inventoryItems.Remove(selected[i].item);
+                                
                                 //selected[i].GetComponent<InventoryButtons>().number.text = amount[ind].ToString();
                                 selected[i].item = null;
                             }
                         }
                         else if(amount[ind] == 0)
                         {
+                            inventoryItems.Remove(selected[i].item);
                             bin.inBin.Add(selected[i].item);
                             selected[i].item = null;
                             selected[i].GetComponent<Image>().sprite = null;
                             selected[i].GetComponent<Image>().color = Color.red;
-                            inventoryItems.Remove(selected[i].item);
+                            
                             selected[i].GetComponent<InventoryButtons>().number.text = amount[ind].ToString();
                         }
                         Debug.Log(ind);
@@ -616,22 +643,24 @@ public class Inventory : MonoBehaviour
                             amount[ind]--;
                             selected[i].GetComponent<InventoryButtons>().number.text = amount[ind].ToString();
                             if(amount[ind] == 0)
-                            {                            
+                            {   
+                                inventoryItems.Remove(selected[i].item);                         
                                 selected[i].item = null;
                                 selected[i].GetComponent<Image>().sprite = null;
                                 selected[i].GetComponent<Image>().color = Color.red;
-                                inventoryItems.Remove(selected[i].item);
+                                
                                 //selected[i].GetComponent<InventoryButtons>().number.text = amount[ind].ToString();
                                 selected[i].item = null;
                             }
                         }
                         else if(amount[ind] == 0)
-                        {
+                        {   
+                            inventoryItems.Remove(selected[i].item);
                             bin.inBin.Add(selected[i].item);
                             selected[i].item = null;
                             selected[i].GetComponent<Image>().sprite = null;
                             selected[i].GetComponent<Image>().color = Color.red;
-                            inventoryItems.Remove(selected[i].item);
+                            
                             selected[i].GetComponent<InventoryButtons>().number.text = amount[ind].ToString();
                         }
                         Debug.Log(ind);
@@ -649,22 +678,24 @@ public class Inventory : MonoBehaviour
                             amount[ind]--;
                             selected[i].GetComponent<InventoryButtons>().number.text = amount[ind].ToString();
                             if(amount[ind] == 0)
-                            {                            
+                            {   
+                                inventoryItems.Remove(selected[i].item);                         
                                 selected[i].item = null;
                                 selected[i].GetComponent<Image>().sprite = null;
                                 selected[i].GetComponent<Image>().color = Color.red;
-                                inventoryItems.Remove(selected[i].item);
+                                
                                 //selected[i].GetComponent<InventoryButtons>().number.text = amount[ind].ToString();
                                 selected[i].item = null;
                             }
                         }
                         else if(amount[ind] == 0)
                         {
+                            inventoryItems.Remove(selected[i].item);
                             bin.inBin.Add(selected[i].item);
                             selected[i].item = null;
                             selected[i].GetComponent<Image>().sprite = null;
                             selected[i].GetComponent<Image>().color = Color.red;
-                            inventoryItems.Remove(selected[i].item);
+                            
                             selected[i].GetComponent<InventoryButtons>().number.text = amount[ind].ToString();
                         }
                         Debug.Log(ind);
@@ -691,9 +722,10 @@ public class Inventory : MonoBehaviour
             else if(amount[ind] == 0)
             {
                 //item.button = null;
+                inventoryItems.Remove(item);
                 item.button.GetComponent<Image>().sprite = null;
                 item.button.GetComponent<Image>().color = Color.red;
-                inventoryItems.Remove(item);
+                
             }
         }
     }

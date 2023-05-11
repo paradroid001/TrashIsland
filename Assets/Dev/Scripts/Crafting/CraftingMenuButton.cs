@@ -24,6 +24,7 @@ public class CraftingMenuButton : MonoBehaviour, IPointerEnterHandler, IPointerC
                     //Debug.Log("A");
                     need[i].GetComponent<TextMeshProUGUI>().text = recipe.needed[i].name;
                     need[i].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = recipe.amtneeded[i].ToString();
+                    //GameManager.instance.invent.inventoryItems.Remove(recipe.needed[i]);
                 }
                 else
                 {
@@ -42,9 +43,24 @@ public class CraftingMenuButton : MonoBehaviour, IPointerEnterHandler, IPointerC
             {
                 int amtHaveInd = GameManager.instance.invent.inventoryItems.IndexOf(recipe.needed[i]);
                 int amtHave = GameManager.instance.invent.amount[amtHaveInd];
-                if(amtHave >= recipe.amtneeded[i] - 1)
+                if(amtHave >= recipe.amtneeded[i])
                 {
-                    GameManager.instance.invent.RemoveFromInvent(recipe.needed[i]);
+                    if(GameManager.instance.invent.amount[amtHaveInd] == 0)
+                    {
+                        GameManager.instance.invent.inventoryItems.Remove(recipe.needed[i]);
+                        GameManager.instance.invent.amount[amtHaveInd]--;
+                        GameManager.instance.invent.images[amtHaveInd].sprite = null;
+                        GameManager.instance.invent.images[amtHaveInd].GetComponent<InventoryButtons>().item = null;
+                        GameManager.instance.invent.images[amtHaveInd].color = Color.red;
+                    }
+                    else
+                    {
+                        //GameManager.instance.invent.amount[amtHaveInd]--;
+                        GameManager.instance.invent.RemoveFromInvent(recipe.needed[i]);
+                        GameManager.instance.invent.images[amtHaveInd].GetComponent<InventoryButtons>().number.text = GameManager.instance.invent.amount[amtHaveInd].ToString();
+                    }
+                    
+                    
                     GameManager.instance.invent.AddToInventory(recipe.makes);
                 }
                 else

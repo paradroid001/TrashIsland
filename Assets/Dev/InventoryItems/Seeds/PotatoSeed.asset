@@ -13,9 +13,15 @@ MonoBehaviour:
   m_Name: PotatoSeed
   m_EditorClassIdentifier: 
   seed: {fileID: 11400000}
-  inventorySprite: {fileID: 21300000, guid: 7a661687b2e6ca740b66d3add025115f, type: 3}
+  materialItem: {fileID: 0}
+  button: {fileID: 0}
+  trashType: {fileID: 0}
+  toolsType: {fileID: 0}
+  buildType: {fileID: 0}
+  inventorySprite: {fileID: 21300000, guid: cf2104b37f790dc439921c374df17340, type: 3}
   isTrash: 1
   typeOfTrash: 2
+  objectOfTrash: {fileID: 0}
   seedType: 2
   growth: 0
   maxGrowth: 3

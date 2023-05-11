@@ -29,9 +29,9 @@ public class Drone : NPC
                 Debug.Log("POIU");
                 //play pickup animmation
                 carrying = bin.inBin;
-                agent.baseOffset = 0;
+                //agent.baseOffset = 0;
                 agent.SetDestination(DroneManager.instance.recycleDeposit.transform.position);
-                agent.baseOffset = 0.11f;
+                //agent.baseOffset = 0.11f;
                 if(agent.remainingDistance <= 0.05f)
                 {
                     //play drop animation

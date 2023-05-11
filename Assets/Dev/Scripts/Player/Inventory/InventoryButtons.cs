@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using TMPro;
+using UnityEngine.UI;
 
 public class InventoryButtons : InvButtons, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
@@ -83,7 +84,14 @@ public class InventoryButtons : InvButtons, IPointerClickHandler, IPointerEnterH
                 }
             }
         }
-        
+        if(selected == true)
+        {
+            gameObject.GetComponent<Image>().color = Color.red;
+        }
+        else if(selected == false)
+        {
+            gameObject.GetComponent<Image>().color = Color.white;
+        }
     }
     public void OnPointerEnter(PointerEventData eventData)
     {
