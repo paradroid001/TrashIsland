@@ -8,7 +8,12 @@ using TMPro;
 public class CraftingMenuButton : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler, IPointerExitHandler
 {
     public CraftingRecipe recipe;
+    public GameObject child;
     public List<GameObject> need = new List<GameObject>();
+    public void OnValidate()
+    {
+        child = transform.GetChild(0).gameObject;
+    }
     public void OnPointerEnter(PointerEventData eventData)
     {
         //on hover, change the sprite and text for the crafting menu;
