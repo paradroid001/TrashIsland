@@ -34,20 +34,27 @@ public class CraftingMenuButton : MonoBehaviour, IPointerEnterHandler, IPointerC
             }
         }
     }
+public int neededAmt = 0;
+public int amtHaveVsNeed = 0;
     public void OnPointerClick(PointerEventData eventData)
     {
-        //on click, perform crafting. remove from the trash, add new thing to inventory
         for(int i = 0; i < recipe.needed.Count; i++)
+        {
+            neededAmt += recipe.amtneeded[i];
+        }
+        //on click, perform crafting. remove from the trash, add new thing to inventory
+        for(int i = 0; i <= recipe.needed.Count + 1; i++)
         {
             if(GameManager.instance.invent.inventoryItems.Contains(recipe.needed[i]))
             {
+                amtHaveVsNeed++;
                 int amtHaveInd = GameManager.instance.invent.inventoryItems.IndexOf(recipe.needed[i]);
                 int amtHave = GameManager.instance.invent.amount[amtHaveInd];
                 if(amtHave >= recipe.amtneeded[i])
                 {
                     if(GameManager.instance.invent.amount[amtHaveInd] == 0)
                     {
-                        GameManager.instance.invent.inventoryItems.Remove(recipe.needed[i]);
+                        GameManager.instance.invent.inventoryItems[amtHaveInd] = null;
                         GameManager.instance.invent.amount[amtHaveInd]--;
                         GameManager.instance.invent.images[amtHaveInd].sprite = null;
                         GameManager.instance.invent.images[amtHaveInd].GetComponent<InventoryButtons>().item = null;
@@ -58,10 +65,20 @@ public class CraftingMenuButton : MonoBehaviour, IPointerEnterHandler, IPointerC
                         //GameManager.instance.invent.amount[amtHaveInd]--;
                         GameManager.instance.invent.RemoveFromInvent(recipe.needed[i]);
                         GameManager.instance.invent.images[amtHaveInd].GetComponent<InventoryButtons>().number.text = GameManager.instance.invent.amount[amtHaveInd].ToString();
+                        if(GameManager.instance.invent.amount[amtHaveInd] == 0)
+                        {
+                            GameManager.instance.invent.inventoryItems[amtHaveInd] = null;
+                            //GameManager.instance.invent.amount[amtHaveInd]--;
+                            GameManager.instance.invent.images[amtHaveInd].sprite = null;
+                            GameManager.instance.invent.images[amtHaveInd].GetComponent<InventoryButtons>().item = null;
+                            GameManager.instance.invent.images[amtHaveInd].color = Color.red;
+                        }
                     }
-                    
-                    
-                    GameManager.instance.invent.AddToInventory(recipe.makes);
+                    if(neededAmt == amtHaveVsNeed)
+                    {
+                        GameManager.instance.invent.AddToInventory(recipe.makes);
+                        Debug.Log("Z");
+                    }
                 }
                 else
                 {
