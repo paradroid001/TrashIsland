@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     public Vector3 dir;
     public bool interactable;
     public bool holding;
+    public bool acting;
     public List<GameObject> Interactables;
     public int currentInteract;
     public Transform hold;
@@ -29,19 +30,23 @@ public class Player : MonoBehaviour
     void Update()
     {
         vert = Input.GetAxis("Vertical");
-        //anim.SetFloat("Y", vert);
+        anim.SetFloat("Y", vert);
         hori = Input.GetAxis("Horizontal");
-        //anim.SetFloat("X", hori);
+        anim.SetFloat("X", hori);
         dir = new Vector3(hori, 0, vert);
-        if(vert != 0 || hori != 0)
+        if(anim.GetCurrentAnimatorClipInfo(0)[0].clip.name != "Pickup")
         {
-            transform.Translate(dir * speed * Time.deltaTime, Space.World);
+            if(vert != 0 || hori != 0)
+            {
+                transform.Translate(dir * speed * Time.deltaTime, Space.World);
+            }
+            if (dir != Vector3.zero)
+            {
+                Quaternion toRotation = Quaternion.LookRotation(dir, Vector3.up);
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotSpd * Time.deltaTime);
+            }
         }
-        if (dir != Vector3.zero)
-        {
-            Quaternion toRotation = Quaternion.LookRotation(dir, Vector3.up);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotSpd * Time.deltaTime);
-        }
+        
         /*if(Input.GetKeyDown(KeyCode.E))
         {
             Interact();
@@ -64,6 +69,7 @@ public class Player : MonoBehaviour
                 else if (interacting.GetComponent<Recycle>())
                 {
                     Recycle recycle;
+                    
                     //Trash trash = hold.GetChild(0).GetComponent<Trash>();
                     if(interacting == null)
                     {
@@ -152,14 +158,49 @@ public class Player : MonoBehaviour
                     {
                         machine = interacting.GetComponent<ProductionMachine>();
                     } 
-                    if(machine.contains.Capacity != 0)
+                    if(machine.contains.Count != 0)
                     {
                         StartCoroutine(machine.Interact());
                     }
-                    else if(machine.contains.Capacity == 0)
+                    else if(machine.contains.Count == 0)
                     {
-                        GameManager.instance.invent.currentMachine = machine;
-                        GameManager.instance.invent.reason = Inventory.InventoryReason.Process;
+                        if(machine.compressor != null && machine.compressor.repaired == true|| machine.cleaner != null && machine.cleaner.repaired == true|| machine.shredder != null && machine.shredder.repaired == true|| machine.furnace != null && machine.furnace.repaired == true)
+                        {
+                            GameManager.instance.invent.currentMachine = machine;
+                            GameManager.instance.invent.reason = Inventory.InventoryReason.Process;
+                        }
+                        else if(machine.compressor != null && machine.compressor.repaired == false)
+                        {
+                            if(GameManager.instance.invent.inventoryItems.Contains(GameManager.instance.crusherRepair))
+                            {
+                                machine.compressor.repaired = true;
+                                GameManager.instance.invent.RemoveFromInvent(GameManager.instance.crusherRepair);
+                            }
+                        }
+                        else if(machine.furnace != null && machine.furnace.repaired == false)
+                        {
+                            if(GameManager.instance.invent.inventoryItems.Contains(GameManager.instance.smelterRepair))
+                            {
+                                machine.furnace.repaired = true;
+                                GameManager.instance.invent.RemoveFromInvent(GameManager.instance.smelterRepair);
+                            }
+                        }
+                        else if(machine.shredder != null && machine.shredder.repaired == false)
+                        {
+                            if(GameManager.instance.invent.inventoryItems.Contains(GameManager.instance.shredderRepair))
+                            {
+                                machine.shredder.repaired = true;
+                                GameManager.instance.invent.RemoveFromInvent(GameManager.instance.shredderRepair);
+                            }
+                        }
+                        else if(machine.cleaner != null && machine.cleaner.repaired == false)
+                        {
+                            if(GameManager.instance.invent.inventoryItems.Contains(GameManager.instance.washerRepair))
+                            {
+                                machine.cleaner.repaired = true;
+                                GameManager.instance.invent.RemoveFromInvent(GameManager.instance.washerRepair);
+                            }
+                        }
                     }
                 }
                 else if(interacting.GetComponent<RobotCompanion>())
@@ -237,6 +278,11 @@ public class Player : MonoBehaviour
                 {
                     Closet closet = Interactables[currentInteract].GetComponent<Closet>();
                     closet.Interact();
+                }
+                else if(interacting.GetComponent<EnterBuildings>())
+                {
+                    EnterBuildings enter = interacting.GetComponent<EnterBuildings>();
+                    enter.Interact();
                 }
                 interacting = null;
     }

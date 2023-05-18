@@ -13,9 +13,15 @@ MonoBehaviour:
   m_Name: CarrotSeed
   m_EditorClassIdentifier: 
   seed: {fileID: 11400000}
-  inventorySprite: {fileID: 21300000, guid: dd7e1eaf183ada14d9a2ca7e5c3bbaa5, type: 3}
+  materialItem: {fileID: 0}
+  button: {fileID: 0}
+  trashType: {fileID: 0}
+  toolsType: {fileID: 0}
+  buildType: {fileID: 0}
+  inventorySprite: {fileID: 21300000, guid: 9baa49c2772953b409764858c47eff17, type: 3}
   isTrash: 1
   typeOfTrash: 2
+  objectOfTrash: {fileID: 0}
   seedType: 1
   growth: 0
   maxGrowth: 3

@@ -887,7 +887,7 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2811584485673751540}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
+  m_Avatar: {fileID: 9000000, guid: 598d155d2776ce941ae20f425e33a693, type: 3}
   m_Controller: {fileID: 9100000, guid: 40f11714b4d8a294fbf73989d0f570df, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
@@ -924,8 +924,10 @@ MonoBehaviour:
   dialogueUI: {fileID: 0}
   detector: {fileID: 0}
   playerCanvas: {fileID: 0}
-  interactButtonTemplate: {fileID: 0}
+  interactButtonTemplate: {fileID: 3859136943093447025, guid: dcb060e5bd67b0041927880a8d85c4b4,
+    type: 3}
   interacting: {fileID: 0}
+  anim: {fileID: 0}
 --- !u!195 &3154112797466663397
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1985,7 +1987,7 @@ GameObject:
   - component: {fileID: 3154112797306209817}
   m_Layer: 0
   m_Name: Rig_Mesh
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

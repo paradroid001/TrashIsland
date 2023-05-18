@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00fd109a59c29124cb753cb405f4062e, type: 3}
+  m_Name: Give
+  m_EditorClassIdentifier: 
+  dialogue:
+  - A squirrel gave me this! Squawk!
+  responses:
+  - responseText: Thamk you!
+    dialogueOBJ: {fileID: 11400000, guid: 2471b7f191d9b0d408d086cb2c674e7a, type: 2}
+  characterSprite: {fileID: 0}
+  charName: Paullie
+  dialogueResponse: {fileID: 0}
+  diaEvents: []

@@ -13,5 +13,5 @@ public class DialogueOBJ : ScriptableObject
     public bool HasResponses =>Responses != null && Responses.Length > 0;
     public Response[] Responses => responses;
     public ResponseEventOBJ dialogueResponse;
-    public ResponseEvent events;
+    public DiaEvents[] diaEvents;
 }

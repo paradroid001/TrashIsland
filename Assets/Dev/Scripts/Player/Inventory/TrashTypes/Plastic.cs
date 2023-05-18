@@ -7,4 +7,6 @@ public class Plastic : TrashType
 {
     public bool clean;
     public bool shredded;
+    public enum PlasticType {Lid, Container, Bottle};
+    public PlasticType plasticType;
 }

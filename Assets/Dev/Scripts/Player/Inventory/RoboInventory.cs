@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class RoboInventory : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class RoboInventory : MonoBehaviour
     public static RoboInventory roboInventory;
     public enum RoboInventoryReason{Not, Look, Bin, Process}
     public RoboInventoryReason reason;
+    public bool organise;
     public GameObject menu;
     public List<Image> images;
     public int[] amount; 
@@ -18,15 +20,15 @@ public class RoboInventory : MonoBehaviour
     void Start()
     {
         roboInventory = this;
-        menu = transform.GetChild(2).gameObject;
+        menu = transform.GetChild(0).GetChild(8).gameObject;
         roboInventoryButtons = new List<RoboIntventoryButtons>();
-        for(int i = 0; i < transform.GetChild(2).GetChild(0).childCount; i++)
+        for(int i = 0; i < menu.transform.GetChild(0).childCount; i++)
         {
-            lines.Add(transform.GetChild(2).GetChild(0).GetChild(i).gameObject);
-            for(int j = 0; j < transform.GetChild(2).GetChild(0).GetChild(i).childCount; j++)
+            lines.Add(menu.transform.GetChild(0).GetChild(i).gameObject);
+            for(int j = 0; j < menu.transform.GetChild(0).GetChild(i).childCount; j++)
             {
-                images.Add(transform.GetChild(2).GetChild(0).GetChild(i).GetChild(j).GetComponent<Image>());
-                roboInventoryButtons.Add(images[j].GetComponent<RoboIntventoryButtons>());
+                images.Add(menu.transform.GetChild(0).GetChild(i).GetChild(j).GetComponent<Image>());
+                roboInventoryButtons.Add(menu.transform.GetChild(0).GetChild(i).GetChild(j).GetComponent<RoboIntventoryButtons>());
             }
         }
     }
@@ -37,6 +39,8 @@ public class RoboInventory : MonoBehaviour
     public void Return(GameObject leave)
     {
         reason = RoboInventoryReason.Not;
+        organise = false;
+        GameManager.instance.invent.organise = false;
         leave.SetActive(false);
         Time.timeScale = 1;
     }

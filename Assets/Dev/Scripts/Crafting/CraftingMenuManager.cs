@@ -17,16 +17,16 @@ public class CraftingMenuManager : MonoBehaviour
     {
         instance = this;
         menu = transform.GetChild(1).gameObject;
-        recipeBox = menu.transform.GetChild(0).GetChild(1).gameObject;
-        displayBox = recipeBox.transform.GetChild(0).GetChild(0).gameObject;
-        for(int i = 1; i < recipeBox.transform.GetChild(0).childCount; i++)
+        recipeBox = menu.transform.GetChild(0).GetChild(2).gameObject;
+        displayBox = recipeBox.transform.GetChild(1).GetChild(0).gameObject;
+        for(int i = 0; i < recipeBox.transform.GetChild(0).childCount; i++)
         {
             //get the text objects
             needed.Add(recipeBox.transform.GetChild(0).GetChild(i).gameObject);
         }
-        for(int i = 0; i < menu.transform.GetChild(0).GetChild(0).childCount; i++)
+        for(int i = 0; i < menu.transform.GetChild(0).GetChild(1).childCount; i++)
         {
-            Transform Lines = menu.transform.GetChild(0).GetChild(0);
+            Transform Lines = menu.transform.GetChild(0).GetChild(1);
             lines.Add(Lines.GetChild(i).gameObject);
             for(int j = 0; j < lines[i].transform.childCount; j++)
             {
@@ -39,15 +39,14 @@ public class CraftingMenuManager : MonoBehaviour
     public void UpdateMenu()
     {
         //change the icons when you get new crafting recipes
-        bool done = false;
         for(int i = 0; i < buttons.Capacity; i++)
         {
-            if(buttons[i].recipe == null && done == false)
+            if(buttons[i].recipe == null)
             {
                 buttons[i].recipe = CraftingManager.instance.craftingRecipes[i];
-                Image img = buttons[i].GetComponent<Image>();
+                Image img = buttons[i].child.GetComponent<Image>();
                 img.sprite = CraftingManager.instance.craftingRecipes[i].icon;
-                done = true;
+                break;
             }
         }
     }

@@ -66,7 +66,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 752749d4f4d408e499d80cd302b3aa28, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -113,6 +113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eaea525f174be0c40b92185a0919abd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hp: 200
   produces:
   - {fileID: 11400000, guid: e0fc0c86270a11047a4b98602fbd83f2, type: 2}
   - {fileID: 11400000, guid: e0fc0c86270a11047a4b98602fbd83f2, type: 2}
@@ -216,6 +217,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ba1e1f51b2488eb4186f6d56b71c4993, type: 2}
   sprite: {fileID: 21300000, guid: 09f92c2ac9c9f044b96b7aa67e7e2ec5, type: 3}
   img: {fileID: 9148056329333866438}
+  button: {fileID: 0}
 --- !u!135 &9148056328891863512
 SphereCollider:
   m_ObjectHideFlags: 0

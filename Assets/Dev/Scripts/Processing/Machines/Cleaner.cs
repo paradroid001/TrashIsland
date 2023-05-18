@@ -2,15 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Cleaner : ProductionMachine
+public class Cleaner : ProductionMachine 
 {
-    // Start is called before the first frame update
+    public bool repaired;
     void Start()
     {
         cleaner = this;
     }
-
-    // Update is called once per frame
     void Update()
     {
         if(interacting == true)
@@ -20,13 +18,48 @@ public class Cleaner : ProductionMachine
     }
     public void DoThing(TrashType thing)
     {
-        if(thing.plastic != null && thing.plastic.clean == false && thing.plastic.shredded == true)
+        if(thing.plastic != null && thing.plastic.shredded == true && thing.plastic.clean == false && thing.recyclable == true)
         {
-            GameManager.instance.invent.AddToInventory(ProcessManager.instance.cleanPlastic);
+            switch(thing.plastic.plasticType)
+            {
+                case Plastic.PlasticType.Lid:
+                    GameManager.instance.invent.AddToInventory(ProcessManager.instance.cleanPlasticLid);
+                    break;
+                case Plastic.PlasticType.Container:
+                    GameManager.instance.invent.AddToInventory(ProcessManager.instance.cleanPlasticContainer);
+                    break;
+                case Plastic.PlasticType.Bottle:
+                    GameManager.instance.invent.AddToInventory(ProcessManager.instance.cleanPlasticBottle);
+                    break;
+            }
         }
-        if(thing.metal != null && thing.metal.shredded == true && thing.plastic.clean == false)
+        else if(thing.metal != null && thing.metal.shredded == true && thing.metal.clean == false && thing.recyclable == true)
         {
-            GameManager.instance.invent.AddToInventory(ProcessManager.instance.cleanMetal);
+            Debug.Log(thing.name);
+            switch(thing.metal.metalType)
+            {
+                case Metal.MetalType.Lid:
+                    GameManager.instance.invent.AddToInventory(ProcessManager.instance.cleanMetalLid);
+                    break;
+                case Metal.MetalType.Tin:
+                    GameManager.instance.invent.AddToInventory(ProcessManager.instance.cleanMetalTin);
+                    break;
+                case Metal.MetalType.Can:
+                    GameManager.instance.invent.AddToInventory(ProcessManager.instance.cleanMetalCan);
+                    break;
+            }
+        }
+        else if(thing.glass != null &&  thing.glass.crushed == true && thing.glass.clean == false && thing.glass.recyclable == true)
+        {
+            switch(thing.glass.glassType)
+            {
+                case Glass.GlassType.Jar:
+                GameManager.instance.invent.AddToInventory(ProcessManager.instance.glassJarWashed);
+                    break;
+                case Glass.GlassType.Bottle:
+                GameManager.instance.invent.AddToInventory(ProcessManager.instance.glassBottleWashed);
+                    break;
+            }
         }
     }
 }

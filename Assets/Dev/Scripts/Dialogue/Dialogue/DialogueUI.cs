@@ -16,6 +16,7 @@ public class DialogueUI : MonoBehaviour
     public Image charSprite;
     public TextMeshProUGUI charName;
     public Canvas canvas;
+    public GameObject speaker;
     public void Start()
     {
         typeWriterEffect = GetComponent<TypeWriterEffect>();
@@ -55,12 +56,23 @@ public class DialogueUI : MonoBehaviour
             {
                 string dialogue = dialogueOBJ.Dialogue[i];
                 yield return RunTypingEffect(dialogue);
+                //Debug.Log(i);
                 textLabel.text = dialogue;
-            
+                if(speaker.GetComponent<DialogueEvents>() != null)
+                {
+                    DialogueEvents speakA = speaker.GetComponent<DialogueEvents>();
+                    if(speakA.diaEvents[i].align[i] == i)
+                    {
+                        Debug.Log(i);
+                        dialogueOBJ.diaEvents[i].DiaEvent.Invoke();
+                    }
+                }
+                
                 if (i == dialogueOBJ.Dialogue.Length - 1 && dialogueOBJ.HasResponses) break;
                 yield return null;
                 yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.E));
             }
+            
             
             if(dialogueOBJ.HasResponses)
             {

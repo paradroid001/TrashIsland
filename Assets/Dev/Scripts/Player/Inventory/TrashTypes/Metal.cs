@@ -9,4 +9,6 @@ public class Metal : TrashType
     public bool shredded;
     public bool crushed;
     public bool melted;
+    public enum MetalType{Can, Lid, Tin};
+    public MetalType metalType;
 }

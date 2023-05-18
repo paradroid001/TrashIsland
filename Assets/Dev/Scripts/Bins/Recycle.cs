@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.AI;
 
 public class Recycle : Bin
 {
@@ -9,6 +10,7 @@ public class Recycle : Bin
     void Awake()
     {
         binType = BinType.Recycle;
+        agent = transform.GetComponent<NavMeshAgent>();
         deposit = GameObject.FindObjectOfType<RecycleDeposit>();
         //GameManager.instance.recycles.Add(this);
     }
@@ -49,14 +51,11 @@ public class Recycle : Bin
     public void Interact()
     {
         GameManager.instance.invent.reason = Inventory.InventoryReason.Bin;
-        if(GameManager.instance.invent.inventoryItems.Capacity <= 12)
-        {
             Debug.Log("Interact");
             GameManager.instance.inventory.SetActive(true);
             GameManager.instance.invent.transform.GetChild(0).GetChild(1).gameObject.SetActive(true);
             GameManager.instance.invent.currentBin = this;
             Time.timeScale = 0;
-        }
         /*switch (trash.trashType)
         {
             case Trash.TrashType1.recycle:
