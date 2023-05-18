@@ -65,7 +65,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 5561349426305759274, guid: 466f1cc4e45512b49beb9ef8b5dcde3c, type: 3}
+  - {fileID: 2100000, guid: 19f048cae423c154ea718eb369d2552e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -115,9 +115,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 526ce2e4265751747b979699d7591d07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trashType: 0
+  trashType: 1
   trashColour: 0
-  typeOf: {fileID: 0}
+  typeOf: {fileID: 11400000, guid: ae3f7221bfbd23e429727b8f5dfefa80, type: 2}
   buriedTrash: {fileID: 0}
 --- !u!135 &1773625554556796890
 SphereCollider:
@@ -130,7 +130,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.2156937
+  m_Radius: 2
   m_Center: {x: 0, y: 0.2156937, z: 0}
 --- !u!65 &5410467276520710080
 BoxCollider:

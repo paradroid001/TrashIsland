@@ -111,7 +111,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.3069585
+  m_Radius: 2
   m_Center: {x: 0, y: -0.17099118, z: 0.031119823}
 --- !u!54 &8322853324465758590
 Rigidbody:
@@ -142,6 +142,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trashType: 0
-  trashColour: 0
-  typeOf: {fileID: 0}
+  trashColour: 2
+  typeOf: {fileID: 11400000, guid: 6fcea3359342ed343bc899b5db9e61f7, type: 2}
   buriedTrash: {fileID: 0}

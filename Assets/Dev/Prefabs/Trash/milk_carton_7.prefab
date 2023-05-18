@@ -115,9 +115,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 526ce2e4265751747b979699d7591d07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trashType: 0
+  trashType: 1
   trashColour: 0
-  typeOf: {fileID: 0}
+  typeOf: {fileID: 11400000, guid: 5f1206427012f2c449eb160359077080, type: 2}
   buriedTrash: {fileID: 0}
 --- !u!135 &1463871619273536514
 SphereCollider:
@@ -130,7 +130,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.16227646
+  m_Radius: 2
   m_Center: {x: 0, y: 0.16227646, z: 0}
 --- !u!65 &2173177283111113477
 BoxCollider:
