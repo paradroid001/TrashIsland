@@ -35,9 +35,9 @@ RectTransform:
   m_Father: {fileID: 8129741104829021350}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 90, y: -121.4}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 160, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3184936890020800849
@@ -793,7 +793,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   recipe: {fileID: 0}
+  child: {fileID: 0}
   need: []
+  neededAmt: 0
+  amtHaveVsNeed: 0
 --- !u!1 &8129741104094649372
 GameObject:
   m_ObjectHideFlags: 0
@@ -1019,10 +1022,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdb90f7fdea107c438a5fe45ccbb2220, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventoryButtons: {fileID: 0}
+  roboIntventoryButtons: {fileID: 8129741104095184728}
   item: {fileID: 0}
   inventory: {fileID: 0}
   used: 0
   selectable: 0
+  number: {fileID: 0}
 --- !u!1 &8129741104164025385
 GameObject:
   m_ObjectHideFlags: 0
@@ -1112,10 +1118,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdb90f7fdea107c438a5fe45ccbb2220, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventoryButtons: {fileID: 0}
+  roboIntventoryButtons: {fileID: 8129741104164025389}
   item: {fileID: 0}
   inventory: {fileID: 0}
   used: 0
   selectable: 0
+  number: {fileID: 0}
 --- !u!1 &8129741104177321078
 GameObject:
   m_ObjectHideFlags: 0
@@ -1389,10 +1398,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdb90f7fdea107c438a5fe45ccbb2220, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventoryButtons: {fileID: 0}
+  roboIntventoryButtons: {fileID: 8129741104229553406}
   item: {fileID: 0}
   inventory: {fileID: 0}
   used: 0
   selectable: 0
+  number: {fileID: 0}
 --- !u!1 &8129741104234112743
 GameObject:
   m_ObjectHideFlags: 0
@@ -1483,7 +1495,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   recipe: {fileID: 0}
+  child: {fileID: 0}
   need: []
+  neededAmt: 0
+  amtHaveVsNeed: 0
 --- !u!1 &8129741104248908360
 GameObject:
   m_ObjectHideFlags: 0
@@ -1574,7 +1589,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   recipe: {fileID: 0}
+  child: {fileID: 0}
   need: []
+  neededAmt: 0
+  amtHaveVsNeed: 0
 --- !u!1 &8129741104251819672
 GameObject:
   m_ObjectHideFlags: 0
@@ -1665,7 +1683,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   recipe: {fileID: 0}
+  child: {fileID: 0}
   need: []
+  neededAmt: 0
+  amtHaveVsNeed: 0
 --- !u!1 &8129741104263232318
 GameObject:
   m_ObjectHideFlags: 0
@@ -1755,10 +1776,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdb90f7fdea107c438a5fe45ccbb2220, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventoryButtons: {fileID: 0}
+  roboIntventoryButtons: {fileID: 8129741104263232306}
   item: {fileID: 0}
   inventory: {fileID: 0}
   used: 0
   selectable: 0
+  number: {fileID: 0}
 --- !u!1 &8129741104306080312
 GameObject:
   m_ObjectHideFlags: 0
@@ -1848,10 +1872,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdb90f7fdea107c438a5fe45ccbb2220, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventoryButtons: {fileID: 0}
+  roboIntventoryButtons: {fileID: 8129741104306080316}
   item: {fileID: 0}
   inventory: {fileID: 0}
   used: 0
   selectable: 0
+  number: {fileID: 0}
 --- !u!1 &8129741104318547256
 GameObject:
   m_ObjectHideFlags: 0
@@ -1942,7 +1969,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   recipe: {fileID: 0}
+  child: {fileID: 0}
   need: []
+  neededAmt: 0
+  amtHaveVsNeed: 0
 --- !u!1 &8129741104321093779
 GameObject:
   m_ObjectHideFlags: 0
@@ -2422,10 +2452,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdb90f7fdea107c438a5fe45ccbb2220, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventoryButtons: {fileID: 0}
+  roboIntventoryButtons: {fileID: 8129741104441009794}
   item: {fileID: 0}
   inventory: {fileID: 0}
   used: 0
   selectable: 0
+  number: {fileID: 0}
 --- !u!1 &8129741104457212345
 GameObject:
   m_ObjectHideFlags: 0
@@ -2663,7 +2696,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   recipe: {fileID: 0}
+  child: {fileID: 0}
   need: []
+  neededAmt: 0
+  amtHaveVsNeed: 0
 --- !u!1 &8129741104501202776
 GameObject:
   m_ObjectHideFlags: 0
@@ -2792,7 +2828,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   recipe: {fileID: 0}
+  child: {fileID: 0}
   need: []
+  neededAmt: 0
+  amtHaveVsNeed: 0
 --- !u!1 &8129741104624598554
 GameObject:
   m_ObjectHideFlags: 0
@@ -2882,10 +2921,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdb90f7fdea107c438a5fe45ccbb2220, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventoryButtons: {fileID: 0}
+  roboIntventoryButtons: {fileID: 8129741104624598558}
   item: {fileID: 0}
   inventory: {fileID: 0}
   used: 0
   selectable: 0
+  number: {fileID: 0}
 --- !u!1 &8129741104625836597
 GameObject:
   m_ObjectHideFlags: 0
@@ -2975,10 +3017,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdb90f7fdea107c438a5fe45ccbb2220, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventoryButtons: {fileID: 0}
+  roboIntventoryButtons: {fileID: 8129741104625836617}
   item: {fileID: 0}
   inventory: {fileID: 0}
   used: 0
   selectable: 0
+  number: {fileID: 0}
 --- !u!1 &8129741104634706869
 GameObject:
   m_ObjectHideFlags: 0
@@ -3068,8 +3113,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53c0e54c491a9684296872fb38190bb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventoryButtons: {fileID: 8129741104634706889}
+  roboIntventoryButtons: {fileID: 0}
   inventory: {fileID: 0}
   item: {fileID: 0}
+  number: {fileID: 0}
   selectable: 0
   selected: 0
 --- !u!1 &8129741104655714088
@@ -3161,10 +3209,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdb90f7fdea107c438a5fe45ccbb2220, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventoryButtons: {fileID: 0}
+  roboIntventoryButtons: {fileID: 8129741104655714092}
   item: {fileID: 0}
   inventory: {fileID: 0}
   used: 0
   selectable: 0
+  number: {fileID: 0}
 --- !u!1 &8129741104672969565
 GameObject:
   m_ObjectHideFlags: 0
@@ -3254,10 +3305,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdb90f7fdea107c438a5fe45ccbb2220, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventoryButtons: {fileID: 0}
+  roboIntventoryButtons: {fileID: 8129741104672969553}
   item: {fileID: 0}
   inventory: {fileID: 0}
   used: 0
   selectable: 0
+  number: {fileID: 0}
 --- !u!1 &8129741104677847121
 GameObject:
   m_ObjectHideFlags: 0
@@ -3589,8 +3643,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53c0e54c491a9684296872fb38190bb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventoryButtons: {fileID: 8129741104733368671}
+  roboIntventoryButtons: {fileID: 0}
   inventory: {fileID: 0}
   item: {fileID: 0}
+  number: {fileID: 0}
   selectable: 0
   selected: 0
 --- !u!1 &8129741104736951733
@@ -3926,10 +3983,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdb90f7fdea107c438a5fe45ccbb2220, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventoryButtons: {fileID: 0}
+  roboIntventoryButtons: {fileID: 8129741104754841132}
   item: {fileID: 0}
   inventory: {fileID: 0}
   used: 0
   selectable: 0
+  number: {fileID: 0}
 --- !u!1 &8129741104813821102
 GameObject:
   m_ObjectHideFlags: 0
@@ -4019,8 +4079,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53c0e54c491a9684296872fb38190bb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventoryButtons: {fileID: 8129741104813821090}
+  roboIntventoryButtons: {fileID: 0}
   inventory: {fileID: 0}
   item: {fileID: 0}
+  number: {fileID: 0}
   selectable: 0
   selected: 0
 --- !u!1 &8129741104813978376
@@ -4113,7 +4176,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   recipe: {fileID: 0}
+  child: {fileID: 0}
   need: []
+  neededAmt: 0
+  amtHaveVsNeed: 0
 --- !u!1 &8129741104829021351
 GameObject:
   m_ObjectHideFlags: 0
@@ -4322,10 +4388,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdb90f7fdea107c438a5fe45ccbb2220, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventoryButtons: {fileID: 0}
+  roboIntventoryButtons: {fileID: 8129741104865711393}
   item: {fileID: 0}
   inventory: {fileID: 0}
   used: 0
   selectable: 0
+  number: {fileID: 0}
 --- !u!1 &8129741104872961558
 GameObject:
   m_ObjectHideFlags: 0
@@ -4763,8 +4832,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53c0e54c491a9684296872fb38190bb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventoryButtons: {fileID: 8129741104959271351}
+  roboIntventoryButtons: {fileID: 0}
   inventory: {fileID: 0}
   item: {fileID: 0}
+  number: {fileID: 0}
   selectable: 0
   selected: 0
 --- !u!1 &8129741105000283757
@@ -4970,6 +5042,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
+  m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -5027,6 +5100,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   capacity: 10
   reason: 0
+  roboInventory: {fileID: 0}
+  organise: 0
   button: {fileID: 0}
   processButton: {fileID: 0}
   backButton: {fileID: 0}
@@ -5048,6 +5123,8 @@ MonoBehaviour:
   currentMachine: {fileID: 0}
   dropButton: {fileID: 8129741104829021351}
   equipImg: {fileID: 4426169194905743045}
+  nameDisplay: {fileID: 0}
+  swap: []
 --- !u!114 &8129741105003074638
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5062,6 +5139,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   capacity: 32
   reason: 0
+  organise: 0
   menu: {fileID: 0}
   images: []
   amount: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
@@ -5104,6 +5182,7 @@ MonoBehaviour:
   charSprite: {fileID: 8129741105857228840}
   charName: {fileID: 8129741105077926812}
   canvas: {fileID: 0}
+  speaker: {fileID: 0}
 --- !u!114 &8129741105003074636
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5130,7 +5209,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   responseBox: {fileID: 8129741104501202783}
-  responseButtonTemplate: {fileID: 2690982469523256419, guid: 506394dddad53624d9cbf1753c05bb70, type: 3}
+  responseButtonTemplate: {fileID: 2690982469523256419, guid: 506394dddad53624d9cbf1753c05bb70,
+    type: 3}
   responseContainer: {fileID: 8129741105751075417}
 --- !u!1 &8129741105008550639
 GameObject:
@@ -5221,10 +5301,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdb90f7fdea107c438a5fe45ccbb2220, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventoryButtons: {fileID: 0}
+  roboIntventoryButtons: {fileID: 8129741105008550627}
   item: {fileID: 0}
   inventory: {fileID: 0}
   used: 0
   selectable: 0
+  number: {fileID: 0}
 --- !u!1 &8129741105033611736
 GameObject:
   m_ObjectHideFlags: 0
@@ -5448,8 +5531,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53c0e54c491a9684296872fb38190bb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventoryButtons: {fileID: 8129741105033847908}
+  roboIntventoryButtons: {fileID: 0}
   inventory: {fileID: 0}
   item: {fileID: 0}
+  number: {fileID: 0}
   selectable: 0
   selected: 0
 --- !u!1 &8129741105050440217
@@ -5676,10 +5762,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdb90f7fdea107c438a5fe45ccbb2220, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventoryButtons: {fileID: 0}
+  roboIntventoryButtons: {fileID: 8129741105051085903}
   item: {fileID: 0}
   inventory: {fileID: 0}
   used: 0
   selectable: 0
+  number: {fileID: 0}
 --- !u!1 &8129741105058270364
 GameObject:
   m_ObjectHideFlags: 0
@@ -6230,10 +6319,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdb90f7fdea107c438a5fe45ccbb2220, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventoryButtons: {fileID: 0}
+  roboIntventoryButtons: {fileID: 8129741105138159332}
   item: {fileID: 0}
   inventory: {fileID: 0}
   used: 0
   selectable: 0
+  number: {fileID: 0}
 --- !u!1 &8129741105174404184
 GameObject:
   m_ObjectHideFlags: 0
@@ -6395,7 +6487,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   recipe: {fileID: 0}
+  child: {fileID: 0}
   need: []
+  neededAmt: 0
+  amtHaveVsNeed: 0
 --- !u!1 &8129741105213403123
 GameObject:
   m_ObjectHideFlags: 0
@@ -6486,7 +6581,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   recipe: {fileID: 0}
+  child: {fileID: 0}
   need: []
+  neededAmt: 0
+  amtHaveVsNeed: 0
 --- !u!1 &8129741105240962035
 GameObject:
   m_ObjectHideFlags: 0
@@ -6653,7 +6751,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   recipe: {fileID: 0}
+  child: {fileID: 0}
   need: []
+  neededAmt: 0
+  amtHaveVsNeed: 0
 --- !u!1 &8129741105275322496
 GameObject:
   m_ObjectHideFlags: 0
@@ -7025,8 +7126,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53c0e54c491a9684296872fb38190bb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventoryButtons: {fileID: 8129741105329848952}
+  roboIntventoryButtons: {fileID: 0}
   inventory: {fileID: 0}
   item: {fileID: 0}
+  number: {fileID: 0}
   selectable: 0
   selected: 0
 --- !u!1 &8129741105341193722
@@ -7208,8 +7312,8 @@ RectTransform:
   m_Father: {fileID: 8129741104829021350}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 160, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -7620,10 +7724,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdb90f7fdea107c438a5fe45ccbb2220, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventoryButtons: {fileID: 0}
+  roboIntventoryButtons: {fileID: 8129741105453906578}
   item: {fileID: 0}
   inventory: {fileID: 0}
   used: 0
   selectable: 0
+  number: {fileID: 0}
 --- !u!1 &8129741105461510470
 GameObject:
   m_ObjectHideFlags: 0
@@ -7713,8 +7820,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53c0e54c491a9684296872fb38190bb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventoryButtons: {fileID: 8129741105461510490}
+  roboIntventoryButtons: {fileID: 0}
   inventory: {fileID: 0}
   item: {fileID: 0}
+  number: {fileID: 0}
   selectable: 0
   selected: 0
 --- !u!1 &8129741105466509206
@@ -7806,10 +7916,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdb90f7fdea107c438a5fe45ccbb2220, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventoryButtons: {fileID: 0}
+  roboIntventoryButtons: {fileID: 8129741105466509226}
   item: {fileID: 0}
   inventory: {fileID: 0}
   used: 0
   selectable: 0
+  number: {fileID: 0}
 --- !u!1 &8129741105467446124
 GameObject:
   m_ObjectHideFlags: 0
@@ -7899,10 +8012,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdb90f7fdea107c438a5fe45ccbb2220, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventoryButtons: {fileID: 0}
+  roboIntventoryButtons: {fileID: 8129741105467446112}
   item: {fileID: 0}
   inventory: {fileID: 0}
   used: 0
   selectable: 0
+  number: {fileID: 0}
 --- !u!1 &8129741105481043321
 GameObject:
   m_ObjectHideFlags: 0
@@ -7993,7 +8109,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   recipe: {fileID: 0}
+  child: {fileID: 0}
   need: []
+  neededAmt: 0
+  amtHaveVsNeed: 0
 --- !u!1 &8129741105503688093
 GameObject:
   m_ObjectHideFlags: 0
@@ -8219,7 +8338,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   recipe: {fileID: 0}
+  child: {fileID: 0}
   need: []
+  neededAmt: 0
+  amtHaveVsNeed: 0
 --- !u!1 &8129741105539588431
 GameObject:
   m_ObjectHideFlags: 0
@@ -8310,7 +8432,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   recipe: {fileID: 0}
+  child: {fileID: 0}
   need: []
+  neededAmt: 0
+  amtHaveVsNeed: 0
 --- !u!1 &8129741105613542468
 GameObject:
   m_ObjectHideFlags: 0
@@ -8535,10 +8660,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdb90f7fdea107c438a5fe45ccbb2220, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventoryButtons: {fileID: 0}
+  roboIntventoryButtons: {fileID: 8129741105644405521}
   item: {fileID: 0}
   inventory: {fileID: 0}
   used: 0
   selectable: 0
+  number: {fileID: 0}
 --- !u!1 &8129741105656535599
 GameObject:
   m_ObjectHideFlags: 0
@@ -8897,10 +9025,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdb90f7fdea107c438a5fe45ccbb2220, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventoryButtons: {fileID: 0}
+  roboIntventoryButtons: {fileID: 8129741105694329950}
   item: {fileID: 0}
   inventory: {fileID: 0}
   used: 0
   selectable: 0
+  number: {fileID: 0}
 --- !u!1 &8129741105704733041
 GameObject:
   m_ObjectHideFlags: 0
@@ -9068,10 +9199,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdb90f7fdea107c438a5fe45ccbb2220, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventoryButtons: {fileID: 0}
+  roboIntventoryButtons: {fileID: 8129741105720205275}
   item: {fileID: 0}
   inventory: {fileID: 0}
   used: 0
   selectable: 0
+  number: {fileID: 0}
 --- !u!1 &8129741105724457335
 GameObject:
   m_ObjectHideFlags: 0
@@ -9162,7 +9296,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   recipe: {fileID: 0}
+  child: {fileID: 0}
   need: []
+  neededAmt: 0
+  amtHaveVsNeed: 0
 --- !u!1 &8129741105738083172
 GameObject:
   m_ObjectHideFlags: 0
@@ -9253,7 +9390,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   recipe: {fileID: 0}
+  child: {fileID: 0}
   need: []
+  neededAmt: 0
+  amtHaveVsNeed: 0
 --- !u!1 &8129741105751075418
 GameObject:
   m_ObjectHideFlags: 0
@@ -9825,7 +9965,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   recipe: {fileID: 0}
+  child: {fileID: 0}
   need: []
+  neededAmt: 0
+  amtHaveVsNeed: 0
 --- !u!1 &8129741105824621449
 GameObject:
   m_ObjectHideFlags: 0
@@ -10114,10 +10257,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdb90f7fdea107c438a5fe45ccbb2220, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventoryButtons: {fileID: 0}
+  roboIntventoryButtons: {fileID: 8129741105843678929}
   item: {fileID: 0}
   inventory: {fileID: 0}
   used: 0
   selectable: 0
+  number: {fileID: 0}
 --- !u!1 &8129741105857228843
 GameObject:
   m_ObjectHideFlags: 0
@@ -10283,8 +10429,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53c0e54c491a9684296872fb38190bb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventoryButtons: {fileID: 8129741105866910033}
+  roboIntventoryButtons: {fileID: 0}
   inventory: {fileID: 0}
   item: {fileID: 0}
+  number: {fileID: 0}
   selectable: 0
   selected: 0
 --- !u!1 &8129741105908656836
@@ -10376,10 +10525,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdb90f7fdea107c438a5fe45ccbb2220, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventoryButtons: {fileID: 0}
+  roboIntventoryButtons: {fileID: 8129741105908656856}
   item: {fileID: 0}
   inventory: {fileID: 0}
   used: 0
   selectable: 0
+  number: {fileID: 0}
 --- !u!1 &8129741105916408930
 GameObject:
   m_ObjectHideFlags: 0
@@ -10469,10 +10621,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdb90f7fdea107c438a5fe45ccbb2220, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventoryButtons: {fileID: 0}
+  roboIntventoryButtons: {fileID: 8129741105916408934}
   item: {fileID: 0}
   inventory: {fileID: 0}
   used: 0
   selectable: 0
+  number: {fileID: 0}
 --- !u!1 &8129741105921312851
 GameObject:
   m_ObjectHideFlags: 0
@@ -10562,10 +10717,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdb90f7fdea107c438a5fe45ccbb2220, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventoryButtons: {fileID: 0}
+  roboIntventoryButtons: {fileID: 8129741105921312855}
   item: {fileID: 0}
   inventory: {fileID: 0}
   used: 0
   selectable: 0
+  number: {fileID: 0}
 --- !u!1 &8129741105924298012
 GameObject:
   m_ObjectHideFlags: 0
@@ -10806,7 +10964,8 @@ MonoBehaviour:
         m_MethodName: AddToRoboInventory
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 4abd2f7f5d88fd540ac1fa3290ba3cdf, type: 2}
+          m_ObjectArgument: {fileID: 11400000, guid: 4abd2f7f5d88fd540ac1fa3290ba3cdf,
+            type: 2}
           m_ObjectArgumentAssemblyTypeName: InventoryItem, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -10902,8 +11061,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53c0e54c491a9684296872fb38190bb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventoryButtons: {fileID: 8129741105940998528}
+  roboIntventoryButtons: {fileID: 0}
   inventory: {fileID: 0}
   item: {fileID: 0}
+  number: {fileID: 0}
   selectable: 0
   selected: 0
 --- !u!1 &8129741105947689592
@@ -10995,10 +11157,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdb90f7fdea107c438a5fe45ccbb2220, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventoryButtons: {fileID: 0}
+  roboIntventoryButtons: {fileID: 8129741105947689596}
   item: {fileID: 0}
   inventory: {fileID: 0}
   used: 0
   selectable: 0
+  number: {fileID: 0}
 --- !u!1 &8129741105951367251
 GameObject:
   m_ObjectHideFlags: 0
@@ -11088,10 +11253,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdb90f7fdea107c438a5fe45ccbb2220, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventoryButtons: {fileID: 0}
+  roboIntventoryButtons: {fileID: 8129741105951367255}
   item: {fileID: 0}
   inventory: {fileID: 0}
   used: 0
   selectable: 0
+  number: {fileID: 0}
 --- !u!1 &8129741105953103333
 GameObject:
   m_ObjectHideFlags: 0
@@ -11182,7 +11350,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   recipe: {fileID: 0}
+  child: {fileID: 0}
   need: []
+  neededAmt: 0
+  amtHaveVsNeed: 0
 --- !u!1 &8129741105959768557
 GameObject:
   m_ObjectHideFlags: 0
@@ -11272,8 +11443,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53c0e54c491a9684296872fb38190bb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventoryButtons: {fileID: 8129741105959768545}
+  roboIntventoryButtons: {fileID: 0}
   inventory: {fileID: 0}
   item: {fileID: 0}
+  number: {fileID: 0}
   selectable: 0
   selected: 0
 --- !u!1 &8129741105984216404
@@ -11366,7 +11540,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   recipe: {fileID: 0}
+  child: {fileID: 0}
   need: []
+  neededAmt: 0
+  amtHaveVsNeed: 0
 --- !u!1 &8129741105984885654
 GameObject:
   m_ObjectHideFlags: 0
@@ -12108,10 +12285,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdb90f7fdea107c438a5fe45ccbb2220, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventoryButtons: {fileID: 0}
+  roboIntventoryButtons: {fileID: 8129741106054861390}
   item: {fileID: 0}
   inventory: {fileID: 0}
   used: 0
   selectable: 0
+  number: {fileID: 0}
 --- !u!1 &8129741106064560291
 GameObject:
   m_ObjectHideFlags: 0
@@ -12201,10 +12381,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdb90f7fdea107c438a5fe45ccbb2220, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventoryButtons: {fileID: 0}
+  roboIntventoryButtons: {fileID: 8129741106064560295}
   item: {fileID: 0}
   inventory: {fileID: 0}
   used: 0
   selectable: 0
+  number: {fileID: 0}
 --- !u!1 &8129741106072351973
 GameObject:
   m_ObjectHideFlags: 0
@@ -12294,10 +12477,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdb90f7fdea107c438a5fe45ccbb2220, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventoryButtons: {fileID: 0}
+  roboIntventoryButtons: {fileID: 8129741106072351993}
   item: {fileID: 0}
   inventory: {fileID: 0}
   used: 0
   selectable: 0
+  number: {fileID: 0}
 --- !u!1 &8129741106162839172
 GameObject:
   m_ObjectHideFlags: 0
@@ -12387,10 +12573,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdb90f7fdea107c438a5fe45ccbb2220, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventoryButtons: {fileID: 0}
+  roboIntventoryButtons: {fileID: 8129741106162839192}
   item: {fileID: 0}
   inventory: {fileID: 0}
   used: 0
   selectable: 0
+  number: {fileID: 0}
 --- !u!1 &8129741106179707397
 GameObject:
   m_ObjectHideFlags: 0
@@ -12615,10 +12804,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdb90f7fdea107c438a5fe45ccbb2220, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventoryButtons: {fileID: 0}
+  roboIntventoryButtons: {fileID: 8129741106199148509}
   item: {fileID: 0}
   inventory: {fileID: 0}
   used: 0
   selectable: 0
+  number: {fileID: 0}
 --- !u!1 &8129741106210983799
 GameObject:
   m_ObjectHideFlags: 0
@@ -12709,4 +12901,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   recipe: {fileID: 0}
+  child: {fileID: 0}
   need: []
+  neededAmt: 0
+  amtHaveVsNeed: 0
