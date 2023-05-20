@@ -1,12 +1,14 @@
 fileFormatVersion: 2
-guid: 526124e5562b32d428931bb0d03beb27
+guid: 767c011d00970bc49ae57e41c803fc46
 ModelImporter:
-  serializedVersion: 22103
-  internalIDToNameTable:
+  serializedVersion: 21300
+  internalIDToNameTable: []
+  externalObjects:
   - first:
-      74: 1827226128182048838
-    second: Take 001
-  externalObjects: {}
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: glassHus_mat
+    second: {fileID: 2100000, guid: b95026c22ba7fb4428593af49111b4cd, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -38,7 +40,7 @@ ModelImporter:
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 50
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
@@ -70,7 +72,6 @@ ModelImporter:
     secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
     useFileScale: 1
-    strictVertexDataChecks: 0
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -79,12 +80,7 @@ ModelImporter:
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
-  referencedClips:
-  - 55dae29dfd6482b44928a21c17d13ee1
-  - 54674525e58d7ae4686660c173bb6493
-  - c3cbbc6f9cf4b0643b2cd46e4f6623ce
-  - cbdda7e670acf3d4790adb255d07be26
-  - c3923e949c655e7459c911f707c0dff5
+  referencedClips: []
   importAnimation: 1
   humanDescription:
     serializedVersion: 3
@@ -97,7 +93,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 1
+    globalScale: 50
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
@@ -108,7 +104,6 @@ ModelImporter:
   humanoidOversampling: 1
   avatarSetup: 0
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
-  importBlendShapeDeformPercent: 0
   remapMaterialsIfMaterialImportModeIsNone: 0
   additionalBone: 0
   userData: 

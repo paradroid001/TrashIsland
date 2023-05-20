@@ -1042,6 +1042,7 @@ MonoBehaviour:
   dir: {x: 0, y: 0, z: 0}
   interactable: 0
   holding: 0
+  acting: 0
   Interactables: []
   currentInteract: 0
   hold: {fileID: 4436363805456237649}
@@ -1719,7 +1720,6 @@ GameObject:
   - component: {fileID: 2699197063395218973}
   - component: {fileID: 4436363804657914007}
   - component: {fileID: 4436363804657914006}
-  - component: {fileID: 4436363804657914005}
   m_Layer: 0
   m_Name: Rig_Mesh
   m_TagString: Player
@@ -1858,30 +1858,6 @@ CapsuleCollider:
   m_Height: 2.13
   m_Direction: 1
   m_Center: {x: 0.0011948943, y: 1.2, z: -0.024522275}
---- !u!114 &4436363804657914005
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5089106256553214140}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1278ee0583754b45baa54930f9d0d2c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hair: {fileID: 0}
-  doneHair: {fileID: 0}
-  hairDone: 0
-  shirt: {fileID: 0}
-  doneShirt: {fileID: 0}
-  shirtDone: 0
-  pants: {fileID: 0}
-  donePants: {fileID: 0}
-  pantsDone: 0
-  shoes: {fileID: 0}
-  doneShoes: {fileID: 0}
-  shoesDone: 0
 --- !u!1 &5178486746449155948
 GameObject:
   m_ObjectHideFlags: 0

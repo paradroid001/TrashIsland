@@ -17,8 +17,9 @@ public class Bin : MonoBehaviour
     public Transform sparc;
     public void Start()
     {
-        sparc = GameManager.instance.sparc;
+        
         agent = transform.GetComponent<NavMeshAgent>();
+        sparc = GameManager.instance.sparc;
     }
     public void Update()
     {
