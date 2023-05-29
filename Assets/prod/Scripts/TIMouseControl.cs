@@ -1,22 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using GameCore;
 
 namespace TrashIsland
 {
-    public class TIMouseControl : MonoBehaviour
+    public class TIMouseControl : TIPlayerInputService
     {
         protected TICharacterMovement _movement;
         public GameObject clickDestinationPrefab;
         private GameObject oldClickDestination = null;
-        // Start is called before the first frame update
-        void Start()
+
+        public override void InitService()
         {
+            base.InitService();
+        }
+        public override void ShutdownService()
+        {
+            base.ShutdownService();
+        }
+
+        // Start is called before the first frame update
+        protected override void Start()
+        {
+            base.Start();
             _movement = GetComponent<TICharacterMovement>();
         }
 
-        // Update is called once per frame
-        void Update()
+        public override void CollectInput(float dt)
         {
             if (Input.GetMouseButtonDown(0))
             {

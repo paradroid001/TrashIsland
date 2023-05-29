@@ -97,9 +97,11 @@ GameObject:
   - component: {fileID: 5052475128044248686}
   - component: {fileID: 8162779676895686205}
   - component: {fileID: 419685483966020550}
+  - component: {fileID: 2047992124}
+  - component: {fileID: 2047992125}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -186,7 +188,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7177218292575411282}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2c27e49a8d5c70e40b7eebaf7fb7ffa7, type: 3}
   m_Name: 
@@ -221,6 +223,34 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &2047992124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7177218292575411282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd48de78aafb7ebed93ada083bfeb4be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  worldSpaceTouchPositions: 0
+--- !u!114 &2047992125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7177218292575411282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f05db2724546e662b9bf1322955daf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tapInput: {fileID: 2047992124}
+  clickDestinationPrefab: {fileID: 4016394424576422770, guid: 1a7fbbb585bed4d49b1fa2cefffdf0c2,
+    type: 3}
 --- !u!1001 &7644599795510218365
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbbca6e6eafdc1b3ea9bd55f5190ac0b, type: 3}
+  m_Name: TrashIslandSettings
+  m_EditorClassIdentifier: 
+  targetFrameRate: 60
+  sceneData:
+  - sceneName: Menu
+    sceneBuildName: MainMenu
+  - sceneName: Game
+    sceneBuildName: TestScene_Milestone_1
+  - sceneName: InvalidScene
+    sceneBuildName: fsdfds
+  - sceneName: Terrain
+    sceneBuildName: TerrainTest

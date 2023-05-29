@@ -4,18 +4,20 @@ using UnityEngine;
 
 namespace TrashIsland
 {
-    public class TICharacterControl : MonoBehaviour
+
+    public class TICharacterControl : TIPlayerInputService
     {
         protected TICharacterMovement _movement;
 
         // Start is called before the first frame update
-        void Start()
+        protected override void Start()
         {
+            base.Start();
             _movement = GetComponent<TICharacterMovement>();
         }
 
         // Update is called once per frame
-        void Update()
+        public override void CollectInput(float dt)
         {
             if (_movement != null)
             {
@@ -25,6 +27,11 @@ namespace TrashIsland
                 {
                     _movement.relativeDestination = transform.forward * v + transform.right * h; // + transform.up * transform.position.y;
                 }
+            }
+
+            if (Input.GetKeyUp(KeyCode.Escape))
+            {
+                TIGameManager.Instance.OnPauseGame();
             }
         }
     }
