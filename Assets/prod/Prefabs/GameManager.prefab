@@ -61,6 +61,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 331503e0a2204201d94b103fbec4d500, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneTransitionAnimator: {fileID: 5884967520848602027}
 --- !u!1001 &7591590361156833246
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -717,6 +718,16 @@ PrefabInstance:
     - target: {fileID: 5509293064292900562, guid: eb7b5c045a3287c4f9d3fd07b8834bd5,
         type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5509293064395736338, guid: eb7b5c045a3287c4f9d3fd07b8834bd5,
+        type: 3}
+      propertyPath: onNodeStart.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5509293064395736338, guid: eb7b5c045a3287c4f9d3fd07b8834bd5,
+        type: 3}
+      propertyPath: onNodeComplete.m_PersistentCalls.m_Calls.Array.size
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5509293064403975554, guid: eb7b5c045a3287c4f9d3fd07b8834bd5,
@@ -1508,3 +1519,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ade5a3ac498cef6518e98197d43fc5f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &5884967520848602027 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4103102456419593333, guid: eb7b5c045a3287c4f9d3fd07b8834bd5,
+    type: 3}
+  m_PrefabInstance: {fileID: 7591590361156833246}
+  m_PrefabAsset: {fileID: 0}

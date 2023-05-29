@@ -60,8 +60,8 @@ namespace TrashIsland
     [System.Serializable]
     public class TISceneManagerService : MonoBehaviour, IService
     {
+        public Animator sceneTransitionAnimator;
         TIGameSettings settings;
-
         Scene previousScene;
         Scene currentScene;
         Scene newScene;
@@ -132,6 +132,53 @@ namespace TrashIsland
             {
                 Debug.LogError($"Unknown scene loaded: {scene.name}");
             }
+        }
+
+        /**
+        * Call this function to change scenes, giving the new scene name.
+        * newSceneName must be one of the scenes in the build settings.
+        * Optionally you can pass transition, which is an animator you have
+        * set up somewhere in the sub structure of your GameManager. If this is
+        * passed, SceneTransition will set the trigger (triggerName)
+        * on the passed animator, presumably calling some transition animation you
+        * have made. In the case that there is a need to wait a little while before
+        * loading in the new scene (e.g. while the animation is playing), 
+        * you can set waitTime to a positive value.
+        * @param newSceneName must be one of the scenes in the build settings.
+        * @param transition an optional Animator
+        * @param triggerName the trigger to fire on the transition Animator
+        * @param waitTime amount of seconds to wait before loading the new scene.
+        */
+        public virtual void SceneTransition(string newSceneName, Animator transition = null, string triggerNameOut = "SceneTransitionOut", string triggerNameIn = "SceneTransitionIn", float waitTime = 0.0f)
+        {
+            //Without transition
+            if (transition == null && sceneTransitionAnimator == null)
+            {
+                ChangeScene(newSceneName);
+            }
+            else //with transition
+            {
+                Debug.Log("Animating scene transition");
+                //Allow overriding with transition, else use sceneTransitionAnimator
+                Animator transitionAnimator = transition;
+                if (transitionAnimator == null)
+                {
+                    transitionAnimator = sceneTransitionAnimator;
+                    waitTime = 1.0f;
+                }
+
+                StartCoroutine(TransitionToScene(newSceneName, sceneTransitionAnimator, triggerNameOut, triggerNameIn, waitTime));
+            }
+        }
+
+        IEnumerator TransitionToScene(string newSceneName, Animator transition, string triggerNameOut, string triggerNameIn, float waitTime) //, OnSceneLoaded sceneLoadedFunction)
+        {
+            transition.SetTrigger(triggerNameOut);
+            //Debug.Log("Transitioning");
+            yield return new WaitForSecondsRealtime(waitTime);
+            ChangeScene(newSceneName);
+            transition.SetTrigger(triggerNameIn);
+            //You might want to do 'on scene loaded' here? Because this is when its visible?
         }
     }
 }

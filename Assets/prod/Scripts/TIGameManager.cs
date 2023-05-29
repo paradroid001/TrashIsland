@@ -73,7 +73,7 @@ namespace TrashIsland
         public void OnStartGame()
         {
             Debug.Log("Start game pressed");
-            sceneManager.ChangeScene("Game");
+            sceneManager.SceneTransition("Game");
         }
         public void OnLoadGame()
         {
@@ -83,7 +83,7 @@ namespace TrashIsland
         public void OnBackToTitle()
         {
             UnPause();
-            sceneManager.ChangeScene("Menu");
+            sceneManager.SceneTransition("Menu");
         }
 
         public void OnPauseGame()
@@ -101,12 +101,22 @@ namespace TrashIsland
         {
             Debug.Log("Game Paused");
             Time.timeScale = 0.0f;
+            InputCommandEvent e = new()
+            {
+                command = InputCommandEvent.InputCommand.DISABLE
+            };
+            e.Call();
 
         }
         void UnPause()
         {
             Debug.Log("Game UnPaused");
             Time.timeScale = 1.0f;
+            InputCommandEvent e = new()
+            {
+                command = InputCommandEvent.InputCommand.ENABLE
+            };
+            e.Call();
         }
     }
 }
