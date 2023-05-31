@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2679166704776893052}
   - component: {fileID: 2679166704776893053}
   - component: {fileID: 3633071078419181752}
+  - component: {fileID: 7863309532111860508}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -32,7 +33,7 @@ Transform:
   m_Children:
   - {fileID: 2679166704261748021}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2679166704776893053
 MonoBehaviour:
@@ -62,6 +63,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneTransitionAnimator: {fileID: 5884967520848602027}
+--- !u!114 &7863309532111860508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2679166704776893050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e93ff3a311092c9fbee526a421bcd44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7591590361156833246
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -72,8 +85,18 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2597156877815429036, guid: eb7b5c045a3287c4f9d3fd07b8834bd5,
         type: 3}
+      propertyPath: m_Color.b
+      value: 0.7001362
+      objectReference: {fileID: 0}
+    - target: {fileID: 2597156877815429036, guid: eb7b5c045a3287c4f9d3fd07b8834bd5,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2597156877815429036, guid: eb7b5c045a3287c4f9d3fd07b8834bd5,
+        type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2597156878165623482, guid: eb7b5c045a3287c4f9d3fd07b8834bd5,
         type: 3}
@@ -1239,6 +1262,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5898394082958047373, guid: eb7b5c045a3287c4f9d3fd07b8834bd5,
+        type: 3}
+      propertyPath: m_PreferredHeight
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 5898394082965253916, guid: eb7b5c045a3287c4f9d3fd07b8834bd5,
         type: 3}

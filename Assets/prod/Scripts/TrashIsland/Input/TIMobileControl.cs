@@ -71,7 +71,18 @@ namespace TrashIsland
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit))
             {
-                return hit.point;
+                GameObject g = hit.collider.gameObject;
+                TISelectableObject o = g.GetComponent<TISelectableObject>();
+                if (o != null)
+                {
+                    TISelectionEvent e = new TISelectionEvent();
+                    e.selectableObject = o;
+                    e.Call();
+                }
+                else
+                {
+                    return hit.point;
+                }
             }
 
             return Vector3.zero;

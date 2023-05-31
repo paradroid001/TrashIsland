@@ -63,7 +63,7 @@ namespace TrashIsland
         }
 
         // Start is called before the first frame update
-        void Start()
+        protected virtual void Start()
         {
             registered = TIUIManager.Instance.RegisterWindow(this);
             if (registered)
@@ -73,12 +73,12 @@ namespace TrashIsland
         }
 
         // Update is called once per frame
-        void Update()
+        protected virtual void Update()
         {
 
         }
 
-        void OnDestroy()
+        protected virtual void OnDestroy()
         {
             if (registered)
             {

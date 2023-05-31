@@ -17,7 +17,9 @@ namespace GameCore
             if (Input.touchCount > 0)
             {
                 Touch touch = Input.GetTouch(0); //first touch only!
-                if (touch.phase == TouchPhase.Began)
+                if (touch.phase == TouchPhase.Began ||
+                    touch.phase == TouchPhase.Stationary || //allow holding down
+                    touch.phase == TouchPhase.Moved)        //allow holding down
                 {
                     tapped = true;
                     tappos = touch.position;

@@ -33,12 +33,12 @@ namespace TrashIsland
             if (!windows.ContainsKey(w.WindowName))
             {
                 windows.Add(w.WindowName, w);
-                Debug.Log($"Registered window {w.WindowName}");
+                //Debug.Log($"Registered window {w.WindowName}");
                 retval = true;
             }
             else
             {
-                Debug.LogError($"Duplicate window name {w.WindowName}. Not Registering");
+                //Debug.LogError($"Duplicate window name {w.WindowName}. Not Registering");
             }
             return retval;
         }
@@ -48,13 +48,13 @@ namespace TrashIsland
             bool retval = false;
             if (windows.ContainsKey(w.WindowName))
             {
-                Debug.Log($"Unregistered a window {w.WindowName}");
+                //Debug.Log($"Unregistered a window {w.WindowName}");
                 windows.Remove(w.WindowName);
                 retval = true;
             }
             else
             {
-                Debug.LogError($"Can't unregister unregistered window name {w.WindowName}.");
+                //Debug.LogError($"Can't unregister unregistered window name {w.WindowName}.");
             }
             return retval;
         }
