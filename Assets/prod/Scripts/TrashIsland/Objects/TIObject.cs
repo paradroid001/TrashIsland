@@ -7,6 +7,19 @@ namespace TrashIsland
 {
     public class TIObject : MonoBehaviour, ITIObject
     {
+
+        [SerializeField]
+        public TIObjectData objectSettings;
+        //[SerializeField]
+        //protected  interactable;
+        [SerializeField]
+        protected TISelectableObject selectable;
+        [SerializeField]
+        protected string objectNameOverride;
+        [SerializeField]
+        protected string objectDescriptionOverride;
+
+
         public virtual string GetObjectName()
         {
             return "Unknown Object";

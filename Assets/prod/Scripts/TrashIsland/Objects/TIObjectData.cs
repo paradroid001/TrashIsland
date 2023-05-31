@@ -2,17 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TIObjectTemplate : MonoBehaviour
+[CreateAssetMenu(fileName = "TI Object Settings", menuName = "TrashIsland/Object Settings")]
+[System.Serializable]
+public class TIObjectData : ScriptableObject
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public string objectName;
+    public string objectDescription;
+    public Sprite objectSprite;
 }
