@@ -5,7 +5,7 @@ using System.Collections;
 namespace TrashIsland
 {
 
-    [CustomEditor(typeof(TIObject))]
+    [CustomEditor(typeof(TIObject), true)] //editor for child classes
     public class TIObjectEditor : Editor
     {
 
@@ -19,7 +19,6 @@ namespace TrashIsland
             */
             cachedEditor = null;
         }
-
 
         public override void OnInspectorGUI()
         {
@@ -42,7 +41,8 @@ namespace TrashIsland
             //Drawing our ScriptableObjects inspector
             //cachedEditor.DrawDefaultInspector();
             GUILayout.Label("---- Object Data ----");
-            cachedEditor.OnInspectorGUI();
+            if (cachedEditor != null)
+                cachedEditor.OnInspectorGUI();
         }
     }
 }

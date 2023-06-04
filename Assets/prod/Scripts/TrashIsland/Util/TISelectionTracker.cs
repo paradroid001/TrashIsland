@@ -8,13 +8,21 @@ namespace TrashIsland
     [System.Serializable]
     public class TISelectionEvent : GameEvent<TISelectionEvent>
     {
-        public ISelectable selectableObject;
+        public TISelectableObject selectableObject;
     }
 
     public class TISelectionTracker : MonoBehaviour
     {
-        ISelectable currentSelection;
-        ISelectable previousSelection;
+        TISelectableObject currentSelection;
+        TISelectableObject previousSelection;
+
+        /*
+        public delegate void ObjectSelectionCallback(TISelectableObject obj);
+
+        public ObjectSelectionCallback OnObjectSelection;
+        public ObjectSelectionCallback OnObjectDeselection;
+        */
+
         // Start is called before the first frame update
         void Start()
         {
@@ -38,6 +46,8 @@ namespace TrashIsland
             {
                 previousSelection = currentSelection;
                 currentSelection = e.selectableObject;
+
+                //Let the object(s) know they were selected or deselected.
                 previousSelection?.OnUnselected();
                 currentSelection?.OnSelected();
             }

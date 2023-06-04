@@ -99,6 +99,7 @@ GameObject:
   - component: {fileID: 419685483966020550}
   - component: {fileID: 2047992124}
   - component: {fileID: 2047992125}
+  - component: {fileID: 1180040556}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -123,7 +124,7 @@ Transform:
   - {fileID: 7898656786115298422}
   - {fileID: 7898656786663893398}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &3561865814176657775
 CapsuleCollider:
@@ -236,6 +237,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   worldSpaceTouchPositions: 0
+  tapHeldThreshold: 0.1
 --- !u!114 &2047992125
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -251,6 +253,25 @@ MonoBehaviour:
   tapInput: {fileID: 2047992124}
   clickDestinationPrefab: {fileID: 4016394424576422770, guid: 1a7fbbb585bed4d49b1fa2cefffdf0c2,
     type: 3}
+--- !u!114 &1180040556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7177218292575411282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ea7f7d1b8f3649779c2de058b40e5d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectSettings: {fileID: 0}
+  selectable: {fileID: 0}
+  objectNameOverride: 
+  objectDescriptionOverride: 
+  outlineStrength: 7
+  outlineColour: {r: 1, g: 1, b: 1, a: 1}
+  renderer: {fileID: 8283046667536048201}
 --- !u!1001 &7644599795510218365
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -361,6 +382,12 @@ Animator:
 --- !u!4 &7898656786663893398 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 598d155d2776ce941ae20f425e33a693,
+    type: 3}
+  m_PrefabInstance: {fileID: 7644599795510218365}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &8283046667536048201 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 1793655368099900980, guid: 598d155d2776ce941ae20f425e33a693,
     type: 3}
   m_PrefabInstance: {fileID: 7644599795510218365}
   m_PrefabAsset: {fileID: 0}

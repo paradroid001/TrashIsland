@@ -6,34 +6,62 @@ namespace GameCore
 {
     public class MonoMobileTapInput : MonoMobileInput
     {
-        void Update()
+        public static SwipeDelegate OnTapHeld;
+        [SerializeField]
+        protected float tapHeldThreshold = 0.1f; //how long until 'held' as opposed to tapped.
+
+        protected SwipeData tapData;
+
+        protected void Start()
+        {
+            tapData = new SwipeData();
+            tapData.Reset();
+        }
+
+        protected void Update()
         {
             if (!controlsEnabled)
                 return;
-            bool tapped = false;
-            Vector2 tappos = Vector2.zero;
 
             //1. Do this first touch
             if (Input.touchCount > 0)
             {
                 Touch touch = Input.GetTouch(0); //first touch only!
-                if (touch.phase == TouchPhase.Began ||
-                    touch.phase == TouchPhase.Stationary || //allow holding down
-                    touch.phase == TouchPhase.Moved)        //allow holding down
+                if (touch.phase == TouchPhase.Began)
                 {
-                    tapped = true;
-                    tappos = touch.position;
+                    tapData.swipeTime = 0.0f;
+                    tapData.posStart = TouchPosition(touch.position);
+                    tapData.posCurrent = TouchPosition(touch.position);
                 }
-            }
-
-
-            if (tapped)
-            {
-                if (worldSpaceTouchPositions)
+                else if (touch.phase == TouchPhase.Stationary || //allow holding down
+                         touch.phase == TouchPhase.Moved)
                 {
-                    tappos = Camera.main.ScreenToWorldPoint(tappos);
+                    tapData.swipeTime += Time.deltaTime;
+                    tapData.posCurrent = TouchPosition(touch.position);
+                    if (tapData.swipeTime > tapHeldThreshold)
+                    {
+                        OnTapHeld?.Invoke(tapData);
+                    }
                 }
-                OnTap?.Invoke(tappos);
+                else if (touch.phase == TouchPhase.Ended)
+                {
+                    // for a "tap" to count, the swipetime has to be 
+                    // less than the threshold
+                    tapData.swipeTime += Time.deltaTime;
+                    if (tapData.swipeTime <= tapHeldThreshold)
+                    {
+                        OnTap?.Invoke(tapData.posCurrent);
+                    }
+                    else
+                    {
+                        OnTapHeld?.Invoke(tapData);
+                    }
+                    tapData.Reset(); //end the touch.
+                }
+                else if (touch.phase == TouchPhase.Canceled)
+                {
+                    tapData.Reset(); //end the touch
+                }
             }
         }
     }

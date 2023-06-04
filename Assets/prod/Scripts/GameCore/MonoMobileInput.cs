@@ -42,14 +42,23 @@ namespace GameCore
     * which direction was swiped.
     * It will be extended in future to include other data.
     */
+    [System.Serializable]
     public class SwipeData
     {
         public Direction.Dir dir;
         public Vector2 posStart; //where this swipe started
         public Vector2 posCurrent; //current position of swipe
+        public float swipeTime; //how long has this swipe been going?
         //could also have extra data here for 
         //- length/velocity of swipe
         //- position on screen where swipe occurred
+
+        public void Reset()
+        {
+            this.posStart = Vector2.zero;
+            this.posCurrent = Vector2.zero;
+            this.swipeTime = 0;
+        }
     }
     public class MonoMobileInput : MonoBehaviour
     {
@@ -77,5 +86,14 @@ namespace GameCore
         */
         [Tooltip("Should reported positions be in world space or screen space?")]
         public bool worldSpaceTouchPositions = false; //in screenspace or world space?
+
+        public virtual Vector2 TouchPosition(Vector2 pos)
+        {
+            if (worldSpaceTouchPositions)
+            {
+                return Camera.main.ScreenToWorldPoint(pos);
+            }
+            return pos;
+        }
     }
 }

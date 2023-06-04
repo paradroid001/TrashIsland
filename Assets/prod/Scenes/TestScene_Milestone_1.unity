@@ -11505,7 +11505,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh251718
+  m_Name: pb_Mesh32882
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -15569,8 +15569,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 3.1564631, z: 1}
+  m_Center: {x: 0, y: 1.0782316, z: 0}
 --- !u!23 &443617827
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -53129,8 +53129,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ea7f7d1b8f3649779c2de058b40e5d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectSettings: {fileID: 0}
+  selectable: {fileID: 0}
+  objectNameOverride: 
+  objectDescriptionOverride: 
   outlineStrength: 7
   outlineColour: {r: 0, g: 0.94070315, b: 1, a: 1}
+  renderer: {fileID: 0}
 --- !u!1001 &1454428065
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -104678,8 +104683,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ea7f7d1b8f3649779c2de058b40e5d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectSettings: {fileID: 0}
+  selectable: {fileID: 0}
+  objectNameOverride: 
+  objectDescriptionOverride: 
   outlineStrength: 7
   outlineColour: {r: 0, g: 0.94070315, b: 1, a: 1}
+  renderer: {fileID: 0}
 --- !u!1 &2016607246
 GameObject:
   m_ObjectHideFlags: 0

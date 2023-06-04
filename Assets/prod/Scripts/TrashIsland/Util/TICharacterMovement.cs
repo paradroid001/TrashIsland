@@ -32,7 +32,9 @@ namespace TrashIsland
         //how far until a destination is considered 'reached'
         public float movementThreshold = 0.1f;
         public FloatRamp currentSpeed;
-        public Animator animator; 
+        public Animator animator;
+        [SerializeField]
+        public Rigidbody _rb;
 
         public Vector3 currentMovement
         {
@@ -55,6 +57,10 @@ namespace TrashIsland
         protected virtual void Start()
         {
             _currentDestination = transform.position;
+            if (_rb == null)
+            {
+                _rb = GetComponent<Rigidbody>();
+            }
         }
 
         // Update is called once per frame
@@ -87,7 +93,15 @@ namespace TrashIsland
             _currentMovement = (_currentDestination - transform.position).normalized
                                * currentSpeed.currentValue;
 
-            transform.position += _currentMovement * Time.deltaTime;
+            if (_rb != null) //try rigidbody movement first
+            {
+
+                _rb.MovePosition(_rb.position + (_currentMovement * Time.deltaTime));
+            }
+            else
+            {
+                transform.position += _currentMovement * Time.deltaTime;
+            }
         }
 
         protected virtual bool CheckDistance()

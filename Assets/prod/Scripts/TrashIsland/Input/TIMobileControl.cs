@@ -16,7 +16,8 @@ namespace TrashIsland
         public override void InitService()
         {
             base.InitService();
-            MonoMobileInput.OnTap += OnTap;
+            MonoMobileTapInput.OnTap += OnTap;
+            MonoMobileTapInput.OnTapHeld += OnTapHeld;
         }
         public override void ShutdownService()
         {
@@ -65,21 +66,42 @@ namespace TrashIsland
 
         }
 
-        Vector3 GetTouchPositionInWorld(Vector2 touch)
+        void OnTapHeld(SwipeData data)
+        {
+            Vector3 dest = GetTouchPositionInWorld(data.posCurrent, false); //don't allow selection
+            if (dest != Vector3.zero)
+            {
+                _movement.currentDestination = dest;
+                if (oldClickDestination != null)
+                {
+                    Destroy(oldClickDestination);
+                }
+                oldClickDestination = Instantiate(clickDestinationPrefab, dest, Quaternion.identity);
+            }
+        }
+
+        Vector3 GetTouchPositionInWorld(Vector2 touch, bool allowSelection = true)
         {
             Ray ray = Camera.main.ScreenPointToRay(touch);
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit))
             {
                 GameObject g = hit.collider.gameObject;
+                //We still check for a selectable, because we don't want to
+                //return hit positions on selectables.
                 TISelectableObject o = g.GetComponent<TISelectableObject>();
+
                 if (o != null)
                 {
-                    TISelectionEvent e = new TISelectionEvent();
-                    e.selectableObject = o;
-                    e.Call();
+                    //only send the event if allowing selection
+                    if (allowSelection)
+                    {
+                        TISelectionEvent e = new TISelectionEvent();
+                        e.selectableObject = o;
+                        e.Call();
+                    }
                 }
-                else
+                else //it wasn't a selectable.
                 {
                     return hit.point;
                 }
