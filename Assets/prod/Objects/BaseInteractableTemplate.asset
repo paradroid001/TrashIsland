@@ -14,6 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectData:
     type: 2
-    name: Base Ineractable Item
-    description: Interactable Item
-    sprite: {fileID: 21300000, guid: 43b5dbde43dc55971a81d51c62f10485, type: 3}
+    name: <NONAME>
+    description: <NODESCRIPTION>
+    sprite: {fileID: 21300000, guid: 817a8eafcec5342d0a520cb1f23c1ea4, type: 3}
+  selectableConfig:
+    selectionMaterial: {fileID: 2100000, guid: aefd10796c98a8fcbb1213fd56418921, type: 2}
+    outlineStrength: 0.135
+    outlineWidth: 7
+    outlineColour: {r: 0, g: 0.8869717, b: 1, a: 1}

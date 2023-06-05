@@ -2,13 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using GameCore;
+using UnityEngine.Events;
 
 namespace TrashIsland
 {
+    [System.Serializable]
+    public class TIInteractionDef : InteractionDef
+    {
+        public UnityEvent<GameObject> action;
+        public InteractionState state;
+    }
+
     public class TIInteractableObject : TISelectableObject, IInteractable
     {
         [SerializeField]
         protected TIInteractableObject interactable;
+        [SerializeField]
+        protected TIInteractionDef[] interactions;
 
         public void BecomeInteractable()
         {
@@ -33,10 +43,7 @@ namespace TrashIsland
 
         public InteractionDef[] GetInteractions(IInteractor interactor)
         {
-            InteractionDef[] interactions = new InteractionDef[1];
-            interactions[0] = null;
             return interactions;
-
         }
 
         public InteractionState GetInteractionState(IInteractor interactor, int interactionID)

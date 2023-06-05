@@ -45,12 +45,24 @@ public class TIObjectData
     }
 }
 
+[System.Serializable]
+public class TISelectableConfigData
+{
+    public Material selectionMaterial;
+    [Range(.002f, 0.2f)]
+    public float outlineStrength = 7.0f;
+    public float outlineWidth = 7.0f;
+
+    public Color outlineColour = Color.white;
+}
+
 
 [CreateAssetMenu(fileName = "TI Object Data", menuName = "TrashIsland/Object Data")]
 [System.Serializable]
 public class TIObjectTemplate : ScriptableObject
 {
     public TIObjectData objectData;
+    public TISelectableConfigData selectableConfig;
 
     public virtual void Awake()
     {

@@ -25,7 +25,7 @@ namespace TrashIsland
                 settings.Init();
             }
             sceneManager = GetComponent<TISceneManagerService>();
-            sceneManager.InitService(settings);
+            sceneManager?.InitService(settings);
 
             dialogueRunner = FindObjectOfType<DialogueRunner>();
             lineView = FindObjectOfType<TIDialogueLineView>();
@@ -37,7 +37,7 @@ namespace TrashIsland
         protected override void Start()
         {
             Debug.Log("GAME MANAGER START");
-            sceneManager.ChangeScene("Menu");
+            sceneManager?.ChangeScene("Menu");
             //uiManager.CommandWindow("PauseMenu", UIControlEvent.UIControlCommand.HIDE);
             //uiManager.CommandWindow("Inventory", UIControlEvent.UIControlCommand.HIDE);
             //uiManager.CommandWindow("Inventory", UIControlEvent.UIControlCommand.DESTROY);

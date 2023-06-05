@@ -34,7 +34,13 @@ namespace TrashIsland
         public FloatRamp currentSpeed;
         public Animator animator;
         [SerializeField]
-        public Rigidbody _rb;
+        protected Rigidbody _rb;
+        [SerializeField]
+        protected TICamera _tiCamera;
+
+        protected float moveTimer; //how long have we been moving?
+        protected float cameraDampener;
+
 
         public Vector3 currentMovement
         {
@@ -61,6 +67,7 @@ namespace TrashIsland
             {
                 _rb = GetComponent<Rigidbody>();
             }
+            moveTimer = 0;
         }
 
         // Update is called once per frame
@@ -70,10 +77,22 @@ namespace TrashIsland
             {
                 MoveToward();
                 RotateTowardCurrentMovement();
+                moveTimer += Time.deltaTime;
+                cameraDampener = moveTimer; //camera moves to max after 1 second
             }
             else
             {
                 currentSpeed.currentParameter = 0.0f;
+                moveTimer = 0;
+                cameraDampener = cameraDampener / 2.0f;
+                if (cameraDampener < 0.0005f)
+                {
+                    cameraDampener = 0.0f;
+                }
+            }
+            if (_tiCamera)
+            {
+                _tiCamera.NotifyMovement(cameraDampener);
             }
             if (animator != null)
             {
@@ -89,7 +108,8 @@ namespace TrashIsland
 
         protected virtual void MoveToward()
         {
-            currentSpeed.currentParameter = 1.0f; //todo should be ramped up in value
+            //It turns out it's just too slow to 'ramp up' speed. Just go.
+            currentSpeed.currentParameter = 1.0f;
             _currentMovement = (_currentDestination - transform.position).normalized
                                * currentSpeed.currentValue;
 
