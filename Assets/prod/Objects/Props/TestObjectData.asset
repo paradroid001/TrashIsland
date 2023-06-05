@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47f65eb109df3fd528182ef0538d72f1, type: 3}
   m_Name: TestObjectData
   m_EditorClassIdentifier: 
-  objectName: A Test Object
-  objectDescription: I am a tesddt object!
-  objectSprite: {fileID: 21300000, guid: e0f1d3c67c3671d41befb08db76a2205, type: 3}
+  objectType: 0
+  objectData:
+    name: Test Item 1
+    description: A test item
+    sprite: {fileID: 21300000, guid: 8a3ddbad038280e45821307a0fd460f4, type: 3}

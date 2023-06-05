@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 47f65eb109df3fd528182ef0538d72f1, type: 3}
-  m_Name: TestObjectData2
+  m_Name: BaseSelectableTemplate
   m_EditorClassIdentifier: 
-  objectType: 0
   objectData:
-    name: Test Item 2
-    description: Another test item
-    sprite: {fileID: 21300000, guid: dc3c1d7d98c0f8241936e1e304a8b906, type: 3}
+    type: 0
+    name: Base Selectable Item
+    description: Selectable Item
+    sprite: {fileID: 21300000, guid: 43b5dbde43dc55971a81d51c62f10485, type: 3}

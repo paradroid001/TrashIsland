@@ -84,7 +84,7 @@ namespace TrashIsland
         protected virtual void RotateTowardCurrentMovement()
         {
             float heading = Mathf.Atan2(_currentMovement.x, _currentMovement.z);
-            transform.rotation = Quaternion.EulerAngles(0, heading, 0);
+            transform.rotation = Quaternion.Euler(0, Mathf.Rad2Deg * heading, 0);
         }
 
         protected virtual void MoveToward()

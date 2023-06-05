@@ -27,11 +27,11 @@ namespace TrashIsland
 
             /* Checking if we need to get our Editor. Calling Editor.CreateEditor() 
             if needed */
-            if (cachedEditor == null)
-            {
-                cachedEditor =
-                    Editor.CreateEditor(editedMonobehaviour.objectSettings);
-            }
+            //if (cachedEditor == null)
+            //{
+            //    cachedEditor =
+            //        Editor.CreateEditor(editedMonobehaviour.objectData);
+            //}
 
             /* We want to show the other variables in our Monobehaviour as well, 
             so we'll call the superclasses' OnInspectorGUI(). Note this could 
@@ -40,9 +40,10 @@ namespace TrashIsland
 
             //Drawing our ScriptableObjects inspector
             //cachedEditor.DrawDefaultInspector();
-            GUILayout.Label("---- Object Data ----");
-            if (cachedEditor != null)
-                cachedEditor.OnInspectorGUI();
+
+            //GUILayout.Label("---- Result Object Data ----");
+            //if (cachedEditor != null)
+            //    cachedEditor.OnInspectorGUI();
         }
     }
 }

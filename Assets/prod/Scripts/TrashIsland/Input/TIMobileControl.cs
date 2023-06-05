@@ -86,7 +86,13 @@ namespace TrashIsland
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit))
             {
-                GameObject g = hit.collider.gameObject;
+                //get the game object up the chain (parent rigidbody for example)
+                GameObject g;
+                Rigidbody rb = hit.collider.attachedRigidbody;
+                if (rb == null)
+                    g = hit.collider.gameObject;
+                else
+                    g = rb.gameObject;
                 //We still check for a selectable, because we don't want to
                 //return hit positions on selectables.
                 TISelectableObject o = g.GetComponent<TISelectableObject>();

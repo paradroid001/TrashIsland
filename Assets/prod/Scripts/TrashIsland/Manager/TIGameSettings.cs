@@ -7,7 +7,6 @@ namespace TrashIsland
     public class TIGameSettings : ScriptableObject
     {
         [Header("Frame Settings")]
-        int maxRate = 9999;
         public int targetFrameRate = 60;
         [Header("Scene Settings")]
         public TISceneData[] sceneData;

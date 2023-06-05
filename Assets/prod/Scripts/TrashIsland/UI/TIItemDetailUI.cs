@@ -16,10 +16,23 @@ namespace TrashIsland
         void HandleTISelectionEvent(TISelectionEvent e)
         {
             Debug.Log($"A selection was made: {e.selectableObject.name}");
-            if (e.selectableObject.objectSettings != null)
+            TIObjectData objectData = e.selectableObject.objectData;
+
+            if (objectData != null)
             {
-                objectImage.sprite = e.selectableObject.objectSettings.objectSprite;
-                objectNameText.text = e.selectableObject.objectSettings.objectName;
+                //TODO: There seem to be occasions / frames where the objectImage is null?
+                if (objectImage != null)
+                {
+                    if (objectData.sprite != null)
+                    {
+                        objectImage.sprite = e.selectableObject.objectData.sprite;
+                    }
+                }
+
+                if (objectData.name != "")
+                {
+                    objectNameText.text = e.selectableObject.objectData.name;
+                }
             }
         }
 

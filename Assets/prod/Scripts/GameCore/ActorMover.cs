@@ -6,7 +6,7 @@ namespace GameCore
     {
         GameObject _actor;
         [SerializeField]
-        protected string name;
+        protected string actorName;
         public virtual GameObject actor
         {
             get { return _actor; }

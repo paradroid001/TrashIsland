@@ -6,6 +6,12 @@ namespace TrashIsland
 {
     public class TISelectableObject : TIObject, ISelectable
     {
+        [SerializeField]
+        protected new Renderer renderer;
+
+        [SerializeField]
+        protected TISelectableObject selectable;
+
         protected bool isSelected = false;
         [SerializeField]
         protected float outlineStrength = 7.0f;
@@ -15,8 +21,6 @@ namespace TrashIsland
         private MaterialPropertyBlock deselectedPropertyBlock;
         private MaterialPropertyBlock selectedPropertyBlock;
 
-        [SerializeField]
-        protected new Renderer renderer;
         public virtual void OnSelected()
         {
             Debug.Log($"Item was selected: {name}");
@@ -46,13 +50,17 @@ namespace TrashIsland
         {
             base.Start();
 
+            if (renderer == null)
+            {
+                renderer = GetComponent<Renderer>();
+            }
+            selectable = this;
+
             if (deselectedPropertyBlock == null)
                 deselectedPropertyBlock = new MaterialPropertyBlock();
             deselectedPropertyBlock.SetFloat("_OutlineStrength", 0.0f);
             deselectedPropertyBlock.SetFloat("_OutlineWidth", 5.0f);
 
-            if (renderer == null)
-                renderer = GetComponent<Renderer>();
             //get the original settings
             //renderer.GetPropertyBlock(deselectedPropertyBlock);
 

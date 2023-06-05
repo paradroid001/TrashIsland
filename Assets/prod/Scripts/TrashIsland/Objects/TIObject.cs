@@ -9,15 +9,18 @@ namespace TrashIsland
     {
 
         [SerializeField]
-        public TIObjectData objectSettings;
-        //[SerializeField]
-        //protected  interactable;
+        public TIObjectTemplate objectTemplate; //template
         [SerializeField]
-        protected TISelectableObject selectable;
-        [SerializeField]
-        protected string objectNameOverride;
-        [SerializeField]
-        protected string objectDescriptionOverride;
+        protected TIObjectData overrideData;    //overrides
+
+        protected TIObjectData _objectData;
+
+
+        public TIObjectData objectData
+        {
+            get { return _objectData; }
+        }
+
 
 
         public virtual string GetObjectName()
@@ -42,7 +45,8 @@ namespace TrashIsland
         // Start is called before the first frame update
         protected virtual void Start()
         {
-
+            _objectData = new TIObjectData(objectTemplate.objectData);
+            _objectData.Merge(overrideData);
         }
 
         // Update is called once per frame
