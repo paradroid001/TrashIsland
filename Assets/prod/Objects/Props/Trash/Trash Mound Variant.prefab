@@ -11,22 +11,22 @@ PrefabInstance:
     - target: {fileID: 2725187884149760083, guid: dec9c8346c1110d12a94827d3582ebc9,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 23
       objectReference: {fileID: 0}
     - target: {fileID: 2725187884149760083, guid: dec9c8346c1110d12a94827d3582ebc9,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 129.86082
       objectReference: {fileID: 0}
     - target: {fileID: 2725187884149760083, guid: dec9c8346c1110d12a94827d3582ebc9,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 9.188
       objectReference: {fileID: 0}
     - target: {fileID: 2725187884149760083, guid: dec9c8346c1110d12a94827d3582ebc9,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.966
+      value: 226.68938
       objectReference: {fileID: 0}
     - target: {fileID: 2725187884149760083, guid: dec9c8346c1110d12a94827d3582ebc9,
         type: 3}
@@ -81,7 +81,7 @@ PrefabInstance:
     - target: {fileID: 7080355421470957827, guid: dec9c8346c1110d12a94827d3582ebc9,
         type: 3}
       propertyPath: m_Name
-      value: Trash Mound Variant
+      value: Trash Mound Variant (2)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects:
@@ -167,6 +167,26 @@ PrefabInstance:
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: f825ad93ee22d3443a68465fbdf3ed97, type: 3}
+--- !u!1 &7434345656195018502 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: f825ad93ee22d3443a68465fbdf3ed97,
+    type: 3}
+  m_PrefabInstance: {fileID: 7776995472848573015}
+  m_PrefabAsset: {fileID: 0}
+--- !u!136 &1059000263617959163
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7434345656195018502}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.78685105
+  m_Height: 1.4539404
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &7811433427827733948 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: f825ad93ee22d3443a68465fbdf3ed97,
