@@ -6,12 +6,14 @@ using GameCore;
 namespace TrashIsland
 {
 
-    public class TICollect : MonoBehaviour
+    public class TICollect : TIInteraction
     {
         //Try to collect the item.
         //The interactor has to have an inventory
-        public void Collect(GameObject interactor)
+        public override void Interact(TIInteractor interactor)
         {
+            OnInteractionStart?.Invoke(this, interactor);
+
             TIInventory destInventory = interactor.GetComponent<TIInventory>();
             TIObject thisObject = GetComponent<TIObject>();
             if (destInventory != null && thisObject != null)
@@ -25,6 +27,7 @@ namespace TrashIsland
             {
                 Debug.LogError("No object, or no dest inventory");
             }
+            OnInteractionFinish?.Invoke(this, interactor);
         }
     }
 }

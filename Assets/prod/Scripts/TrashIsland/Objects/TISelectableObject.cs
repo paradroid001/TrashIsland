@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace TrashIsland
 {
@@ -20,6 +21,8 @@ namespace TrashIsland
         //The material property block we pass to the GPU
         private MaterialPropertyBlock deselectedPropertyBlock;
         private MaterialPropertyBlock selectedPropertyBlock;
+
+        public UnityEvent<TISelectableObject> OnSelect = new UnityEvent<TISelectableObject>();
 
         protected int FindIndexOfMaterial(Material m)
         {
@@ -71,6 +74,8 @@ namespace TrashIsland
                 }
                 renderer.SetPropertyBlock(selectedPropertyBlock);
             }
+
+            OnSelect?.Invoke(this);
         }
         public virtual void OnUnselected()
         {

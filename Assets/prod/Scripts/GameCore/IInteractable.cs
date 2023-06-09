@@ -23,5 +23,6 @@ namespace GameCore
         public InteractionState GetInteractionState(IInteractor interactor, int interactionID);
         public void BecomeInteractable();
         public void BecomeUninteractable();
+        public bool IsInteractable();
     }
 }
