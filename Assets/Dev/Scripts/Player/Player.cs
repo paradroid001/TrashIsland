@@ -25,11 +25,11 @@ public class Player : MonoBehaviour
     void Start()
     {
         //hold = transform.GetChild(0);
-        anim = transform.GetComponent<Animator>();
+        //anim = transform.GetComponent<Animator>();
     }
     void Update()
     {
-        vert = Input.GetAxis("Vertical");
+        /*vert = Input.GetAxis("Vertical");
         anim.SetFloat("Y", vert);
         hori = Input.GetAxis("Horizontal");
         anim.SetFloat("X", hori);
@@ -46,7 +46,7 @@ public class Player : MonoBehaviour
                 transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotSpd * Time.deltaTime);
             }
         }
-        
+        */
         /*if(Input.GetKeyDown(KeyCode.E))
         {
             Interact();
