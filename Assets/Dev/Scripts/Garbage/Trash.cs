@@ -11,7 +11,7 @@ public class Trash : MonoBehaviour
     public TrashColour trashColour;
     public TrashType typeOf;
     public BuriedTrash buriedTrash;
-    GameObject button;
+    public GameObject button;
     public void OnTriggerEnter(Collider other)
     {
         if(other.tag == "Player")

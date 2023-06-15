@@ -129,7 +129,7 @@ namespace TrashIsland
         {
             Ray ray = Camera.main.ScreenPointToRay(touch);
             RaycastHit hit;
-            if (Physics.Raycast(ray, out hit))
+            if (Physics.Raycast(ray, out hit, 1000, 5, QueryTriggerInteraction.Ignore))
             {
                 //get the game object up the chain (parent rigidbody for example)
                 GameObject g;

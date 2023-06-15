@@ -163,6 +163,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
+  m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 1
   m_TargetDisplay: 0
@@ -227,6 +228,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 4871722627324389162}
     m_Modifications:
     - target: {fileID: 3859136943093447025, guid: dcb060e5bd67b0041927880a8d85c4b4,
@@ -296,11 +298,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6488016327652517429, guid: dcb060e5bd67b0041927880a8d85c4b4,
         type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 6488016327652517429, guid: dcb060e5bd67b0041927880a8d85c4b4,
-        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -360,6 +357,7 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: dcb060e5bd67b0041927880a8d85c4b4, type: 3}
 --- !u!1 &3957522984611769012 stripped
 GameObject:

@@ -12,7 +12,7 @@ public class UIFollow : MonoBehaviour
     public int number;
     void LateUpdate()
     {
-        transform.position = new Vector3(player.position.x + 1.8f, player.position.y + 0.5f, player.position.z);
+        transform.position = new Vector3(player.position.x + 1.8f, player.position.y + 1f, player.position.z);
         if(GameManager.instance.player.Interactables.Count > 0)
         {
             if(Input.mouseScrollDelta.y <= -0.1f)
