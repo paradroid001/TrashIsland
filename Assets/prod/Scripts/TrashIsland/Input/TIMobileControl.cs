@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using GameCore;
 
 namespace TrashIsland
@@ -12,6 +13,11 @@ namespace TrashIsland
         protected MonoMobileTapInput tapInput;
         public GameObject clickDestinationPrefab;
         private GameObject oldClickDestination = null;
+
+        private TISelectableObject objectUnderTouch;
+        float objectHeldTime = 0;
+
+        private TIInteractor thisInteractor;
 
         public override void InitService()
         {
@@ -40,7 +46,9 @@ namespace TrashIsland
         protected override void Start()
         {
             base.Start();
+            thisInteractor = GetComponent<TIInteractor>();
             _movement = GetComponent<TICharacterMovement>();
+            Debug.Log($"This interactor is {thisInteractor}");
         }
 
 
@@ -52,6 +60,15 @@ namespace TrashIsland
 
         void OnTap(Vector2 tappos)
         {
+            //Ignore if touch is over UI
+            /*
+            if (EventSystem.current.IsPointerOverGameObject())
+            {
+                //Debug.Log(EventSystem.current.currentSelectedGameObject);
+                return;
+            }
+            */
+
             //Debug.Log("Tapped");
             Vector3 dest = GetTouchPositionInWorld(tappos);
             if (dest != Vector3.zero)
@@ -68,6 +85,12 @@ namespace TrashIsland
 
         void OnTapHeld(SwipeData data)
         {
+            //Ignore if touch is over UI
+            /*
+            if (EventSystem.current.IsPointerOverGameObject()) return;
+            */
+
+            Debug.Log($"This interactor is {thisInteractor}");
             Vector3 dest = GetTouchPositionInWorld(data.posCurrent, false); //don't allow selection
             if (dest != Vector3.zero)
             {
@@ -77,6 +100,28 @@ namespace TrashIsland
                     Destroy(oldClickDestination);
                 }
                 oldClickDestination = Instantiate(clickDestinationPrefab, dest, Quaternion.identity);
+            }
+            else //you're holding on some kind of object
+            {
+                /*if (objectHeldTime > 1.0f)
+                {
+                    TIInteractableObject interactableObject = objectUnderTouch.GetComponent<TIInteractableObject>();
+                    if (interactableObject != null && thisInteractor != null)
+                    {
+                        //TODO: interact using this object as interactor, first interaction.
+                        if (interactableObject.IsSelected()
+                            && interactableObject.IsInteractable()
+                            && interactableObject.GetInteractionState(thisInteractor, 0) == InteractionState.IDLE)
+                        {
+                            interactableObject.Interact(thisInteractor, 0);
+                        }
+
+                    }
+                    else
+                    {
+                        Debug.Log("Interactable or interactor was null");
+                    }
+                }*/
             }
         }
 
@@ -99,6 +144,16 @@ namespace TrashIsland
 
                 if (o != null)
                 {
+                    if (o != objectUnderTouch || objectUnderTouch == null)
+                    {
+                        objectUnderTouch = o;
+                        objectHeldTime = 0;
+                    }
+                    else
+                    {
+                        objectHeldTime += Time.deltaTime;
+                    }
+
                     //only send the event if allowing selection
                     if (allowSelection)
                     {
@@ -109,6 +164,9 @@ namespace TrashIsland
                 }
                 else //it wasn't a selectable.
                 {
+                    objectHeldTime = 0;
+                    objectUnderTouch = null;
+                    Debug.Log("Set object under touch to null");
                     return hit.point;
                 }
             }
