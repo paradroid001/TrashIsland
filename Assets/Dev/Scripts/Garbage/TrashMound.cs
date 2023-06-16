@@ -39,7 +39,7 @@ public class TrashMound : MonoBehaviour
             Debug.Log("A");
             img.sprite = sprite;
             img.color = Color.white;
-            Player player = other.transform.parent.parent.parent.GetComponent<Player>();
+            Player player = other.transform.GetComponent<Player>();
             player.interactable = true;
             player.Interactables.Add(gameObject);
             button = GameObject.Instantiate<GameObject>(GameManager.instance.player.interactButtonTemplate);
@@ -57,7 +57,7 @@ public class TrashMound : MonoBehaviour
         {
             img.sprite = null;
             img.color = Color.clear;
-            Player player = other.transform.parent.parent.parent.GetComponent<Player>();
+            Player player = other.transform.GetComponent<Player>();
             player.interactable = false;
             player.Interactables.Remove(gameObject);
             GameObject.Destroy(button);

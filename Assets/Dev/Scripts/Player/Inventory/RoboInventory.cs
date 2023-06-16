@@ -20,7 +20,7 @@ public class RoboInventory : MonoBehaviour
     void Start()
     {
         roboInventory = this;
-        menu = transform.GetChild(0).GetChild(8).gameObject;
+        menu = transform.GetChild(0).GetChild(7).gameObject;
         roboInventoryButtons = new List<RoboIntventoryButtons>();
         for(int i = 0; i < menu.transform.GetChild(0).childCount; i++)
         {

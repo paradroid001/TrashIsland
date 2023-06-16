@@ -56,7 +56,7 @@ public class RoboIntventoryButtons : InvButtons, IPointerClickHandler, IPointerE
         if(selectable && item != null)
         {
             //Debug.Log("A");
-            TextMeshProUGUI nameDisplay = GameManager.instance.invent.nameDisplay.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+            TextMeshProUGUI nameDisplay = GameManager.instance.invent.nameDisplay.transform.GetChild(1).GetComponent<TextMeshProUGUI>();
             nameDisplay.transform.parent.gameObject.SetActive(true);
             nameDisplay.text = item.name;
         }
@@ -65,7 +65,7 @@ public class RoboIntventoryButtons : InvButtons, IPointerClickHandler, IPointerE
     {
         if(item != null && selectable)
         {
-            TextMeshProUGUI nameDisplay = GameManager.instance.invent.nameDisplay.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+            TextMeshProUGUI nameDisplay = GameManager.instance.invent.nameDisplay.transform.GetChild(1).GetComponent<TextMeshProUGUI>();
             nameDisplay.transform.parent.gameObject.SetActive(false);
         }
     }

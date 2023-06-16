@@ -131,44 +131,48 @@ namespace TrashIsland
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, 1000, 5, QueryTriggerInteraction.Ignore))
             {
-                //get the game object up the chain (parent rigidbody for example)
-                GameObject g;
-                Rigidbody rb = hit.collider.attachedRigidbody;
-                if (rb == null)
-                    g = hit.collider.gameObject;
-                else
-                    g = rb.gameObject;
-                //We still check for a selectable, because we don't want to
-                //return hit positions on selectables.
-                TISelectableObject o = g.GetComponent<TISelectableObject>();
-
-                if (o != null)
+                if(hit.collider.tag != "UI")
                 {
-                    if (o != objectUnderTouch || objectUnderTouch == null)
-                    {
-                        objectUnderTouch = o;
-                        objectHeldTime = 0;
-                    }
+                    //get the game object up the chain (parent rigidbody for example)
+                    GameObject g;
+                    Rigidbody rb = hit.collider.attachedRigidbody;
+                    if (rb == null)
+                        g = hit.collider.gameObject;
                     else
-                    {
-                        objectHeldTime += Time.deltaTime;
-                    }
+                        g = rb.gameObject;
+                    //We still check for a selectable, because we don't want to
+                    //return hit positions on selectables.
+                    TISelectableObject o = g.GetComponent<TISelectableObject>();
 
-                    //only send the event if allowing selection
-                    if (allowSelection)
+                    if (o != null)
                     {
-                        TISelectionEvent e = new TISelectionEvent();
-                        e.selectableObject = o;
-                        e.Call();
+                        if (o != objectUnderTouch || objectUnderTouch == null)
+                        {
+                            objectUnderTouch = o;
+                            objectHeldTime = 0;
+                        }
+                        else
+                        {
+                            objectHeldTime += Time.deltaTime;
+                        }
+
+                        //only send the event if allowing selection
+                        if (allowSelection)
+                        {
+                            TISelectionEvent e = new TISelectionEvent();
+                            e.selectableObject = o;
+                            e.Call();
+                        }
+                    }
+                    else //it wasn't a selectable.
+                    {
+                        objectHeldTime = 0;
+                        objectUnderTouch = null;
+                        Debug.Log("Set object under touch to null");
+                        return hit.point;
                     }
                 }
-                else //it wasn't a selectable.
-                {
-                    objectHeldTime = 0;
-                    objectUnderTouch = null;
-                    Debug.Log("Set object under touch to null");
-                    return hit.point;
-                }
+                
             }
 
             return Vector3.zero;

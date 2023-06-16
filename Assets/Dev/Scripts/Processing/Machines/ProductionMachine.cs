@@ -43,14 +43,29 @@ public class ProductionMachine : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            Player player = other.transform.parent.parent.parent.GetComponent<Player>();
+            Player player = other.transform.GetComponent<Player>();
             player.interactable = true;
             player.Interactables.Add(gameObject);
             button = GameObject.Instantiate<GameObject>(GameManager.instance.player.interactButtonTemplate);
             button.transform.SetParent(GameManager.instance.player.playerCanvas.transform.GetChild(0));
             button.transform.localPosition = Vector2.zero;
             TextMeshProUGUI buttontext = button.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
-            buttontext.text = "S.P.A.R.C.";
+            if(cleaner != null)
+            {
+                buttontext.text = "Washer";
+            }
+            else if(compressor != null)
+            {
+                buttontext.text = "Crusher";
+            }
+            else if(furnace != null)
+            {
+                buttontext.text = "Smelter";
+            }
+            else if(shredder != null)
+            {
+                buttontext.text = "Shredder";
+            }
             InteractButtons interactButton = button.GetComponent<InteractButtons>();
             interactButton.correspond = gameObject;
         }
@@ -59,7 +74,7 @@ public class ProductionMachine : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            Player player = other.transform.parent.parent.parent.GetComponent<Player>();
+            Player player = other.transform.GetComponent<Player>();
             player.interactable = false;
             player.Interactables.Remove(gameObject);
             GameObject.Destroy(button);

@@ -45,7 +45,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9148056328891863514}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: -1062645129590212653, guid: f825ad93ee22d3443a68465fbdf3ed97, type: 3}
 --- !u!23 &9148056328891863589
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -66,7 +66,11 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 752749d4f4d408e499d80cd302b3aa28, type: 2}
+  - {fileID: 2100000, guid: a8d4f27736d3cfc49873c3cf4aa74776, type: 2}
+  - {fileID: 2100000, guid: 28dedb658a9869945b2b6c264c6cba46, type: 2}
+  - {fileID: 2100000, guid: afc86aaf41f22824f9b1ee6b13d386c5, type: 2}
+  - {fileID: 2100000, guid: c1fde47d96739e34e89ef1ef78b91566, type: 2}
+  - {fileID: 2100000, guid: 49158f1e831597841805e4d16b1696ba, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -305,6 +309,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
+  m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0

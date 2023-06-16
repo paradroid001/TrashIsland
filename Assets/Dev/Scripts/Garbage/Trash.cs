@@ -64,8 +64,10 @@ public class Trash : MonoBehaviour
         if(player.holding != true)
         {
             Debug.Log("Interact");
-            if(GameManager.instance.invent.inventoryItems.Capacity <= 12)
+            
+            if(GameManager.instance.invent.inventoryItems.Count <= GameManager.instance.invent.capacity)
             {
+                Debug.Log(typeOf.name);
                 if(buriedTrash == null)
                 {
                     GameManager.instance.player.anim.Play("Pickup");
@@ -96,6 +98,39 @@ public class Trash : MonoBehaviour
                     }
                 }
                 
+            }
+            else if(GameManager.instance.invent.inventoryItems.Count > GameManager.instance.invent.capacity)
+            {
+                Debug.Log(typeOf.name);
+                if(buriedTrash == null)
+                {
+                    GameManager.instance.player.anim.Play("Pickup");
+                    //GameManager.instance.invent.inventoryItems.Add(typeOf);
+                    player.interactable = false;
+                    player.Interactables.Remove(gameObject);
+                    gameObject.SetActive(false);
+                    GameManager.instance.invent.AddToRoboInventory(typeOf);
+                    player.acting = false;
+                }
+                else if(buriedTrash != null)
+                {
+                    if(buriedTrash.buried == true)
+                    {
+                        if(GameManager.instance.player.equippedTool.name == "Shovel")
+                        {
+                            //play digging animation
+                            transform.position = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
+                            buriedTrash.buried = false;
+                        }
+                    }
+                    else 
+                    {
+                        player.interactable = false;
+                        player.Interactables.Remove(gameObject);
+                        gameObject.SetActive(false);
+                        GameManager.instance.invent.AddToRoboInventory(typeOf);
+                    }
+                }
             }
             //transform.parent = player.hold;
             //player.holding = true;

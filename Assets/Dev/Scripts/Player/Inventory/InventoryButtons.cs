@@ -47,15 +47,27 @@ public class InventoryButtons : InvButtons, IPointerClickHandler, IPointerEnterH
                     {
                         inventory.selected.Add(this);
                         inventory.dropButton.SetActive(true);
-                        inventory.dropButton.transform.SetParent(transform);
+                        if(inventory.selected.Contains(this))
+                        {
+                            TextMeshProUGUI nameDisplay = GameManager.instance.invent.nameDisplay.transform.GetChild(1).GetComponent<TextMeshProUGUI>();
+                            nameDisplay.text = item.name;
+                        }         
+                        else
+                        {
+                            TextMeshProUGUI nameDisplay = GameManager.instance.invent.nameDisplay.transform.GetChild(1).GetComponent<TextMeshProUGUI>();
+                            nameDisplay.text = "";
+                        }           
+                        /*inventory.dropButton.transform.SetParent(transform);
                         inventory.dropButton.transform.localPosition = new Vector2(0, 100);
-                        inventory.dropButton.transform.SetParent(inventory.dropButton.GetComponent<DropButton>().firstParent);
+                        inventory.dropButton.transform.SetParent(inventory.dropButton.GetComponent<DropButton>().firstParent);*/
                     }
                 }
                 else
                 {
                     inventory.selected.Remove(this);
                     inventory.dropButton.SetActive(false);
+                    TextMeshProUGUI nameDisplay = GameManager.instance.invent.nameDisplay.transform.GetChild(1).GetComponent<TextMeshProUGUI>();
+                    nameDisplay.text = "";
                 }
 
             }
@@ -98,17 +110,18 @@ public class InventoryButtons : InvButtons, IPointerClickHandler, IPointerEnterH
         if(selectable && item != null)
         {
             //Debug.Log("A");
-            TextMeshProUGUI nameDisplay = GameManager.instance.invent.nameDisplay.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
-            nameDisplay.transform.parent.gameObject.SetActive(true);
-            nameDisplay.text = item.name;
+            //TextMeshProUGUI nameDisplay = GameManager.instance.invent.nameDisplay.transform.GetChild(1).GetComponent<TextMeshProUGUI>();
+            //nameDisplay.transform.parent.gameObject.SetActive(true);
+            //nameDisplay.text = item.name;
         }
     }
     public void OnPointerExit(PointerEventData eventData)
     {
         if(item != null && selectable)
         {
-            TextMeshProUGUI nameDisplay = GameManager.instance.invent.nameDisplay.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
-            nameDisplay.transform.parent.gameObject.SetActive(false);
+            //TextMeshProUGUI nameDisplay = GameManager.instance.invent.nameDisplay.transform.GetChild(1).GetComponent<TextMeshProUGUI>();
+            //nameDisplay.transform.parent.gameObject.SetActive(false);
+            //nameDisplay.text = "";
         }
     }
 }

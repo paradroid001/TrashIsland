@@ -46,7 +46,7 @@ public class Player : MonoBehaviour
                 transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotSpd * Time.deltaTime);
             }
         }
-        */
+        
         /*if(Input.GetKeyDown(KeyCode.E))
         {
             Interact();
@@ -167,6 +167,7 @@ public class Player : MonoBehaviour
                         if(machine.compressor != null && machine.compressor.repaired == true|| machine.cleaner != null && machine.cleaner.repaired == true|| machine.shredder != null && machine.shredder.repaired == true|| machine.furnace != null && machine.furnace.repaired == true)
                         {
                             GameManager.instance.invent.currentMachine = machine;
+                            GameManager.instance.player.GetComponent<TrashIsland.TICharacterMovement>().enabled = false;
                             GameManager.instance.invent.reason = Inventory.InventoryReason.Process;
                         }
                         else if(machine.compressor != null && machine.compressor.repaired == false)

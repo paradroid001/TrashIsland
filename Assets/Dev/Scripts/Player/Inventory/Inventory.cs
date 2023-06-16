@@ -191,7 +191,7 @@ public class Inventory : MonoBehaviour
     {
         if(!inventoryItems.Contains(trashtype) )
         {
-            if(inventoryItems.Count < capacity)
+            if(inventoryItems.Count <= capacity)
             {
                 inventoryItems.Add(trashtype);
                 for(int i = 0; i <= images.Count; i++)
@@ -216,7 +216,7 @@ public class Inventory : MonoBehaviour
                     else return;
                 }
             }
-            else if(inventoryItems.Count >= capacity)
+            else if(inventoryItems.Count > capacity)
             {/*
                 //if the item is already in the inventory, then add to the amt
                 Debug.Log("Add amount");

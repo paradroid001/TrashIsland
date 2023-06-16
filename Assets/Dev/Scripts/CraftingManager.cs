@@ -21,8 +21,9 @@ public class CraftingManager : MonoBehaviour
     public void Interact()
     {
         GameManager.instance.craftingMenu.SetActive(true);
-        CraftingMenuManager.instance.UpdateMenu();
+        //CraftingMenuManager.instance.UpdateMenu();
         Time.timeScale = 0;
+        GameManager.instance.player.GetComponent<TrashIsland.TICharacterMovement>().enabled = false;
     }
     public void UnlockRecipe(CraftingRecipe recipe)
     {
