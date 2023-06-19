@@ -22,9 +22,11 @@ public class PickupEvent : MonoBehaviour
     public void Interact()
     {
         //transform.position += new Vector3(1, 1, 1);
-        pickupChange.Invoke();
-        GameManager.instance.player.Interactables.Remove(this.gameObject);
+        //pickupChange.Invoke();
+        CraftingManager.instance.UnlockRecipe();
         gameObject.SetActive(false);
+        GameManager.instance.player.Interactables.Remove(this.gameObject);
+        
     }
     public void OnTriggerEnter(Collider other)
     {
