@@ -70,7 +70,7 @@ public class DialogueUI : MonoBehaviour
                 
                 if (i == dialogueOBJ.Dialogue.Length - 1 && dialogueOBJ.HasResponses) break;
                 yield return null;
-                yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.E));
+                yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Mouse0));
             }
             
             
@@ -101,6 +101,7 @@ public class DialogueUI : MonoBehaviour
         charName.transform.parent.gameObject.SetActive(true);
         charName.text = null;
         textLabel.text = string.Empty;
+        GameManager.instance.player.GetComponent<TrashIsland.TICharacterMovement>().enabled = true;
         
     }
     private IEnumerator RunTypingEffect(string dialogue)
@@ -110,7 +111,7 @@ public class DialogueUI : MonoBehaviour
         {
             yield return null;
 
-            if(Input.GetKeyDown(KeyCode.E))
+            if(Input.GetKeyDown(KeyCode.Mouse0))
             {
                 typeWriterEffect.Stop();
             }

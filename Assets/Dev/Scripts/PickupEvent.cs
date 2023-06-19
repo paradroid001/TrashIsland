@@ -21,8 +21,10 @@ public class PickupEvent : MonoBehaviour
     }
     public void Interact()
     {
+        //transform.position += new Vector3(1, 1, 1);
         pickupChange.Invoke();
         GameManager.instance.player.Interactables.Remove(this.gameObject);
+        gameObject.SetActive(false);
     }
     public void OnTriggerEnter(Collider other)
     {
@@ -35,7 +37,7 @@ public class PickupEvent : MonoBehaviour
             button.transform.SetParent(GameManager.instance.player.playerCanvas.transform.GetChild(0));
             button.transform.localPosition = Vector2.zero;
             TextMeshProUGUI buttontext = button.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
-            buttontext.text = "Title";
+            buttontext.text = "Crafting Manual";
             InteractButtons interactButton = button.GetComponent<InteractButtons>();
             interactButton.correspond = gameObject;
         }

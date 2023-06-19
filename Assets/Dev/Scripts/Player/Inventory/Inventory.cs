@@ -587,6 +587,7 @@ public class Inventory : MonoBehaviour
         {
             GameManager.instance.player.equippedTool = selected[0].item.toolsType;
             equipImg.sprite = selected[0].item.inventorySprite;
+            equipImg.color = Color.white;
             GameManager.instance.player.hold.GetChild(selected[0].item.toolsType.indexAsChild).gameObject.SetActive(true);
         }
     }

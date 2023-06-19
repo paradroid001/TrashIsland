@@ -150,12 +150,15 @@ public class Player : MonoBehaviour
                 else if(interacting.GetComponent<ProductionMachine>())
                 {
                     ProductionMachine machine;
+                    Debug.Log("3");
                     if(interacting == null)
                     {
+                        Debug.Log("4");
                         machine = Interactables[currentInteract].GetComponent<ProductionMachine>();
                     }
                     else 
                     {
+                        Debug.Log("5");
                         machine = interacting.GetComponent<ProductionMachine>();
                     } 
                     if(machine.contains.Count != 0)
@@ -273,7 +276,7 @@ public class Player : MonoBehaviour
                     {
                         activator = interacting.GetComponent<DialogueActivator>();
                     }
-                    activator.Interact(GameManager.instance.player);
+                    activator.Interact(this);
                 }
                 else if(interacting.GetComponent<Closet>())
                 {

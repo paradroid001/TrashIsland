@@ -9,7 +9,7 @@ public class DialogueActivator : MonoBehaviour, Iinteractable
     [SerializeField] public DialogueResponseEvents dialogueResponse;
     [SerializeField] private DialogueUI dialogueUI;
     public Sprite charSprite;
-    public TextMeshPro charName;
+    public TextMeshProUGUI charName;
     public string nameOf;
     public bool hasE;
     GameObject button;
@@ -62,6 +62,7 @@ public class DialogueActivator : MonoBehaviour, Iinteractable
                     break;
                 }
             }
+            player.GetComponent<TrashIsland.TICharacterMovement>().enabled = false;
             player.dialogueUI.ShowDialogue(dialogueOBJ);
         }
         

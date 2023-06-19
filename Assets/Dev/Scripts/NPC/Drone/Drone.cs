@@ -7,6 +7,7 @@ public class Drone : NPC
 {
     public Vector3 startPoint;
     public bool sent;
+    public bool got;
     public Bin bin;
     public enum WhichBin{Recycle, Landfill, Organic};
     public WhichBin whichBin;
@@ -31,6 +32,7 @@ public class Drone : NPC
                 carrying = bin.inBin;
                 //agent.baseOffset = 0;
                 agent.SetDestination(DroneManager.instance.recycleDeposit.transform.position);
+                got = true;
                 //agent.baseOffset = 0.11f;
                 if(agent.remainingDistance <= 0.05f)
                 {

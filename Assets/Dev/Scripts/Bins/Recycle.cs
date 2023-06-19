@@ -26,7 +26,7 @@ public class Recycle : Bin
     {
         if (other.tag == "Player")
         {
-            Player player = other.transform.parent.parent.parent.GetComponent<Player>();
+            Player player = other.transform.GetComponent<Player>();
             player.interactable = true;
             player.Interactables.Add(gameObject);
             button = GameObject.Instantiate<GameObject>(GameManager.instance.player.interactButtonTemplate);
@@ -42,7 +42,7 @@ public class Recycle : Bin
     {
         if (other.tag == "Player")
         {
-            Player player = other.transform.parent.parent.parent.GetComponent<Player>();
+            Player player = other.transform.GetComponent<Player>();
             player.interactable = false;
             player.Interactables.Remove(gameObject);
             GameObject.Destroy(button);
