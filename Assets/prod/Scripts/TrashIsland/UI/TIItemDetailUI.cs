@@ -17,14 +17,14 @@ namespace TrashIsland
         protected Button action1Button;
         [SerializeField]
         protected TextMeshProUGUI action1ButtonText;
-        
+
         [SerializeField]
         protected Button action2Button;
         [SerializeField]
         protected TextMeshProUGUI action2ButtonText;
         [SerializeField]
         protected Button action3Button;
-        
+
 
         void HandleTISelectionEvent(TISelectionEvent e)
         {
@@ -75,7 +75,7 @@ namespace TrashIsland
                         action3Button?.gameObject.SetActive(false);
                     }
                 }
-                
+
             }
         }
 
@@ -94,7 +94,14 @@ namespace TrashIsland
         protected override void Start()
         {
             base.Start();
+            Debug.Log("ITEM DETAIL UI REGISTERED");
             TISelectionEvent.Register(HandleTISelectionEvent);
+        }
+
+        protected override void OnDestroy()
+        {
+            base.OnDestroy();
+            TISelectionEvent.Unregister(HandleTISelectionEvent);
         }
 
         // Update is called once per frame

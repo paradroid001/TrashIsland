@@ -60,14 +60,12 @@ namespace TrashIsland
 
         void OnTap(Vector2 tappos)
         {
+            Debug.Log("ONTAP");
             //Ignore if touch is over UI
-            /*
-            if (EventSystem.current.IsPointerOverGameObject())
+            if (IsTouchOverUI(tappos))
             {
-                //Debug.Log(EventSystem.current.currentSelectedGameObject);
                 return;
             }
-            */
 
             //Debug.Log("Tapped");
             Vector3 dest = GetTouchPositionInWorld(tappos);
@@ -86,9 +84,10 @@ namespace TrashIsland
         void OnTapHeld(SwipeData data)
         {
             //Ignore if touch is over UI
-            /*
-            if (EventSystem.current.IsPointerOverGameObject()) return;
-            */
+            if (IsTouchOverUI(data.posStart))
+            {
+                return;
+            }
 
             Debug.Log($"This interactor is {thisInteractor}");
             Vector3 dest = GetTouchPositionInWorld(data.posCurrent, false); //don't allow selection
@@ -123,6 +122,26 @@ namespace TrashIsland
                     }
                 }
             }
+        }
+
+        bool IsTouchOverUI(Vector2 pos)
+        {
+            bool overUI = false;
+            //if (EventSystem.current.IsPointerOverGameObject())
+            //{
+            //    
+            //    return;
+            //}
+            PointerEventData eventPosition = new PointerEventData(EventSystem.current);
+            eventPosition.position = pos;
+            List<RaycastResult> results = new List<RaycastResult>();
+            EventSystem.current.RaycastAll(eventPosition, results);
+            if (results.Count > 0)
+            {
+                overUI = true;
+                Debug.Log("Touch was over UI");
+            }
+            return overUI;
         }
 
         Vector3 GetTouchPositionInWorld(Vector2 touch, bool allowSelection = true)
