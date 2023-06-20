@@ -23,7 +23,7 @@ public class PickupEvent : MonoBehaviour
     {
         //transform.position += new Vector3(1, 1, 1);
         //pickupChange.Invoke();
-        CraftingManager.instance.UnlockRecipe();
+        CraftingManager.instance.UnlockRecipe(transform);
         gameObject.SetActive(false);
         GameManager.instance.player.Interactables.Remove(this.gameObject);
         

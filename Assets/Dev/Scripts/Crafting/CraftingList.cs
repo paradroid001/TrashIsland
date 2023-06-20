@@ -7,7 +7,7 @@ public class CraftingList : MonoBehaviour
     public static CraftingList instance;
     public int whichOne;
     public List<CraftingRecipe> manuals;
-    public void OnValidate()
+    public void Start()
     {
         instance = this;
     }

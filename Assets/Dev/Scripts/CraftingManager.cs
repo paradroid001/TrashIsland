@@ -25,7 +25,7 @@ public class CraftingManager : MonoBehaviour
         Time.timeScale = 0;
         GameManager.instance.player.GetComponent<TrashIsland.TICharacterMovement>().enabled = false;
     }
-    public void UnlockRecipe()
+    public void UnlockRecipe(Transform mover)
     {
         craftingRecipes.Add(CraftingList.instance.manuals[CraftingList.instance.whichOne]);
         CraftingList.instance.whichOne++;

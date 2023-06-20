@@ -14,7 +14,7 @@ public class InteractButtons : MonoBehaviour
     {
         Debug.Log(correspond);
         Canvas grndParent = transform.parent.parent.GetComponent<Canvas>();
-        if(correspond.GetComponent<Trash>() == false && correspond.GetComponent<TrashMound>() == false && correspond.GetComponent<PickupEvent>() == false)
+        if(correspond.GetComponent<Trash>() == false && correspond.GetComponent<TrashMound>() == false && correspond.GetComponent<PickupEvent>() == false && correspond.GetComponent<ProductionMachine>() == false)
         {
             follower.GetComponent<Canvas>().sortingOrder = 2;
         }
