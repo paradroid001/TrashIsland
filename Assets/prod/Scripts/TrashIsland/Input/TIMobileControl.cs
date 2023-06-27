@@ -22,6 +22,7 @@ namespace TrashIsland
         public override void InitService()
         {
             base.InitService();
+            Debug.Log("Starting up TIMobileControl service");
             MonoMobileTapInput.OnTap += OnTap;
             MonoMobileTapInput.OnTapHeld += OnTapHeld;
         }
@@ -30,6 +31,7 @@ namespace TrashIsland
             base.ShutdownService();
             Debug.Log("Shutting down TIMobileControl service");
             MonoMobileInput.OnTap -= OnTap;
+            MonoMobileTapInput.OnTapHeld -= OnTapHeld;
         }
 
         public override void StartCollecting()
@@ -89,6 +91,7 @@ namespace TrashIsland
                 return;
             }
 
+            Debug.Log($"This gameobject is {gameObject}");
             Debug.Log($"This interactor is {thisInteractor}");
             Vector3 dest = GetTouchPositionInWorld(data.posCurrent, false); //don't allow selection
             if (dest != Vector3.zero)
