@@ -1531,6 +1531,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 346158553}
   m_PrefabAsset: {fileID: 0}
+--- !u!137 &353801893 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 3664724364302124379, guid: 8201f4614e4c3f0418e6736b8276c353,
+    type: 3}
+  m_PrefabInstance: {fileID: 242553140}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &356276006 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1356505032240958988, guid: e271c3aec88828cec9184786ea08b789,
@@ -19384,6 +19390,12 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!1 &1309624087 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7443142515099778568, guid: 8201f4614e4c3f0418e6736b8276c353,
+    type: 3}
+  m_PrefabInstance: {fileID: 242553140}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1321950006 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7864586271671733091, guid: d5e6f59e0afc5c140a9bee4774c3ebc9,
@@ -58174,6 +58186,82 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 242553140}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2008921455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1309624087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc21731a548f983e1af41388d520c737, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnInteractionStart:
+    m_PersistentCalls:
+      m_Calls: []
+  OnInteractionFinish:
+    m_PersistentCalls:
+      m_Calls: []
+  state: 0
+  startNode: Sparc_Test
+--- !u!114 &2008921456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1309624087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b447a22acaee7084be12e5044ec0791, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2008921457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1309624087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e8c8aa9a81e4e5a3923c03e9df9bd68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectTemplate: {fileID: 11400000, guid: dff2edb6a676d68278a29f4858ef3eb8, type: 2}
+  overrideData:
+    type: 5
+    name: SPARC
+    description: 
+    sprite: {fileID: 21300000, guid: 1eba88091688c1d6cb050150b281d18d, type: 3}
+  renderer: {fileID: 353801893}
+  selectable: {fileID: 2008921457}
+  outlineStrength: 7
+  outlineColour: {r: 1, g: 1, b: 1, a: 1}
+  OnSelect:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2008921456}
+        m_TargetAssemblyTypeName: TrashIsland.TISoundEvent, Assembly-CSharp
+        m_MethodName: EmitPlay
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: TrashSelect
+          m_BoolArgument: 0
+        m_CallState: 2
+  interactable: {fileID: 2008921457}
+  interactionCollider: {fileID: 0}
+  interactions:
+  - interactionName: Talk
+    interactionDescription: 
+    interactionID: 0
+    interaction: {fileID: 2008921455}
 --- !u!1001 &2011326905
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -59856,6 +59944,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4983924844833377767, guid: 74c1f648775c4edfa8dd9233b3fac243,
+        type: 3}
+      propertyPath: m_text
+      value: Action 2
       objectReference: {fileID: 0}
     - target: {fileID: 5571035604265885754, guid: 74c1f648775c4edfa8dd9233b3fac243,
         type: 3}

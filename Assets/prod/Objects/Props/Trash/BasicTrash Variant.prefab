@@ -11,7 +11,7 @@ PrefabInstance:
     - target: {fileID: 2113866680833407681, guid: b8d4b8006a811fd9aa040854bc5259e3,
         type: 3}
       propertyPath: m_Name
-      value: BasicTrash
+      value: BasicTrash Variant
       objectReference: {fileID: 0}
     - target: {fileID: 2711681457323129004, guid: b8d4b8006a811fd9aa040854bc5259e3,
         type: 3}
@@ -29,6 +29,11 @@ PrefabInstance:
       propertyPath: interactions.Array.size
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2711681457323129004, guid: b8d4b8006a811fd9aa040854bc5259e3,
+        type: 3}
+      propertyPath: interactions.Array.data[0].interaction
+      value: 
+      objectReference: {fileID: 3097470969801604291}
     - target: {fileID: 2711681457323129004, guid: b8d4b8006a811fd9aa040854bc5259e3,
         type: 3}
       propertyPath: interactions.Array.data[0].interactionName
@@ -160,3 +165,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a88c0339c97b621a0af6fd93d4c8f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnInteractionStart:
+    m_PersistentCalls:
+      m_Calls: []
+  OnInteractionFinish:
+    m_PersistentCalls:
+      m_Calls: []
+  state: 0
