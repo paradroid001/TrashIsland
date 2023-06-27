@@ -11,7 +11,7 @@ PrefabInstance:
     - target: {fileID: 2113866680833407681, guid: b8d4b8006a811fd9aa040854bc5259e3,
         type: 3}
       propertyPath: m_Name
-      value: Paulie
+      value: Paulie Variant
       objectReference: {fileID: 0}
     - target: {fileID: 2711681457323129004, guid: b8d4b8006a811fd9aa040854bc5259e3,
         type: 3}
@@ -36,8 +36,28 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 2711681457323129004, guid: b8d4b8006a811fd9aa040854bc5259e3,
         type: 3}
+      propertyPath: interactions.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2711681457323129004, guid: b8d4b8006a811fd9aa040854bc5259e3,
+        type: 3}
       propertyPath: overrideData.description
       value: A friendly island companion.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2711681457323129004, guid: b8d4b8006a811fd9aa040854bc5259e3,
+        type: 3}
+      propertyPath: interactions.Array.data[0].interaction
+      value: 
+      objectReference: {fileID: 2041027833}
+    - target: {fileID: 2711681457323129004, guid: b8d4b8006a811fd9aa040854bc5259e3,
+        type: 3}
+      propertyPath: interactions.Array.data[0].interactionName
+      value: Talk
+      objectReference: {fileID: 0}
+    - target: {fileID: 2711681457323129004, guid: b8d4b8006a811fd9aa040854bc5259e3,
+        type: 3}
+      propertyPath: interactions.Array.data[0].interactionDescription
+      value: Talk to Paulie
       objectReference: {fileID: 0}
     - target: {fileID: 3186508935620214097, guid: b8d4b8006a811fd9aa040854bc5259e3,
         type: 3}
@@ -47,42 +67,42 @@ PrefabInstance:
     - target: {fileID: 6540986722935880593, guid: b8d4b8006a811fd9aa040854bc5259e3,
         type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 6540986722935880593, guid: b8d4b8006a811fd9aa040854bc5259e3,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 13.605992
       objectReference: {fileID: 0}
     - target: {fileID: 6540986722935880593, guid: b8d4b8006a811fd9aa040854bc5259e3,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 21.25
       objectReference: {fileID: 0}
     - target: {fileID: 6540986722935880593, guid: b8d4b8006a811fd9aa040854bc5259e3,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -7.84
+      value: -28.732578
       objectReference: {fileID: 0}
     - target: {fileID: 6540986722935880593, guid: b8d4b8006a811fd9aa040854bc5259e3,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.5284689
       objectReference: {fileID: 0}
     - target: {fileID: 6540986722935880593, guid: b8d4b8006a811fd9aa040854bc5259e3,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6540986722935880593, guid: b8d4b8006a811fd9aa040854bc5259e3,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.84895265
       objectReference: {fileID: 0}
     - target: {fileID: 6540986722935880593, guid: b8d4b8006a811fd9aa040854bc5259e3,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6540986722935880593, guid: b8d4b8006a811fd9aa040854bc5259e3,
         type: 3}
@@ -92,7 +112,7 @@ PrefabInstance:
     - target: {fileID: 6540986722935880593, guid: b8d4b8006a811fd9aa040854bc5259e3,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 22.835
       objectReference: {fileID: 0}
     - target: {fileID: 6540986722935880593, guid: b8d4b8006a811fd9aa040854bc5259e3,
         type: 3}
@@ -117,6 +137,32 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 5398497088609004729}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &6322674493812561528 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2113866680833407681, guid: b8d4b8006a811fd9aa040854bc5259e3,
+    type: 3}
+  m_PrefabInstance: {fileID: 5398497088609004729}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2041027833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6322674493812561528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc21731a548f983e1af41388d520c737, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnInteractionStart:
+    m_PersistentCalls:
+      m_Calls: []
+  OnInteractionFinish:
+    m_PersistentCalls:
+      m_Calls: []
+  state: 0
+  startNode: Paulie_Default
 --- !u!1001 &9141697007171310242
 PrefabInstance:
   m_ObjectHideFlags: 0
