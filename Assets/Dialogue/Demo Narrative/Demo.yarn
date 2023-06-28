@@ -1,0 +1,149 @@
+﻿title: Demo_Start
+tags:
+---
+S.P.A.R.C.: Welcome to our Island! I am SPARC, your robot companion! Please accept these backup “Paulie translators” so you can talk to your animal companion.
+You received Paulie Translator earpiece.
+Paulie: Hello! I am Paulie! Welcome to the home island of engineer and environmental researcher Alfonso Gordner. Though we knew him as Dr Fogo. We were his research companions.
+Paulie: He said this island was special - he had not seen forests and wildlife in a long time, not since the rise of ocean levels. Everywhere else is full of trash - such as plastics, metals, glass and old electronics. And unfortunately that trash sometimes washes up here.
+Paulie: Dr Fogo isn’t around anymore, but he worked hard to protect this island by removing the trash and turning them into things he can use.
+S.P.A.R.C.: He does this by reusing and recycling! Dr Fogo created me using some old computer parts and trash washed up on the beach - and he has built special bins and a Recycling Factory to make trash collection and recycling easier!
+Paulie: We would love for you to help us keep our island beautiful and make it into a new home for yourself too. The Recycling Factory is the red building not far from here. 	
+S.P.A.R.C.: We can introduce you to the BinBots too! They aren’t very smart robots but they will make collecting trash easier!
+Paulie: Let’s go meet them! Feel free to collect trash as we go - they may end up more useful than you expect. 
+===
+title: Demo_Invent_Full
+position: -6,-213
+---
+Paulie: Your inventory is full? You can always drop trash items you don’t need at this moment.
+S.P.A.R.C.: However, I also have some inventory space which you can use!
+===
+title: Demo_Bin_Intro
+position: 2,150
+---
+S.P.A.R.C.: These are Dr Fogo’s BinBots! A robotic bin programmed to accept or decline items based on their composition and status. 
+S.P.A.R.C.: These three have colour-coded lids: Yellow for items acceptable for Recycling; Green for organic plant material acceptable for Composting and; Red for everything that does not fit the current parameters for either.
+Paulie: It looks like the BinBots are nonfunctional at the moment. SPARC do you have a repair manual for these?
+S.P.A.R.C.: Yes I do!
+You received the BinBot Repair manuals.
+S.P.A.R.C.: We need the following things:.
+S.P.A.R.C.: Once requirements are met for manufacture, we will need to visit Dr Fogo’s “Crafting Bench” to begin making the repairs.
+Paulie: The Crafting Bench is near the Recycling Factory and its machines. We’ll tell you more when we get there. Maybe you should also collect the needed trash parts so we can make the BinBot repairs. 
+===
+title: Demo_Yellow_BinBot_NotFixed
+position: 262,-82
+---
+S.P.A.R.C.: The Yellow BinBot will accept items that can be recycled with your current recycling machines. Upgrades are needed to unlock new trash types for recycling. If it cannot recycle the item, it will refuse them.
+S.P.A.R.C.: It is currently inactive and needs repairs.
+===
+title: Demo_Green_BinBot_NotFixed
+position: 262,182
+---
+S.P.A.R.C.: The Green BinBot will accept organic plant material acceptable for Composting.
+S.P.A.R.C.: It is currently inactive and needs repairs.
+===
+title: Demo_Red_BinBot_NotFixed
+position: 261,51
+---
+S.P.A.R.C.: The Red BinBot will accept everything, even items that can be recycled or composted. These items cannot be reclaimed from storage containers. 
+S.P.A.R.C.: It is currently inactive and needs repairs. 
+Paulie: Please note!! Even if trash cannot be put into the Yellow or Green BinBot, it doesn't mean it should go into the Red BinBot. Often, that “trash” can be reused or repurposed, or will be accepted by an upgraded Yellow BinBot! 
+Paulie: Be sure to check the manuals for any recipes that can utilise un-recyclable trash items and keep them in your inventory or storage. You never know - you might find a manual that uses the trash items you’ve thrown away!
+===
+title: Demo_Crafting_Table_Approach
+---
+Paulie: See the table put together with random parts? That’s Dr Fogo’s Crafting Bench! Let’s go to the table and we will show you how to make the BinBot repairs.
+===
+title: Demo_Crafting_Table_Intro
+position: -232,-1
+---
+S.P.A.R.C.: This is the crafting bench! It contains records of your known manuals - if you have enough of the required items, you can create the manual’s product. 
+S.P.A.R.C.: In this instance, we want to create BinBot Basic Repairs! Please create three - one for each BinBot friend.
+===
+title: Demo_Machine_Broken
+position: -235,-216
+---
+S.P.A.R.C.: Let’s repair my BinBots friends first!
+===
+title: Demo_Paulie_No_Craft
+---
+Paulie: Let’s go to Dr Fogos Crafting Bench. It’s located near the red building. 
+===
+title: Demo_Machine_Pre_Bin
+---
+Paulie: Let’s go to Dr Fogos Crafting Bench. It’s located near the red building.
+===
+title: Demo_Crate
+---
+S.P.A.R.C.: The little helicopter is called the BinDrone. The Yellow Crate stores the contents that the BinDrone has collected from the Yellow BinBot. This Yellow Crate stores the contents that the BinDrone has collected from the Yellow BinBot.
+Paulie: It looks like the locator for the Green and Red BinBots aren’t here… so we aren’t sure where the BinDrone is taking their contents for the time being.
+===
+title: Demo_Crafted_Bin_Repairs
+---
+S.P.A.R.C.: Congratulations on successfully using the Crafting Bench! To use the BinBot Basic Repairs, interact with the BinBot.
+===
+title: Demo_Bin_Repair
+---
+Repair and activate this BinBot?
+->Yes  
+    S.P.A.R.C.: … Let’s help my friends with a repair part!
+    BinBot face appears and NPC is animated in the default idle pose. Player has no choice but to activate it.
+    S.P.A.R.C.: You have restored and reactivated your first BinBot! Thank you!
+    S.P.A.R.C.: Ahh, BinBots do not have speakers so they cannot talk to you, but if you interact with one and put it in “Active” mode, it will follow you. Interact with it again to put it in “Idle” mode and make it stop.
+    Paulie: Only one BinBot can follow you at a time, so if you interact with another BinBot, the previous one will default to Idle mode. Either way, they should make collection much easier for you!
+->No
+    
+===
+title: Demo_Crusher_No_Repearl
+---
+S.P.A.R.C.: We cannot repair this machine until we have recycled plastic! Let’s check on the other three machines first. 
+===
+title: Demo_Machine_Bin_Repaired
+---
+S.P.A.R.C.: Observations indicate that all machines present are in dire need of repairs! We cannot complete the recycling processes for plastic and aluminium without a functional Shredder, Washer and Smelter!
+S.P.A.R.C.: I have in my database the crude repair manuals for each of these machines. I will grant you access to them.
+Crude Shredder Repairs” manual obtained.
+Crude Washer Repairs” manual obtained.
+Crude Smelter Repairs” manual obtained.
+Paulie: Trash - both the recyclable and non-recycable types - can sometimes be used in creating new items! Check in the manuals to see which trash has been recorded as usable for crafting.
+Paulie: Repairing these three machines will give you access to recycling suitable plastics and aluminium, which will grant you more crafting possibilities like items, tools and upgraded machines.
+S.P.A.R.C.: Dr Fogo has completed years of research on the potential of trash as a resource as well as recycling processes. I have a lot of this information on my database, but a portion are locked behind passwords or have information missing.   
+Paulie: It’s possible Dr. Fogo’s notebooks have the missing info and manual passwords - but these have been scattered throughout the island over the years. Hopefully you’ll be able to uncover some while clearing the island of its trash.
+Paulie: For now, let’s focus on getting these machines working again! 
+===
+title: Demo_Paulie_Pre_Machine_Repair
+---
+Paulie: Don’t forget that SPARC’s unlocked manuals are accessible in the manual’s panel if you need to check how much of each you need. 
+Paulie: Feel free to bring the Yellow BinBot with you to store away items that can be recycled with your existing machines. 
+
+===
+title: Demo_Machine_Broken_Bin_Repaired
+---
+If repair not crafted.
+This machine is damaged and needs to be repaired. 
+===
+title: Demo_Machine_Broken_Bin_Repaired_Have_Repair
+---
+The machine is damaged. Repair it?
+->Yes
+    Fix.
+->No
+
+===
+title: Demo_Crusher_Pre_Machine_Repair
+---
+S.P.A.R.C.: We cannot repair this machine until we have recycled plastic and recycled aluminium! Let’s check on the other three machines first. 
+===
+title: Demo_Mahcines_Repair
+---
+S.P.A.R.C.: Status report! 
+S.P.A.R.C.: Crude recycling machines - Washer, Shredder and Smelter - are at a functioning state. 
+S.P.A.R.C.: Recycling for Plastic type “Blue” can now be completed. Recycling for Aluminium type “Blue” can now be completed!
+S.P.A.R.C.: The process for both is as follows! 
+S.P.A.R.C.: First Step: Suitable trash inserted in the Crude Shredder - output Shredded trash.
+S.P.A.R.C.: Second Step: Shredded trash inserted in the Crude Washer - output Washed Shredded trash. 
+S.P.A.R.C.: Final Step: Washed Shredded trash inserted into the Crude Smelter -
+S.P.A.R.C.: output product ready for crafting! Final plastic output material is called Re-Pearl. Final aluminium output material is called Crude Aluminium.
+Paulie: This is exciting! Great work on repairing them! At this stage, you will need to manually transfer the output items from one machine to the other, and only one type can be processed in a machine at a time. 
+Paulie: For example, you cannot mix plastic and aluminium in the shredder. You also cannot mix different plastic or aluminium types, as they have different properties. 
+Paulie: But! You can use the same machine to process different butt types. The machines auto clean after use, and are ready for the next batch, but again they must be the same type within the one batch! 
+===
