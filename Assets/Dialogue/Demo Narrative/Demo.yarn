@@ -76,8 +76,8 @@ title: Demo_Machines_Entry
 ---
 <<if $BinBot_Fix is false>>
 <<jump Demo_Machine_Pre_Bin>>
-<<else>>
-<<jump Demo_Mahcine_Broken>>
+<<elseif $BinBot_Fix is true and $has_Repairs is false>>
+<<jump Demo_Machine_Broken_Bin_Repaired>>
 <<endif>>
 ===
 title: Demo_Machine_Broken

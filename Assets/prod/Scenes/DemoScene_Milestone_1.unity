@@ -5061,6 +5061,21 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1232737659659097160, guid: 2d4a89f6eaf9d6459afdbfc2cce64cd8,
+        type: 3}
+      propertyPath: interactions.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1232737659659097160, guid: 2d4a89f6eaf9d6459afdbfc2cce64cd8,
+        type: 3}
+      propertyPath: interactions.Array.data[0].interaction
+      value: 
+      objectReference: {fileID: 1775572480}
+    - target: {fileID: 1232737659659097160, guid: 2d4a89f6eaf9d6459afdbfc2cce64cd8,
+        type: 3}
+      propertyPath: interactions.Array.data[0].interactionName
+      value: Talk
+      objectReference: {fileID: 0}
     - target: {fileID: 3021833153743672869, guid: 2d4a89f6eaf9d6459afdbfc2cce64cd8,
         type: 3}
       propertyPath: m_Name
@@ -6614,6 +6629,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6913418868617516020, guid: 7d1690277a32de024a98a57f322f530d,
+        type: 3}
+      propertyPath: interactions.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6913418868617516020, guid: 7d1690277a32de024a98a57f322f530d,
+        type: 3}
+      propertyPath: interactions.Array.data[0].interaction
+      value: 
+      objectReference: {fileID: 1976093820}
+    - target: {fileID: 6913418868617516020, guid: 7d1690277a32de024a98a57f322f530d,
+        type: 3}
+      propertyPath: interactions.Array.data[0].interactionName
+      value: Talk
       objectReference: {fileID: 0}
     - target: {fileID: 7423410711037464985, guid: 7d1690277a32de024a98a57f322f530d,
         type: 3}
@@ -10812,6 +10842,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1472502221}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     arg1: {fileID: 0}
     arg2: {fileID: 0}
   OnStay:
@@ -14280,6 +14322,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6913418868617516020, guid: 80d4ebd638f1a014195ddef9db0f0373,
+        type: 3}
+      propertyPath: interactions.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6913418868617516020, guid: 80d4ebd638f1a014195ddef9db0f0373,
+        type: 3}
+      propertyPath: interactions.Array.data[0].interaction
+      value: 
+      objectReference: {fileID: 1407426736}
+    - target: {fileID: 6913418868617516020, guid: 80d4ebd638f1a014195ddef9db0f0373,
+        type: 3}
+      propertyPath: interactions.Array.data[0].interactionName
+      value: Talk
       objectReference: {fileID: 0}
     - target: {fileID: 7423410711037464985, guid: 80d4ebd638f1a014195ddef9db0f0373,
         type: 3}
