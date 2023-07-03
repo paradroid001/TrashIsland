@@ -113,7 +113,7 @@ PrefabInstance:
     - target: {fileID: 2113866680833407681, guid: b8d4b8006a811fd9aa040854bc5259e3,
         type: 3}
       propertyPath: m_Name
-      value: Crusher
+      value: Crusher Variant
       objectReference: {fileID: 0}
     - target: {fileID: 2711681457323129004, guid: b8d4b8006a811fd9aa040854bc5259e3,
         type: 3}
@@ -130,6 +130,12 @@ PrefabInstance:
       propertyPath: overrideData.type
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 2711681457323129004, guid: b8d4b8006a811fd9aa040854bc5259e3,
+        type: 3}
+      propertyPath: overrideData.sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: daa6cb5cfb436f7479af753b960eea8e,
+        type: 3}
     - target: {fileID: 3186508935620214097, guid: b8d4b8006a811fd9aa040854bc5259e3,
         type: 3}
       propertyPath: m_IsActive
