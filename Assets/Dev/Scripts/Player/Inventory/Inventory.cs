@@ -193,9 +193,12 @@ public class Inventory : MonoBehaviour
         {
             if(inventoryItems.Count <= capacity)
             {
-                inventoryItems.Add(trashtype);
                 for(int i = 0; i <= images.Count; i++)
                 {
+                    if(inventoryItems[i] == null)
+                    {
+                        inventoryItems[i] = trashtype;
+                    }
                     if(trashtype.inventorySprite != null)
                     {
                         if(images[i].sprite == null)

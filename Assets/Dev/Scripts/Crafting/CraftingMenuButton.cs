@@ -98,13 +98,14 @@ public int amtHaveVsNeed = 0;
                         {
                             int amtHaveInd = GameManager.instance.invent.inventoryItems.IndexOf(recipe.needed[j]);
                             Debug.Log("Craft");
-                            if(GameManager.instance.invent.amount[amtHaveInd] == 0)
+                            if(GameManager.instance.invent.amount[amtHaveInd] <= 1)
                             {
                                 Debug.Log("Remove");
                                 GameManager.instance.invent.inventoryItems[amtHaveInd] = null;
                                 GameManager.instance.invent.amount[amtHaveInd]--;
                                 GameManager.instance.invent.images[amtHaveInd].sprite = null;
                                 GameManager.instance.invent.images[amtHaveInd].GetComponent<InventoryButtons>().item = null;
+                                GameManager.instance.invent.images[amtHaveInd].GetComponent<InventoryButtons>().number.text = GameManager.instance.invent.amount[amtHaveInd].ToString();
                                 GameManager.instance.invent.images[amtHaveInd].color = Color.red;
                                 
                             }
@@ -120,7 +121,9 @@ public int amtHaveVsNeed = 0;
                                     //GameManager.instance.invent.amount[amtHaveInd]--;
                                     GameManager.instance.invent.images[amtHaveInd].sprite = null;
                                     GameManager.instance.invent.images[amtHaveInd].GetComponent<InventoryButtons>().item = null;
+                                    GameManager.instance.invent.images[amtHaveInd].GetComponent<InventoryButtons>().number.text = GameManager.instance.invent.amount[amtHaveInd].ToString();
                                     GameManager.instance.invent.images[amtHaveInd].color = Color.red;
+                                    Debug.Log("Remove2");
                                 }
                             }
                         }
