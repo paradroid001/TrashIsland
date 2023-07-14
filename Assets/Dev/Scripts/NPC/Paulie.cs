@@ -15,7 +15,7 @@ public class Paulie : NPC
         if(sparc != null)
         {
             agent.destination = sparc.position;
-            if(agent.remainingDistance <= 0.5f)
+            if(agent.remainingDistance <= 0.7f)
             {
                 agent.isStopped = true;
             }
