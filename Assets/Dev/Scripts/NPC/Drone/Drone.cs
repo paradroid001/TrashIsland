@@ -48,6 +48,7 @@ public class Drone : NPC
             else if(other.tag == "Garbage" && other.GetComponent<Garbage>() == bin && other.isTrigger == false)
             {
                 //play pick up animation
+                Debug.Log("F");
                 carrying = bin.inBin;
                 agent.SetDestination(DroneManager.instance.landfill);
                 if(agent.remainingDistance <= 0.05)
@@ -59,6 +60,7 @@ public class Drone : NPC
             else if(other.tag == "Organic" && other.GetComponent<Organics>() == bin && other.isTrigger == false)
             {
                 //play pickup animation
+                
                 carrying = bin.inBin;
                 agent.SetDestination(DroneManager.instance.compost.transform.position);
                 if(agent.remainingDistance <= 0.005f)

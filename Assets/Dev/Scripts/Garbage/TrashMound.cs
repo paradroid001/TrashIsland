@@ -36,7 +36,7 @@ public class TrashMound : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            Debug.Log("A");
+//            Debug.Log("A");
             img.sprite = sprite;
             img.color = Color.white;
             Player player = other.transform.GetComponent<Player>();

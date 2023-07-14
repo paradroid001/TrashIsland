@@ -191,13 +191,15 @@ public class Inventory : MonoBehaviour
     {
         if(!inventoryItems.Contains(trashtype) )
         {
-            if(inventoryItems.Count <= capacity)
+            if(inventoryItems[capacity-1] == null)
             {
                 for(int i = 0; i <= images.Count; i++)
                 {
+                    Debug.Log("hh");
                     if(inventoryItems[i] == null)
                     {
                         inventoryItems[i] = trashtype;
+                        Debug.Log(trashtype);
                     }
                     if(trashtype.inventorySprite != null)
                     {
@@ -219,7 +221,7 @@ public class Inventory : MonoBehaviour
                     else return;
                 }
             }
-            else if(inventoryItems.Count > capacity)
+            else if(inventoryItems[capacity-1] != null)
             {/*
                 //if the item is already in the inventory, then add to the amt
                 Debug.Log("Add amount");
@@ -232,6 +234,7 @@ public class Inventory : MonoBehaviour
                         break;
                     }
                 }*/
+                Debug.Log("ff");
                 AddToRoboInventory(trashtype);
             }
         }
@@ -252,6 +255,7 @@ public class Inventory : MonoBehaviour
         }
         else
         {
+            Debug.Log("gg");
             AddToRoboInventory(trashtype);
         }
     }
@@ -487,7 +491,8 @@ public class Inventory : MonoBehaviour
                                 {
                                     Debug.Log(ind);
                                     Debug.Log("Process");
-                                    inventoryItems.Remove(selected[i].item);
+                                    //inventoryItems.Remove(selected[i].item);
+                                    inventoryItems[ind] = null;
                                     currentMachine.PutIn(selected[i].item);
                                     selected[i].item = null;
                                     selected[i].GetComponent<Image>().sprite = null;
@@ -503,7 +508,8 @@ public class Inventory : MonoBehaviour
                                     {
                                         Debug.Log(ind);
                                         Debug.Log("Process");
-                                        inventoryItems.Remove(selected[i].item);
+                                        //inventoryItems.Remove(selected[i].item);
+                                        inventoryItems[ind] = null;
                                         //currentMachine.PutIn(selected[i].item);
                                         selected[i].item = null;
                                         selected[i].GetComponent<Image>().sprite = null;
