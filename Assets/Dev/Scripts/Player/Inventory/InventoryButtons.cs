@@ -41,6 +41,7 @@ public class InventoryButtons : InvButtons, IPointerClickHandler, IPointerEnterH
             }
             else if(inventory.reason == Inventory.InventoryReason.Look && inventory.organise == false)
             {
+                Debug.Log("M");
                 if(!inventory.selected.Contains(this))
                 {
                     if(inventory.selected.Count == 0)
@@ -73,7 +74,7 @@ public class InventoryButtons : InvButtons, IPointerClickHandler, IPointerEnterH
             }
             else if(inventory.reason == Inventory.InventoryReason.Look && inventory.organise == true)
             {
-                //Debug.Log("L");
+                Debug.Log("L");
                 if(inventory.swap.Count != 0)
                 {
                     //swap the things
