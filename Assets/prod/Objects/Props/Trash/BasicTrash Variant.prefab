@@ -27,7 +27,7 @@ PrefabInstance:
     - target: {fileID: 2711681457323129004, guid: b8d4b8006a811fd9aa040854bc5259e3,
         type: 3}
       propertyPath: interactions.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2711681457323129004, guid: b8d4b8006a811fd9aa040854bc5259e3,
         type: 3}
@@ -36,13 +36,28 @@ PrefabInstance:
       objectReference: {fileID: 3097470969801604291}
     - target: {fileID: 2711681457323129004, guid: b8d4b8006a811fd9aa040854bc5259e3,
         type: 3}
+      propertyPath: interactions.Array.data[1].interaction
+      value: 
+      objectReference: {fileID: 9193904533392250841}
+    - target: {fileID: 2711681457323129004, guid: b8d4b8006a811fd9aa040854bc5259e3,
+        type: 3}
       propertyPath: interactions.Array.data[0].interactionName
       value: Collect
       objectReference: {fileID: 0}
     - target: {fileID: 2711681457323129004, guid: b8d4b8006a811fd9aa040854bc5259e3,
         type: 3}
+      propertyPath: interactions.Array.data[1].interactionName
+      value: Observe
+      objectReference: {fileID: 0}
+    - target: {fileID: 2711681457323129004, guid: b8d4b8006a811fd9aa040854bc5259e3,
+        type: 3}
       propertyPath: interactions.Array.data[0].interactionDescription
       value: Collect this item
+      objectReference: {fileID: 0}
+    - target: {fileID: 2711681457323129004, guid: b8d4b8006a811fd9aa040854bc5259e3,
+        type: 3}
+      propertyPath: interactions.Array.data[1].interactionDescription
+      value: Look at this trash
       objectReference: {fileID: 0}
     - target: {fileID: 2711681457323129004, guid: b8d4b8006a811fd9aa040854bc5259e3,
         type: 3}
@@ -87,7 +102,7 @@ PrefabInstance:
     - target: {fileID: 6540986722935880593, guid: b8d4b8006a811fd9aa040854bc5259e3,
         type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6540986722935880593, guid: b8d4b8006a811fd9aa040854bc5259e3,
         type: 3}
@@ -172,3 +187,35 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   state: 0
+--- !u!114 &9193904533392250841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7080355421470957827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc21731a548f983e1af41388d520c737, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnInteractionStart:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 9193904533392250841}
+        m_TargetAssemblyTypeName: TrashIsland.TIDialogue, Assembly-CSharp
+        m_MethodName: StartDialogue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnInteractionFinish:
+    m_PersistentCalls:
+      m_Calls: []
+  state: 0
+  startNode: ArtDemo_PieceOf_Trash
