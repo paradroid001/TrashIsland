@@ -122,8 +122,8 @@ namespace TrashIsland
                     case "Menu":
                         {
                             Debug.Log("Menu scene loaded");
-                            TIUIManager.Instance.CommandWindow("PauseMenu", UIControlEvent.UIControlCommand.HIDE);
-                            TIUIManager.Instance.CommandWindow("MainMenu", UIControlEvent.UIControlCommand.SHOW);
+//                            TIUIManager.Instance.CommandWindow("PauseMenu", UIControlEvent.UIControlCommand.HIDE);
+//                            TIUIManager.Instance.CommandWindow("MainMenu", UIControlEvent.UIControlCommand.SHOW);
                             break;
                         }
                 }
