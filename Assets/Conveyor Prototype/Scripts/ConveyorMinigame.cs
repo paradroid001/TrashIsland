@@ -46,6 +46,8 @@ public class ConveyorMinigame : MonoBehaviour
     private float flickForceY; //how far to the up the object flicks
     [SerializeField]
     private float flickForceZ; //how far back the object flicks
+    [SerializeField]
+    private Transform airParent; //the parent for when objects are flicked into the air
 
     //UI  
     [SerializeField]
@@ -144,6 +146,13 @@ public class ConveyorMinigame : MonoBehaviour
                 itemsList.Add(child.gameObject); //adds the prefab that the item instanced from back into the rotation
                 child.parent = conveyorHopper; //put it back in the hopper
                 child.gameObject.SetActive(false); //hide the item
+
+                Rigidbody rb = child.GetComponentInParent<Rigidbody>(true);
+                rb.isKinematic = false;
+                if(rb = flickObject) //if this object is the same one we are storing for flicking
+                {
+                    flickObject = null; //reset flick object
+                }
             }
         }
 
@@ -185,34 +194,11 @@ public class ConveyorMinigame : MonoBehaviour
             flickObject.isKinematic = false; //apply the swipe as force to the flick object
             flickObject.AddForce(-swipeDirection.x * flickForceX, -swipeDirection.y * flickForceY, flickForceZ / swipeDuration); //shorter swipe interval, means stronger flick backwards
 
+            flickObject.transform.parent = airParent; //the object is in the air, not the hopper or the belt
+
             flickObject = null; //reset the flick Object
         }
 
 
     }
-
-    void GrabItem(GameObject item) //the code that is enacted onto the grabbed item
-    {
-        //remove item from conveyor
-
-        //have it follow finger
-
-
-    }
-
-    void DropItem(GameObject item) //the code that is enacted onto the dropped item
-    {
-        //detect where it was dropped
-
-        //accept sorted item
-
-        //reject misorted item
-
-        //put it back on the conveyor
-
-    }
-
-
-
-
 }
