@@ -16,19 +16,17 @@ public class ConveyorMinigame : MonoBehaviour
 
     */
 
-    //variable parameters
-    public List<GameObject> itemsList; //the items that have been put into the recepticle for this minigame
+    //Game Management
     private bool gameRunning;
+    private float gameTimer; //record of time in the game
+
+    //Belt Spawning and Movement
+    public List<GameObject> itemsList; //the items that have been put into the recepticle for this minigame
     public float gameSpeed; //overall speed multiplier - starts at 1
     public float beltSpeed; //the speed the items move from left to right
     public float spawnRate; //frequency objects appear in seconds
-    private float gameTimer; //record of time in the game
     private float timestampSpawn; //when the last object was spawned
     public Vector3 beltDirection; //the direction that the belt moves
-
-    //varaible references   
-    [SerializeField]
-    private ConveyorUI ui; //the UI specifically related to this minigame
     [SerializeField]
     private Transform conveyorParent; //holds all objects on the conveyor belt
     [SerializeField]
@@ -38,12 +36,28 @@ public class ConveyorMinigame : MonoBehaviour
     [SerializeField]
     private Transform conveyorHopper; //where items inside this machine are stored
 
+    //Flicking Objects
+    private Rigidbody flickObject; //the object we are interacting with
+    private Vector2 touchStartPos, touchEndPos, swipeDirection; //touch input vectors
+    private float touchStartTime, touchEndTime, swipeDuration; //touch input times
+    [SerializeField]
+    private float flickForceX; //how far to the side object flicks
+    [SerializeField]
+    private float flickForceY; //how far to the up the object flicks
+    [SerializeField]
+    private float flickForceZ; //how far back the object flicks
+
+    //UI  
+    [SerializeField]
+    private ConveyorUI ui; //the UI specifically related to this minigame
+
+    
+
     void Start()
     {
         //upon start, initiate UI screen that gives a start or exit button to the player
         gameRunning = false;
         GameCountdown(); //temp code until UI is set up
-        
     }
 
     void GameCountdown() //start a routine of couting down numbers on the screen, before the mini game commences
@@ -137,11 +151,43 @@ public class ConveyorMinigame : MonoBehaviour
 
     void PlayerInput() //receive touch controls to grab items
     {
-        //detect where on screen player touching
+        //touch begins
+        if(Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began) //if we are touching the screen and have just begun the touch
+        {
+            touchStartTime = Time.time; //timestamp
+            touchStartPos = Input.GetTouch(0).position; //pos stamp
 
-        //detect if touching an item
+            //cast to see if we pick up an item
+            Ray touchRay = Camera.main.ScreenPointToRay(Input.GetTouch(0).position); //cast a ray from where we touch
+            RaycastHit hit;
+            if(Physics.Raycast(touchRay, out hit))
+            {
+                if(hit.collider != null && hit.collider.tag == "Prop"); //if we hit something that is a prop
+                {
+                    if(hit.collider.GetComponentInParent<Rigidbody>()) //if there is a rigid body to grab
+                    {
+                        flickObject = hit.collider.GetComponentInParent<Rigidbody>(); //assign the object we hit to our flick object
+                    }
+                }
+            }
+        }
 
-        //detect if dragging an item
+        //touch ends
+        if(Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended) //if we are touching the screen and have just ended the touch
+        {
+            if(!flickObject) return; //if there was no target object, we don't need any of this
+            touchEndTime = Time.time; //timestamp
+            touchEndPos = Input.GetTouch(0).position; //pos stamp
+
+            swipeDirection = touchStartPos - touchEndPos; //convert 2 positions to a direction
+            swipeDuration = touchEndTime - touchStartTime; //convert 2 times to time difference
+
+            flickObject.isKinematic = false; //apply the swipe as force to the flick object
+            flickObject.AddForce(-swipeDirection.x * flickForceX, -swipeDirection.y * flickForceY, flickForceZ / swipeDuration); //shorter swipe interval, means stronger flick backwards
+
+            flickObject = null; //reset the flick Object
+        }
+
 
     }
 
