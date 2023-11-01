@@ -47,10 +47,14 @@ public class ConveyorMinigame : MonoBehaviour
     [SerializeField]
     private float flickForceZ; //how far back the object flicks
     [SerializeField]
+    private float flickMinY; //minimum upward force applied to flicks
+    [SerializeField]
     private Transform airParent; //the parent for when objects are flicked into the air
 
     //receptacles dealing with objects
-    public float rejcetionSpeed; //how fast the obejects return to the belt
+    public float rejectionTranslationSpeed; //how fast the obejects return to the belt
+    public float rejectionRotationSpeed;
+    public float rejectionArc; //the vertical distance applied
 
     //UI  
     [SerializeField]
@@ -168,7 +172,7 @@ public class ConveyorMinigame : MonoBehaviour
             RaycastHit hit;
             if(Physics.Raycast(touchRay, out hit))
             {
-                if(hit.collider != null && hit.collider.tag == "Prop") //if we hit something that is a prop
+                if(hit.collider != null && hit.collider.tag == "Prop" && hit.transform.IsChildOf(conveyorParent)) //if we hit something that is a prop and is under the conveyor parent
                 {
                     if(hit.collider.GetComponentInParent<Rigidbody>()) //if there is a rigid body to grab
                     {
@@ -189,7 +193,7 @@ public class ConveyorMinigame : MonoBehaviour
             swipeDuration = touchEndTime - touchStartTime; //convert 2 times to time difference
 
             flickObject.isKinematic = false; //apply the swipe as force to the flick object
-            flickObject.AddForce(-swipeDirection.x * flickForceX, -swipeDirection.y * flickForceY, flickForceZ / swipeDuration); //shorter swipe interval, means stronger flick backwards
+            flickObject.AddForce(-swipeDirection.x * flickForceX, -swipeDirection.y * flickForceY + flickMinY, flickForceZ / swipeDuration); //shorter swipe interval, means stronger flick backwards
 
             flickObject.transform.parent = airParent; //the object is in the air, not the hopper or the belt
 
@@ -201,13 +205,19 @@ public class ConveyorMinigame : MonoBehaviour
 
     public IEnumerator RejectItem(Transform item)
     {
+        //disable ability for object to be grabbed mid-flight
         item.GetComponent<Rigidbody>().isKinematic = true; //set the item to kinematic
         float totalDistance = Vector3.Distance(item.position, conveyorParent.position); //how far to the belt - used to calculate arc
         while(Vector3.Distance(item.position, conveyorParent.position) > 0.05f)//while the object has not returned to the belt
         {
             Vector3 direction = conveyorParent.position - item.position;
             //affect y direction based on comparison to total distance
-            item.position += direction.normalized * rejcetionSpeed * Time.deltaTime;
+            if(Vector3.Distance(item.position, conveyorParent.position) > totalDistance/2) //if are less than halfway to the belt
+            {
+                item.position += new Vector3(0, rejectionArc, 0) * Time.deltaTime; //apply upward y movement
+            }
+            item.position += direction.normalized * rejectionTranslationSpeed * Time.deltaTime; //translate object back to belt over time
+            item.rotation = Quaternion.RotateTowards(item.rotation, conveyorParent.rotation, rejectionRotationSpeed * Time.deltaTime); //rotate object back to 0,0,0 over time
             yield return null;
         }
         item.position = conveyorParent.position; //teleport to be exactly at position
