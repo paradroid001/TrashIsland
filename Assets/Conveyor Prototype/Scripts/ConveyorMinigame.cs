@@ -49,6 +49,9 @@ public class ConveyorMinigame : MonoBehaviour
     [SerializeField]
     private Transform airParent; //the parent for when objects are flicked into the air
 
+    //receptacles dealing with objects
+    public float rejcetionSpeed; //how fast the obejects return to the belt
+
     //UI  
     [SerializeField]
     private ConveyorUI ui; //the UI specifically related to this minigame
@@ -118,21 +121,16 @@ public class ConveyorMinigame : MonoBehaviour
         if(gameTimer - timestampSpawn >= spawnRate/gameSpeed) //if <time> has passed since last spawn
         {
             timestampSpawn = gameTimer; //time stamp the current time
-            //spawn the first item in the list
-            GameObject spawnItem = new GameObject();
-            if(itemsList.Count > 0) //use list until it is empty
+            
+            if(itemsList.Count > 0) //only spawn an object if there is something to spawn
             {
-                spawnItem = itemsList[0];
+                GameObject spawnItem = itemsList[0]; //spawn the first item in the list
                 itemsList.Remove(itemsList[0]); //remove the first item from the list
+                spawnItem.transform.position = conveyorSpawn.position; //move the object to the spawn pos
+                spawnItem.transform.parent = conveyorParent; //set the object's parent
+                spawnItem.SetActive(true); //enable the object
             }
-            else
-            {
-                return; //return if both lists are empty
-            }
-            //GameObject spawned = Instantiate(spawnItem, conveyorSpawn.position, Quaternion.identity, conveyorParent); //spawn the object
-            spawnItem.transform.position = conveyorSpawn.position; //move the object to the spawn pos
-            spawnItem.transform.parent = conveyorParent; //set the object's parent
-            spawnItem.SetActive(true); //enable the object
+            
         }
     }
 
@@ -148,7 +146,6 @@ public class ConveyorMinigame : MonoBehaviour
                 child.gameObject.SetActive(false); //hide the item
 
                 Rigidbody rb = child.GetComponentInParent<Rigidbody>(true);
-                rb.isKinematic = false;
                 if(rb = flickObject) //if this object is the same one we are storing for flicking
                 {
                     flickObject = null; //reset flick object
@@ -171,7 +168,7 @@ public class ConveyorMinigame : MonoBehaviour
             RaycastHit hit;
             if(Physics.Raycast(touchRay, out hit))
             {
-                if(hit.collider != null && hit.collider.tag == "Prop"); //if we hit something that is a prop
+                if(hit.collider != null && hit.collider.tag == "Prop") //if we hit something that is a prop
                 {
                     if(hit.collider.GetComponentInParent<Rigidbody>()) //if there is a rigid body to grab
                     {
@@ -200,5 +197,21 @@ public class ConveyorMinigame : MonoBehaviour
         }
 
 
+    }
+
+    public IEnumerator RejectItem(Transform item)
+    {
+        item.GetComponent<Rigidbody>().isKinematic = true; //set the item to kinematic
+        float totalDistance = Vector3.Distance(item.position, conveyorParent.position); //how far to the belt - used to calculate arc
+        while(Vector3.Distance(item.position, conveyorParent.position) > 0.05f)//while the object has not returned to the belt
+        {
+            Vector3 direction = conveyorParent.position - item.position;
+            //affect y direction based on comparison to total distance
+            item.position += direction.normalized * rejcetionSpeed * Time.deltaTime;
+            yield return null;
+        }
+        item.position = conveyorParent.position; //teleport to be exactly at position
+        item.rotation = conveyorParent.rotation; //reset to 0 rotation
+        item.parent = conveyorParent; //put the item back under the belt parent
     }
 }

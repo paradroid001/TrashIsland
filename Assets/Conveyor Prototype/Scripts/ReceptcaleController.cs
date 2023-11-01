@@ -15,6 +15,8 @@ public class ReceptcaleController : MonoBehaviour
     private GameObject obj; //the object that has just been received
     [SerializeField]
     private List<ItemCategories> sortList; //the list of Objects we accept
+    [SerializeField]
+    private ConveyorMinigame manager;
 
     void OnTriggerEnter(Collider other)
     {
@@ -34,6 +36,7 @@ public class ReceptcaleController : MonoBehaviour
             Debug.Log("Bad");
             //animate unhappy effects
             //somehow throw the item back onto the conveyor belt
+            StartCoroutine(manager.RejectItem(obj.transform));
             //and set it to be kinematic again
             //put the item back under the 'belt' parent
         }
