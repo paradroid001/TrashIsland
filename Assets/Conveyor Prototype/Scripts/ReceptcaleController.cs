@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public enum ItemCategories
 {
@@ -11,6 +12,7 @@ public enum ItemCategories
 };
 public class ReceptcaleController : MonoBehaviour
 {
+    //Receiving items
     private Rigidbody rb; //the rb of the object that has just been received
     private GameObject obj; //the object that has just been received
     [SerializeField]
@@ -22,6 +24,9 @@ public class ReceptcaleController : MonoBehaviour
 
     private List<Transform> containedItems; //the items currently within the collider
     public float guideStrength; //the strength of the guiding pulling force
+    //effects and animators
+    [SerializeField]
+    private GameObject particles;
 
     void Start()
     {
@@ -55,8 +60,7 @@ public class ReceptcaleController : MonoBehaviour
 
     void GuideItems()
     {
-        List<Transform> guideList = containedItems; //clone the list so errors don't occur when we remove from 'containedItems' within the scope of this loop
-        foreach(Transform item in guideList)
+        foreach(Transform item in containedItems.ToList())
         {
             Vector3 guideDirection = transform.position - item.position;
             item.position += guideDirection.normalized * guideStrength; //move the object towards the center of this guide
@@ -76,7 +80,11 @@ public class ReceptcaleController : MonoBehaviour
             Debug.Log("Good");
             item.parent = storedParent; //store the item in this receptacle
             item.gameObject.SetActive(false); //disable the item
+            
             //animate happy effects
+            particles.SetActive(false);
+            particles.SetActive(true); //turn the particles off and on again
+
             manager.AcceptItem();
             //call the manager to run a check to see if there are no more objects and therefore end the minigame
 
