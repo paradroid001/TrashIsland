@@ -61,6 +61,8 @@ public class ConveyorMinigame : MonoBehaviour
     //UI  
     [SerializeField]
     private ConveyorUI ui; //the UI specifically related to this minigame
+    [SerializeField]
+    private Animator txt_Go;
 
     
 
@@ -68,15 +70,9 @@ public class ConveyorMinigame : MonoBehaviour
     {
         //upon start, initiate UI screen that gives a start or exit button to the player
         gameRunning = false;
-        GameCountdown(); //temp code until UI is set up
     }
 
-    void GameCountdown() //start a routine of couting down numbers on the screen, before the mini game commences
-    {
-        GameStart();
-    }
-
-    void GameStart() //start the core fo the game, relying on update checks to then end it
+    public void GameStart() //start the core fo the game, relying on update checks to then end it
     {
         GameInitialise();
         foreach(Transform child in conveyorHopper) //add all the items in the hopper to the list
@@ -89,7 +85,7 @@ public class ConveyorMinigame : MonoBehaviour
     void GameInitialise() //set up all beginning variables and references
     {
         gameRunning = true;
-        gameTimer = 0.0f;   
+        gameTimer = spawnRate/2; //jump the game timer so that the first object spawns immediately on game start   
         timestampSpawn = 0.0f;
         itemsList = new List<GameObject>();
     }
@@ -104,11 +100,13 @@ public class ConveyorMinigame : MonoBehaviour
     {
         Debug.Log("GameEnd");
         gameRunning = false;
-        GameExit();
+        ui.endScreen.gameObject.SetActive(true);
+        ui.endScreen.Play("PanelSlideDown");
     }
 
-    void GameExit() //called to leave this scene
+    public void GameExit() //called to leave this scene
     {
+        Debug.Log("Game Exit");
 
     }
 
@@ -160,7 +158,6 @@ public class ConveyorMinigame : MonoBehaviour
                 }
             }
         }
-
     }
 
     void PlayerInput() //receive touch controls to grab items
@@ -203,8 +200,6 @@ public class ConveyorMinigame : MonoBehaviour
 
             flickObject = null; //reset the flick Object
         }
-
-
     }
 
     public void AcceptItem() //called when an item is accepted by receptacle
@@ -235,5 +230,4 @@ public class ConveyorMinigame : MonoBehaviour
         item.rotation = conveyorParent.rotation; //reset to 0 rotation
         item.parent = conveyorParent; //put the item back under the belt parent
     }
-
 }

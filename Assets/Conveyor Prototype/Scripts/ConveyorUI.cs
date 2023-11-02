@@ -4,15 +4,7 @@ using UnityEngine;
 
 public class ConveyorUI : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    //even if this manager does nothing else, it will be used to store references to UI elements so taht the game manager is less crowded
+    public Animator endScreen;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
