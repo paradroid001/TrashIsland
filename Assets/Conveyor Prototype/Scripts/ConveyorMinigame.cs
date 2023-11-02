@@ -189,11 +189,11 @@ public class ConveyorMinigame : MonoBehaviour
             touchEndTime = Time.time; //timestamp
             touchEndPos = Input.GetTouch(0).position; //pos stamp
 
-            swipeDirection = touchStartPos - touchEndPos; //convert 2 positions to a direction
+            swipeDirection = touchEndPos - touchStartPos; //convert 2 positions to a direction
             swipeDuration = touchEndTime - touchStartTime; //convert 2 times to time difference
 
             flickObject.isKinematic = false; //apply the swipe as force to the flick object
-            flickObject.AddForce(-swipeDirection.x * flickForceX, -swipeDirection.y * flickForceY + flickMinY, flickForceZ / swipeDuration); //shorter swipe interval, means stronger flick backwards
+            flickObject.AddForce(swipeDirection.x * flickForceX, swipeDirection.y * flickForceY + flickMinY, flickForceZ / swipeDuration); //shorter swipe interval, means stronger flick backwards
 
             flickObject.transform.parent = airParent; //the object is in the air, not the hopper or the belt
 
@@ -205,7 +205,7 @@ public class ConveyorMinigame : MonoBehaviour
 
     public IEnumerator RejectItem(Transform item)
     {
-        //disable ability for object to be grabbed mid-flight
+        item.parent = airParent;
         item.GetComponent<Rigidbody>().isKinematic = true; //set the item to kinematic
         float totalDistance = Vector3.Distance(item.position, conveyorParent.position); //how far to the belt - used to calculate arc
         while(Vector3.Distance(item.position, conveyorParent.position) > 0.05f)//while the object has not returned to the belt
