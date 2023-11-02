@@ -55,7 +55,8 @@ public class ReceptcaleController : MonoBehaviour
 
     void GuideItems()
     {
-        foreach(Transform item in containedItems)
+        List<Transform> guideList = containedItems; //clone the list so errors don't occur when we remove from 'containedItems' within the scope of this loop
+        foreach(Transform item in guideList)
         {
             Vector3 guideDirection = transform.position - item.position;
             item.position += guideDirection.normalized * guideStrength; //move the object towards the center of this guide
@@ -74,8 +75,9 @@ public class ReceptcaleController : MonoBehaviour
         {
             Debug.Log("Good");
             item.parent = storedParent; //store the item in this receptacle
+            item.gameObject.SetActive(false); //disable the item
             //animate happy effects
-            //tick up reward systems
+            manager.AcceptItem();
             //call the manager to run a check to see if there are no more objects and therefore end the minigame
 
         }

@@ -19,6 +19,8 @@ public class ConveyorMinigame : MonoBehaviour
     //Game Management
     private bool gameRunning;
     private float gameTimer; //record of time in the game
+    private int numToSort;
+    private int numSorted;
 
     //Belt Spawning and Movement
     public List<GameObject> itemsList; //the items that have been put into the recepticle for this minigame
@@ -80,6 +82,7 @@ public class ConveyorMinigame : MonoBehaviour
         foreach(Transform child in conveyorHopper) //add all the items in the hopper to the list
         {
             itemsList.Add(child.gameObject);
+            numToSort = itemsList.Count;
         }
     }
 
@@ -92,13 +95,14 @@ public class ConveyorMinigame : MonoBehaviour
     }
     void EndCheck() //checks to see if end conditions are met
     {
-        if(false)
+        if(numSorted >= numToSort)
         {
             GameEnd();
         }
     }
     void GameEnd() //called when the game is over to move to end screens
     {
+        Debug.Log("GameEnd");
         gameRunning = false;
         GameExit();
     }
@@ -203,6 +207,13 @@ public class ConveyorMinigame : MonoBehaviour
 
     }
 
+    public void AcceptItem() //called when an item is accepted by receptacle
+    {
+        //insert any effects that occur each time
+        numSorted ++;
+        EndCheck();
+    }
+
     public IEnumerator RejectItem(Transform item)
     {
         item.parent = airParent;
@@ -224,4 +235,5 @@ public class ConveyorMinigame : MonoBehaviour
         item.rotation = conveyorParent.rotation; //reset to 0 rotation
         item.parent = conveyorParent; //put the item back under the belt parent
     }
+
 }
