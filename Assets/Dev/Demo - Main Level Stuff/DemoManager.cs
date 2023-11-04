@@ -26,7 +26,7 @@ public class DemoManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        transitionAnim.SetActive(true);
     }
 
     // Update is called once per frame

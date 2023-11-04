@@ -20,6 +20,11 @@ public class WashPaint : MonoBehaviour
         CreateTexture();
 
         GetComponent<Renderer>().material = _material;
+
+        if (GetComponent<MeshCollider>() == null && GetComponent<MeshFilter>() != null)
+        {
+            gameObject.AddComponent<MeshCollider>();
+        }
     }
 
     private void Update()
