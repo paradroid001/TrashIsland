@@ -11,9 +11,10 @@ public class WasherManager : MonoBehaviour
     public Transform washingInventory;
 
     public Transform spawnPosition;
+    public List<GameObject> potentialItems;
 
     public List<GameObject> liveItemsList;
-    public GameObject[] liveItemsArray;
+    //public GameObject[] liveItemsArray;
     public GameObject currentObject = null;
     public int currentCount;
 
@@ -77,18 +78,18 @@ public class WasherManager : MonoBehaviour
              liveItemsList.Add(child.gameObject);
         }
 
-        liveItemsArray = liveItemsList.ToArray();
+        //liveItemsArray = liveItemsList.ToArray();
         itemCount = liveItemsList.Count;
-        liveItemsList = null;
+        //liveItemsList = null;
         //Debug.Log(itemCount + " items were found");
 
-        currentCount = 1;
+        currentCount = 0;
         StartGame();
     }
 
     void StartGame()
     {
-        currentObject = liveItemsArray[currentCount - 1];
+        currentObject = liveItemsList[currentCount];
 
         CleaningTime();
 
@@ -108,7 +109,7 @@ public class WasherManager : MonoBehaviour
     {
         yield return new WaitForSeconds(transitionTime);
 
-        if (currentCount >= itemCount)
+        if (currentCount >= (itemCount - 1))
         {
             WinGame();
         }
@@ -122,9 +123,9 @@ public class WasherManager : MonoBehaviour
 
     void WinGame()
     {
-        if (itemCount >= liveItemsArray.Length)
+        if (currentCount >= itemCount - 1)
         {
-            //Win
+            Debug.Log("Won");
         }
     }
 }

@@ -16,7 +16,10 @@ public class WashPaint : MonoBehaviour
     private void Start()
     {
         _material = gameObject.GetComponent<Renderer>().material;
+        _camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         CreateTexture();
+
+        GetComponent<Renderer>().material = _material;
     }
 
     private void Update()
