@@ -37,6 +37,7 @@ public class ConveyorMinigame : MonoBehaviour
     private Transform conveyorDespawn; //where the items de - spawn at the end of the belt
     [SerializeField]
     private Transform conveyorHopper; //where items inside this machine are stored
+    public Material beltShader;
 
     //Flicking Objects
     private Rigidbody flickObject; //the object we are interacting with
@@ -119,7 +120,14 @@ public class ConveyorMinigame : MonoBehaviour
             MoveItems();
             PlayerInput();
             EndCheck();
+            beltShader.SetFloat("_Speed", beltSpeed * gameSpeed); //match the speed of the texture to the speed of the objects
         }
+        else
+        {
+            beltShader.SetFloat("_Speed", 0.0f); //match the speed of the texture to the speed of the objects
+        }
+
+        
     }
 
     void SpawnItems() //spawn objects at the left of the conveyor
