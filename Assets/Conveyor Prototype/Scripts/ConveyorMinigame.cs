@@ -68,11 +68,19 @@ public class ConveyorMinigame : MonoBehaviour
     //Hugo - Fine Tuning Tweaks 
 
     [SerializeField]
-    Transform binR ;
+    Transform binR;
+    [SerializeField]
+    Vector2 binRScreenPos;
     [SerializeField]
     Transform binG ; 
     [SerializeField]
+    Vector2 binGScreenPos;
+    [SerializeField]
     Transform binY;
+    [SerializeField]
+     Vector2 binYScreenPos;
+     private Vector3 targetPosition;
+     private Vector3 launchDirection;
 
     
 
@@ -80,6 +88,11 @@ public class ConveyorMinigame : MonoBehaviour
     {
         //upon start, initiate UI screen that gives a start or exit button to the player
         gameRunning = false;
+
+        
+        binRScreenPos = Camera.main.WorldToScreenPoint(binR.position);
+        binGScreenPos = Camera.main.WorldToScreenPoint(binG.position);
+        binYScreenPos = Camera.main.WorldToScreenPoint(binY.position);
     }
 
     public void GameStart() //start the core fo the game, relying on update checks to then end it
@@ -184,6 +197,7 @@ public class ConveyorMinigame : MonoBehaviour
         {
             touchStartTime = Time.time; //timestamp
             touchStartPos = Input.GetTouch(0).position; //pos stamp
+            Debug.Log("tapped "+touchStartPos);
 
             //cast to see if we pick up an item
             Ray touchRay = Camera.main.ScreenPointToRay(Input.GetTouch(0).position); //cast a ray from where we touch
@@ -210,17 +224,41 @@ public class ConveyorMinigame : MonoBehaviour
             swipeDirection = touchEndPos - touchStartPos; //convert 2 positions to a direction
             swipeDuration = touchEndTime - touchStartTime; //convert 2 times to time difference
 
-            Debug.Log ("Red:"+Vector2.Angle(touchStartPos, binR.position));
-            Debug.Log ("Green:"+Vector2.Angle(touchStartPos, binG.position));
-            Debug.Log ("Yellow:"+Vector2.Angle(touchStartPos, binY.position));
+            /*
+            float redAngle = Vector2.Angle(touchStartPos, binRScreenPos); //Stores angles for swipe angle + angle to each target  
+            float greenAngle = Vector2.Angle(touchStartPos, binGScreenPos);
+            float yellowAngle = Vector2.Angle(touchStartPos, binYScreenPos);    
+            float swipeAngle = Vector2.Angle(touchStartPos, touchEndPos);
+            
+            redAngle = Mathf.Abs(redAngle-swipeAngle);  // checks which angle was the closest
+            greenAngle = Mathf.Abs(greenAngle-swipeAngle);
+            yellowAngle = Mathf.Abs(yellowAngle-swipeAngle);
 
-            Debug.Log(swipeDirection);
+            if (redAngle < greenAngle && redAngle < yellowAngle)
+                {
+                    launchDirection = binR.position - flickObject.position;
+                }
+            if (greenAngle < redAngle && greenAngle < yellowAngle)
+            {
+                launchDirection = binG.position - flickObject.position;
+            }
+            else
+            {
+                launchDirection = binY.position - flickObject.position;
+            }
+            float targetDistance = Vector3.Distance(flickObject.position, targetPosition);
+            */
+
+
+
 
             flickObject.isKinematic = false; //apply the swipe as force to the flick object
+            //flickObject.AddForce(launchDirection.x * targetDistance * 100, launchDirection.y * 1.5f * 100, launchDirection.z * targetDistance * 100);
+
             flickObject.AddForce(swipeDirection.x * flickForceX, swipeDirection.y * flickForceY + flickMinY, flickForceZ / swipeDuration); //shorter swipe interval, means stronger flick backwards
 
             flickObject.transform.parent = airParent; //the object is in the air, not the hopper or the belt
-
+            
             flickObject = null; //reset the flick Object
         }
     }
