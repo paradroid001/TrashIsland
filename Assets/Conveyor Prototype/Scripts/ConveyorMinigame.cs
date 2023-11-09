@@ -65,6 +65,15 @@ public class ConveyorMinigame : MonoBehaviour
     [SerializeField]
     private Animator txt_Go;
 
+    //Hugo - Fine Tuning Tweaks 
+
+    [SerializeField]
+    Transform binR ;
+    [SerializeField]
+    Transform binG ; 
+    [SerializeField]
+    Transform binY;
+
     
 
     void Start()
@@ -200,6 +209,12 @@ public class ConveyorMinigame : MonoBehaviour
 
             swipeDirection = touchEndPos - touchStartPos; //convert 2 positions to a direction
             swipeDuration = touchEndTime - touchStartTime; //convert 2 times to time difference
+
+            Debug.Log ("Red:"+Vector2.Angle(touchStartPos, binR.position));
+            Debug.Log ("Green:"+Vector2.Angle(touchStartPos, binG.position));
+            Debug.Log ("Yellow:"+Vector2.Angle(touchStartPos, binY.position));
+
+            Debug.Log(swipeDirection);
 
             flickObject.isKinematic = false; //apply the swipe as force to the flick object
             flickObject.AddForce(swipeDirection.x * flickForceX, swipeDirection.y * flickForceY + flickMinY, flickForceZ / swipeDuration); //shorter swipe interval, means stronger flick backwards
