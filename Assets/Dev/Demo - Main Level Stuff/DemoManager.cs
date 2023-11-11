@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DemoManager : MonoBehaviour
 {
@@ -118,5 +119,10 @@ public class DemoManager : MonoBehaviour
                 scenes[i].SetActive(true);
             }
         }
+    }
+
+    public void SceneLoad(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName); //load the specified scene
     }
 }
