@@ -41,7 +41,7 @@ public class ConveyorMinigame : MonoBehaviour
 
     //Flicking Objects
     private Rigidbody flickObject; //the object we are interacting with
-    private Vector2 touchStartPos, touchEndPos, swipeDirection; //touch input vectors
+    private Vector3 touchStartPos, touchEndPos, swipeDirection; //touch input vectors
     private float touchStartTime, touchEndTime, swipeDuration; //touch input times
     [SerializeField]
     private float flickForceX; //how far to the side object flicks
@@ -190,17 +190,16 @@ public class ConveyorMinigame : MonoBehaviour
         }
     }
 
-    void PlayerInput() //receive touch controls to grab items
+    void PlayerInput() //receive mouse controls to grab items
     {
-        //touch begins
-        if(Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began) //if we are touching the screen and have just begun the touch
+        //click begins
+        if(Input.GetMouseButtonDown(0)) //if we are touching the screen and have just begun the touch
         {
             touchStartTime = Time.time; //timestamp
-            touchStartPos = Input.GetTouch(0).position; //pos stamp
-            Debug.Log("tapped "+touchStartPos);
+            touchStartPos = Input.mousePosition; //pos stamp
 
             //cast to see if we pick up an item
-            Ray touchRay = Camera.main.ScreenPointToRay(Input.GetTouch(0).position); //cast a ray from where we touch
+            Ray touchRay = Camera.main.ScreenPointToRay(touchStartPos); //cast a ray from where we touch
             RaycastHit hit;
             if(Physics.Raycast(touchRay, out hit))
             {
@@ -215,11 +214,11 @@ public class ConveyorMinigame : MonoBehaviour
         }
 
         //touch ends
-        if(Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended) //if we are touching the screen and have just ended the touch
+        if(Input.GetMouseButtonUp(0)) //if we release left click
         {
             if(!flickObject) return; //if there was no target object, we don't need any of this
             touchEndTime = Time.time; //timestamp
-            touchEndPos = Input.GetTouch(0).position; //pos stamp
+            touchEndPos = Input.mousePosition; //pos stamp
 
             swipeDirection = touchEndPos - touchStartPos; //convert 2 positions to a direction
             swipeDuration = touchEndTime - touchStartTime; //convert 2 times to time difference
