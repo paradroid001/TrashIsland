@@ -3,6 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+[System.Serializable]
+public class Minigame 
+{
+    public string name;
+    public GameObject managerObject;
+    public Camera camera;
+}
 public class DemoManager : MonoBehaviour
 {
     [SerializeField]
@@ -22,6 +29,11 @@ public class DemoManager : MonoBehaviour
     public List<Transform> sceneSpawns;
 
     public List<GameObject> scenes;
+
+    public List<Minigame> minigameList; //add minigames here
+    [SerializeField]
+    private Camera mainCam;
+    private Minigame currentMinigame;
 
 
     // Start is called before the first frame update
@@ -121,8 +133,42 @@ public class DemoManager : MonoBehaviour
         }
     }
 
-    public void SceneLoad(string sceneName)
+    public void StartMinigame(string gameName) //used to run the minigames
     {
-        SceneManager.LoadScene(sceneName); //load the specified scene
+        currentMinigame = null;
+        foreach(Minigame mg in minigameList) //look for matching minigame by name
+        {
+            if(mg.name == gameName)
+            {
+                currentMinigame = mg; //asign the minigame
+                break; //exit the loop early
+            }
+        }
+        //disable player object (or teleport to a different spot temporarily)
+
+        //enable conveyor game assets
+
+        //disable any unwanted assets
+
+        //start the conveyor minigame script
+        currentMinigame.managerObject.SetActive(true);
+
+        //switch camera
+        mainCam.gameObject.SetActive(false);
+        currentMinigame.camera.gameObject.SetActive(true);
+        
+
     }
+
+    public void ReturnToMain() //used for exiting a minigame
+    {
+        
+        //re-enable player
+
+        //switch back to main camera
+        currentMinigame.camera.gameObject.SetActive(false);
+        mainCam.gameObject.SetActive(true);
+
+    }
+
 }

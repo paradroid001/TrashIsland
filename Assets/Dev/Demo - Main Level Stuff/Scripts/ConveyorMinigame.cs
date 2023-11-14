@@ -17,6 +17,8 @@ public class ConveyorMinigame : MonoBehaviour
     */
 
     //Game Management
+    [SerializeField]
+    private DemoManager gameManager;
     private bool gameRunning;
     private float gameTimer; //record of time in the game
     private int numToSort;
@@ -55,7 +57,7 @@ public class ConveyorMinigame : MonoBehaviour
     private Transform airParent; //the parent for when objects are flicked into the air
 
     //receptacles dealing with objects
-    public float rejectionTranslationSpeed; //how fast the obejects return to the belt
+    public float rejectionTranslationSpeed; //how fast the objeects return to the belt
     public float rejectionRotationSpeed;
     public float rejectionArc; //the vertical distance applied
 
@@ -72,7 +74,7 @@ public class ConveyorMinigame : MonoBehaviour
     [SerializeField]
     Vector2 binRScreenPos;
     [SerializeField]
-    Transform binG ; 
+    Transform binG; 
     [SerializeField]
     Vector2 binGScreenPos;
     [SerializeField]
@@ -84,20 +86,21 @@ public class ConveyorMinigame : MonoBehaviour
 
     
 
-    void Start()
+    void OnEnable()
     {
         //upon start, initiate UI screen that gives a start or exit button to the player
         gameRunning = false;
-
+        ui.gameObject.SetActive(true); //set cause the UI to appear
         
         binRScreenPos = Camera.main.WorldToScreenPoint(binR.position);
         binGScreenPos = Camera.main.WorldToScreenPoint(binG.position);
         binYScreenPos = Camera.main.WorldToScreenPoint(binY.position);
     }
 
-    public void GameStart() //start the core fo the game, relying on update checks to then end it
+    public void GameStart() //start the core of the game, relying on update checks to then end it
     {
         GameInitialise();
+        
         foreach(Transform child in conveyorHopper) //add all the items in the hopper to the list
         {
             itemsList.Add(child.gameObject);
@@ -130,6 +133,9 @@ public class ConveyorMinigame : MonoBehaviour
     public void GameExit() //called to leave this scene
     {
         Debug.Log("Game Exit");
+        ui.gameObject.SetActive(false); //dsiable the UI
+        gameManager.ReturnToMain(); //call return mehod in main manager
+        gameObject.SetActive(false); //disable this object
 
     }
 
@@ -289,5 +295,10 @@ public class ConveyorMinigame : MonoBehaviour
         item.position = conveyorParent.position; //teleport to be exactly at position
         item.rotation = conveyorParent.rotation; //reset to 0 rotation
         item.parent = conveyorParent; //put the item back under the belt parent
+    }
+
+    void OnDisable()
+    {
+        beltShader.SetFloat("_Speed", 0.0f); //match the speed of the texture to the speed of the objects
     }
 }

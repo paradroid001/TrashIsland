@@ -1,18 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
-public class SceneLoader : MonoBehaviour
+public class EventCaller : MonoBehaviour
 {
-    public string sceneName;
-    [SerializeField]
-    private DemoManager demoManager;
+    //just calls events when player collides
+    public UnityEvent myOutput;
 
     void OnTriggerEnter(Collider other)
     {
         if(other.tag == "Player")
         {
-            demoManager.SceneLoad(sceneName);
+            myOutput.Invoke();
         }
     }
 }
