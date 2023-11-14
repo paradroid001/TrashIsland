@@ -34,11 +34,34 @@ namespace TrashIsland
             return isInteractable;
         }
 
+        private MaterialPropertyBlock deselectedPropertyBlock;
+        private MaterialPropertyBlock selectedPropertyBlock;
+
         public void BecomeInteractable()
         {
             //throw new System.NotImplementedException();
             isInteractable = true;
             Debug.Log($"{name} became interactable");
+
+            // Hugo's Addition - Outline passing for Demo
+            Material selectionMaterial = objectTemplate.selectableConfig.selectionMaterial;
+                int index = FindIndexOfMaterial(selectionMaterial);
+                if (index < 0)
+                {
+                    //Copy out old mats
+                    Material[] mats = renderer.materials;
+                    Material[] newmats = new Material[mats.Length + 1];
+                    for (int i = 0; i < mats.Length; i++)
+                    {
+                        newmats[i] = mats[i];
+                    }
+                    //Add the semection mat on the end
+                    newmats[newmats.Length - 1] = selectionMaterial;
+                    selectionMaterial.SetColor("_OutlineColor", Color.cyan);
+                    //Set the whole array back onto the renderer
+                    renderer.materials = newmats;
+                }
+                renderer.SetPropertyBlock(selectedPropertyBlock);
         }
 
         public void BecomeUninteractable()
@@ -46,6 +69,33 @@ namespace TrashIsland
             //throw new System.NotImplementedException();
             isInteractable = false;
             Debug.Log($"{name} became uninteractable");
+
+            if (renderer != null && objectTemplate != null)
+            {
+                //Set the property block first, in case removing mat fails.
+                renderer.SetPropertyBlock(deselectedPropertyBlock);
+                Material selectionMaterial = objectTemplate.selectableConfig.selectionMaterial;
+                //Remove the material
+                int index = FindIndexOfMaterial(selectionMaterial);
+                if (index > 0)
+                {
+                    //Copy out old mats
+                    Material[] mats = renderer.materials;
+                    Material[] newmats = new Material[mats.Length - 1];
+                    int nextindex = 0;
+                    for (int i = 0; i < mats.Length; i++)
+                    {
+                        if (i != index)
+                        {
+                            newmats[nextindex] = mats[i];
+                            nextindex += 1;
+                        }
+
+                    }
+                    //Set the whole array back onto the renderer
+                    renderer.materials = newmats;
+                }
+            }
         }
 
         public bool CancelInteraction(IInteractor interactor, int interactionID)

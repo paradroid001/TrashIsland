@@ -93,7 +93,7 @@ public class DemoManager : MonoBehaviour
 
     public IEnumerator ChangeScene()
     {       
-        playerRef.GetComponent<TempMovement>().canMove = false;
+        playerRef.GetComponent<TrashIsland.TempMovement>().canMove = false;
 
 
         sceneChangeActive = true;
@@ -119,7 +119,7 @@ public class DemoManager : MonoBehaviour
 
         if (mySceneToLoad == SceneToLoad.inside || mySceneToLoad == SceneToLoad.outside)
         {
-            playerRef.GetComponent<TempMovement>().ChangeLocation(sceneSpawns[sceneIndex]);
+            playerRef.GetComponent<TrashIsland.TempMovement>().ChangeLocation(sceneSpawns[sceneIndex]);
             playerRef.GetComponent<Rigidbody>().isKinematic = false;
         }
             if(i != sceneIndex)

@@ -6,7 +6,7 @@ public class animationTracker : MonoBehaviour
 {
     private Animator myAnimator;
     
-    public TempMovement playerControls;
+    public TrashIsland.TempMovement playerControls;
     public DemoManager gameManager;
 
     void Start()

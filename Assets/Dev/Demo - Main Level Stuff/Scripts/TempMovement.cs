@@ -1,7 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using GameCore;
 
+namespace TrashIsland
+{
 public class TempMovement : MonoBehaviour
 {
     [SerializeField]
@@ -18,6 +21,16 @@ public class TempMovement : MonoBehaviour
     public float currentSpeed;
     public GameObject playerBody;
     public Animator anim;
+
+    public bool allowSelection = true;
+
+    [SerializeField]
+    private LayerMask playerLayer;
+
+    [SerializeField]
+    private TISelectableObject deselect;
+
+    
 
     // Start is called before the first frame update
     void Start()
@@ -55,8 +68,12 @@ public class TempMovement : MonoBehaviour
         {
             currentSpeed = 0;
         }
-        
 
+        if (Input.GetMouseButtonDown(0))
+            {
+                GetMousePositionInWorld();                
+            }
+        
         
         
 
@@ -81,4 +98,42 @@ public class TempMovement : MonoBehaviour
     {
         transform.position = newPosition.position;
     }
+
+    void GetMousePositionInWorld()
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit, 1000f, ~playerLayer))
+            { 
+                GameObject g;
+                Rigidbody rb = hit.collider.attachedRigidbody;
+                if (rb == null)
+                    g = hit.collider.gameObject;
+                else
+                    g = rb.gameObject;
+
+            TISelectableObject o = g.GetComponent<TISelectableObject>();
+                    if (o != null)
+                    {
+                        Debug.Log("hit");
+                        if(allowSelection)
+                        {
+                        Debug.Log("Selected");
+                        TISelectionEvent e = new TISelectionEvent();
+                        e.selectableObject = o;
+                        e.Call();
+                        }
+                    }
+            }
+            if (Physics.Raycast(ray, out hit, 1000f, 4))
+            {
+                {
+                        Debug.Log("Deselected");
+                        TISelectionEvent e = new TISelectionEvent();
+                        e.selectableObject = deselect;
+                        e.Call();
+                        }
+            }
+        }
+}
 }
