@@ -13296,6 +13296,9 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 8
+  dialogueCounter: 0
+  dialogueTitles: []
+  activeNode: Directory
 --- !u!136 &1449019562 stripped
 CapsuleCollider:
   m_CorrespondingSourceObject: {fileID: 3561865814176657775, guid: 29b2656f833cf3a4d9128a743b45f085,
@@ -25875,7 +25878,19 @@ MonoBehaviour:
         m_CallState: 2
   onDialogueComplete:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1449019553}
+        m_TargetAssemblyTypeName: TrashIsland.TempMovement, Assembly-CSharp
+        m_MethodName: AdvanceDialogue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onCommand:
     m_PersistentCalls:
       m_Calls: []
@@ -32252,6 +32267,7 @@ MonoBehaviour:
   outlineStrength: 0.05
   outlineColour: {r: 1, g: 0.3537736, b: 0.440121, a: 0}
   selectedColour: {r: 0.9150943, g: 0.9150943, b: 0.9150943, a: 0}
+  interactionCount: 0
 --- !u!1 &8073529431219324661
 GameObject:
   m_ObjectHideFlags: 0

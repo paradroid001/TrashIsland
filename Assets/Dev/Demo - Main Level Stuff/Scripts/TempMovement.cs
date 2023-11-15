@@ -2,11 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using GameCore;
+using Yarn.Unity;
 
 namespace TrashIsland
 {
 public class TempMovement : MonoBehaviour
 {
+    [Header("Movement")]
+    [Space(5)]
+
     [SerializeField]
     private float movementSpeed = 0.5f;
     public float maxSpeed;
@@ -19,6 +23,11 @@ public class TempMovement : MonoBehaviour
     private Vector3 moveDirection;
 
     public float currentSpeed;
+    [Space(20)]
+
+    [Header("References")]
+    [Space(5)]
+
     public GameObject playerBody;
     public Animator anim;
 
@@ -26,6 +35,19 @@ public class TempMovement : MonoBehaviour
 
     [SerializeField]
     private LayerMask playerLayer;
+
+    [Space(20)]
+
+    [Header("Dialogue")]
+    [Space(5)]
+
+    [SerializeField]
+    private int dialogueCounter;
+    [SerializeField] private List<string> dialogueTitles;
+    public string activeNode;
+    [SerializeField]
+    private Demo_InteractableNPC InteractingWith;
+
 
     
 
@@ -70,30 +92,53 @@ public class TempMovement : MonoBehaviour
             {
                 GetMousePositionInWorld();                
             }
-        
-        
-        
+    }
 
-        
-
-        
-
-        
-        
-        
-
-        /*
-        if (Input.anyKey == false)
-        {
-            
-        }
-        */
-        
+    public void SetNode(string nodeName)
+    {
+        activeNode = nodeName;
     }
 
     public void ChangeLocation(Transform newPosition)
     {
         transform.position = newPosition.position;
+    }
+
+    public void EnterDialogue()
+    {
+        if(canMove)
+        {
+            DisableMovement();
+            DialogueRunner r = FindObjectOfType<DialogueRunner>();
+            if (r != null)
+            {
+                if (r.IsDialogueRunning)
+                {
+                    //If dialogue is already running, advance it.
+                    LineView l = FindObjectOfType<LineView>();
+                    if (l != null)
+                    {
+                        l.OnContinueClicked();
+                    }
+                }
+                else
+                {
+                    // Kick off the dialogue at this node.
+                    r.StartDialogue(activeNode);
+                }
+            }
+        }
+
+    }
+    public void ExitDialogue()
+    {
+        if(!canMove)
+        {
+            EnableMovement();
+        }
+        
+        InteractingWith.BecomeDeselected();
+        
     }
 
     public void DisableMovement()
@@ -127,19 +172,25 @@ public class TempMovement : MonoBehaviour
                         {
                         Debug.Log("Selected");
 
-                        o.BecomeSelected();                    
+                        o.BecomeSelected();
+                        InteractingWith = o;
+                        EnterDialogue();                    
                         }
                     }
             }
-            if (Physics.Raycast(ray, out hit, 1000f, 4))
-            {
-                {
-                        Debug.Log("Deselected");
-                        TISelectionEvent e = new TISelectionEvent();
-                        //e.selectableObject = deselect;
-                        e.Call();
-                        }
-            }
+            
+        }
+
+        [YarnCommand("playAnim")]
+        public void CallAnimation(string animName)
+        {
+            anim.Play(animName);
+            DisableMovement();
+        }
+
+        public void AdvanceDialogue()
+        {
+            dialogueCounter++;
         }
 }
 }

@@ -34,7 +34,11 @@ public class Demo_InteractableNPC : MonoBehaviour
     [SerializeField] 
     private Color selectedColour;
 
-    //[Space(20)]
+    [Space(20)]
+
+    [Header("Dialogue Settings")]
+    [SerializeField]
+    private int interactionCount;
 
     protected int FindIndexOfMaterial(Material m)
         {

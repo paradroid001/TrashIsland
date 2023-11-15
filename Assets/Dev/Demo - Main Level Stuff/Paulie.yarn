@@ -1,9 +1,24 @@
-﻿title: Paulie.Intro
-position: -114,-169
----
-(Console): Hey! Welcome to the Trashy Island gameplay demo!
 
-(Console): Trashy Island is a game that aims to educate people on recycling and waste management to help build a brighter future!
+
+
+
+title: Directory
+position: -249,-512
+---
+<<set $hasCollectedGarbage = false>>
+
+<<if visited("Paulie_Intro") == false>>
+    <<jump Paulie_Intro>>
+<<else>>
+    <<jump BeachGather>>
+
+<<endif>>
+===
+
+
+title: Paulie_Intro
+position: -263,-369
+---
 
 Paulie: Hiya! I’m Paulie! *chirp*
 
@@ -29,13 +44,13 @@ Paulie: Here, follow me! *chirp*
 
 
 title: BeachGather
-position: 175,153
+position: -80,-260
 ---
-
+<<playAnim Player Pickup>>
 ===
 
 title: PauliePostCleanup
-position: -124,159
+position: -243,-117
 ---
 Paulie: Wow, it's crazy what some people just throw away. 
 Paulie: And this island would've seen plenty of it! 
@@ -51,7 +66,7 @@ Paulie: I think it's about time you met Sparc
 ===
 
 title: Sparc.Intro
-position: 17,-34
+position: -244,17
 ---
 Paulie: Sparc? 
 Paulie: SPAA-ARC!
@@ -78,6 +93,7 @@ Sparc: You'd be surprised at some of the stuff that finds its way to our shores.
 ===
 
 title: Sparc.PostWash
+position: -244,147
 ---
 Sparc: Okay let me see what we've got here... 
 Sparc: Aha! This should do it! Alright!
@@ -90,6 +106,7 @@ Sparc: Well Human, if you'll do the honours, I think the rest of that trash you 
 ===
 
 title: Sparc.PostConveyor
+position: -242,273
 ---
 Sparc: Well. if I was unsorted trash, I'd think twice before messing with you!
 Paulie: Right, now time to see about that wire! 
