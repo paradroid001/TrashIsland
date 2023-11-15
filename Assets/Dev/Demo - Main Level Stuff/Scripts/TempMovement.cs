@@ -27,9 +27,6 @@ public class TempMovement : MonoBehaviour
     [SerializeField]
     private LayerMask playerLayer;
 
-    [SerializeField]
-    private TISelectableObject deselect;
-
     
 
     // Start is called before the first frame update
@@ -99,6 +96,16 @@ public class TempMovement : MonoBehaviour
         transform.position = newPosition.position;
     }
 
+    public void DisableMovement()
+    {
+        canMove = false;
+    }
+    public void EnableMovement()
+    {
+        canMove = true;
+    }
+
+
     void GetMousePositionInWorld()
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -112,16 +119,15 @@ public class TempMovement : MonoBehaviour
                 else
                     g = rb.gameObject;
 
-            TISelectableObject o = g.GetComponent<TISelectableObject>();
+            Demo_InteractableNPC o = g.GetComponent<Demo_InteractableNPC>();
                     if (o != null)
                     {
                         Debug.Log("hit");
                         if(allowSelection)
                         {
                         Debug.Log("Selected");
-                        TISelectionEvent e = new TISelectionEvent();
-                        e.selectableObject = o;
-                        e.Call();
+
+                        o.BecomeSelected();                    
                         }
                     }
             }
@@ -130,7 +136,7 @@ public class TempMovement : MonoBehaviour
                 {
                         Debug.Log("Deselected");
                         TISelectionEvent e = new TISelectionEvent();
-                        e.selectableObject = deselect;
+                        //e.selectableObject = deselect;
                         e.Call();
                         }
             }

@@ -7,8 +7,9 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Outline
-  m_Shader: {fileID: 4800000, guid: 0c0a4d878e261c1a58ac155be1613907, type: 3}
+  m_Name: Debug
+  m_Shader: {fileID: -6465566751694194690, guid: 0884ac16458cb4a4b85b420605ae754e,
+    type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -43,6 +44,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Emission:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _EmissionMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -52,10 +57,6 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _NoiseTex:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -101,32 +102,38 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _Lerp: 0.379
+    - _Is_Shiny: 0
+    - _LightTemp: 0
     - _Metallic: 0
-    - _NOISE: 0
     - _OcclusionStrength: 1
-    - _Offset: 0.5
-    - _Outline: 0.05
-    - _OutlineZ: -0.01595
     - _Parallax: 0.005
+    - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _Smoothness: 0.5
+    - _SecondaryCutoff: 0.35
+    - _SecondaryShadowStrength: 0.2
+    - _Smoothness: 0.9732
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1
     - _Surface: 0
+    - _TerminatorCutoff: -0.3
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Colour: {r: 0.5849056, g: 0.19588822, b: 0.20342964, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _OutlineColor: {r: 1, g: 0.3537736, b: 0.440121, a: 0}
+    - _Emission_Colour: {r: 1, g: 1, b: 1, a: 0}
+    - _HighlightColour: {r: 0, g: 0, b: 0, a: 1}
+    - _LightColour: {r: 1, g: 1, b: 1, a: 0}
+    - _ShadowColour: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
+    - _TextureColourOverride: {r: 0.4433962, g: 0.4433962, b: 0.4433962, a: 0}
   m_BuildTextureStacks: []
---- !u!114 &558592772427945100
+--- !u!114 &3124767682314719425
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
