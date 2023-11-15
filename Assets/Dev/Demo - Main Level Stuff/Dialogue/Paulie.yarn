@@ -5,12 +5,12 @@
 title: Directory
 position: -249,-512
 ---
-<<set $hasCollectedGarbage = false>>
-
 <<if visited("Paulie_Intro") == false>>
     <<jump Paulie_Intro>>
-<<else>>
-    <<jump BeachGather>>
+<<elseif $hasCollectedGarbage == false && visited("Paulie_Intro") == true>>
+    <<jump BeachHint>>
+<<elseif $hasCollectedGarbage>>
+    <<jump PauliePostCleanup>>
 
 <<endif>>
 ===
@@ -19,7 +19,7 @@ position: -249,-512
 title: Paulie_Intro
 position: -263,-369
 ---
-
+<<set $IsOutside = true>>
 Paulie: Hiya! I’m Paulie! *chirp*
 
 Paulie: Um…I’m sure you’re busy but, a bunch of rubbish has washed up on my beach and it's far too heavy for me to do on my own…
@@ -40,13 +40,14 @@ Paulie: Yipee! Thank you so much!
 
 Paulie: Here, follow me! *chirp*
 
+<<ActivateObjectInteraction BeachRubbish>>
 ===
 
 
-title: BeachGather
+title: BeachHint
 position: -80,-260
 ---
-<<playAnim Player Pickup>>
+Paulie: Thanks for agreeing to help! If you're looking for the trash, it's straight down from us on the shore!
 ===
 
 title: PauliePostCleanup

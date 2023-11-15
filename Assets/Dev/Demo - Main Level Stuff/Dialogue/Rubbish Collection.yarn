@@ -1,0 +1,11 @@
+﻿title: collectRubbish
+tags:
+---
+<<if visited("Paulie_Intro") == true>>    
+    <<playAnim Player Pickup>>
+    <<set $hasCollectedGarbage = true>>
+    <<DelayTime Player>>
+<<else>>
+    Go meet Paulie!
+<<endif>>
+===

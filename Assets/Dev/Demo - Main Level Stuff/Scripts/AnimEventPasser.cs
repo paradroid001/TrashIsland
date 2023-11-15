@@ -12,5 +12,15 @@ public class AnimEventPasser : MonoBehaviour
     {
         target.EnableMovement();
     }
+
+    public void DestroyInteractable()
+    {
+        target.DeleteObject();
+    }
+
+    public void SetBool()
+    {
+       //target.movementOverride = false;
+    }
 }
 }

@@ -10,16 +10,18 @@ ScriptedImporter:
   script: {fileID: 11500000, guid: 053561912b1654d80a424bb0696a74ae, type: 3}
   sourceScripts:
   - {fileID: 6391573757903218779, guid: 3561217b77771c04391920ddc4d97b5e, type: 3}
+  - {fileID: 6391573757903218779, guid: 3cfc3bc8f00ac6c42b2ca8e301bef7ee, type: 3}
   compileErrors: []
   serializedDeclarations:
-  - name: $variable
-    typeName: 
+  - name: $hasCollectedGarbage
+    typeName: Bool
     defaultValueBool: 0
     defaultValueNumber: 0
     defaultValueString: 
-    description: 
-    isImplicit: 0
-    sourceYarnAsset: {instanceID: 0}
+    description: Implicitly declared in Paulie.yarn, node Directory
+    isImplicit: 1
+    sourceYarnAsset: {fileID: 6391573757903218779, guid: 3561217b77771c04391920ddc4d97b5e,
+      type: 3}
   defaultLanguage: en-AU
   languagesToSourceAssets: []
   useAddressableAssets: 0

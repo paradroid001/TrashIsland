@@ -53,7 +53,7 @@ namespace TrashIsland
 
         public void OnDialogueStart()
         {
-            Debug.Log("DIalogyue start!");
+            //Debug.Log("DIalogyue start!");
             InputCommandEvent e = new()
             {
                 command = InputCommandEvent.InputCommand.DISABLE

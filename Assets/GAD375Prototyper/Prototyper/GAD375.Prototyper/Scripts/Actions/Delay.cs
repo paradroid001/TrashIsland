@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using Yarn.Unity;
 
 namespace GAD375.Prototyper
 {
@@ -28,6 +29,7 @@ namespace GAD375.Prototyper
         //public DelayedAction OnFinish = new DelayedAction();
         public DelayedActionInfo[] delayedActions;
         
+        [YarnCommand("delay")]
         public void DelayCall(string actionstring)
         {
             string[] splittedParams = actionstring.Split(',');

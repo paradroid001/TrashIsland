@@ -15,7 +15,6 @@ public class TempMovement : MonoBehaviour
     private float movementSpeed = 0.5f;
     public float maxSpeed;
     public float rotationSpeed = 1f;
-    Rigidbody rb;
     public bool canMove;
 
     private float horizontalInput;
@@ -32,6 +31,7 @@ public class TempMovement : MonoBehaviour
     public Animator anim;
 
     public bool allowSelection = true;
+    public bool movementOverride;
 
     [SerializeField]
     private LayerMask playerLayer;
@@ -46,7 +46,9 @@ public class TempMovement : MonoBehaviour
     [SerializeField] private List<string> dialogueTitles;
     public string activeNode;
     [SerializeField]
-    private Demo_InteractableNPC InteractingWith;
+    private Demo_InteractableNPC TalkingTo;
+    [SerializeField]
+    private Demo_InteractableObject InteractingWith;
 
 
     
@@ -104,8 +106,22 @@ public class TempMovement : MonoBehaviour
         transform.position = newPosition.position;
     }
 
+    public void DeleteObject()
+    {
+        Debug.Log("Deleting engaged");
+        if(InteractingWith!=null)
+        {            
+            GameObject doomedObject = InteractingWith.gameObject;
+            Debug.Log("Deleting: "+ doomedObject);
+            ExitDialogue();
+            
+            Destroy(doomedObject);
+        }   
+    }
+
     public void EnterDialogue()
     {
+        allowSelection = false;
         if(canMove)
         {
             DisableMovement();
@@ -136,18 +152,30 @@ public class TempMovement : MonoBehaviour
         {
             EnableMovement();
         }
-        
-        InteractingWith.BecomeDeselected();
+        allowSelection = true;
+
+        if (TalkingTo != null)
+        {
+            TalkingTo.BecomeDeselected();
+        }
         
     }
-
+    [YarnCommand("DelayTime")]
+    public IEnumerator DelayTime()
+    {
+        yield return new WaitForSeconds(3);
+        movementOverride = false;
+        canMove = true;
+    }
     public void DisableMovement()
     {
+        Debug.Log("Movement Disabled");
         canMove = false;
     }
     public void EnableMovement()
     {
-        canMove = true;
+        if (!movementOverride)
+            canMove = true;
     }
 
 
@@ -166,17 +194,26 @@ public class TempMovement : MonoBehaviour
 
             Demo_InteractableNPC o = g.GetComponent<Demo_InteractableNPC>();
                     if (o != null)
-                    {
-                        Debug.Log("hit");
-                        if(allowSelection)
+                    {                        
+                        if(allowSelection && o.IsInteractable)
                         {
-                        Debug.Log("Selected");
-
                         o.BecomeSelected();
-                        InteractingWith = o;
+                        TalkingTo = o;
                         EnterDialogue();                    
                         }
                     }
+            Demo_InteractableObject i = g.GetComponent<Demo_InteractableObject>();
+                if (i != null)
+                {
+                    if(allowSelection)
+                        {
+                        movementOverride = true;
+                        i.BecomeSelected();
+                        InteractingWith = i;
+                        
+                                     
+                        }
+                }
             }
             
         }
@@ -185,7 +222,6 @@ public class TempMovement : MonoBehaviour
         public void CallAnimation(string animName)
         {
             anim.Play(animName);
-            DisableMovement();
         }
 
         public void AdvanceDialogue()
