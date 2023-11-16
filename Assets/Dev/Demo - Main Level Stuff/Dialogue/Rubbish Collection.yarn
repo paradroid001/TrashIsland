@@ -3,9 +3,10 @@ tags:
 ---
 <<if visited("Paulie_Intro") == true>>    
     <<playAnim Player Pickup>>
-    <<set $hasCollectedGarbage = true>>
     <<DelayTime Player>>
-<<else>>
-    Go meet Paulie!
+<<endif>>
+
+<<if visited_count("collectRubbish") >= 2>>
+    <<set $hasCollectedGarbage = true>>
 <<endif>>
 ===

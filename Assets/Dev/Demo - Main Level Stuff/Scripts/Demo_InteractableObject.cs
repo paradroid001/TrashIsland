@@ -46,6 +46,8 @@ public class Demo_InteractableObject : MonoBehaviour
 
     [Header("Dialogue Settings")]
     [SerializeField]
+    private GameObject ActivatesWithMe;
+    [SerializeField]
     private int interactionCount;
 
     protected int FindIndexOfMaterial(Material m)
@@ -94,6 +96,11 @@ public class Demo_InteractableObject : MonoBehaviour
     public void ActivateObjectInteraction()
     {
         InteractionReady = true;
+
+        if(ActivatesWithMe != null)
+        {
+            ActivatesWithMe.SetActive(true);
+        }
     }
     
 

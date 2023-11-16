@@ -48,6 +48,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _IntersectionTexture:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -65,6 +69,10 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SurfaceFoamTexture:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -90,6 +98,7 @@ Material:
     - _ClearCoatSmoothness: 0
     - _Cull: 2
     - _Cutoff: 0.5
+    - _DepthFadeDistance: 0.5
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
@@ -102,12 +111,24 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
+    - _HorizonDistance: 0
+    - _IntersectionCutoff: 0
+    - _IntersectionDirection: 0
+    - _IntersectionFade: 0
+    - _IntersectionFoamBlend: 0
+    - _IntersectionFoamDepth: 0
+    - _IntersectionSpeed: 0
+    - _IntersectionTiling: 0
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.005
+    - _PosterizeSteps: 0
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
+    - _RefractionScale: 0
+    - _RefractionSpeed: 0
+    - _RefractionStrength: 0
     - _RippleDensity: 116.7
     - _RippleSpeed: 3.2
     - _RippleWidth: 10.8
@@ -117,6 +138,10 @@ Material:
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1
     - _Surface: 0
+    - _SurfaceFoamDirection: 0
+    - _SurfaceFoamSpeed: 0
+    - _SurfaceFoamTiling: 0
+    - _UVDistortion: 0
     - _WaveScale: 0
     - _WaveSpeed: 6
     - _WorkflowMode: 1
@@ -125,9 +150,13 @@ Material:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _BaseColour: {r: 0.10234953, g: 0.4607308, b: 0.8679245, a: 0.6313726}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _DeepColour: {r: 0.086774595, g: 0.18484795, b: 0.735849, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _FoamColour: {r: 2, g: 2, b: 2, a: 1}
+    - _HorizonColour: {r: 0, g: 0, b: 0, a: 0}
+    - _IntersectionColour: {r: 0, g: 0, b: 0, a: 0}
     - _RippleColour: {r: 0.502225, g: 1.867925, b: 1.791628, a: 0.36078432}
+    - _ShallowColour: {r: 0.26321647, g: 0.8527753, b: 0.8584906, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &599193779537880371
