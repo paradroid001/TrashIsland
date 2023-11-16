@@ -207,11 +207,8 @@ public class TempMovement : MonoBehaviour
                 {
                     if(allowSelection)
                         {
-                        movementOverride = true;
                         i.BecomeSelected();
                         InteractingWith = i;
-                        
-                                     
                         }
                 }
             }

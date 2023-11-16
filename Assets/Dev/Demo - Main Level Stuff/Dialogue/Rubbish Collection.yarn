@@ -3,7 +3,6 @@ tags:
 ---
 <<if visited("Paulie_Intro") == true>>    
     <<playAnim Player Pickup>>
-    <<DelayTime Player>>
 <<endif>>
 
 <<if visited_count("collectRubbish") >= 2>>

@@ -15,11 +15,23 @@ public class Demo_InteractableNPC : MonoBehaviour
     
     List<TIInteractor> interactorsInRange = new List<TIInteractor>();
     public bool IsInteractable;
-
+    [SerializeField]
+    private bool isMoving;
     private bool IsSelected;
 
     private MaterialPropertyBlock deselectedPropertyBlock;
     private MaterialPropertyBlock selectedPropertyBlock;
+
+    [SerializeField]
+    private Transform NPCBody;
+    [SerializeField]
+    private bool looksAtPlayer;
+    private bool resetGaze;
+    private Quaternion defaultLookDirection;
+    [SerializeField]
+    private float staringSpeed;
+    private float resetTimer;
+    private float timesLooped;
 
 
     [Header("Outline Settings")]
@@ -34,11 +46,14 @@ public class Demo_InteractableNPC : MonoBehaviour
     [SerializeField] 
     private Color selectedColour;
 
+    private GameObject player;
+
     [Space(20)]
 
     [Header("Dialogue Settings")]
     [SerializeField]
     private int interactionCount;
+    public bool hasMovementAnimation;
 
     protected int FindIndexOfMaterial(Material m)
         {
@@ -60,19 +75,60 @@ public class Demo_InteractableNPC : MonoBehaviour
 
     // HasNewDialogue - perhaps outline colour could change to indicate new dialogue available?
 
-    // Start is called before the first frame update
     void Start()
     {
+        
         if (myRenderer == null)
             {
                 myRenderer = GetComponent<Renderer>();
             }
-    }
 
-    // Update is called once per frame
+        defaultLookDirection = transform.rotation;
+    }
     void Update()
     {
-        
+        if (looksAtPlayer && IsInteractable) // If the player is in range, look at them
+        {
+            Vector3 relativePosition = player.transform.position - transform.position;
+
+
+            Quaternion newRotation = Quaternion.LookRotation(relativePosition, Vector3.up);
+
+            transform.rotation = Quaternion.Lerp(transform.rotation, newRotation, Time.deltaTime * staringSpeed);
+        }
+
+        if (looksAtPlayer && resetGaze && !isMoving && !IsInteractable)
+        {
+                     
+            resetTimer += Time.deltaTime;
+            if (resetTimer >= 2)
+            {
+                resetTimer = 0;
+                timesLooped++;
+            }
+
+            if (timesLooped <= 0) // Continues starting at player a short time after they've left the interaction zone
+            {
+                Vector3 relativePosition = player.transform.position - transform.position;
+                Quaternion newRotation = Quaternion.LookRotation(relativePosition, Vector3.up);
+                transform.rotation = Quaternion.Lerp(transform.rotation, newRotation, Time.deltaTime * staringSpeed);
+            }
+            else
+            {        
+                transform.rotation = Quaternion.Lerp(transform.rotation, defaultLookDirection, Time.deltaTime * staringSpeed);
+            } 
+
+            
+
+            if (timesLooped>=2)
+            {
+                resetGaze = false;
+                timesLooped = 0;
+                resetTimer = 0;
+            }
+        }
+
+
     }
 
     void BecomeInteractable()
@@ -157,31 +213,72 @@ public class Demo_InteractableNPC : MonoBehaviour
             myRenderer.materials[materialCount].SetColor("_OutlineColor", outlineColour);
         }
     }
+    
+    public void InMotion()
+    {
+        isMoving = true;
+        BecomeUninteractable();
+
+        Animator a = GetComponent<Animator>();
+        if (hasMovementAnimation && a != null)
+        {
+            a.SetTrigger("isMoving");
+        }
+    }
+    public void EndMotion()
+    {
+        isMoving = false;
+
+        float distance = GetPlayerDistance();
+        if (distance <= 3.45f)
+        {
+            BecomeInteractable();
+        }
+        
+
+        Animator a = GetComponent<Animator>();
+        if (hasMovementAnimation && a != null)
+        {
+            a.SetTrigger("isNotMoving");
+        }
+    }
 
 
+    float GetPlayerDistance()
+    {
+        float distance = Vector3.Distance(player.transform.position, transform.position);
+        return distance;
+    }
     void OnTriggerEnter(Collider c)
         {
-            TIInteractor t = c.GetComponent<TIInteractor>();
-            if (t != null)
+            TIInteractor t = c.GetComponent<TIInteractor>();            
+            if (t != null && !isMoving) //if the player is an interactor and we are't moving
             {
+                player = t.gameObject;
                 if (!interactorsInRange.Contains(t))
                 {
                     interactorsInRange.Add(t);
+                    
                     //t.AddInteractable(this);
                     BecomeInteractable();
                 }
             }
         }
+        
         void OnTriggerExit(Collider c)
         {
             TIInteractor t = c.GetComponent<TIInteractor>();
-            if (t != null)
+            if (t != null && !isMoving)
             {
                 if (interactorsInRange.Contains(t))
                 {
                     interactorsInRange.Remove(t);
                     //t.RemoveInteractable(this);
                     BecomeUninteractable();
+                    if (looksAtPlayer)
+                    {
+                        resetGaze = true;
+                    }
                 }
             }
         } 
