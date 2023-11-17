@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
+
+namespace TrashIsland
+{
 public enum ItemCategories
 {
     plastic,
@@ -100,4 +103,5 @@ public class ReceptcaleController : MonoBehaviour
         }
 
     }
+}
 }

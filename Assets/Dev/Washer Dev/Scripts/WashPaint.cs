@@ -35,7 +35,7 @@ public class WashPaint : MonoBehaviour
     [SerializeField]
     private float TransparencyTarget;
     [SerializeField]
-    private float CurrentTransparency;
+    private float amountCleaned = 0;
     [SerializeField]
     private float completionPercent;
 
@@ -104,7 +104,7 @@ public class WashPaint : MonoBehaviour
                 }
 
                 _templateDirtMask.Apply();
-                completionPercent = GetPercent(TransparencyTarget, CurrentTransparency);
+                completionPercent = GetPercent(TransparencyTarget, amountCleaned);
             }
         }
 
@@ -113,7 +113,7 @@ public class WashPaint : MonoBehaviour
             RefreshReadTexture(_templateDirtMask, true);
         }
 
-        if (completionPercent >= 50f && completionPercent >= PercentToWin)
+        if (completionPercent != 100 && completionPercent >= PercentToWin)
         {
             Debug.Log("Win!");
         }
@@ -158,7 +158,7 @@ public class WashPaint : MonoBehaviour
         }
         else
         {
-            CurrentTransparency = EstimateTransparenctPix(pixelsInReadTexture);
+            amountCleaned = EstimateTransparenctPix(pixelsInReadTexture);
         }
         
         
@@ -171,7 +171,7 @@ public class WashPaint : MonoBehaviour
         //RenderTexture.active = null;
     }
 
-    public static float EstimateTransparenctPix(Color32[] pxls)
+    public float EstimateTransparenctPix(Color32[] pxls)
     {
         int tested = 0;
         int tran = 0;
@@ -186,7 +186,7 @@ public class WashPaint : MonoBehaviour
                 solid++;
             }
 
-            
+            i = i+skippedPixels;
         }
         
         tran = tested - solid;

@@ -13,6 +13,8 @@ position: -249,-512
     <<jump PauliePostCleanup>>
 
 <<endif>>
+
+
 ===
 
 
@@ -57,17 +59,22 @@ Paulie: Thanks for agreeing to help! If you're looking for the trash, it's strai
 title: PauliePostCleanup
 position: -243,-117
 ---
-Paulie: Wow, it's crazy what some people just throw away. 
+Paulie: Wow, it's crazy what some people just throw away.
+Paulie: And hey! that's looks like the key to the gate! I thought it must be around here somewhere... Never bothered looking though because I just fly right over!
 Paulie: And this island would've seen plenty of it! 
 Paulie: This island used to be a massive recycling plant until the world stopped caring and the funding dried out
 Paulie: ..!! 
 Paulie: Hey hang on just a second!
 Paulie: You might be just what we need!
 -> Me? What for?
-Paulie: You're a Human! What couldn't we use you for? You can make stuff and fix things! You humans have no idea how much power you really have! Besides, while you can't remember anything there's not much we can do in terms of getting you home...
+Paulie: You're a Human! What couldn't we use you for? You can make stuff and fix things! 
+Paulie: You humans have no idea how much power you really have! Besides, while you can't remember anything there's not much we can do in terms of getting you home...
 -> I'm confused... what do you need my help with?
 Paulie: No time, come with me! You'll see soon enough!
 Paulie: I think it's about time you met Sparc
+Paulie: Follow me! I'll take you to the plant!
+-> Follow Paulie
+<<DelayTime player>>
 ===
 
 title: Sparc.Intro
@@ -96,6 +103,18 @@ Paulie: Yep, I don't see how a bunch of rubbish is going to help us though
 Sparc: You'd be surprised at some of the stuff that finds its way to our shores... Hey Human? If you're still happy to help out, could you take the trash you collected over to our pressurized cleaning sink? That way we can get it all cleaned up and see what we're working with
 -> Okay!
 ===
+
+
+
+title: Sparc.PatchIn
+---
+Sparc: Wow, for helping us out! It was only through your help that we were able to get the conveyor belt up and running again! 
+Sparc: So you really don't remember who you are, huh? Well I wish there was more I can do... 
+Sparc: For now, I think you should be the first to take the conveyor belt for a spin! Just pull on that lever and I'll set everything else up 
+===
+
+
+
 
 title: Sparc.PostWash
 position: -244,147

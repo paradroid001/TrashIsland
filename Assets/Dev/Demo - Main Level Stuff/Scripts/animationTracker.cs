@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+namespace TrashIsland
+{
 public class animationTracker : MonoBehaviour
 {
     private Animator myAnimator;
@@ -40,4 +42,5 @@ public class animationTracker : MonoBehaviour
     {
         gameManager.LevelChangeEvent();
     }
+}
 }

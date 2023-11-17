@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+namespace TrashIsland
+{
 public class SceneExitTile : MonoBehaviour
 {
     public int sceneRef = 0;
@@ -17,4 +19,5 @@ public class SceneExitTile : MonoBehaviour
         gameManager.GetSceneToLoad(sceneRef);
      }
    }
+}
 }

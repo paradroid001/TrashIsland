@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
+
+namespace TrashIsland{
+
+
 public class ConveyorMinigame : MonoBehaviour
 {
     /*NOTES:
@@ -19,6 +23,10 @@ public class ConveyorMinigame : MonoBehaviour
     //Game Management
     [SerializeField]
     private DemoManager gameManager;
+    [SerializeField]
+    private Transform playerSpawn; //passes this to manager when minigame ends 
+    [Space(20)]
+
     private bool gameRunning;
     private float gameTimer; //record of time in the game
     private int numToSort;
@@ -90,7 +98,10 @@ public class ConveyorMinigame : MonoBehaviour
     {
         //upon start, initiate UI screen that gives a start or exit button to the player
         gameRunning = false;
-        ui.gameObject.SetActive(true); //set cause the UI to appear
+        gameManager.UIToggle(ui.gameObject);
+        
+        
+        //ui.gameObject.SetActive(true); //set cause the UI to appear - swapped for function that simultaniously keeping the EventManager active
         
         binRScreenPos = Camera.main.WorldToScreenPoint(binR.position);
         binGScreenPos = Camera.main.WorldToScreenPoint(binG.position);
@@ -134,7 +145,7 @@ public class ConveyorMinigame : MonoBehaviour
     {
         Debug.Log("Game Exit");
         ui.gameObject.SetActive(false); //dsiable the UI
-        gameManager.ReturnToMain(); //call return mehod in main manager
+        gameManager.ReturnToMain(playerSpawn); //call return method in main manager
         gameObject.SetActive(false); //disable this object
 
     }
@@ -148,7 +159,7 @@ public class ConveyorMinigame : MonoBehaviour
             MoveItems();
             PlayerInput();
             EndCheck();
-            beltShader.SetFloat("_Speed", beltSpeed * gameSpeed); //match the speed of the texture to the speed of the objects
+            beltShader.SetFloat("_Speed", beltSpeed * gameSpeed * 0.5f); //match the speed of the texture to the speed of the objects
         }
         else
         {
@@ -301,4 +312,5 @@ public class ConveyorMinigame : MonoBehaviour
     {
         beltShader.SetFloat("_Speed", 0.0f); //match the speed of the texture to the speed of the objects
     }
+}
 }

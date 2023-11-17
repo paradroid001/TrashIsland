@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
+namespace TrashIsland
+{
 [System.Serializable]
 public class Minigame 
 {
@@ -31,9 +34,13 @@ public class DemoManager : MonoBehaviour
     public List<GameObject> scenes;
 
     public List<Minigame> minigameList; //add minigames here
+
     [SerializeField]
     private Camera mainCam;
     private Minigame currentMinigame;
+
+    [SerializeField]
+    private GameObject _mainUI;
 
 
     // Start is called before the first frame update
@@ -133,6 +140,8 @@ public class DemoManager : MonoBehaviour
         }
     }
 
+
+
     public void StartMinigame(string gameName) //used to run the minigames
     {
         currentMinigame = null;
@@ -151,24 +160,42 @@ public class DemoManager : MonoBehaviour
         //disable any unwanted assets
 
         //start the conveyor minigame script
+
         currentMinigame.managerObject.SetActive(true);
 
         //switch camera
         mainCam.gameObject.SetActive(false);
+
+        playerRef.GetComponent<TrashIsland.TempMovement>().DisableMovement();
+        playerRef.SetActive(false);
         currentMinigame.camera.gameObject.SetActive(true);
         
 
     }
 
-    public void ReturnToMain() //used for exiting a minigame
+    public void ReturnToMain(Transform respawnPosition) //used for exiting a minigame
     {
-        
+        TempMovement tM = playerRef.GetComponent<TrashIsland.TempMovement>();
         //re-enable player
 
         //switch back to main camera
         currentMinigame.camera.gameObject.SetActive(false);
+        
+        tM.ChangeLocation(respawnPosition);
+        playerRef.SetActive(true);
+        tM.EnableMovement();
+        
+
         mainCam.gameObject.SetActive(true);
 
     }
 
+    public void UIToggle(GameObject UIRef)
+    {
+       _mainUI.SetActive(false);
+       UIRef.SetActive(true);
+    }
+
+    }
+    
 }
