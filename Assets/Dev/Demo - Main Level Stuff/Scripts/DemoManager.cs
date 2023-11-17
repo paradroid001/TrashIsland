@@ -180,7 +180,7 @@ public class DemoManager : MonoBehaviour
 
         //switch back to main camera
         currentMinigame.camera.gameObject.SetActive(false);
-        
+        _mainUI.SetActive(true);
         tM.ChangeLocation(respawnPosition);
         playerRef.SetActive(true);
         tM.EnableMovement();
