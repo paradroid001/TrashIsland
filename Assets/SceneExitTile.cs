@@ -6,7 +6,8 @@ namespace TrashIsland
 {
 public class SceneExitTile : MonoBehaviour
 {
-    public int sceneRef = 0;
+   [SerializeField]
+    private int sceneRef;
     public DemoManager gameManager;
     
     

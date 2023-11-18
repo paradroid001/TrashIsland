@@ -24,6 +24,10 @@ public class ConveyorMinigame : MonoBehaviour
     [SerializeField]
     private DemoManager gameManager;
     [SerializeField]
+    private GameObject minigameCamera;
+    [SerializeField]
+    private GameObject mainCamera;
+    [SerializeField]
     private Transform playerSpawn; //passes this to manager when minigame ends 
     [Space(20)]
 
@@ -98,6 +102,10 @@ public class ConveyorMinigame : MonoBehaviour
     {
         //upon start, initiate UI screen that gives a start or exit button to the player
         gameRunning = false;
+
+        minigameCamera.SetActive(true);
+        mainCamera.SetActive(false);
+
         gameManager.UIToggle(ui.gameObject);
         
         
@@ -145,7 +153,7 @@ public class ConveyorMinigame : MonoBehaviour
     {
         Debug.Log("Game Exit");
         ui.gameObject.SetActive(false); //dsiable the UI
-        gameManager.ReturnToMain(playerSpawn); //call return method in main manager
+        gameManager.ReturnToMain(playerSpawn, minigameCamera); //call return method in main manager
         gameObject.SetActive(false); //disable this object
 
     }

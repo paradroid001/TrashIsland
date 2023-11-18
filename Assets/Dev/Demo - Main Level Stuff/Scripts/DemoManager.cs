@@ -11,7 +11,7 @@ public class Minigame
 {
     public string name;
     public GameObject managerObject;
-    public Camera camera;
+    public GameObject camera;
 }
 public class DemoManager : MonoBehaviour
 {
@@ -81,16 +81,6 @@ public class DemoManager : MonoBehaviour
             mySceneToLoad = SceneToLoad.inside;
         }
 
-        if (x == 2)
-        {
-            mySceneToLoad = SceneToLoad.minigame1;
-        }
-
-        if (x == 3)
-        {
-            mySceneToLoad = SceneToLoad.minigame2;
-        }
-
         //Checks to see if scene is already in the process of changing
         if(sceneChangeActive == false)
         {
@@ -143,7 +133,7 @@ public class DemoManager : MonoBehaviour
 
 
     public void StartMinigame(string gameName) //used to run the minigames
-    {
+    {        
         currentMinigame = null;
         foreach(Minigame mg in minigameList) //look for matching minigame by name
         {
@@ -168,18 +158,18 @@ public class DemoManager : MonoBehaviour
 
         playerRef.GetComponent<TrashIsland.TempMovement>().DisableMovement();
         playerRef.SetActive(false);
-        currentMinigame.camera.gameObject.SetActive(true);
+        
         
 
     }
 
-    public void ReturnToMain(Transform respawnPosition) //used for exiting a minigame
+    public void ReturnToMain(Transform respawnPosition, GameObject miniCam) //used for exiting a minigame
     {
         TempMovement tM = playerRef.GetComponent<TrashIsland.TempMovement>();
         //re-enable player
 
         //switch back to main camera
-        currentMinigame.camera.gameObject.SetActive(false);
+        miniCam.SetActive(false);
         _mainUI.SetActive(true);
         tM.ChangeLocation(respawnPosition);
         playerRef.SetActive(true);

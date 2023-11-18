@@ -83,7 +83,7 @@ public class Demo_InteractableNPC : MonoBehaviour
                 myRenderer = GetComponent<Renderer>();
             }
 
-        defaultLookDirection = transform.rotation;
+        defaultLookDirection = NPCBody.transform.rotation;
     }
     void Update()
     {
@@ -94,7 +94,7 @@ public class Demo_InteractableNPC : MonoBehaviour
 
             Quaternion newRotation = Quaternion.LookRotation(relativePosition, Vector3.up);
 
-            transform.rotation = Quaternion.Lerp(transform.rotation, newRotation, Time.deltaTime * staringSpeed);
+            NPCBody.transform.rotation = Quaternion.Lerp(NPCBody.transform.rotation, newRotation, Time.deltaTime * staringSpeed);
         }
 
         if (looksAtPlayer && resetGaze && !isMoving && !IsInteractable)
@@ -111,11 +111,11 @@ public class Demo_InteractableNPC : MonoBehaviour
             {
                 Vector3 relativePosition = player.transform.position - transform.position;
                 Quaternion newRotation = Quaternion.LookRotation(relativePosition, Vector3.up);
-                transform.rotation = Quaternion.Lerp(transform.rotation, newRotation, Time.deltaTime * staringSpeed);
+                NPCBody.transform.rotation = Quaternion.Lerp(NPCBody.transform.rotation, newRotation, Time.deltaTime * staringSpeed);
             }
             else
             {        
-                transform.rotation = Quaternion.Lerp(transform.rotation, defaultLookDirection, Time.deltaTime * staringSpeed);
+                NPCBody.transform.rotation = Quaternion.Lerp(NPCBody.transform.rotation, defaultLookDirection, Time.deltaTime * staringSpeed);
             } 
 
             

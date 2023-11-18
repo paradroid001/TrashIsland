@@ -10,13 +10,15 @@ namespace TrashIsland
 public class DemoYarnCommand : MonoBehaviour
 {
     [Header("NavMesh Agents")]
+    [Space(5)]
     [SerializeField]
     private NavMeshAgent Paulie;
     [SerializeField]
     private NavMeshAgent Sparc;
-    [Space(30)]
+    [Space(20)]
 
     [Header("NavMesh Targets")]
+    [Space(5)]
     [SerializeField]
     private List<Transform> PaulieTransforms;
     [SerializeField]
@@ -55,6 +57,11 @@ public class DemoYarnCommand : MonoBehaviour
     }
   }
 
+  [YarnCommand("LoadLevel")]
+  public void YarnLoadLevel(int levelRef) 
+  {
+      gameObject.GetComponent<DemoManager>().GetSceneToLoad(levelRef);
+  }
 
   void SetNPCDestination(NavMeshAgent nvma, Transform trans)
   {

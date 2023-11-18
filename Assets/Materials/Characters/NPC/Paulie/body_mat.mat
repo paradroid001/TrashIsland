@@ -18,7 +18,8 @@ Material:
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
-  stringTagMap: {}
+  stringTagMap:
+    RenderType: Opaque
   disabledShaderPasses: []
   m_LockedProperties: 
   m_SavedProperties:
@@ -90,20 +91,30 @@ Material:
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
     - _BumpScale: 1
+    - _CastShadows: 1
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
     - _Cull: 2
+    - _CurveAmount: 0.001
     - _Cutoff: 0.5
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _DstBlendAlpha: 0
+    - _Edge_Aliasing: 0.001
+    - _Emission_Intensity: 1
+    - _Emission_Strength: 1
     - _EnvironmentReflections: 1
+    - _Falloff_Threshold: 2
     - _GlossMapScale: 1
     - _Glossiness: 0
     - _GlossyReflections: 1
+    - _Half_Tone_Density: 3
+    - _Harshness: 0.005
+    - _Highlight: 1
     - _Is_Shiny: 0
     - _LightTemp: 0
+    - _Lit_Threshold: 1
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
@@ -111,10 +122,12 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
+    - _Rotation: 0
     - _SecondaryCutoff: 0.35
     - _SecondaryShadowStrength: 0.2
-    - _Smoothness: 0.952
+    - _Smoothness: 0.619
     - _SmoothnessTextureChannel: 0
+    - _Softness: 0.06
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1
@@ -122,16 +135,18 @@ Material:
     - _TerminatorCutoff: -0.3
     - _UVSec: 0
     - _WorkflowMode: 1
+    - _ZTest: 4
     - _ZWrite: 1
+    - _ZWriteControl: 0
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Colour: {r: 1, g: 1, b: 1, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _Emission_Colour: {r: 1, g: 1, b: 1, a: 0}
-    - _HighlightColour: {r: 0, g: 0, b: 0, a: 1}
+    - _HighlightColour: {r: 0.241, g: 0.19847058, b: 0.11695588, a: 0}
     - _LightColour: {r: 1, g: 1, b: 1, a: 0}
-    - _ShadowColour: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 0}
+    - _ShadowColour: {r: 0.7372549, g: 0.7372549, b: 0.7372549, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &6875278481902975259
