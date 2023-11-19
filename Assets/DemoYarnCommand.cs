@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Yarn.Unity;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 namespace TrashIsland
 {
@@ -23,6 +24,28 @@ public class DemoYarnCommand : MonoBehaviour
     private List<Transform> PaulieTransforms;
     [SerializeField]
     private List<Transform> SparcTransforms;
+    
+    [Space(20)]
+
+    [Header("Reference Objects")]
+
+    [SerializeField]
+    private Sprite DialoguePortrait;
+
+    [SerializeField]
+    private Image LivePortrait;
+    
+    [SerializeField]
+    private TempMovement playerScript;
+
+    
+    [SerializeField]
+    public List<Demo_InteractableNPC> activeNPCList;
+
+
+
+//Yarn Commands
+
 
 [YarnCommand("makeNPCWalk")]
   public void InterpretDestination(string agentName, int positionRef)
@@ -63,6 +86,46 @@ public class DemoYarnCommand : MonoBehaviour
       gameObject.GetComponent<DemoManager>().GetSceneToLoad(levelRef);
   }
 
+  [YarnCommand("SetPortrait")]
+  public void SetDialoguePortrait(string nameVar)
+  {
+    Debug.Log("Fetching NPC Portrait. Target is "+ nameVar);
+    Demo_InteractableNPC activeNPC;    
+    string name;
+
+    InMemoryVariableStorage varStor = FindObjectOfType<InMemoryVariableStorage>();
+    varStor.TryGetValue(nameVar, out name);
+    Debug.Log("name found in MemVarStor = "+name);
+
+    foreach (Demo_InteractableNPC n in activeNPCList)
+    {
+      if (name == n.myName)
+      {
+        Debug.Log("Assigning portrait of "+n.myName);
+        activeNPC = n;
+        activeNPC.SetOutlineActive(true);
+        activeNPC.SelectedOutlineOverride(true);
+        LivePortrait.sprite = n.Icon;
+      }
+      else
+      {
+        //Debug.Log("NPC "+ n.name + "does not match name passed");
+      }
+    }    
+  }
+
+  [YarnCommand("StartMini")]
+  public void callMinigame(string miniName)
+  {
+    DemoManager dM = GetComponent<DemoManager>();
+
+    dM.StartMinigame(miniName);
+  }
+
+  
+
+  //Internal Functions
+
   void SetNPCDestination(NavMeshAgent nvma, Transform trans)
   {
     // Gets relevant scripts from the transform object and the agent
@@ -77,5 +140,18 @@ public class DemoYarnCommand : MonoBehaviour
     npc.InMotion();
     stopper.AwaitForNPC(npc);    
   }
+
+  public void SceneTransitionNPC(int sceneRef)
+  {
+    foreach (Demo_InteractableNPC n in activeNPCList)
+    {
+      SceneBehaviourNPC sB = n.gameObject.GetComponent<SceneBehaviourNPC>();
+      if (sB != null)
+      {
+        sB.ChangeScene(sceneRef);         
+      }
+    }    
+  }
+
 }
 }

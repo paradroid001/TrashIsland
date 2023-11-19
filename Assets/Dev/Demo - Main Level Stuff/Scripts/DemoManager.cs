@@ -11,7 +11,7 @@ public class Minigame
 {
     public string name;
     public GameObject managerObject;
-    public GameObject camera;
+    public Camera camera;
 }
 public class DemoManager : MonoBehaviour
 {
@@ -36,7 +36,7 @@ public class DemoManager : MonoBehaviour
     public List<Minigame> minigameList; //add minigames here
 
     [SerializeField]
-    private Camera mainCam;
+    private GameObject mainCam;
     private Minigame currentMinigame;
 
     [SerializeField]
@@ -84,6 +84,7 @@ public class DemoManager : MonoBehaviour
         //Checks to see if scene is already in the process of changing
         if(sceneChangeActive == false)
         {
+            
             StartCoroutine(ChangeScene());
         }
     }
@@ -101,6 +102,8 @@ public class DemoManager : MonoBehaviour
         
         
         yield return new WaitForSeconds(1f);
+        DemoYarnCommand dYC = gameObject.GetComponent<DemoYarnCommand>();
+        dYC.SceneTransitionNPC(sceneIndex); //Passes scene number to Yarn Command Manager for NPC changes between scenes
 
         transitionAnim.GetComponent<animationTracker>().EndAnimation();
         //playerRef.GetComponent<TempMovement>().canMove = true;
@@ -131,7 +134,7 @@ public class DemoManager : MonoBehaviour
     }
 
 
-
+    
     public void StartMinigame(string gameName) //used to run the minigames
     {        
         currentMinigame = null;

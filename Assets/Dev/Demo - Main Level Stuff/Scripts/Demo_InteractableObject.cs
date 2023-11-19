@@ -107,6 +107,7 @@ public class Demo_InteractableObject : MonoBehaviour
     void BecomeInteractable()
     {        
         IsInteractable = true;
+        gameObject.layer = 8;
             int index = FindIndexOfMaterial(selectionMaterial);
             if (index < 0)
             {
@@ -130,6 +131,8 @@ public class Demo_InteractableObject : MonoBehaviour
     void BecomeUninteractable()
     {
         IsInteractable = false;
+        gameObject.layer = 6; 
+        
 
         if (myRenderer != null)
             {
@@ -188,7 +191,7 @@ public class Demo_InteractableObject : MonoBehaviour
 
 
     void OnTriggerEnter(Collider c)
-        {
+    {
 
             TIInteractor t = c.GetComponent<TIInteractor>();
             if (t != null && InteractionReady)
@@ -201,22 +204,37 @@ public class Demo_InteractableObject : MonoBehaviour
                     BecomeInteractable();
                 }
             }
-        }
-        void OnTriggerExit(Collider c)
+    }
+    void OnTriggerExit(Collider c)
+    {
+        TIInteractor t = c.GetComponent<TIInteractor>();
+        if (t != null && InteractionReady)
         {
-            TIInteractor t = c.GetComponent<TIInteractor>();
-            if (t != null && InteractionReady)
+            if (interactorsInRange.Contains(t))
             {
-                if (interactorsInRange.Contains(t))
-                {
-                    interactorsInRange.Remove(t);
-                    //t.RemoveInteractable(this);
-                    BecomeUninteractable();
-                }
+                interactorsInRange.Remove(t);
+                //t.RemoveInteractable(this);
+                BecomeUninteractable();
             }
-        } 
+         }
+    } 
 
-        
+    [YarnCommand("playAnim")]
+    public void CallAnimation(string animName)
+    {
+        Animator a = gameObject.GetComponent<Animator>();
+        if (a != null)
+        {
+             a.Play(animName);
+        }
+        else 
+        Debug.Log("Error - No Animator");
+    }
+
+    private void DisableSelf()
+    {
+        gameObject.SetActive(false);
+    }
 }
 }
 

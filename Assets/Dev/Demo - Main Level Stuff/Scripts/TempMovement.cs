@@ -34,7 +34,7 @@ public class TempMovement : MonoBehaviour
     public bool movementOverride;
 
     [SerializeField]
-    private LayerMask playerLayer;
+    private LayerMask Interactables;
 
     [Space(20)]
 
@@ -45,9 +45,8 @@ public class TempMovement : MonoBehaviour
     private int dialogueCounter;
     [SerializeField] private List<string> dialogueTitles;
     public string activeNode;
-    [SerializeField]
+    
     private Demo_InteractableNPC TalkingTo;
-    [SerializeField]
     private Demo_InteractableObject InteractingWith;
 
 
@@ -140,7 +139,8 @@ public class TempMovement : MonoBehaviour
                 else
                 {
                     // Kick off the dialogue at this node.
-                    r.StartDialogue(activeNode);
+                    TalkingTo.BecomeSelected();
+                    r.StartDialogue(activeNode);    
                 }
             }
         }
@@ -183,7 +183,7 @@ public class TempMovement : MonoBehaviour
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, 1000f, ~playerLayer))
+            if (Physics.Raycast(ray, out hit, 1000f, Interactables))
             { 
                 GameObject g;
                 Rigidbody rb = hit.collider.attachedRigidbody;
@@ -191,39 +191,45 @@ public class TempMovement : MonoBehaviour
                     g = hit.collider.gameObject;
                 else
                     g = rb.gameObject;
-
-            Demo_InteractableNPC o = g.GetComponent<Demo_InteractableNPC>();
-                    if (o != null)
+                
+            DemoYarnCommand dYC = FindObjectOfType<DemoYarnCommand>();
+            if (dYC != null)
+            {
+                    Demo_InteractableNPC o = g.GetComponent<Demo_InteractableNPC>(); //Checks for NPC Script
+                    if (o != null) //If we selected an NPC
                     {                        
                         if(allowSelection && o.IsInteractable)
-                        {
-                        o.BecomeSelected();
-                        TalkingTo = o;
-                        EnterDialogue();                    
+                        {                            
+                            TalkingTo = o;                       
+                            EnterDialogue();      
                         }
                     }
-            Demo_InteractableObject i = g.GetComponent<Demo_InteractableObject>();
-                if (i != null)
-                {
-                    if(allowSelection)
+                
+                    Demo_InteractableObject i = g.GetComponent<Demo_InteractableObject>(); //Checks for Object Script
+                    if (i != null) //If we selected an Interactable Object
+                    {
+                        if(allowSelection)
                         {
-                        i.BecomeSelected();
-                        InteractingWith = i;
+                            i.BecomeSelected();
+                            InteractingWith = i;
                         }
-                }
+                    }
+            }
             }
             
         }
 
-        [YarnCommand("playAnim")]
+        [YarnCommand("playerAnim")]
         public void CallAnimation(string animName)
         {
             anim.Play(animName);
         }
 
+        /*
         public void AdvanceDialogue()
         {
             dialogueCounter++;
         }
+        */
 }
 }

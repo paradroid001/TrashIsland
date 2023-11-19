@@ -1,6 +1,15 @@
-
-
-
+title: Setup
+---
+// Called on Start through the GameManager, sets values for variables before progressing any further with Dialogue 
+<<if visited("Setup") == true>>
+    <<jump Directory>>
+<<else>>
+    <<set $Paulie = ("Paulie")>>
+    <<SetNPCName PaulieNPC $Paulie>>
+    <<set $Sparc = ("S.P.A.R.C.")>>
+    <<SetNPCName SparcNPC $Sparc>>
+<<endif>>
+===
 
 title: Directory
 position: -249,-512
@@ -22,25 +31,25 @@ title: Paulie_Intro
 position: -263,-369
 ---
 <<set $IsOutside = true>>
-Paulie: Hiya! I’m Paulie! *chirp*
+{$Paulie}: Hiya! I’m Paulie! *chirp*
 
-Paulie: Um…I’m sure you’re busy but, a bunch of rubbish has washed up on my beach and it's far too heavy for me to do on my own…
+{$Paulie}: Um…I’m sure you’re busy but, a bunch of rubbish has washed up on my beach and it's far too heavy for me to do on my own…
 
-Paulie: Maybe if you help me, I can help you or something!
+{$Paulie}: Maybe if you help me, I can help you or something!
 
-Paulie: hmm…
+{$Paulie}: hmm…
 
-Paulie: I’m not really sure what I can do for you at the moment…
+{$Paulie}: I’m not really sure what I can do for you at the moment…
 
-Paulie: But I’m sure I’ll think of something!
+{$Paulie}: But I’m sure I’ll think of something!
 
-	Paulie: So, will you help me?
+{$Paulie}: So, will you help me?
 
 -> Sure!
 
-Paulie: Yipee! Thank you so much!
+{$Paulie}: Yipee! Thank you so much!
 
-Paulie: Here, follow me! *chirp*
+{$Paulie}: Here, follow me! *chirp*
 
 <<ActivateObjectInteraction CollectableTrashPile1>>
 <<ActivateObjectInteraction CollectableTrashPile2>>
@@ -59,52 +68,53 @@ Paulie: Thanks for agreeing to help! If you're looking for the trash, it's strai
 title: PauliePostCleanup
 position: -243,-117
 ---
-Paulie: Wow, it's crazy what some people just throw away.
-Paulie: And hey! that's looks like the key to the gate! I thought it must be around here somewhere... Never bothered looking though because I just fly right over!
-Paulie: And this island would've seen plenty of it! 
-Paulie: This island used to be a massive recycling plant until the world stopped caring and the funding dried out
-Paulie: ..!! 
-Paulie: Hey hang on just a second!
-Paulie: You might be just what we need!
+{$Paulie}: Wow, it's crazy what some people just throw away.
+{$Paulie}: And hey! that's looks like the key to the gate! I thought it must be around here somewhere... Never bothered looking though because I just fly right over!
+{$Paulie}: And this island would've seen plenty of it! 
+{$Paulie}: This island used to be a massive recycling plant until the world stopped caring and the funding dried out
+{$Paulie}: ..!! 
+{$Paulie}: Hey hang on just a second!
+{$Paulie}: You might be just what we need!
 -> Me? What for?
-Paulie: You're a Human! What couldn't we use you for? You can make stuff and fix things! 
-Paulie: You humans have no idea how much power you really have! Besides, while you can't remember anything there's not much we can do in terms of getting you home...
+{$Paulie}: You're a Human! What couldn't we use you for? You can make stuff and fix things! 
+{$Paulie}: You humans have no idea how much power you really have! Besides, while you can't remember anything there's not much we can do in terms of getting you home...
 -> I'm confused... what do you need my help with?
-Paulie: No time, come with me! You'll see soon enough!
-Paulie: I think it's about time you met SPARC
-Paulie: Follow me! I'll take you to the plant!
+{$Paulie}: No time, come with me! You'll see soon enough!
+{$Paulie}: I think it's about time you met S.P.A.R.C.
+{$Paulie}: Follow me! I'll take you to the plant!
 -> Follow Paulie
 
 
 <<LoadLevel GameManager 1>> //Loads level 1
-<<DelayTime Player>>
+<<wait 1>>
 <<jump SPARC_PatchIn>>
 ===
 
 title: SPARC_Intro
 position: -244,17
 ---
-Paulie: SPARC? 
-Paulie: SPAA-ARC!
-SPARC: Would you keep it down? It's bad enough being stuck with you as my only hope of fixing this place up without you rattling my circuits around with that screetching
-Paulie: Well I may not be your only hope anymore! I found a human!
-SPARC: Huh?... Oh! Hi! I barely saw you there. Where on earth did you come from? We are quite literally in the middle of nowhere, so guests aren't exactly common
+{$Paulie}: S.P.A.R.C.? 
+{$Paulie}: S.P.A.R.C.!!!
+<<SetPortrait GameManager {$Sparc}>>
+{$Sparc}: Would you keep it down? It's bad enough being stuck with you as my only hope of fixing this place up without you rattling my circuits around with that screetching
+{$Paulie}: Well I may not be your only hope anymore! I found a human!
+{$Sparc}: Huh?... Oh! Hi! I barely saw you there. Where on earth did you come from? We are quite literally in the middle of nowhere, so guests aren't exactly common
 -> I uh... huh. I don't actually remember. As a matter of fact, all I do remember is waking right as Paulie found me on the shore...
-SPARC: Well your timing is impecable! I just don't have the means to get this stuff in working order. But with a literal extra set of hands, I think we are just about ready to get these machines up and running!
+{$Sparc}: Well your timing is impecable! I just don't have the means to get this stuff in working order. But with a literal extra set of hands, I think we are just about ready to get these machines up and running!
 -> What is this place? and what does all this stuff for?
-SPARC: This? This here is the long dormant heart of one of the largest recycling plant on the planet
-SPARC: Well... at least it was
-SPARC: Until all the humans just set their sights on leaving this planet instead of taking care of it
+{$Sparc}: This? This here is the long dormant heart of one of the largest recycling plant on the planet
+{$Sparc}: Well... at least it was
+{$Sparc}: Until all the humans just set their sights on leaving this planet instead of taking care of it
 -> ...
-SPARC: But we haven't given up yet! This planet isn't going to save itself, and as long as there's still juice in my circuits I'll be doing everything I can. The world is at it's tipping point, you see
-SPARC: Pretty soon things will permanently shift beyond the point of no return and the world won't be inhabitable by anything, not just humans
-SPARC: That's why we have to get this place up and running! 
-SPARC: We need your help! With you, we have the power to shift the balance back and restore the earth to its former glory! 
+{$Sparc}: But we haven't given up yet! This planet isn't going to save itself, and as long as there's still juice in my circuits I'll be doing everything I can. The world is at it's tipping point, you see
+{$Sparc}: Pretty soon things will permanently shift beyond the point of no return and the world won't be inhabitable by anything, not just humans
+{$Sparc}: That's why we have to get this place up and running! 
+{$Sparc}: We need your help! With you, we have the power to shift the balance back and restore the earth to its former glory! 
 -> Well, when you put it that way...
     -> I'm In! How can I help?
-SPARC: Well, the backbone of this place is this conveyor belt, but we still need a few final components... Hey, hang on... Paulie did you guys bring any scrap from the beach?
-Paulie: Yep, I don't see how a bunch of rubbish is going to help us though
-SPARC: You'd be surprised at some of the stuff that finds its way to our shores... Hey Human? If you're still happy to help out, could you take the trash you collected over to our pressurized cleaning sink? That way we can get it all cleaned up and see what we're working with
+{$Sparc}: Well, the backbone of this place is this conveyor belt, but we still need a few final components... Hey, hang on... Paulie did you guys bring any scrap from the beach?
+{$Paulie}: Yep, I don't see how a bunch of rubbish is going to help us though
+{$Sparc}: You'd be surprised at some of the stuff that finds its way to our shores... Hey Human? If you're still happy to help out, could you take the trash you collected over to our pressurized cleaning sink? That way we can get it all cleaned up and see what we're working with
 -> Okay!
 ===
 
@@ -113,32 +123,32 @@ SPARC: You'd be surprised at some of the stuff that finds its way to our shores.
 title: SPARC_PatchIn
 position: -244,35
 ---
-SPARC: Wow, for helping us out! It was only through your help that we were able to get the conveyor belt up and running again! 
-SPARC: So you really don't remember who you are, huh? Well I wish there was more I can do... 
-SPARC: For now, I think you should be the first to take the conveyor belt for a spin! Just pull on that lever and I'll set everything else up 
+<<SetPortrait GameManager $Sparc>>
+<<wait 1.3>>
+{$Sparc}: Wow, for helping us out! It was only through your help that we were able to get the conveyor belt up and running again! 
+{$Sparc}: So you really don't remember who you are, huh? Well I wish there was more I can do... 
+{$Sparc}: For now, I think you should be the first to take the conveyor belt for a spin! Just pull on that lever and I'll set everything else up
+<<ForcedOutlineEnd SparcNPC>>
 ===
-
-
-
 
 title: SPARC.PostWash
 position: -244,147
 ---
-SPARC: Okay let me see what we've got here... 
-SPARC: Aha! This should do it! Alright!
-SPARC: Alright, I'll make the appropriate modifications and then we can fire this old thing up!
+{$Sparc}: Okay let me see what we've got here... 
+{$Sparc}: Aha! This should do it! Alright!
+{$Sparc}: Alright, I'll make the appropriate modifications and then we can fire this old thing up!
 *whirrr*
-SPARC: ...I don't believe it
-SPARC: It actually still runs!
-Paulie: I'll be honest, I had lost hope of ever seeing this thing functioning again but I stand corrected! 
-SPARC: Well Human, if you'll do the honours, I think the rest of that trash you cleaned up should be a perfect test run for the conveyor. Let's hope you've brushed up on your bin knowledge!
+{$Sparc}: ...I don't believe it
+{$Sparc}: It actually still runs!
+{$Paulie}: I'll be honest, I had lost hope of ever seeing this thing functioning again but I stand corrected! 
+{$Sparc}: Well Human, if you'll do the honours, I think the rest of that trash you cleaned up should be a perfect test run for the conveyor. Let's hope you've brushed up on your bin knowledge!
 ===
 
 title: SPARC.PostConveyor
 position: -242,273
 ---
-SPARC: Well. if I was unsorted trash, I'd think twice before messing with you!
-Paulie: Right, now time to see about that wire! 
-Paulie: Once we shred up all the new scrap, I think we'll be set on copper for the radio tower repairs.
-SPARC: As a matter of fact, pretty much every bit of scrap you find can be repurposed in some way through this plant now it has awoken from its slumber!
+{$Sparc}: Well. if I was unsorted trash, I'd think twice before messing with you!
+{$Paulie}: Right, now time to see about that wire! 
+{$Paulie}: Once we shred up all the new scrap, I think we'll be set on copper for the radio tower repairs.
+{$Sparc}: As a matter of fact, pretty much every bit of scrap you find can be repurposed in some way through this plant now it has awoken from its slumber!
 ===

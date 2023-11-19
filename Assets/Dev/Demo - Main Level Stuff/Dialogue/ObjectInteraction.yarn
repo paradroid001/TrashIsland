@@ -1,0 +1,20 @@
+﻿title: collectRubbish
+tags:
+---
+<<if visited("Paulie_Intro") == true>>    
+    <<playerAnim Player Pickup>>
+<<endif>>
+
+<<if visited_count("collectRubbish") >= 2>>
+    <<set $hasCollectedGarbage = true>>
+<<endif>>
+===
+
+title: startConveyor
+---
+<<if visited("SPARC_PatchIn") == true && visited ("startConveyor") == false>>
+    <<playAnim StandinLever leverPull>>
+    <<wait 1>>
+    <<StartMini GameManager ConveyorBelt>>
+<<endif>>
+===
