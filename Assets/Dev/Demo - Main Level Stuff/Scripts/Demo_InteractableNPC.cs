@@ -341,6 +341,7 @@ public class Demo_InteractableNPC : MonoBehaviour
         isMoving = true;
         SetOutlineActive(false);
         gameObject.layer = _defaultLayer;
+        looksAtPlayer = false;
         Animator a = GetComponent<Animator>();
         if (hasMovementAnimation && a != null)
         {
@@ -350,7 +351,7 @@ public class Demo_InteractableNPC : MonoBehaviour
     public void EndMotion()
     {
         isMoving = false;
-
+        looksAtPlayer = true;
         Animator a = GetComponent<Animator>();
         if (hasMovementAnimation && a != null)
         {

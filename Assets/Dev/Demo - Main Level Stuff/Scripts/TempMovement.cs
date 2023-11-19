@@ -8,6 +8,11 @@ namespace TrashIsland
 {
 public class TempMovement : MonoBehaviour
 {
+    [Header("Debug")]
+    [SerializeField]
+    private bool startInDebugMode;
+
+
     [Header("Movement")]
     [Space(5)]
 
@@ -55,8 +60,14 @@ public class TempMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //rb = GetComponent<Rigidbody>();
         canMove = true;
+        //rb = GetComponent<Rigidbody>();
+        if (startInDebugMode)
+        {
+            SetNode("Admin");
+            EnterDialogue();
+            
+        }        
     }
 
     // Update is called once per frame
@@ -95,6 +106,7 @@ public class TempMovement : MonoBehaviour
             }
     }
 
+    [YarnCommand("PassNode")]
     public void SetNode(string nodeName)
     {
         activeNode = nodeName;
@@ -138,8 +150,12 @@ public class TempMovement : MonoBehaviour
                 }
                 else
                 {
-                    // Kick off the dialogue at this node.
-                    TalkingTo.BecomeSelected();
+                    
+                    if (TalkingTo != null)
+                    {
+                        TalkingTo.BecomeSelected();
+                    }
+
                     r.StartDialogue(activeNode);    
                 }
             }

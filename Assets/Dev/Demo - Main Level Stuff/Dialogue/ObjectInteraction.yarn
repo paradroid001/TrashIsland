@@ -3,6 +3,7 @@ tags:
 ---
 <<if visited("Paulie_Intro") == true>>    
     <<playerAnim Player Pickup>>
+    <<wait  2.3>>
 <<endif>>
 
 <<if visited_count("collectRubbish") >= 2>>
@@ -13,6 +14,11 @@ tags:
 title: startConveyor
 ---
 <<if visited("SPARC_PatchIn") == true && visited ("startConveyor") == false>>
+    <<playAnim StandinLever leverPull>>
+    <<wait 1>>
+    <<StartMini GameManager ConveyorBelt>>
+<<endif>>
+<<if visited("Admin") == true>>
     <<playAnim StandinLever leverPull>>
     <<wait 1>>
     <<StartMini GameManager ConveyorBelt>>

@@ -89,19 +89,19 @@ public class DemoYarnCommand : MonoBehaviour
   [YarnCommand("SetPortrait")]
   public void SetDialoguePortrait(string nameVar)
   {
-    Debug.Log("Fetching NPC Portrait. Target is "+ nameVar);
+    //Debug.Log("Fetching NPC Portrait. Target is "+ nameVar);
     Demo_InteractableNPC activeNPC;    
     string name;
 
     InMemoryVariableStorage varStor = FindObjectOfType<InMemoryVariableStorage>();
     varStor.TryGetValue(nameVar, out name);
-    Debug.Log("name found in MemVarStor = "+name);
+    //Debug.Log("name found in MemVarStor = "+name);
 
     foreach (Demo_InteractableNPC n in activeNPCList)
     {
       if (name == n.myName)
       {
-        Debug.Log("Assigning portrait of "+n.myName);
+        //Debug.Log("Assigning portrait of "+n.myName);
         activeNPC = n;
         activeNPC.SetOutlineActive(true);
         activeNPC.SelectedOutlineOverride(true);

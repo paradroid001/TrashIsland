@@ -29,6 +29,9 @@ public class Demo_InteractableObject : MonoBehaviour
     [SerializeField]
     private string myNode;
 
+    [SerializeField]
+    private GameObject selectionBody;
+
 
     [Header("Outline Settings")]
     [SerializeField]
@@ -107,31 +110,48 @@ public class Demo_InteractableObject : MonoBehaviour
     void BecomeInteractable()
     {        
         IsInteractable = true;
-        gameObject.layer = 8;
-            int index = FindIndexOfMaterial(selectionMaterial);
-            if (index < 0)
+        if (selectionBody != null)
+        {
+            selectionBody.layer = 8;
+            interactionCollider.enabled = true;
+        }
+        else
+        {
+            gameObject.layer = 8;
+        }
+
+        int index = FindIndexOfMaterial(selectionMaterial);
+        if (index < 0)
+        {
+        //Copy out old mats
+            Material[] mats = myRenderer.materials;
+            Material[] newmats = new Material[mats.Length + 1];
+            for (int i = 0; i < mats.Length; i++)
             {
-            //Copy out old mats
-                Material[] mats = myRenderer.materials;
-                Material[] newmats = new Material[mats.Length + 1];
-                for (int i = 0; i < mats.Length; i++)
-                {
-                    newmats[i] = mats[i];
-                }
-                //Add the semection mat on the end
-                newmats[newmats.Length - 1] = selectionMaterial;
-                selectionMaterial.SetColor("_OutlineColor", outlineColour);
-                selectionMaterial.SetFloat("_Outline", outlineStrength);
-                //Set the whole array back onto the renderer
-                myRenderer.materials = newmats;
-                }
-                myRenderer.SetPropertyBlock(selectedPropertyBlock);
+                newmats[i] = mats[i];
+            }
+            //Add the semection mat on the end
+            newmats[newmats.Length - 1] = selectionMaterial;
+            selectionMaterial.SetColor("_OutlineColor", outlineColour);
+            selectionMaterial.SetFloat("_Outline", outlineStrength);
+            //Set the whole array back onto the renderer
+            myRenderer.materials = newmats;
+        }
+        myRenderer.SetPropertyBlock(selectedPropertyBlock);
     }
 
     void BecomeUninteractable()
     {
         IsInteractable = false;
-        gameObject.layer = 6; 
+        if (selectionBody != null)
+        {
+            selectionBody.layer = 6;
+            interactionCollider.enabled = false;
+        }
+        else
+        {
+            gameObject.layer = 6;
+        }
         
 
         if (myRenderer != null)

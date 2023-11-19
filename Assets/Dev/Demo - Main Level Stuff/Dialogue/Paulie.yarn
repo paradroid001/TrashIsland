@@ -14,16 +14,20 @@ title: Setup
 title: Directory
 position: -249,-512
 ---
+<<if visited("Admin") == true>>
+    <<jump SPARC_PatchIn>>
+<<endif>>
+
+<<if visited ("startConveyor") == true>>
+    <<jump SPARC_PostConveyor>>
+<<endif>>
 <<if visited("Paulie_Intro") == false>>
     <<jump Paulie_Intro>>
 <<elseif $hasCollectedGarbage == false && visited("Paulie_Intro") == true>>
     <<jump BeachHint>>
 <<elseif $hasCollectedGarbage>>
     <<jump PauliePostCleanup>>
-
 <<endif>>
-
-
 ===
 
 
@@ -70,7 +74,6 @@ position: -243,-117
 ---
 {$Paulie}: Wow, it's crazy what some people just throw away.
 {$Paulie}: And hey! that's looks like the key to the gate! I thought it must be around here somewhere... Never bothered looking though because I just fly right over!
-{$Paulie}: And this island would've seen plenty of it! 
 {$Paulie}: This island used to be a massive recycling plant until the world stopped caring and the funding dried out
 {$Paulie}: ..!! 
 {$Paulie}: Hey hang on just a second!
@@ -144,11 +147,18 @@ position: -244,147
 {$Sparc}: Well Human, if you'll do the honours, I think the rest of that trash you cleaned up should be a perfect test run for the conveyor. Let's hope you've brushed up on your bin knowledge!
 ===
 
-title: SPARC.PostConveyor
+title: SPARC_PostConveyor
 position: -242,273
 ---
+<<ForcedOutlineEnd PaulieNPC>>
+<<SetPortrait GameManager $Sparc>>
 {$Sparc}: Well. if I was unsorted trash, I'd think twice before messing with you!
-{$Paulie}: Right, now time to see about that wire! 
+<<ForcedOutlineEnd SparcNPC>>
+<<SetPortrait GameManager $Paulie>>
+{$Paulie}: Right, now time to see about that wire!
 {$Paulie}: Once we shred up all the new scrap, I think we'll be set on copper for the radio tower repairs.
+<<ForcedOutlineEnd PaulieNPC>>
+<<SetPortrait GameManager $Sparc>>
 {$Sparc}: As a matter of fact, pretty much every bit of scrap you find can be repurposed in some way through this plant now it has awoken from its slumber!
+    -> Insert End Of Game Here
 ===
