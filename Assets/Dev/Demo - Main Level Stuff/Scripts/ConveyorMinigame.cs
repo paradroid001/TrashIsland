@@ -67,6 +67,9 @@ public class ConveyorMinigame : MonoBehaviour
     private float flickMinY; //minimum upward force applied to flicks
     [SerializeField]
     private Transform airParent; //the parent for when objects are flicked into the air
+    [SerializeField]
+    private LayerMask touchLayermask; //what we can hit when touching
+    public float baseLaunchSpeed;
 
     //receptacles dealing with objects
     public float rejectionTranslationSpeed; //how fast the objeects return to the belt
@@ -200,6 +203,7 @@ public class ConveyorMinigame : MonoBehaviour
         foreach(Transform child in conveyorParent) //iterates through each item that was spawned under the conveyor parent
         {
             child.position += beltDirection.normalized * Time.deltaTime * beltSpeed * gameSpeed; //move that object
+            //DrawLines(child);
             if(child.position.x >= conveyorDespawn.position.x) //if the item has then reached the end of the belt
             {
                 itemsList.Add(child.gameObject); //adds the prefab that the item instanced from back into the rotation
@@ -226,8 +230,9 @@ public class ConveyorMinigame : MonoBehaviour
             //cast to see if we pick up an item
             Ray touchRay = Camera.main.ScreenPointToRay(touchStartPos); //cast a ray from where we touch
             RaycastHit hit;
-            if(Physics.Raycast(touchRay, out hit))
+            if(Physics.Raycast(touchRay, out hit, Mathf.Infinity, touchLayermask))
             {
+                Debug.Log(hit.collider.gameObject);
                 if(hit.collider != null && hit.collider.tag == "Prop" && hit.transform.IsChildOf(conveyorParent)) //if we hit something that is a prop and is under the conveyor parent
                 {
                     if(hit.collider.GetComponentInParent<Rigidbody>()) //if there is a rigid body to grab
@@ -247,6 +252,47 @@ public class ConveyorMinigame : MonoBehaviour
 
             swipeDirection = touchEndPos - touchStartPos; //convert 2 positions to a direction
             swipeDuration = touchEndTime - touchStartTime; //convert 2 times to time difference
+
+            /*Vector3 borderRG = (binR.position + binG.position)/2; //position between them
+            Vector3 borderGY = (binG.position + binY.position)/2; //position between them
+            borderRG = new Vector3(Camera.main.WorldToScreenPoint(borderRG).x, Camera.main.WorldToScreenPoint(borderRG).y, 0.0f);
+            borderGY = new Vector3(Camera.main.WorldToScreenPoint(borderGY).x, Camera.main.WorldToScreenPoint(borderGY).y, 0.0f); //convert to screen space
+            Vector3 dirToRG = borderRG - touchStartPos;
+            Vector3 dirToGY = borderGY - touchStartPos;*/
+
+            Vector3 screenBinR = new Vector3(Camera.main.WorldToScreenPoint(binR.position).x, Camera.main.WorldToScreenPoint(binR.position).y, 0.0f);
+            Vector3 screenBinG = new Vector3(Camera.main.WorldToScreenPoint(binG.position).x, Camera.main.WorldToScreenPoint(binG.position).y, 0.0f);
+            Vector3 screenBinY = new Vector3(Camera.main.WorldToScreenPoint(binY.position).x, Camera.main.WorldToScreenPoint(binY.position).y, 0.0f);
+
+            Vector3 dirToR = screenBinR-touchStartPos;
+            Vector3 dirToG = screenBinG-touchStartPos;
+            Vector3 dirToY = screenBinY-touchStartPos;
+
+            float angleToR = Vector3.Angle(swipeDirection, dirToR);
+            float angleToG = Vector3.Angle(swipeDirection, dirToG);
+            float angleToY = Vector3.Angle(swipeDirection, dirToY);
+
+            /*DrawLines(dirToR, Color.red);
+            DrawLines(dirToG, Color.green);
+            DrawLines(dirToY, Color.yellow);
+            DrawLines(swipeDirection, Color.white);*/
+            Debug.Log(angleToR + ", " + angleToG + ", " + angleToY);
+            Transform destination = flickObject.transform;
+            if(angleToR < angleToG && angleToR < angleToY)
+            {
+                Debug.Log("going to R");
+                destination = binR;
+            }
+            else if(angleToG < angleToY)
+            {
+                Debug.Log("going to G");
+                destination = binG;
+            }
+            else
+            {
+                Debug.Log("going to Y");
+                destination = binY;
+            }
 
             /*
             float redAngle = Vector2.Angle(touchStartPos, binRScreenPos); //Stores angles for swipe angle + angle to each target  
@@ -276,12 +322,13 @@ public class ConveyorMinigame : MonoBehaviour
 
 
 
-            flickObject.isKinematic = false; //apply the swipe as force to the flick object
-            //flickObject.AddForce(launchDirection.x * targetDistance * 100, launchDirection.y * 1.5f * 100, launchDirection.z * targetDistance * 100);
+            //flickObject.isKinematic = false; //apply the swipe as force to the flick object
 
-            flickObject.AddForce(swipeDirection.x * flickForceX, swipeDirection.y * flickForceY + flickMinY, flickForceZ / swipeDuration); //shorter swipe interval, means stronger flick backwards
+            //flickObject.AddForce(swipeDirection.x * flickForceX, swipeDirection.y * flickForceY + flickMinY, flickForceZ / swipeDuration); //shorter swipe interval, means stronger flick backwards
 
-            flickObject.transform.parent = airParent; //the object is in the air, not the hopper or the belt
+            //flickObject.transform.parent = airParent; //the object is in the air, not the hopper or the belt
+
+            StartCoroutine(LaunchItem(flickObject.transform, destination, baseLaunchSpeed));
             
             flickObject = null; //reset the flick Object
         }
@@ -315,10 +362,45 @@ public class ConveyorMinigame : MonoBehaviour
         item.rotation = conveyorParent.rotation; //reset to 0 rotation
         item.parent = conveyorParent; //put the item back under the belt parent
     }
+    public IEnumerator LaunchItem(Transform item, Transform destination ,float speed)
+    {
+        item.parent = airParent;
+        item.GetComponent<Rigidbody>().isKinematic = true; //set the item to kinematic
+        float totalDistance = Vector3.Distance(item.position, destination.position); //how far to the belt - used to calculate arc
+        while(Vector3.Distance(item.position, conveyorParent.position) > 0.05f && item.parent == airParent)//while the object has not reached any its destination and is still in the air
+        {
+            Vector3 direction = destination.position - item.position;
+            //affect y direction based on comparison to total distance
+            if(Vector3.Distance(item.position, destination.position) > totalDistance/2) //if are less than halfway to the belt
+            {
+                item.position += new Vector3(0, rejectionArc, 0) * Time.deltaTime; //apply upward y movement
+            }
+            item.position += direction.normalized * speed * Time.deltaTime; //translate object back to belt over time
+            item.rotation = Quaternion.RotateTowards(item.rotation, conveyorParent.rotation, rejectionRotationSpeed * Time.deltaTime); //rotate object back to 0,0,0 over time
+            yield return null;
+        }
+        //item.position = destination.position; //teleport to be exactly at position
+        //item.rotation = destination.rotation; //reset to 0 rotation
+    }
 
     void OnDisable()
     {
         beltShader.SetFloat("_Speed", 0.0f); //match the speed of the texture to the speed of the objects
     }
+
+    /*void DrawLines(Vector3 direction, Color c)
+    {
+        Debug.DrawLine(item.position,binG.position,Color.green,0.0f,false);
+        Debug.DrawLine(item.position,binR.position,Color.red,0.0f,false);
+        Debug.DrawLine(item.position,binY.position,Color.yellow,0.0f,false);
+        Vector3 borderRG = (binR.position + binG.position)/2; //position between them
+        Debug.DrawLine(item.position,borderRG,Color.white,0.0f,false);
+        Vector3 borderGY = (binG.position + binY.position)/2; //position between them
+        Debug.DrawLine(item.position,borderGY,Color.white,0.0f,false);
+
+        Debug.DrawRay(touchStartPos,direction,c,1.0f,false);
+
+
+    }*/
 }
 }
