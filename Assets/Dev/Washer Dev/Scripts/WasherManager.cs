@@ -26,6 +26,8 @@ public class WasherManager : MonoBehaviour
 
     public int itemCount;
 
+    public List<GameObject> itemVariations;
+
     // Start is called before the first frame update
     void Start()
     {

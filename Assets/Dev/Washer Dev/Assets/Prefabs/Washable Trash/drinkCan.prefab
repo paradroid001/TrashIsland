@@ -28,12 +28,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2227335233338107283}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.0449157, y: -0.58993244, z: 0.3639965}
-  m_LocalScale: {x: 10, y: 17.820368, z: 10}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1.7820368, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2453651052556923020
 MeshFilter:
@@ -113,5 +113,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _camera: {fileID: 0}
   _dirtMaskBase: {fileID: 2800000, guid: 1efc75f5df870e743a5ada8e2941918a, type: 3}
+  _sourceRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 0
+    height: 0
   _brush: {fileID: 2800000, guid: 3668de18405ee5d49868e185e1102a4d, type: 3}
   _material: {fileID: 2100000, guid: 498ba60b2ce114e44b62d4668ca12421, type: 2}
+  _myRenderer: {fileID: 0}
+  pixelsInReadTexture: []
+  isCalculating: 0
+  parts: 
+  skippedPixels: 10
+  TransparencyTarget: 0
+  amountCleaned: 0
+  completionPercent: 0
+  PercentToWin: 0
