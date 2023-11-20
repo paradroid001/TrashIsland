@@ -253,13 +253,6 @@ public class ConveyorMinigame : MonoBehaviour
             swipeDirection = touchEndPos - touchStartPos; //convert 2 positions to a direction
             swipeDuration = touchEndTime - touchStartTime; //convert 2 times to time difference
 
-            /*Vector3 borderRG = (binR.position + binG.position)/2; //position between them
-            Vector3 borderGY = (binG.position + binY.position)/2; //position between them
-            borderRG = new Vector3(Camera.main.WorldToScreenPoint(borderRG).x, Camera.main.WorldToScreenPoint(borderRG).y, 0.0f);
-            borderGY = new Vector3(Camera.main.WorldToScreenPoint(borderGY).x, Camera.main.WorldToScreenPoint(borderGY).y, 0.0f); //convert to screen space
-            Vector3 dirToRG = borderRG - touchStartPos;
-            Vector3 dirToGY = borderGY - touchStartPos;*/
-
             Vector3 screenBinR = new Vector3(Camera.main.WorldToScreenPoint(binR.position).x, Camera.main.WorldToScreenPoint(binR.position).y, 0.0f);
             Vector3 screenBinG = new Vector3(Camera.main.WorldToScreenPoint(binG.position).x, Camera.main.WorldToScreenPoint(binG.position).y, 0.0f);
             Vector3 screenBinY = new Vector3(Camera.main.WorldToScreenPoint(binY.position).x, Camera.main.WorldToScreenPoint(binY.position).y, 0.0f);
@@ -272,10 +265,6 @@ public class ConveyorMinigame : MonoBehaviour
             float angleToG = Vector3.Angle(swipeDirection, dirToG);
             float angleToY = Vector3.Angle(swipeDirection, dirToY);
 
-            /*DrawLines(dirToR, Color.red);
-            DrawLines(dirToG, Color.green);
-            DrawLines(dirToY, Color.yellow);
-            DrawLines(swipeDirection, Color.white);*/
             Debug.Log(angleToR + ", " + angleToG + ", " + angleToY);
             Transform destination = flickObject.transform;
             if(angleToR < angleToG && angleToR < angleToY)
@@ -293,40 +282,6 @@ public class ConveyorMinigame : MonoBehaviour
                 Debug.Log("going to Y");
                 destination = binY;
             }
-
-            /*
-            float redAngle = Vector2.Angle(touchStartPos, binRScreenPos); //Stores angles for swipe angle + angle to each target  
-            float greenAngle = Vector2.Angle(touchStartPos, binGScreenPos);
-            float yellowAngle = Vector2.Angle(touchStartPos, binYScreenPos);    
-            float swipeAngle = Vector2.Angle(touchStartPos, touchEndPos);
-            
-            redAngle = Mathf.Abs(redAngle-swipeAngle);  // checks which angle was the closest
-            greenAngle = Mathf.Abs(greenAngle-swipeAngle);
-            yellowAngle = Mathf.Abs(yellowAngle-swipeAngle);
-
-            if (redAngle < greenAngle && redAngle < yellowAngle)
-                {
-                    launchDirection = binR.position - flickObject.position;
-                }
-            if (greenAngle < redAngle && greenAngle < yellowAngle)
-            {
-                launchDirection = binG.position - flickObject.position;
-            }
-            else
-            {
-                launchDirection = binY.position - flickObject.position;
-            }
-            float targetDistance = Vector3.Distance(flickObject.position, targetPosition);
-            */
-
-
-
-
-            //flickObject.isKinematic = false; //apply the swipe as force to the flick object
-
-            //flickObject.AddForce(swipeDirection.x * flickForceX, swipeDirection.y * flickForceY + flickMinY, flickForceZ / swipeDuration); //shorter swipe interval, means stronger flick backwards
-
-            //flickObject.transform.parent = airParent; //the object is in the air, not the hopper or the belt
 
             StartCoroutine(LaunchItem(flickObject.transform, destination, baseLaunchSpeed));
             
@@ -379,28 +334,11 @@ public class ConveyorMinigame : MonoBehaviour
             item.rotation = Quaternion.RotateTowards(item.rotation, conveyorParent.rotation, rejectionRotationSpeed * Time.deltaTime); //rotate object back to 0,0,0 over time
             yield return null;
         }
-        //item.position = destination.position; //teleport to be exactly at position
-        //item.rotation = destination.rotation; //reset to 0 rotation
     }
 
     void OnDisable()
     {
         beltShader.SetFloat("_Speed", 0.0f); //match the speed of the texture to the speed of the objects
     }
-
-    /*void DrawLines(Vector3 direction, Color c)
-    {
-        Debug.DrawLine(item.position,binG.position,Color.green,0.0f,false);
-        Debug.DrawLine(item.position,binR.position,Color.red,0.0f,false);
-        Debug.DrawLine(item.position,binY.position,Color.yellow,0.0f,false);
-        Vector3 borderRG = (binR.position + binG.position)/2; //position between them
-        Debug.DrawLine(item.position,borderRG,Color.white,0.0f,false);
-        Vector3 borderGY = (binG.position + binY.position)/2; //position between them
-        Debug.DrawLine(item.position,borderGY,Color.white,0.0f,false);
-
-        Debug.DrawRay(touchStartPos,direction,c,1.0f,false);
-
-
-    }*/
 }
 }
