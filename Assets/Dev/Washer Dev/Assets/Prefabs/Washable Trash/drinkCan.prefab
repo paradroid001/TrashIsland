@@ -34,7 +34,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2453651052556923020
 MeshFilter:
@@ -113,6 +113,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _camera: {fileID: 0}
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 4
   _dirtMaskBase: {fileID: 2800000, guid: 1efc75f5df870e743a5ada8e2941918a, type: 3}
   _baseColour: {fileID: 2800000, guid: f07521eddff7a3c42a78875371b20e69, type: 3}
   _dirtTexture: {fileID: 2800000, guid: d641810d8d03d0c4ab79712b165c2e0f, type: 3}
@@ -130,11 +133,11 @@ MonoBehaviour:
   _templateDirtMask: {fileID: 0}
   isCalculating: 0
   parts: 
-  skippedPixels: 10
+  skippedPixels: 5
   TransparencyTarget: 0
   amountCleaned: 0
   completionPercent: 0
-  PercentToWin: 13
+  PercentToWin: 10
 --- !u!95 &67815506222038505
 Animator:
   serializedVersion: 4
@@ -146,7 +149,7 @@ Animator:
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: b1324f8e35db86940b9c01301db87b3b, type: 2}
-  m_CullingMode: 0
+  m_CullingMode: 2
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0

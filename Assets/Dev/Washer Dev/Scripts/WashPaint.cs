@@ -7,6 +7,10 @@ public class WashPaint : MonoBehaviour
     [SerializeField] 
     private Camera _camera;
 
+    [SerializeField]
+    private LayerMask _layerMask;
+
+
 
     [Header("Texture Details")]
     [Space(10)]
@@ -101,7 +105,7 @@ public class WashPaint : MonoBehaviour
         if(Input.GetMouseButton(0))
         {
             //Debug.Log("Mouse Down");
-            if(Physics.Raycast(_camera.ScreenPointToRay(Input.mousePosition), out RaycastHit hit))
+            if(Physics.Raycast(_camera.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, 100f, _layerMask))
             {
                 //Debug.Log("hit");
                 Vector2 textureCoord = hit.textureCoord;
@@ -133,10 +137,18 @@ public class WashPaint : MonoBehaviour
         if (completionPercent != 100 && completionPercent >= PercentToWin)
         {
             Debug.Log("Win!");
-            manager.itemFullyCleaned();
+            isTarget = false;
+            GetComponent<Animator>().Play("CleanedAnim");
         }
         }
     }
+
+    public void EndGame()
+    {
+        gameObject.layer = 2;
+        manager.itemFullyCleaned();
+    }
+
 
     private float GetPercent(float maximum, float current)
     {

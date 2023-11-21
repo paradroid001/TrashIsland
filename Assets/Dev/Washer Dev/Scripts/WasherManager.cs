@@ -83,7 +83,7 @@ public class WasherManager : MonoBehaviour
         // Moves object position from cleaning to cleaned inventory
                 currentObject.transform.position = cleanInventory.position;
 
-                currentObject.GetComponent<WashPaint>().isTarget = false;
+                //currentObject.GetComponent<WashPaint>().isTarget = false;
                 // Sets cleaned inventory as parent
                 currentObject.transform.SetParent(cleanInventory);
 
