@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Sandbox
-  m_Shader: {fileID: -6465566751694194690, guid: 0884ac16458cb4a4b85b420605ae754e,
+  m_Shader: {fileID: -6465566751694194690, guid: 9d9dcbb46729e594292ef056de913274,
     type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -18,16 +18,14 @@ Material:
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
-  stringTagMap:
-    RenderType: Opaque
-  disabledShaderPasses:
-  - SHADOWCASTER
+  stringTagMap: {}
+  disabledShaderPasses: []
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
     - _BaseMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 1bb5b972c3e2e954eaf0a0ac215dd039, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
@@ -89,8 +87,10 @@ Material:
     m_Ints: []
     m_Floats:
     - _AlphaClip: 0
+    - _Angle: 0.5
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
+    - _Brightness: 2.41
     - _BumpScale: 1
     - _CastShadows: 0
     - _ClearCoatMask: 0
@@ -103,6 +103,8 @@ Material:
     - _DstBlendAlpha: 0
     - _Emission_Strength: 1
     - _EnvironmentReflections: 1
+    - _Fidelity: 0.75
+    - _Float: 0
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
@@ -112,7 +114,9 @@ Material:
     - _LightTemp: 0
     - _Metallic: 0
     - _OcclusionStrength: 1
+    - _Offset: 0.1
     - _Parallax: 0.005
+    - _Position: 0.5
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
@@ -137,6 +141,7 @@ Material:
     - _Emission_Colour: {r: 1, g: 1, b: 1, a: 0}
     - _HighlightColour: {r: 0, g: 0, b: 0, a: 1}
     - _LightColour: {r: 1, g: 1, b: 1, a: 0}
+    - _Scale: {r: 100, g: 100, b: 0, a: 0}
     - _ShadowColour: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _TextureColourOverride: {r: 0.4433962, g: 0.4433962, b: 0.4433962, a: 0}
