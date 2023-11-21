@@ -105,7 +105,7 @@ public class WashPaint : MonoBehaviour
         if(Input.GetMouseButton(0))
         {
             //Debug.Log("Mouse Down");
-            if(Physics.Raycast(_camera.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, 100f, _layerMask))
+            if(Physics.Raycast(_camera.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, 100f, ~_layerMask))
             {
                 //Debug.Log("hit");
                 Vector2 textureCoord = hit.textureCoord;

@@ -249,7 +249,7 @@ MonoBehaviour:
   currentCount: 0
   isCleaning: 0
   itemCleanliness: 0
-  transitionTime: 2
+  transitionTime: 0.3
   pregame: 1
   itemCount: 0
   itemVariations:
@@ -969,6 +969,11 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 1015903567}
     m_Modifications:
+    - target: {fileID: 1308432347229111949, guid: 2d89c82f006ca594ba55f8cc686bff1a,
+        type: 3}
+      propertyPath: skippedPixels
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 1559025250709290793, guid: 2d89c82f006ca594ba55f8cc686bff1a,
         type: 3}
       propertyPath: m_RootOrder
