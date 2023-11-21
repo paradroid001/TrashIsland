@@ -27,5 +27,10 @@ public class AnimEventPasser : MonoBehaviour
         {
             GetComponent<Animator>().SetBool("canExit", true);
         }
+
+    public void SetTexture(string name)
+    {
+
+    }
 }
 }
