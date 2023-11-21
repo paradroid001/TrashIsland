@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6789142070337317807
+--- !u!1 &7522016759926700902
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,48 +8,47 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6159851246395978005}
-  - component: {fileID: 7121294404155014832}
-  - component: {fileID: 4987486784208374394}
-  - component: {fileID: 7436051655336418001}
-  - component: {fileID: 1942852116499760267}
-  m_Layer: 0
+  - component: {fileID: 7383287415741284072}
+  - component: {fileID: 4457030064932306412}
+  - component: {fileID: 2199313980278840559}
+  - component: {fileID: 5316752841318681474}
+  m_Layer: 9
   m_Name: Rope
-  m_TagString: Untagged
+  m_TagString: Prop
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6159851246395978005
+--- !u!4 &7383287415741284072
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6789142070337317807}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.981, y: -0.009999931, z: -0.111}
+  m_GameObject: {fileID: 7522016759926700902}
+  m_LocalRotation: {x: -0, y: 0.5066754, z: -0, w: 0.8621369}
+  m_LocalPosition: {x: 0, y: -0.065, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &7121294404155014832
+  m_Father: {fileID: 5279720824182560837}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 60.885, z: 0}
+--- !u!33 &4457030064932306412
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6789142070337317807}
+  m_GameObject: {fileID: 7522016759926700902}
   m_Mesh: {fileID: 3840146784067909648, guid: 1a3b6e6102809d742b48e92c46d1cc8b, type: 3}
---- !u!23 &4987486784208374394
+--- !u!23 &2199313980278840559
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6789142070337317807}
+  m_GameObject: {fileID: 7522016759926700902}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -85,13 +84,13 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &7436051655336418001
+--- !u!64 &5316752841318681474
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6789142070337317807}
+  m_GameObject: {fileID: 7522016759926700902}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
@@ -99,19 +98,68 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 3840146784067909648, guid: 1a3b6e6102809d742b48e92c46d1cc8b, type: 3}
---- !u!54 &1942852116499760267
+--- !u!1 &7522547308619616325
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5279720824182560837}
+  - component: {fileID: 6422722155387025525}
+  - component: {fileID: 1892573166208293243}
+  m_Layer: 9
+  m_Name: Rope
+  m_TagString: Prop
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &5279720824182560837
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7522547308619616325}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 7383287415741284072}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &6422722155387025525
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6789142070337317807}
+  m_GameObject: {fileID: 7522547308619616325}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1892573166208293243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7522547308619616325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 679baa5929a8308439cdf4e255ea250b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myCategory: 0
+  myIcon: {fileID: 21300000, guid: 43170704261db2341b3e263f6ef54b7e, type: 3}
+  displayName: Rope
