@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7152000436131839522}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0.028526546, z: 0}
+  m_LocalPosition: {x: -0, y: 1.21, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -108,6 +108,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7789627321902022049}
   - component: {fileID: 5014507751260570431}
+  - component: {fileID: 2260861093042218249}
   m_Layer: 0
   m_Name: RottenApple
   m_TagString: Untagged
@@ -123,7 +124,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7444872859091330843}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.0071007, y: 0.163, z: 0.12880623}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.15, y: 0.15, z: 0.15}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -148,6 +149,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2260861093042218249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7444872859091330843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 679baa5929a8308439cdf4e255ea250b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myCategory: 1
+  myIcon: {fileID: 21300000, guid: 9a3c1ac3f86634d419a23f9387c6f202, type: 3}
+  displayName: Rotten Apple
 --- !u!1 &7552427824839407242
 GameObject:
   m_ObjectHideFlags: 0
@@ -174,7 +190,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7552427824839407242}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0.6650691, z: 0}
+  m_LocalPosition: {x: 0, y: 1.8465425, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

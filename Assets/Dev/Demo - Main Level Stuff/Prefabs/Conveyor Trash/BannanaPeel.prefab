@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4656896621852926908}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0.057677787, z: 0}
+  m_LocalPosition: {x: -0, y: 0.138, z: 0}
   m_LocalScale: {x: 1.8641012, y: 1.8641012, z: 1.8641012}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -108,6 +108,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5763425042284453951}
   - component: {fileID: 2589571536357968359}
+  - component: {fileID: 5965508989180630696}
   m_Layer: 0
   m_Name: BannanaPeel
   m_TagString: Untagged
@@ -123,14 +124,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4949486942770494085}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.272, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8188760416580947438}
   - {fileID: 1841819380576651515}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &2589571536357968359
 Rigidbody:
@@ -148,6 +149,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &5965508989180630696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4949486942770494085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 679baa5929a8308439cdf4e255ea250b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myCategory: 1
+  myIcon: {fileID: 21300000, guid: f820a521243ad7b40a065e3aed69a560, type: 3}
+  displayName: Banana Peel
 --- !u!1 &5417268890164341524
 GameObject:
   m_ObjectHideFlags: 0
@@ -174,7 +190,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5417268890164341524}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0.057677787, z: 0}
+  m_LocalPosition: {x: 0, y: 0.138, z: 0}
   m_LocalScale: {x: 1.8641012, y: 1.8641012, z: 1.8641012}
   m_ConstrainProportionsScale: 0
   m_Children: []

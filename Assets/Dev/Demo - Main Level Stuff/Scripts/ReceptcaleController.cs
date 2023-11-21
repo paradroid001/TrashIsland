@@ -8,10 +8,9 @@ namespace TrashIsland
 {
 public enum ItemCategories
 {
-    plastic,
-    cube,
-    sphere,
-    capsule,
+    waste,
+    organic,
+    recyclable
 };
 public class ReceptcaleController : MonoBehaviour
 {

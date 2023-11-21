@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &9212700737463114469
+--- !u!1 &3265142774263049253
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,11 +8,10 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8399712684731760735}
-  - component: {fileID: 4845342940824375290}
-  - component: {fileID: 7267379275040848688}
-  - component: {fileID: 8625487977558861797}
-  - component: {fileID: 967759561169482052}
+  - component: {fileID: 1508962195313435668}
+  - component: {fileID: 192378851431822143}
+  - component: {fileID: 6831823802512673348}
+  - component: {fileID: 2134066835636358973}
   m_Layer: 0
   m_Name: BrokenBottle
   m_TagString: Untagged
@@ -20,36 +19,36 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8399712684731760735
+--- !u!4 &1508962195313435668
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9212700737463114469}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.38261515, y: 0.342, z: 0.1473782}
+  m_GameObject: {fileID: 3265142774263049253}
+  m_LocalRotation: {x: -0.6768916, y: -0.2044939, z: -0.20449385, w: 0.6768916}
+  m_LocalPosition: {x: 0.073, y: 0.127, z: -0.097}
   m_LocalScale: {x: 6, y: 6, z: 6}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &4845342940824375290
+  m_Father: {fileID: 1399551652346574170}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: -33.62}
+--- !u!33 &192378851431822143
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9212700737463114469}
+  m_GameObject: {fileID: 3265142774263049253}
   m_Mesh: {fileID: -3664089544626058714, guid: 09a84cddb12e50a4c92d40722b17fe23, type: 3}
---- !u!23 &7267379275040848688
+--- !u!23 &6831823802512673348
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9212700737463114469}
+  m_GameObject: {fileID: 3265142774263049253}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -85,26 +84,60 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &8625487977558861797
+--- !u!65 &2134066835636358973
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9212700737463114469}
+  m_GameObject: {fileID: 3265142774263049253}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.034090027, y: 0.09365469, z: 0.034090027}
   m_Center: {x: 0, y: -0.022720627, z: 0}
---- !u!54 &967759561169482052
+--- !u!1 &4692382082412252169
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1399551652346574170}
+  - component: {fileID: 4616150960265507991}
+  - component: {fileID: 1318066737990975363}
+  m_Layer: 0
+  m_Name: GlassBottle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1399551652346574170
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4692382082412252169}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1508962195313435668}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &4616150960265507991
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9212700737463114469}
+  m_GameObject: {fileID: 4692382082412252169}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
@@ -114,3 +147,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1318066737990975363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4692382082412252169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 679baa5929a8308439cdf4e255ea250b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myCategory: 2
+  myIcon: {fileID: 21300000, guid: f9e650c24be637c43a349ba3bd937e96, type: 3}
+  displayName: Glass Bottle
