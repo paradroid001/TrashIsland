@@ -7,8 +7,21 @@ public class WashPaint : MonoBehaviour
     [SerializeField] 
     private Camera _camera;
 
+
+    [Header("Texture Details")]
+    [Space(10)]
     [SerializeField] 
     Texture2D _dirtMaskBase;
+    [Space(5)]
+    [SerializeField] 
+    private Texture _baseColour;
+    [Space(5)]
+    [SerializeField] 
+    private Texture _dirtTexture;
+
+    public bool isTarget;
+
+
     [SerializeField]
     private Rect _sourceRect;
 
@@ -23,6 +36,7 @@ public class WashPaint : MonoBehaviour
     [SerializeField]
     private Color32[] pixelsInReadTexture;
 
+    [SerializeField]
     private Texture2D _templateDirtMask;
 
     [SerializeField]
@@ -42,9 +56,11 @@ public class WashPaint : MonoBehaviour
     [SerializeField]
     private float PercentToWin;
 
+    private WasherManager manager;
 
 
-    private void Start()
+
+    public void Setup(WasherManager wM)
     {
         _material = gameObject.GetComponent<Renderer>().material;
         _camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
@@ -52,12 +68,15 @@ public class WashPaint : MonoBehaviour
 
          _myRenderer = GetComponent<Renderer>();
          _myRenderer.material = _material;
+         _material.SetTexture("_CleanTexture", _baseColour);
+         _material.SetTexture("_DirtyTexture", _dirtTexture);
 
         if (GetComponent<MeshCollider>() == null && GetComponent<MeshFilter>() != null)
         {
             gameObject.AddComponent<MeshCollider>();
         }
 
+        manager = wM;
         RefreshReadTexture(_dirtMaskBase, false);
 
         /*
@@ -77,7 +96,9 @@ public class WashPaint : MonoBehaviour
 
     private void Update()
     {
-       if(Input.GetMouseButton(0))
+        if (isTarget)
+        {
+        if(Input.GetMouseButton(0))
         {
             //Debug.Log("Mouse Down");
             if(Physics.Raycast(_camera.ScreenPointToRay(Input.mousePosition), out RaycastHit hit))
@@ -106,22 +127,15 @@ public class WashPaint : MonoBehaviour
                 _templateDirtMask.Apply();
                 completionPercent = GetPercent(TransparencyTarget, amountCleaned);
             }
-        }
-
-        if(Input.GetMouseButtonUp(0))
-        {
             RefreshReadTexture(_templateDirtMask, true);
         }
 
         if (completionPercent != 100 && completionPercent >= PercentToWin)
         {
             Debug.Log("Win!");
+            manager.itemFullyCleaned();
         }
-
-
-        
-        
-        
+        }
     }
 
     private float GetPercent(float maximum, float current)

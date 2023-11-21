@@ -10,6 +10,12 @@ public class WasherManager : MonoBehaviour
     public Transform cleanInventory;
     public Transform washingInventory;
 
+    [SerializeField]
+    private Material baseMaterial;
+
+    [SerializeField]
+    private Material dirtyMaterial;
+
     public Transform spawnPosition;
     public List<GameObject> potentialItems;
 
@@ -54,6 +60,7 @@ public class WasherManager : MonoBehaviour
                 // Moves object position from cleaning to cleaned inventory
                 currentObject.transform.position = cleanInventory.position;
 
+                currentObject.GetComponent<WashPaint>().isTarget = false;
                 // Sets cleaned inventory as parent
                 currentObject.transform.SetParent(cleanInventory);
 
@@ -71,6 +78,20 @@ public class WasherManager : MonoBehaviour
 
     }
 
+    public void itemFullyCleaned()
+    {
+        // Moves object position from cleaning to cleaned inventory
+                currentObject.transform.position = cleanInventory.position;
+
+                currentObject.GetComponent<WashPaint>().isTarget = false;
+                // Sets cleaned inventory as parent
+                currentObject.transform.SetParent(cleanInventory);
+
+                isCleaning = false;
+
+                StartCoroutine(itemTransition());
+    }
+
     void SetupGame()
     {
         
@@ -82,6 +103,12 @@ public class WasherManager : MonoBehaviour
 
         //liveItemsArray = liveItemsList.ToArray();
         itemCount = liveItemsList.Count;
+
+        foreach(GameObject g in liveItemsList)
+        {
+            Renderer r = g.GetComponent<Renderer>();
+            r.material = dirtyMaterial;
+        }
         //liveItemsList = null;
         //Debug.Log(itemCount + " items were found");
 
@@ -101,7 +128,15 @@ public class WasherManager : MonoBehaviour
     {
         itemCleanliness = 0;
 
+
+
+        currentObject.GetComponent<Renderer>().material = baseMaterial; // Sets the item material to the washer material
+        WashPaint wP = currentObject.GetComponent<WashPaint>();
+        wP.Setup(this); //Sets all of the values up on the washer texture
+        wP.isTarget = true;
+
         currentObject.transform.position = spawnPosition.position;
+        currentObject.transform.rotation = spawnPosition.rotation;
         currentObject.transform.SetParent(washingInventory);
 
         isCleaning = true;

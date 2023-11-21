@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 426128823285433414}
   - component: {fileID: 1308432347229111950}
   - component: {fileID: 1308432347229111949}
+  - component: {fileID: 67815506222038505}
   m_Layer: 0
   m_Name: drinkCan
   m_TagString: Untagged
@@ -113,6 +114,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _camera: {fileID: 0}
   _dirtMaskBase: {fileID: 2800000, guid: 1efc75f5df870e743a5ada8e2941918a, type: 3}
+  _baseColour: {fileID: 2800000, guid: f07521eddff7a3c42a78875371b20e69, type: 3}
+  _dirtTexture: {fileID: 2800000, guid: d641810d8d03d0c4ab79712b165c2e0f, type: 3}
+  isTarget: 0
   _sourceRect:
     serializedVersion: 2
     x: 0
@@ -123,10 +127,31 @@ MonoBehaviour:
   _material: {fileID: 2100000, guid: 498ba60b2ce114e44b62d4668ca12421, type: 2}
   _myRenderer: {fileID: 0}
   pixelsInReadTexture: []
+  _templateDirtMask: {fileID: 0}
   isCalculating: 0
   parts: 
   skippedPixels: 10
   TransparencyTarget: 0
   amountCleaned: 0
   completionPercent: 0
-  PercentToWin: 0
+  PercentToWin: 13
+--- !u!95 &67815506222038505
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2227335233338107283}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b1324f8e35db86940b9c01301db87b3b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
