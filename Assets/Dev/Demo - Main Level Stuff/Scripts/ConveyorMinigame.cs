@@ -87,6 +87,9 @@ public class ConveyorMinigame : MonoBehaviour
     private List<Sprite> imgSortedR;
     private List<Sprite> imgSortedG;
     private List<Sprite> imgSortedY;
+    public RectTransform imgPanelR;
+    public RectTransform imgPanelG;
+    public RectTransform imgPanelY;
 
     //data collection
     private int numSortedIncorrectly;
@@ -181,6 +184,31 @@ public class ConveyorMinigame : MonoBehaviour
         {
             txtIncorrectNumber.text = "Perfect! You sorted everything correctly on the first try!";
             imgIncorrectExample.color = new Color(0,0,0,0); //set the image block to transparent
+        }
+        //placing images
+        foreach (Sprite currentSprite in imgSortedR)
+        {
+            GameObject SortedImgObj = new GameObject(); //Create the GameObject
+            Image NewImage = SortedImgObj.AddComponent<Image>(); //Add the Image Component
+            NewImage.sprite = currentSprite; //Set the Sprite of the Image Component on the new GameObject
+            SortedImgObj.GetComponent<RectTransform>().SetParent(imgPanelR.transform); //Assign the newly created Image GameObject as a Child of the Parent Panel.
+            SortedImgObj.SetActive(true); //Activate the GameObject
+        }
+        foreach (Sprite currentSprite in imgSortedG)
+        {
+            GameObject SortedImgObj = new GameObject(); //Create the GameObject
+            Image NewImage = SortedImgObj.AddComponent<Image>(); //Add the Image Component
+            NewImage.sprite = currentSprite; //Set the Sprite of the Image Component on the new GameObject
+            SortedImgObj.GetComponent<RectTransform>().SetParent(imgPanelG.transform); //Assign the newly created Image GameObject as a Child of the Parent Panel.
+            SortedImgObj.SetActive(true); //Activate the GameObject
+        }
+        foreach (Sprite currentSprite in imgSortedY)
+        {
+            GameObject SortedImgObj = new GameObject(); //Create the GameObject
+            Image NewImage = SortedImgObj.AddComponent<Image>(); //Add the Image Component
+            NewImage.sprite = currentSprite; //Set the Sprite of the Image Component on the new GameObject
+            SortedImgObj.GetComponent<RectTransform>().SetParent(imgPanelY.transform); //Assign the newly created Image GameObject as a Child of the Parent Panel.
+            SortedImgObj.SetActive(true); //Activate the GameObject
         }
 
 
