@@ -3,7 +3,7 @@ tags:
 ---
 <<if visited("Paulie_Intro") == true>>    
     <<playerAnim Player Pickup>>
-    <<wait  2.3>>
+    <<wait  2.6>>
 <<endif>>
 
 <<if visited_count("collectRubbish") >= 2>>

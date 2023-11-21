@@ -101,9 +101,9 @@ public class TempMovement : MonoBehaviour
         }
 
         if (Input.GetMouseButtonDown(0))
-            {
-                GetMousePositionInWorld();                
-            }
+        {
+            GetMousePositionInWorld();               
+        }
     }
 
     [YarnCommand("PassNode")]
@@ -246,6 +246,6 @@ public class TempMovement : MonoBehaviour
         {
             dialogueCounter++;
         }
-        */
+        */        
 }
 }

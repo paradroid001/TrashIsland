@@ -347,6 +347,8 @@ public class Demo_InteractableNPC : MonoBehaviour
         {
             a.SetTrigger("isMoving");
         }
+
+        
     }
     public void EndMotion()
     {
@@ -366,37 +368,50 @@ public class Demo_InteractableNPC : MonoBehaviour
         return distance;
     }
     void OnTriggerEnter(Collider c)
+    {
+        TIInteractor t = c.GetComponent<TIInteractor>();            
+        if (t != null && !isMoving) //if the player is an interactor and we are't moving
         {
-            TIInteractor t = c.GetComponent<TIInteractor>();            
-            if (t != null && !isMoving) //if the player is an interactor and we are't moving
-            {
-                player = t.gameObject;
-                if (!interactorsInRange.Contains(t))
-                {
-                    interactorsInRange.Add(t);
-                    
-                    //t.AddInteractable(this);
-                    BecomeInteractable();
-                }
-            }
+            player = t.gameObject;
+            BecomeInteractable();
         }
-        
-        void OnTriggerExit(Collider c)
+    }
+    bool inZone;
+    private void OnTriggerStay(Collider c) 
+    {
+        if (inZone)
+            return;
+        else
         {
-            TIInteractor t = c.GetComponent<TIInteractor>();
-            if (t != null && !isMoving)
+        TIInteractor t = c.GetComponent<TIInteractor>();            
+        if (t != null && !isMoving) //if the player is an interactor and we are't moving
+        {
+            player = t.gameObject;
+            if (!interactorsInRange.Contains(t))
             {
-                if (interactorsInRange.Contains(t))
-                {
-                    interactorsInRange.Remove(t);
-                    //t.RemoveInteractable(this);
-                    BecomeUninteractable();
-                    if (looksAtPlayer)
-                    {
-                        resetGaze = true;
-                    }
-                }
+                interactorsInRange.Add(t);
+                BecomeInteractable();                   
+                //t.AddInteractable(this);            
             }
-        } 
+            inZone = true;
+        }
+        }
+    }
+    
+        
+    void OnTriggerExit(Collider c)
+    {
+        TIInteractor t = c.GetComponent<TIInteractor>();
+        if (t != null && !isMoving)
+        {
+            BecomeUninteractable();
+            if (looksAtPlayer)
+            {
+                resetGaze = true;
+            }
+            inZone = false;
+            
+        }
+    } 
 }
 }

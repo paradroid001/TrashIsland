@@ -22,5 +22,10 @@ public class AnimEventPasser : MonoBehaviour
     {
        //target.movementOverride = false;
     }
+
+    public void SetExit()
+        {
+            GetComponent<Animator>().SetBool("canExit", true);
+        }
 }
 }
