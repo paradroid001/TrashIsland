@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 192378851431822143}
   - component: {fileID: 6831823802512673348}
   - component: {fileID: 2134066835636358973}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BrokenBottle
-  m_TagString: Untagged
+  m_TagString: Prop
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -108,13 +108,13 @@ GameObject:
   - component: {fileID: 1399551652346574170}
   - component: {fileID: 4616150960265507991}
   - component: {fileID: 1318066737990975363}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: GlassBottle
-  m_TagString: Untagged
+  m_TagString: Prop
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1399551652346574170
 Transform:
   m_ObjectHideFlags: 0
@@ -143,7 +143,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0

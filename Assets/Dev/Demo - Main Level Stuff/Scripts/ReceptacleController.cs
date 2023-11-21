@@ -12,7 +12,7 @@ public enum ItemCategories
     organic,
     recyclable
 };
-public class ReceptcaleController : MonoBehaviour
+public class ReceptacleController : MonoBehaviour
 {
     //Receiving items
     private Rigidbody rb; //the rb of the object that has just been received
@@ -39,7 +39,7 @@ public class ReceptcaleController : MonoBehaviour
     {
         Rigidbody rb = other.GetComponentInParent<Rigidbody>();
         Transform item = rb.transform;
-        if(item.parent.GetComponent<ReceptcaleController>()) return; //if the item is already a child of a receptacle
+        if(item.parent.GetComponent<ReceptacleController>()) return; //if the item is already a child of a receptacle
         item.parent = holdingParent; //we are holding on to this object
 
         containedItems.Add(item); //add the item to the list

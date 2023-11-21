@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using TMPro;
+using UnityEngine.UI;
 
 
 namespace TrashIsland{
@@ -58,18 +60,16 @@ public class ConveyorMinigame : MonoBehaviour
     private Vector3 touchStartPos, touchEndPos, swipeDirection; //touch input vectors
     private float touchStartTime, touchEndTime, swipeDuration; //touch input times
     [SerializeField]
-    private float flickForceX; //how far to the side object flicks
-    [SerializeField]
-    private float flickForceY; //how far to the up the object flicks
-    [SerializeField]
-    private float flickForceZ; //how far back the object flicks
-    [SerializeField]
-    private float flickMinY; //minimum upward force applied to flicks
-    [SerializeField]
     private Transform airParent; //the parent for when objects are flicked into the air
     [SerializeField]
     private LayerMask touchLayermask; //what we can hit when touching
     public float baseLaunchSpeed;
+    [SerializeField]
+    Transform binR;
+    [SerializeField]
+    Transform binG; 
+    [SerializeField]
+    Transform binY;
 
     //receptacles dealing with objects
     public float rejectionTranslationSpeed; //how fast the objeects return to the belt
@@ -81,23 +81,22 @@ public class ConveyorMinigame : MonoBehaviour
     private ConveyorUI ui; //the UI specifically related to this minigame
     [SerializeField]
     private Animator txt_Go;
+    public TextMeshProUGUI txtIncorrectNumber;
+    public TextMeshProUGUI txtIncorrectExample;
+    public Image imgIncorrectExample;
+    private List<Sprite> imgSortedR;
+    private List<Sprite> imgSortedG;
+    private List<Sprite> imgSortedY;
 
-    //Hugo - Fine Tuning Tweaks 
-
-    [SerializeField]
-    Transform binR;
-    [SerializeField]
-    Vector2 binRScreenPos;
-    [SerializeField]
-    Transform binG; 
-    [SerializeField]
-    Vector2 binGScreenPos;
-    [SerializeField]
-    Transform binY;
-    [SerializeField]
-     Vector2 binYScreenPos;
-     private Vector3 targetPosition;
-     private Vector3 launchDirection;
+    //data collection
+    private int numSortedIncorrectly;
+    private string incorrectExampleName;
+    private Sprite incorrectExampleSprite;
+    private ItemCategories incorrecExampleCategory;
+    private string incorrectExampleBin;
+    public ReceptacleController binRController;
+    public ReceptacleController binGController;
+    public ReceptacleController binYController;
 
     
 
@@ -113,10 +112,6 @@ public class ConveyorMinigame : MonoBehaviour
         
         
         //ui.gameObject.SetActive(true); //set cause the UI to appear - swapped for function that simultaniously keeping the EventManager active
-        
-        binRScreenPos = Camera.main.WorldToScreenPoint(binR.position);
-        binGScreenPos = Camera.main.WorldToScreenPoint(binG.position);
-        binYScreenPos = Camera.main.WorldToScreenPoint(binY.position);
     }
 
     public void GameStart() //start the core of the game, relying on update checks to then end it
@@ -136,6 +131,9 @@ public class ConveyorMinigame : MonoBehaviour
         gameTimer = spawnRate/2; //jump the game timer so that the first object spawns immediately on game start   
         timestampSpawn = 0.0f;
         itemsList = new List<GameObject>();
+        imgSortedR = new List<Sprite>();
+        imgSortedG = new List<Sprite>();
+        imgSortedY = new List<Sprite>();
     }
     void EndCheck() //checks to see if end conditions are met
     {
@@ -148,8 +146,44 @@ public class ConveyorMinigame : MonoBehaviour
     {
         Debug.Log("GameEnd");
         gameRunning = false;
+        PopulateData(); //populate end screen data
         ui.endScreen.gameObject.SetActive(true);
         ui.endScreen.Play("PanelSlideDown");
+        
+    }
+
+    void PopulateData()
+    {
+        //get images for all the sorted items in each bin
+        foreach(Transform child in binRController.storedParent)
+        {
+            Debug.Log(child.gameObject.name);
+            Debug.Log(child.GetComponent<ItemController>());
+            Debug.Log(child.GetComponent<ItemController>().myIcon);
+            imgSortedR.Add(child.GetComponent<ItemController>().myIcon);
+        }
+        foreach(Transform child in binGController.storedParent)
+        {
+            imgSortedG.Add(child.GetComponent<ItemController>().myIcon);
+        }
+        foreach(Transform child in binYController.storedParent)
+        {
+            imgSortedY.Add(child.GetComponent<ItemController>().myIcon);
+        }
+        //determining incorrect txt
+        if(numSortedIncorrectly > 0)
+        {
+            txtIncorrectNumber.text = "You sorted items incorrectly " + numSortedIncorrectly + " time(s).";
+            txtIncorrectExample.text = "Tip: " + incorrectExampleName + " is " + System.Enum.GetName(typeof(ItemCategories),incorrecExampleCategory) + " and should go in the " + incorrectExampleBin + " bin.";
+            imgIncorrectExample.sprite = incorrectExampleSprite;
+        }
+        else
+        {
+            txtIncorrectNumber.text = "Perfect! You sorted everything correctly on the first try!";
+            imgIncorrectExample.color = new Color(0,0,0,0); //set the image block to transparent
+        }
+
+
     }
 
     public void GameExit() //called to leave this scene
@@ -188,8 +222,8 @@ public class ConveyorMinigame : MonoBehaviour
             
             if(itemsList.Count > 0) //only spawn an object if there is something to spawn
             {
-                GameObject spawnItem = itemsList[0]; //spawn the first item in the list
-                itemsList.Remove(itemsList[0]); //remove the first item from the list
+                GameObject spawnItem = itemsList[Random.Range(0, itemsList.Count-1)]; //spawn the first item in the list
+                itemsList.Remove(spawnItem); //remove the first item from the list
                 spawnItem.transform.position = conveyorSpawn.position; //move the object to the spawn pos
                 spawnItem.transform.parent = conveyorParent; //set the object's parent
                 spawnItem.SetActive(true); //enable the object
@@ -238,6 +272,7 @@ public class ConveyorMinigame : MonoBehaviour
                     if(hit.collider.GetComponentInParent<Rigidbody>()) //if there is a rigid body to grab
                     {
                         flickObject = hit.collider.GetComponentInParent<Rigidbody>(); //assign the object we hit to our flick object
+                        Debug.Log("assigned flick object");
                     }
                 }
             }
@@ -298,6 +333,7 @@ public class ConveyorMinigame : MonoBehaviour
 
     public IEnumerator RejectItem(Transform item)
     {
+        RejectedItemData(item.GetComponent<ItemController>()); //send data
         item.parent = airParent;
         item.GetComponent<Rigidbody>().isKinematic = true; //set the item to kinematic
         float totalDistance = Vector3.Distance(item.position, conveyorParent.position); //how far to the belt - used to calculate arc
@@ -339,6 +375,29 @@ public class ConveyorMinigame : MonoBehaviour
     void OnDisable()
     {
         beltShader.SetFloat("_Speed", 0.0f); //match the speed of the texture to the speed of the objects
+    }
+
+    private void RejectedItemData(ItemController item)
+    {
+        numSortedIncorrectly++; //increment the number sorted incorrectly
+        if(incorrectExampleName != "") //if we do not already have an incorrect example
+        {
+            incorrectExampleName = item.displayName;
+            incorrectExampleSprite = item.myIcon;
+            incorrecExampleCategory = item.myCategory;
+            if(incorrecExampleCategory == ItemCategories.waste)
+            {
+                incorrectExampleBin = "red";
+            }
+            else if(incorrecExampleCategory == ItemCategories.organic)
+            {
+                incorrectExampleBin = "green";
+            }
+            else
+            {
+                incorrectExampleBin = "yellow";
+            }
+        }
     }
 }
 }
