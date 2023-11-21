@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Sandbox
-  m_Shader: {fileID: -6465566751694194690, guid: 9d9dcbb46729e594292ef056de913274,
+  m_Shader: {fileID: -6465566751694194690, guid: 68fb60038681f9d4e8f02803f468845c,
     type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -25,7 +25,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BaseMap:
-        m_Texture: {fileID: 2800000, guid: 1bb5b972c3e2e954eaf0a0ac215dd039, type: 3}
+        m_Texture: {fileID: 2800000, guid: 556093a6afa12ea42a13dfdb99e52d1a, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
@@ -95,6 +95,7 @@ Material:
     - _CastShadows: 0
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
+    - _Colour: 0
     - _Cull: 2
     - _Cutoff: 0.5
     - _DetailAlbedoMapScale: 1
@@ -133,15 +134,21 @@ Material:
     - _ZTest: 4
     - _ZWrite: 1
     - _ZWriteControl: 0
+    - _fade: 0.19
+    - _grassEdge: -0.08
+    - _grassSmooth: 0.02
+    - _waterline: -0.69
+    - _wetDarkness: 0.86
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Colour: {r: 0.8962264, g: 0.88272816, b: 0.51152545, a: 1}
+    - _Color: {r: 0.8867924, g: 0.8867924, b: 0.8867924, a: 1}
+    - _Colour: {r: 1, g: 0.91717243, b: 0.5613208, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _Emission_Colour: {r: 1, g: 1, b: 1, a: 0}
+    - _GrassColour: {r: 0.37647063, g: 0.6313726, b: 0.27450982, a: 0}
     - _HighlightColour: {r: 0, g: 0, b: 0, a: 1}
     - _LightColour: {r: 1, g: 1, b: 1, a: 0}
-    - _Scale: {r: 100, g: 100, b: 0, a: 0}
+    - _Scale: {r: 1000, g: 0, b: 0, a: 0}
     - _ShadowColour: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _TextureColourOverride: {r: 0.4433962, g: 0.4433962, b: 0.4433962, a: 0}
