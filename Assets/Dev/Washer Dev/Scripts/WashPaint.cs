@@ -62,6 +62,9 @@ public class WashPaint : MonoBehaviour
 
     private WasherManager manager;
 
+    [SerializeField]
+    private ParticleSystem splash;
+
 
 
     public void Setup(WasherManager wM)
@@ -108,6 +111,13 @@ public class WashPaint : MonoBehaviour
             if(Physics.Raycast(_camera.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, 100f, ~_layerMask))
             {
                 //Debug.Log("hit");
+                splash.transform.position = hit.point;
+                if (splash.isStopped)
+                {
+                    splash.Play();
+                }
+                
+                
                 Vector2 textureCoord = hit.textureCoord;
 
                 int pixelX = (int)(textureCoord.x * _templateDirtMask.width);
@@ -134,8 +144,14 @@ public class WashPaint : MonoBehaviour
             RefreshReadTexture(_templateDirtMask, true);
         }
 
+        if (Input.GetMouseButtonUp(0))
+        {
+            splash.Stop();;
+        }
+
         if (completionPercent != 100 && completionPercent >= PercentToWin)
         {
+            splash.Stop();
             Debug.Log("Win!");
             isTarget = false;
             GetComponent<Animator>().Play("CleanedAnim");
