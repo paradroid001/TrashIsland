@@ -64,11 +64,14 @@ public class WashPaint : MonoBehaviour
 
     [SerializeField]
     private ParticleSystem splash;
+    
+   
 
 
 
     public void Setup(WasherManager wM)
     {
+          
         _material = gameObject.GetComponent<Renderer>().material;
         _camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         CreateTexture();    
@@ -84,6 +87,7 @@ public class WashPaint : MonoBehaviour
         }
 
         manager = wM;
+        Debug.Log(_dirtMaskBase);
         RefreshReadTexture(_dirtMaskBase, false);
 
         /*
@@ -119,25 +123,38 @@ public class WashPaint : MonoBehaviour
                 
                 
                 Vector2 textureCoord = hit.textureCoord;
+                
+                int respecWidth = _brush.width / 2;
 
-                int pixelX = (int)(textureCoord.x * _templateDirtMask.width);
-                int pixelY = (int)(textureCoord.y * _templateDirtMask.height);
+                int pixelX = (int)(textureCoord.x * _templateDirtMask.width + respecWidth);
+                Debug.Log(pixelX);
+                int pixelY = (int)(textureCoord.y * _templateDirtMask.height + respecWidth);
+                Debug.Log(pixelY);
 
-                for (int x = 0; x < _brush.width; x++)
+                
+                
+                
+                //Debug.Log(respecWidth);
+                for (int x = 0 - respecWidth; x < respecWidth; x++)
+                //for (int x = 0; x < _brush.width; x++)
                 {
-                    for (int y = 0; y < _brush.width; y++)
+                    for (int y = 0 - respecWidth; y < respecWidth; y++)
+                    //for (int y = 0; y < _brush.width; y++)
                     {
                         
 
-                        Color pixelDirt = _brush.GetPixel(x, y);
-                        Color pixelDirtMask = _templateDirtMask.GetPixel(pixelX + x, pixelY + y);
+                        Color pixelDirt = _brush.GetPixel(x - respecWidth, y - respecWidth);
+                        //Color pixelDirt = _brush.GetPixel(x, y);
 
-                        _templateDirtMask.SetPixel(pixelX + x, pixelY + y, 
+                        Color pixelDirtMask = _templateDirtMask.GetPixel(pixelX + (x- respecWidth), pixelY + (y-respecWidth));
+                        //Color pixelDirtMask = _templateDirtMask.GetPixel(pixelX + x, pixelY + y);
+
+                        _templateDirtMask.SetPixel(pixelX + (x - respecWidth), pixelY + (y - respecWidth),
+                        //_templateDirtMask.SetPixel(pixelX + x, pixelY + y,
                             new Color(0, pixelDirtMask.g * pixelDirt.g, 0));
 
                     }
                 }
-
                 _templateDirtMask.Apply();
                 completionPercent = GetPercent(TransparencyTarget, amountCleaned);
             }
@@ -158,6 +175,20 @@ public class WashPaint : MonoBehaviour
         }
         }
     }
+
+    /*
+    private static void Resize(Texture2D texture, int newWidth, int newHeight) 
+    {
+        RenderTexture tmp = RenderTexture.GetTemporary(newWidth, newHeight, 0, RenderTextureFormat.ARGB32, RenderTextureReadWrite.Default);
+        RenderTexture.active = tmp;
+        Graphics.Blit(texture, tmp);
+        texture.Resize(newWidth, newHeight, texture.format, false);
+        texture.filterMode = FilterMode.Bilinear;
+        texture.ReadPixels(new Rect(Vector2.zero, new Vector2(newWidth, newHeight)), 0, 0);
+        texture.Apply();
+        RenderTexture.ReleaseTemporary(tmp);
+    }
+    */
 
     public void EndGame()
     {
@@ -183,14 +214,17 @@ public class WashPaint : MonoBehaviour
         _material.SetTexture("_MaskTexture", _templateDirtMask);
     }
 
-    //WaitForEndOfFrame frameEnd = new WaitForEndOfFrame();
     private void RefreshReadTexture(Texture2D texture, bool identifier)
-    {
+    {   
+        /*
         //yield return frameEnd;
+        Debug.Log(_myRenderer.material.mainTexture);
 
         RenderTexture.active = _myRenderer.material.mainTexture as RenderTexture;
+        Debug.Log(RenderTexture.active);
         //_dirtMaskBase.ReadPixels(, 0, 0);  
         //RenderTexture.active = null;
+        */
 
         pixelsInReadTexture = texture.GetPixels32();
 
@@ -215,6 +249,7 @@ public class WashPaint : MonoBehaviour
 
     public float EstimateTransparenctPix(Color32[] pxls)
     {
+        Debug.Log("Estimating pixels");
         int tested = 0;
         int tran = 0;
         int solid = 0;

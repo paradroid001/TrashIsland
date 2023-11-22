@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: NPCMaterial
-  m_Shader: {fileID: -6465566751694194690, guid: 43ee0800706086244ae0549cef86ae11,
+  m_Name: WoodFlat
+  m_Shader: {fileID: -6465566751694194690, guid: 0884ac16458cb4a4b85b420605ae754e,
     type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -17,10 +17,11 @@ Material:
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 2000
+  m_CustomRenderQueue: -1
   stringTagMap:
     RenderType: Opaque
-  disabledShaderPasses: []
+  disabledShaderPasses:
+  - SHADOWCASTER
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
@@ -31,10 +32,6 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
         m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _CleanTexture:
-        m_Texture: {fileID: 2800000, guid: e20f9a744b4082b46a78d4ffbd07a8c6, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -49,8 +46,8 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _DirtyTexture:
-        m_Texture: {fileID: 2800000, guid: 92fe2d8c92aaa094f8417b01c13801eb, type: 3}
+    - _Emission:
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
@@ -59,10 +56,6 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _MaskTexture:
-        m_Texture: {fileID: 2800000, guid: 1efc75f5df870e743a5ada8e2941918a, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -96,10 +89,11 @@ Material:
     m_Ints: []
     m_Floats:
     - _AlphaClip: 0
+    - _Angle: 0.5
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
     - _BumpScale: 1
-    - _CastShadows: 1
+    - _CastShadows: 0
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
     - _Cull: 2
@@ -108,42 +102,46 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _DstBlendAlpha: 0
+    - _Emission_Strength: 1
     - _EnvironmentReflections: 1
-    - _FlickerSpeed: 5.3
-    - _Flicker_Percent: 1
-    - _Fresnell: 1.51
-    - _FresnellStrength: 0.19
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _HighlightRingFade: 0.5
-    - _HighlightRingInner: 0.5
-    - _HighlightRingOuter: 0.75
+    - _Harshness: 2.5
+    - _Highlight: 0
+    - _LightTemp: 0
     - _Metallic: 0
     - _OcclusionStrength: 1
+    - _Offset: 0.1
     - _Parallax: 0.005
+    - _Position: 0.5
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
+    - _SecondaryCutoff: 0.35
+    - _SecondaryShadowStrength: 0.2
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1
     - _Surface: 0
+    - _TerminatorCutoff: -0.3
     - _WorkflowMode: 1
     - _ZTest: 4
     - _ZWrite: 1
     - _ZWriteControl: 0
     m_Colors:
-    - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _DirtColour: {r: 0.24528292, g: 0.21358246, b: 0.14462435, a: 0}
+    - _BaseColor: {r: 0.5188679, g: 0.42061785, b: 0.3255162, a: 1}
+    - _Color: {r: 0.51886785, g: 0.4206178, b: 0.32551616, a: 1}
+    - _Colour: {r: 0.4245283, g: 0.31336313, b: 0.23028658, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _HighlightsColour: {r: 1, g: 1, b: 1, a: 0}
+    - _HighlightColour: {r: 0, g: 0, b: 0, a: 0}
+    - _LightColour: {r: 1, g: 1, b: 1, a: 0}
+    - _ShadowColour: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
---- !u!114 &4795117123590170462
+--- !u!114 &3722909631909649036
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}

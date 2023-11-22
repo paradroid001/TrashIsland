@@ -18,6 +18,8 @@ public class WasherManager : MonoBehaviour
 
     public Transform spawnPosition;
     public List<GameObject> potentialItems;
+    [SerializeField]
+    private List<Transform> endPositions;
 
     public List<GameObject> liveItemsList;
     //public GameObject[] liveItemsArray;
@@ -81,7 +83,7 @@ public class WasherManager : MonoBehaviour
     public void itemFullyCleaned()
     {
         // Moves object position from cleaning to cleaned inventory
-                currentObject.transform.position = cleanInventory.position;
+                currentObject.transform.position = endPositions[currentCount].position;
 
                 //currentObject.GetComponent<WashPaint>().isTarget = false;
                 // Sets cleaned inventory as parent
