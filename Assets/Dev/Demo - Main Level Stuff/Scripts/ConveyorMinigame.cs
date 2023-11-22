@@ -108,9 +108,7 @@ public class ConveyorMinigame : MonoBehaviour
         //upon start, initiate UI screen that gives a start or exit button to the player
         gameRunning = false;
 
-        minigameCamera.SetActive(true);
-        mainCamera.SetActive(false);
-
+        gameManager.SwapCameras(mainCamera, minigameCamera);
         gameManager.UIToggle(ui.gameObject);
         
         

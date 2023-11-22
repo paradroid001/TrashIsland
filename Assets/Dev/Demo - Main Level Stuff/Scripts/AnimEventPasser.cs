@@ -6,6 +6,14 @@ namespace TrashIsland
 {
 public class AnimEventPasser : MonoBehaviour
 {
+
+    [SerializeField]
+    private Texture shutEye;
+    [SerializeField]
+    private Texture face;
+    [SerializeField]
+    private Renderer rend;
+
     [SerializeField]
     private TempMovement target;
     public void passToParent()
@@ -28,9 +36,14 @@ public class AnimEventPasser : MonoBehaviour
             GetComponent<Animator>().SetBool("canExit", true);
         }
 
-    public void SetTexture(string name)
+    public void SetTexture()
     {
+        rend.material.SetTexture("_BaseMap", shutEye);
+    }
 
+    public void ResetTexture()
+    {
+        rend.material.SetTexture("_BaseMap", face);
     }
 }
 }

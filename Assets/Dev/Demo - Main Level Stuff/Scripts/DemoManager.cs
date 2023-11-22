@@ -41,6 +41,14 @@ public class DemoManager : MonoBehaviour
 
     [SerializeField]
     private GameObject _mainUI;
+    [SerializeField]
+    private GameObject _menuUI;
+    [SerializeField]
+    private GameObject menuCam;
+
+
+    [SerializeField]
+    private Demo_InteractableNPC Paulie;  // Don't judge me, I've not slept in 3 days and I need to get this working by tonight -_-
 
 
     // Start is called before the first frame update
@@ -133,6 +141,31 @@ public class DemoManager : MonoBehaviour
         }
     }
 
+    public void StartMenu()
+    {
+        TempMovement tM = playerRef.GetComponent<TempMovement>();
+        
+        tM.enabled = false;
+        Paulie.enabled = false;
+        
+        tM.CallAnimation("Sleep");
+        _menuUI.SetActive(true);
+        _mainUI.SetActive(false);
+
+        SwapCameras(mainCam, menuCam);
+        
+
+    }
+
+    public void endMenu()
+    {
+         _menuUI.SetActive(false);
+        _mainUI.SetActive(true);
+
+        SwapCameras(menuCam, mainCam);
+        mainCam.SetActive(true);
+        menuCam.SetActive(false);
+    }
 
     
     public void StartMinigame(string gameName) //used to run the minigames
@@ -155,9 +188,6 @@ public class DemoManager : MonoBehaviour
         //start the conveyor minigame script
 
         currentMinigame.managerObject.SetActive(true);
-
-        //switch camera
-        mainCam.gameObject.SetActive(false);
 
         playerRef.GetComponent<TrashIsland.TempMovement>().DisableMovement();
         playerRef.SetActive(false);
@@ -188,6 +218,17 @@ public class DemoManager : MonoBehaviour
        _mainUI.SetActive(false);
        UIRef.SetActive(true);
     }
+    
+    public void SwapCameras(GameObject cameraOld, GameObject cameraNew)
+    {
+        cameraOld.tag = "Untagged";
+        cameraOld.SetActive(false);
+
+        cameraNew.tag = "MainCamera";
+        cameraNew.SetActive(true);
+        Camera.main.depthTextureMode = DepthTextureMode.Depth;
+    }
+
 
     }
     

@@ -60,7 +60,7 @@ public class TempMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        canMove = true;
+        //canMove = true;
         //rb = GetComponent<Rigidbody>();
         if (startInDebugMode)
         {

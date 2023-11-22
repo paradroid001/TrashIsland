@@ -46,6 +46,12 @@ public class DemoYarnCommand : MonoBehaviour
 
 //Yarn Commands
 
+[YarnCommand ("StartGame")]
+public void CallGameStart()
+{
+DemoManager dM = GetComponent<DemoManager>();
+  dM.StartMenu();
+}
 
 [YarnCommand("makeNPCWalk")]
   public void InterpretDestination(string agentName, int positionRef)
