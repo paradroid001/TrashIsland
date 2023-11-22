@@ -16,6 +16,9 @@ public class AnimEventPasser : MonoBehaviour
 
     [SerializeField]
     private TempMovement target;
+
+    [SerializeField]
+    private bool determiner;
     public void passToParent()
     {
         target.EnableMovement();
@@ -56,6 +59,12 @@ public class AnimEventPasser : MonoBehaviour
     {
         TempMovement player = FindObjectOfType<TempMovement>();
         player.EnterDialogue();
+    }
+
+    public void LoadLevel()
+    {
+        DemoManager dM = FindObjectOfType<DemoManager>();
+        dM.LevelChangeEvent();
     }
 }
 }

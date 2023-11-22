@@ -103,7 +103,7 @@ public class DemoManager : MonoBehaviour
 
 
         sceneChangeActive = true;
-        transitionAnim.GetComponent<animationTracker>().StartAnimation();
+        transitionAnim.GetComponent<Animator>().Play("SceneTransitionOut");
         
 
         Debug.Log("Changing Scene");
@@ -112,8 +112,6 @@ public class DemoManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
         DemoYarnCommand dYC = gameObject.GetComponent<DemoYarnCommand>();
         dYC.SceneTransitionNPC(sceneIndex); //Passes scene number to Yarn Command Manager for NPC changes between scenes
-
-        transitionAnim.GetComponent<animationTracker>().EndAnimation();
         //playerRef.GetComponent<TempMovement>().canMove = true;
 
         sceneChangeActive = false;
@@ -170,7 +168,7 @@ public class DemoManager : MonoBehaviour
         tM.enabled = true;
         tM.anim.Play("Idle");
         tM.aEP.ResetTexture();
-        tM.GetComponent<Rigidbody>().isKinematic=true;
+        tM.GetComponent<Rigidbody>().isKinematic=false;
 
         Paulie.gameObject.GetComponent<Collider>().enabled=true;
 

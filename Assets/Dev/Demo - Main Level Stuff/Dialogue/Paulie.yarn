@@ -124,7 +124,7 @@ Paulie: Well I may not be your only hope anymore! I found a human!
 <<ForcedOutlineEnd PaulieNPC>>
 <<SetPortrait GameManager $Sparc>>
 {$Sparc}: Huh?...a human?! Oh! Hi! I barely saw you there. Where did you come from? I thought you guys all left for Mars…
-    -> I... don't actually remember.. I just remember waking up and then Paulie finding me.. wait did you just say left for ma-?
+    -> I... don't actually remember.. I just remember waking up and then Paulie finding me..
 {$Sparc}: Well, whatever the case, good timing! I have done everything in my abilities to get this stuff in working order before we get buried in trash!
 {$Sparc}: But with a literal extra set of hands, I think might be just about ready to get these machines up and running!
     -> What is this place? and what's all this stuff for?
@@ -140,7 +140,11 @@ Paulie: Well I may not be your only hope anymore! I found a human!
 //Sparc: The world is at its tipping point, you see. If we don’t clear this trash, it’ll leach into the environment more and more until nothing can survive!
 
 {$Sparc}: We must get this conveyor belt up and running! All I need is a few components, but all of the stuff we find is too gunked up and would damage the machines!
+<<ForcedOutlineEnd SparcNPC>>
+<<SetPortrait GameManager $Paulie>>
 {$Paulie}: That stuff we two cleaned up from the beach might even have exactly what we need! And that door up above us leads to the wash station but.. there's just one problem...
+<<ForcedOutlineEnd PaulieNPC>>
+<<SetPortrait GameManager $Sparc>>
 {$Sparc}: I'd do it myself if I could, but me and water don't mix well! And Paulie... well
 <<ForcedOutlineEnd SparcNPC>>
 <<SetPortrait GameManager $Paulie>>

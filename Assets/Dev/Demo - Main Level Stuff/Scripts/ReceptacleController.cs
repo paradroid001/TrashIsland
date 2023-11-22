@@ -30,6 +30,13 @@ public class ReceptacleController : MonoBehaviour
     [SerializeField]
     private GameObject particles;
 
+    [Header("Bin Animation Controllers")]
+    [Space(5)]
+    [SerializeField]
+    private Animator binAn;
+    [SerializeField]
+    private Animator faceAn;
+
     void Start()
     {
         containedItems = new List<Transform>(); //set up the list
@@ -83,6 +90,7 @@ public class ReceptacleController : MonoBehaviour
             item.parent = storedParent; //store the item in this receptacle
             item.gameObject.SetActive(false); //disable the item
             
+            faceAn.Play("binFaceCorrectAnim");
             //animate happy effects
             particles.SetActive(false);
             particles.SetActive(true); //turn the particles off and on again
@@ -94,7 +102,8 @@ public class ReceptacleController : MonoBehaviour
         else
         {
             Debug.Log("Bad");
-            //animate unhappy effects
+            faceAn.Play("binFaceWrongAnswer");
+            binAn.Play("BinSlam");
             //somehow throw the item back onto the conveyor belt
             StartCoroutine(manager.RejectItem(item));
             //and set it to be kinematic again
