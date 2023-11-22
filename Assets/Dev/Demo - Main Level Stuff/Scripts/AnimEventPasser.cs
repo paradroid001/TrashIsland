@@ -45,5 +45,17 @@ public class AnimEventPasser : MonoBehaviour
     {
         rend.material.SetTexture("_BaseMap", face);
     }
+
+    public void StartGame()
+    {
+        DemoManager dM = FindObjectOfType<DemoManager>();
+        dM.endMenu();
+    }
+
+    public void StartDialogue()
+    {
+        TempMovement player = FindObjectOfType<TempMovement>();
+        player.EnterDialogue();
+    }
 }
 }

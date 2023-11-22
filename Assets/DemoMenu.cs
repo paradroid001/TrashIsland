@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TrashIsland;
 
 public class DemoMenu : MonoBehaviour
 {
@@ -8,6 +9,14 @@ public class DemoMenu : MonoBehaviour
 
     [SerializeField]
     private GameObject menu;
+    [SerializeField]
+    private GameObject mainUI;
+    [SerializeField]
+    private AnimEventPasser aEP;
+
+    [SerializeField]
+    private Animator sceneTransition;
+    
 
     void Update()
     {
@@ -21,5 +30,24 @@ public class DemoMenu : MonoBehaviour
     public void EndMenu()
     {
         menu.SetActive(false);
+        mainUI.SetActive(true);
+        GetComponent<Animator>().Play("CinematicCameraIntro");
+    }
+
+    public void AwakenPlayer()
+    {
+        aEP.ResetTexture();
+    }
+
+    public void SetPlayerSleeping()
+    {
+        Animator a = aEP.GetComponent<Animator>();
+        a.Play("Sleep");
+        aEP.SetTexture();
+    }
+
+    public void EndCinematic()
+    {
+        sceneTransition.Play("WhiteFadeIn");
     }
 }

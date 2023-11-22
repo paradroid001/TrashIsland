@@ -9,7 +9,6 @@ public class CameraController : MonoBehaviour
 
     public GameObject playerRef;
     public GameObject cameraTarget;
-    public Transform mainCamera;
 
     // Start is called before the first frame update
     void Start()
@@ -22,9 +21,9 @@ public class CameraController : MonoBehaviour
     {
         playerPosition = playerRef.transform;
 
-        transform.position = playerPosition.position;
+        transform.parent.position = playerPosition.position;
 
-        mainCamera.LookAt(cameraTarget.transform);
+        transform.LookAt(cameraTarget.transform);
     }
     
 }

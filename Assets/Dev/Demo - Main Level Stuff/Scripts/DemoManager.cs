@@ -54,7 +54,7 @@ public class DemoManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        transitionAnim.SetActive(true);
+        //transitionAnim.SetActive(true);
     }
 
     // Update is called once per frame
@@ -146,7 +146,10 @@ public class DemoManager : MonoBehaviour
         TempMovement tM = playerRef.GetComponent<TempMovement>();
         
         tM.enabled = false;
-        Paulie.enabled = false;
+        tM.GetComponent<Rigidbody>().isKinematic=true;
+        tM.transform.rotation = new Quaternion(0,0.766044497f,0.642787635f,0);
+
+        Paulie.gameObject.GetComponent<Collider>().enabled=false;
         
         tM.CallAnimation("Sleep");
         _menuUI.SetActive(true);
@@ -159,8 +162,17 @@ public class DemoManager : MonoBehaviour
 
     public void endMenu()
     {
+        TempMovement tM = playerRef.GetComponent<TempMovement>();
          _menuUI.SetActive(false);
         _mainUI.SetActive(true);
+
+        tM.transform.rotation = new Quaternion(0,0,0,1);
+        tM.enabled = true;
+        tM.anim.Play("Idle");
+        tM.aEP.ResetTexture();
+        tM.GetComponent<Rigidbody>().isKinematic=true;
+
+        Paulie.gameObject.GetComponent<Collider>().enabled=true;
 
         SwapCameras(menuCam, mainCam);
         mainCam.SetActive(true);

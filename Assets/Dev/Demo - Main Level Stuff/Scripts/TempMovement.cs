@@ -54,12 +54,15 @@ public class TempMovement : MonoBehaviour
     private Demo_InteractableNPC TalkingTo;
     private Demo_InteractableObject InteractingWith;
 
+    public AnimEventPasser aEP;
+
 
     
 
     // Start is called before the first frame update
     void Start()
     {
+        aEP = GetComponentInChildren<AnimEventPasser>();
         //canMove = true;
         //rb = GetComponent<Rigidbody>();
         if (startInDebugMode)
