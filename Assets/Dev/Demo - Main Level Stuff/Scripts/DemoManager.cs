@@ -144,6 +144,7 @@ public class DemoManager : MonoBehaviour
 
     public void StartMenu()
     {
+        Debug.Log("menu started");
         mainCam.tag = "MainCamera";
         mainCam.SetActive(true);
 

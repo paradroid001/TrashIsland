@@ -40,14 +40,16 @@ title: Paulie_Intro
 position: -263,-369
 ---
 <<set $IsOutside = true>>
-{$Paulie}: Hey you're awake!
-{$Paulie}: I wasn't sure what to expect when I saw you washed up on the shore... all we normally get washing up is trash!
-{$Paulie}: Speaking of...
-{$Paulie}: I was just looking at all this trash that just has up on the beach... it's far too heavy for me to move so it just keeps piling up
-{$Paulie}: Hey how about this! If you help me, I'll try to help you get back to wherever it is that you washed up from!
-    -> Uh, I can't seem to remember how I got here but... Sure, I'll help! 
+? ? ?: Hey you're awake!
+? ? ?: I wasn't sure what to expect when I saw you washed up on the shore... all we normally get is trash...
+? ? ?: So much of it washes up every day... and it's too heavy for any of us to move so it just keeps piling up
+? ? ?: Hey how about this! If you help me, I'll help you get back to wherever it is that you washed up from!
 
-{$Paulie}: Yipee! Thank you so much! If you follow me, I'll take you to the bulk of it! *chirp*
+    -> Uhmm, okay sure I guess! 
+
+? ? ?: Yipee! Thank you so much! Follow me, I'll take you to the bulk of it! *chirp*
+
+{$Paulie}: Oh yeah! I'm Paulie by the way!
 
 <<ActivateObjectInteraction CollectableTrashPile1>>
 <<ActivateObjectInteraction CollectableTrashPile2>>
@@ -143,7 +145,7 @@ Paulie: Well I may not be your only hope anymore! I found a human!
 {$Sparc}: We must get this conveyor belt up and running! All I need is a few components, but all of the stuff we find is too gunked up and would damage the machines!
 <<ForcedOutlineEnd SparcNPC>>
 <<SetPortrait GameManager $Paulie>>
-{$Paulie}: That stuff you cleared up from the beach might even have exactly what we need! And that yellow door up just up above us leads to the wash station but.. there's just one problem...
+{$Paulie}: That stuff you cleared up from the beach might even have exactly what we need! And that yellow door up just up above us and to the left leads to the wash station but.. there's just one problem...
 <<ForcedOutlineEnd PaulieNPC>>
 <<SetPortrait GameManager $Sparc>>
 {$Sparc}: I'd do it myself if I could, but me and water don't mix well! And Paulie... well

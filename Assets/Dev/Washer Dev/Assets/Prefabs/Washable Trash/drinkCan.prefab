@@ -15,7 +15,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5979126662969095978
 RectTransform:
   m_ObjectHideFlags: 0
@@ -53,6 +53,7 @@ GameObject:
   - component: {fileID: 1308432347229111950}
   - component: {fileID: 1308432347229111949}
   - component: {fileID: 67815506222038505}
+  - component: {fileID: 350795486635188644}
   m_Layer: 0
   m_Name: drinkCan
   m_TagString: Untagged
@@ -138,7 +139,7 @@ MeshCollider:
   m_Enabled: 1
   serializedVersion: 4
   m_Convex: 0
-  m_CookingOptions: 30
+  m_CookingOptions: -1
   m_Mesh: {fileID: -5076798556035486163, guid: 2f81f5dd5a96cdc42a97488cccefb8d6, type: 3}
 --- !u!114 &1308432347229111949
 MonoBehaviour:
@@ -198,6 +199,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!136 &350795486635188644
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2227335233338107283}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  m_Radius: 0.106
+  m_Height: 0.24416232
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.0070390664, z: 0}
 --- !u!1 &3125310109504599078
 GameObject:
   m_ObjectHideFlags: 0

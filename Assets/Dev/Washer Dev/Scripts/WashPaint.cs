@@ -107,6 +107,9 @@ public class WashPaint : MonoBehaviour
     {
         if (isTarget)
         {
+
+            
+
         if(Input.GetMouseButton(0))
         {
             //Debug.Log("Mouse Down");
