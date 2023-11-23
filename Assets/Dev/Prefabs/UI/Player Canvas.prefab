@@ -138,7 +138,7 @@ RectTransform:
   m_Children:
   - {fileID: 4871722627324389162}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 30.287, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -163,6 +163,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
+  m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 1
   m_TargetDisplay: 0
@@ -188,7 +189,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &4871722628232861152
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -227,6 +228,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 4871722627324389162}
     m_Modifications:
     - target: {fileID: 3859136943093447025, guid: dcb060e5bd67b0041927880a8d85c4b4,
@@ -360,6 +362,7 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: dcb060e5bd67b0041927880a8d85c4b4, type: 3}
 --- !u!1 &3957522984611769012 stripped
 GameObject:

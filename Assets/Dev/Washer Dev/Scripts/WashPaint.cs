@@ -37,7 +37,6 @@ public class WashPaint : MonoBehaviour
     [SerializeField]
     private Renderer _myRenderer;
 
-    [SerializeField]
     private Color32[] pixelsInReadTexture;
 
     [SerializeField]
@@ -87,7 +86,6 @@ public class WashPaint : MonoBehaviour
         }
 
         manager = wM;
-        Debug.Log(_dirtMaskBase);
         RefreshReadTexture(_dirtMaskBase, false);
 
         /*
@@ -116,7 +114,7 @@ public class WashPaint : MonoBehaviour
             {
                 //Debug.Log("hit");
                 splash.transform.position = hit.point;
-                if (splash.isStopped)
+                if (splash.isStopped && _templateDirtMask != null)
                 {
                     splash.Play();
                 }
@@ -127,10 +125,7 @@ public class WashPaint : MonoBehaviour
                 int respecWidth = _brush.width / 2;
 
                 int pixelX = (int)(textureCoord.x * _templateDirtMask.width + respecWidth);
-                Debug.Log(pixelX);
                 int pixelY = (int)(textureCoord.y * _templateDirtMask.height + respecWidth);
-                Debug.Log(pixelY);
-
                 
                 
                 
@@ -201,7 +196,6 @@ public class WashPaint : MonoBehaviour
     {
         float x = maximum - current; //value of amount we have removed
         float y = (x / maximum) * 100;
-        Debug.Log(y +"% cleaned");
         return y;
     }
 
@@ -249,7 +243,6 @@ public class WashPaint : MonoBehaviour
 
     public float EstimateTransparenctPix(Color32[] pxls)
     {
-        Debug.Log("Estimating pixels");
         int tested = 0;
         int tran = 0;
         int solid = 0;

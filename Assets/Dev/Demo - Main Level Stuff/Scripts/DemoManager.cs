@@ -26,6 +26,9 @@ public class DemoManager : MonoBehaviour
     [SerializeField]
     private GameObject playerRef;
 
+    [SerializeField]
+    private bool WillLoadMenu;
+
     bool sceneChangeActive;
     public int sceneIndex;
 
@@ -141,19 +144,35 @@ public class DemoManager : MonoBehaviour
 
     public void StartMenu()
     {
-        TempMovement tM = playerRef.GetComponent<TempMovement>();
-        
-        tM.enabled = false;
-        tM.GetComponent<Rigidbody>().isKinematic=true;
-        tM.transform.rotation = new Quaternion(0,0.766044497f,0.642787635f,0);
+        mainCam.tag = "MainCamera";
+        mainCam.SetActive(true);
 
-        Paulie.gameObject.GetComponent<Collider>().enabled=false;
+        _mainUI.SetActive(true);
         
-        tM.CallAnimation("Sleep");
-        _menuUI.SetActive(true);
-        _mainUI.SetActive(false);
 
-        SwapCameras(mainCam, menuCam);
+        if (WillLoadMenu)
+        {
+            Debug.Log("loading main menu");
+            TempMovement tM = playerRef.GetComponent<TempMovement>();
+        
+            tM.enabled = false;
+            tM.GetComponent<Rigidbody>().isKinematic=true;
+            tM.transform.rotation = new Quaternion(0,0.766044497f,0.642787635f,0);
+
+            Paulie.gameObject.GetComponent<Collider>().enabled=false;
+        
+            tM.CallAnimation("Sleep");
+            _menuUI.SetActive(true);
+            _mainUI.SetActive(false);
+
+            SwapCameras(mainCam, menuCam);
+        }
+        else
+        {
+            Debug.Log("skipped menu");
+            return;
+        }
+        
         
 
     }
@@ -231,6 +250,17 @@ public class DemoManager : MonoBehaviour
     
     public void SwapCameras(GameObject cameraOld, GameObject cameraNew)
     {
+        if (cameraOld == cameraNew)
+        {
+            mainCam.tag = "Untagged";
+            mainCam.SetActive(false);
+
+            cameraNew.tag = "MainCamera";
+            cameraNew.SetActive(true);
+
+            Camera.main.depthTextureMode = DepthTextureMode.Depth; // To my understanding this just ensures that a fresh depth pass happens with the new Main Camera
+            // Was done to address a popping/flickering I noticed in the water shader
+        }
         cameraOld.tag = "Untagged";
         cameraOld.SetActive(false);
 

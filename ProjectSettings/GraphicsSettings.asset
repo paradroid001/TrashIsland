@@ -35,11 +35,17 @@ GraphicsSettings:
   - {fileID: 15105, guid: 0000000000000000f000000000000000, type: 0}
   - {fileID: 15106, guid: 0000000000000000f000000000000000, type: 0}
   - {fileID: 10753, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 50, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: -6465566751694194690, guid: 0884ac16458cb4a4b85b420605ae754e, type: 3}
+  - {fileID: -6465566751694194690, guid: a1b489c38e1291947a75e93e920e8ccc, type: 3}
+  - {fileID: -6465566751694194690, guid: 43ee0800706086244ae0549cef86ae11, type: 3}
   - {fileID: 10770, guid: 0000000000000000f000000000000000, type: 0}
-  m_PreloadedShaders: []
+  m_PreloadedShaders:
+  - {fileID: 20000000, guid: fc8847b0202c9c148a12265c6c2fc3ab, type: 2}
   m_PreloadShadersBatchTimeLimit: -1
-  m_SpritesDefaultMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_CustomRenderPipeline: {fileID: 11400000, guid: de9d6f9ff62ba6445ac61cb9f74ca65a, type: 2}
+  m_SpritesDefaultMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000,
+    type: 0}
+  m_CustomRenderPipeline: {fileID: 0}
   m_TransparencySortMode: 0
   m_TransparencySortAxis: {x: 0, y: 0, z: 1}
   m_DefaultRenderingPath: 1
@@ -47,8 +53,8 @@ GraphicsSettings:
   m_TierSettings: []
   m_LightmapStripping: 0
   m_FogStripping: 0
-  m_InstancingStripping: 0
-  m_BrgStripping: 0
+  m_InstancingStripping: 2
+  m_BrgStripping: 2
   m_LightmapKeepPlain: 1
   m_LightmapKeepDirCombined: 1
   m_LightmapKeepDynamicPlain: 1
@@ -62,6 +68,7 @@ GraphicsSettings:
   m_LightsUseLinearIntensity: 1
   m_LightsUseColorTemperature: 1
   m_DefaultRenderingLayerMask: 1
-  m_LogWhenShaderIsCompiled: 0
+  m_LogWhenShaderIsCompiled: 1
   m_SRPDefaultSettings:
-    UnityEngine.Rendering.Universal.UniversalRenderPipeline: {fileID: 11400000, guid: c4221c45ecde81b41be2c33b7b74325e, type: 2}
+    UnityEngine.Rendering.Universal.UniversalRenderPipeline: {fileID: 11400000, guid: c4221c45ecde81b41be2c33b7b74325e,
+      type: 2}

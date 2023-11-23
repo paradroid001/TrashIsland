@@ -75,7 +75,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 6587689b3cb977c4da02fa2148075292, type: 3}
+        m_Texture: {fileID: 2800000, guid: e2ed3b3dc79ab8049a5244f8da4ec5b3, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -117,6 +117,7 @@ Material:
     - _Angle: 0.5
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
+    - _BlendOp: 0
     - _BumpScale: 1
     - _CastShadows: 1
     - _ClearCoatMask: 0
@@ -153,6 +154,7 @@ Material:
     - _QueueOffset: 0
     - _ReceiveShadows: 1
     - _Rotation: 0
+    - _SampleGI: 0
     - _SecondaryCutoff: 0.35
     - _SecondaryShadowStrength: 0.2
     - _Smoothness: 0.744
@@ -171,7 +173,7 @@ Material:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Colour: {r: 1, g: 1, b: 1, a: 0}
-    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
     - _Emission_Colour: {r: 0, g: 0, b: 0, a: 0}
     - _HighlightColour: {r: 0.18867922, g: 0.18867922, b: 0.18867922, a: 0}
     - _LightColour: {r: 1, g: 1, b: 1, a: 0}

@@ -168,6 +168,8 @@ public class Demo_InteractableNPC : MonoBehaviour
     [YarnCommand("SetNPCName")]
     public void setName(string v) //Ensures that we have a consistent name string when passing variables to and from Yarn
     {
+        Debug.Log("Setting "+ gameObject.name + "up for name");
+
         InMemoryVariableStorage varStor = FindObjectOfType<InMemoryVariableStorage>();
         string n;
         varStor.TryGetValue(v, out n);

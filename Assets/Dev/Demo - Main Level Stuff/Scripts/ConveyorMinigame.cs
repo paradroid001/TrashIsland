@@ -230,7 +230,7 @@ public class ConveyorMinigame : MonoBehaviour
             MoveItems();
             PlayerInput();
             EndCheck();
-            beltShader.SetFloat("_Speed", beltSpeed * gameSpeed * 0.5f); //match the speed of the texture to the speed of the objects
+            beltShader.SetFloat("_Speed", beltSpeed * gameSpeed * 0.4f); //match the speed of the texture to the speed of the objects
         }
         else
         {

@@ -51,6 +51,7 @@ public class DemoYarnCommand : MonoBehaviour
 [YarnCommand ("StartGame")]
 public void CallGameStart()
 {
+  Debug.Log("passing command from yarn to GameManager");
 DemoManager dM = GetComponent<DemoManager>();
   dM.StartMenu();
 }

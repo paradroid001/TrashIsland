@@ -89,6 +89,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _AlphaClip: 0
+    - _Angle: 0.5
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
     - _BumpScale: 1
@@ -107,17 +108,19 @@ Material:
     - _Glossiness: 0
     - _GlossyReflections: 0
     - _Harshness: 0.005
-    - _Highlight: 0
+    - _Highlight: 1
     - _LightTemp: 0
     - _Metallic: 0
     - _OcclusionStrength: 1
+    - _Offset: 0.1
     - _Parallax: 0.005
+    - _Position: 0.5
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
     - _SecondaryCutoff: 0.35
     - _SecondaryShadowStrength: 0.2
-    - _Smoothness: 0.806
+    - _Smoothness: 0.908
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
@@ -133,9 +136,9 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Colour: {r: 1, g: 1, b: 1, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _HighlightColour: {r: 0.44, g: 0.44, b: 0.44, a: 1}
+    - _HighlightColour: {r: 0.3301887, g: 0.3301887, b: 0.3301887, a: 1}
     - _LightColour: {r: 1, g: 1, b: 1, a: 0}
-    - _ShadowColour: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 0}
+    - _ShadowColour: {r: 0.63857245, g: 0.7723275, b: 0.7735849, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &8815275772896401563
