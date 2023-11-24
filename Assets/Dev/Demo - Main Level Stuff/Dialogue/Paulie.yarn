@@ -219,6 +219,7 @@ Conveyor Belt: *whiiiiiir*
 {$Paulie}: This is amazing! I never thought I'd see the day
 <<SetPortrait GameManager $Sparc>>
 {$Sparc}: Well Human, if you'll do the honours, I think the rest of that trash you cleaned up should be a perfect test run for the conveyor. Let's hope you've brushed up on your bin knowledge!
+<<jump ShouldEndGame>>
 ===
 
 title: SPARC_PostConveyor
@@ -235,9 +236,14 @@ position: -242,273
 {$Paulie}: This is just the beginning!
 {$Paulie}: Would you maybe stick around and help us save the planet? *chirp*
     -> Okay!
-<<jump EndOfGame>>
+    <<jump ShouldEndGame>>
 ===
-
+title: ShouldEndGame
+---
+<<if visited("WasherWin") == true && visited("SPARC_PostConveyor") == true>>
+    <<jump EndOfGame>>
+<<endif>>
+===
 title: EndOfGame
 position:
 ---
@@ -248,5 +254,8 @@ position:
 title: WasherWin
 ---
 <<LoadLevel GameManager 1>>
+<<EnableMovment Player>>
+<<ActivateObjectInteraction StandinLever>>
 <<jump SPARC_PostWash>>
+
 ===

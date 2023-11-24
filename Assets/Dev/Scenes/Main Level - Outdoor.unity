@@ -11001,7 +11001,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ab1b298c9a8a334595ad2d480efa2d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InteractionReady: 1
+  InteractionReady: 0
   interactionCollider: {fileID: 393313522}
   myRenderer: {fileID: 608650335}
   IsInteractable: 0
@@ -18649,7 +18649,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &738143495
 Transform:
   m_ObjectHideFlags: 0
@@ -39762,7 +39762,7 @@ MonoBehaviour:
   gameStageRef: 0
   transitionAnim: {fileID: 7239170800594480282}
   playerRef: {fileID: 7177218292296428185}
-  WillLoadMenu: 0
+  WillLoadMenu: 1
   sceneIndex: 0
   sceneSpawns:
   - {fileID: 1962934530}

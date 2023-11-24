@@ -191,6 +191,7 @@ public class TempMovement : MonoBehaviour
         Debug.Log("Movement Disabled");
         canMove = false;
     }
+    [YarnCommand("EnableMovment")]
     public void EnableMovement()
     {
         if (!movementOverride)
