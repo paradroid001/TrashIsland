@@ -68,6 +68,10 @@ public class WasherManager : MonoBehaviour
     public int itemCount;
     [SerializeField]
     private bool IsActiveMinigame;
+
+    public GameObject player;
+    public GameObject levelPrior;
+    public Transform respawnPoint;
     
     bool pregame = true;
 
@@ -78,11 +82,8 @@ public class WasherManager : MonoBehaviour
     void OnEnable() 
     
     {
-        /*
-        IsActiveMinigame = true;
-        gM.UIToggle(myUI);
-        gM.SwapCameras(myCam, myCam);   
-        */     
+        player.SetActive(false);
+
 
     }
 

@@ -20,16 +20,6 @@ namespace GAD375.Prototyper
             DialogueRunner r = FindObjectOfType<DialogueRunner>();
             if (r != null)
             {
-                if (r.IsDialogueRunning)
-                {
-                    //If dialogue is already running, advance it.
-                    LineView l = FindObjectOfType<LineView>();
-                    if (l != null)
-                    {
-                        l.OnContinueClicked();
-                    }
-                }
-                else
                 {
                     // Kick off the dialogue at this node.
                     r.StartDialogue(node);

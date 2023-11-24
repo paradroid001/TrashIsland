@@ -24,7 +24,7 @@ position: -249,-512
     <<jump SPARC_PostConveyor>>
 <<endif>>
 <<if visited("PauliePostCleanup") == true>>
-    <<jump SPARC_Intro>>
+    <<jump SPARC_PatchIn>>
 <<endif>>
 <<if visited("Paulie_Intro") == false>>
     <<jump Paulie_Intro>>
@@ -89,7 +89,7 @@ Paulie: Just come with me! You'll see soon enough!
 
 <<LoadLevel GameManager 1>> //Loads level 1
 <<wait 3>>
-<<jump SPARC_Intro>>
+<<jump SPARC_PatchIn>>
 ===
 title: PauliePostCleanupOLD
 position: -243,-117
@@ -116,6 +116,7 @@ position: -243,-117
 title: SPARC_Intro
 position:
 ---
+
 Paulie: S.P.A.R.C.?
 Paulie: HEY S.P.A.R.C.!
 <<SetPortrait GameManager $Sparc>>
@@ -226,10 +227,19 @@ position: -242,273
 {$Sparc}: *bzzt* Well. if I was unsorted trash, I'd think twice before messing with you!
 <<ForcedOutlineEnd SparcNPC>>
 <<SetPortrait GameManager $Paulie>>
-{$Paulie}: Right, now time to see about that wire!
-{$Paulie}: Once we shred up all the new scrap, I think we'll be set on copper for the radio tower repairs.
-<<ForcedOutlineEnd PaulieNPC>>
-<<SetPortrait GameManager $Sparc>>
-{$Sparc}: As a matter of fact, pretty much every bit of scrap you find can be repurposed in some way through this plant now it has awoken from its slumber!
-    -> Insert End Of Game Here
+{$Paulie}: Hey! Now that the trash is sorted, I can finally repay you for helping me clean the beach!
+    -> Huh?
+{$Paulie}: Once we shred up all this new scrap, we can use the machines in the plant to make you pretty much whatever you like!
+{$Paulie}: This is just the beginning!
+{$Paulie}: Would you maybe stick around and help us save the planet? *chirp*
+    -> Okay!
+<<jump EndOfGame>>
+===
+
+title: EndOfGame
+position:
+---
+<<playAnim2 SceneTransitionMaskMainMenu EndOfGameAnim>>
+
+<<wait 3>>
 ===

@@ -49,6 +49,8 @@ public class DemoManager : MonoBehaviour
     [SerializeField]
     private GameObject menuCam;
 
+    //public GameObject gameEnder;
+
 
     [SerializeField]
     private Demo_InteractableNPC Paulie;  // Don't judge me, I've not slept in 3 days and I need to get this working by tonight -_-
@@ -234,9 +236,14 @@ public class DemoManager : MonoBehaviour
         //switch back to main camera
         miniCam.SetActive(false);
         _mainUI.SetActive(true);
+
+            mainCam.SetActive(true);
+            mainCam.tag = "MainCamera";
+
         tM.ChangeLocation(respawnPosition);
         playerRef.SetActive(true);
         tM.EnableMovement();
+        //gameEnder.SetActive(true);
         
 
         mainCam.gameObject.SetActive(true);

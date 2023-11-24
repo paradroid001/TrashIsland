@@ -1,0 +1,39 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using TrashIsland;
+
+public class scri : MonoBehaviour
+{
+    public GameObject level2Load;
+    public GameObject level2Unload;
+    public Transform spawnPoint;
+    public bool isReady;
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+    private void OnTriggerEnter(Collider c)
+    {
+        TIInteractor t = c.GetComponent<TIInteractor>();
+        if (t != null && isReady)
+        {
+            LoadNewPoint(t.gameObject);
+        }
+    }
+
+    void LoadNewPoint(GameObject playerPos)
+    {
+        level2Load.SetActive(true);
+        level2Unload.SetActive(false);
+
+        playerPos.transform.position = spawnPoint.position;
+    }
+}
