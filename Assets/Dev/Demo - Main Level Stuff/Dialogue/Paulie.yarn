@@ -20,8 +20,10 @@ position: -249,-512
     <<jump SPARC_PatchIn>>
 <<endif>>
 
-<<if visited ("startConveyor") == true>>
+<<if visited ("startConveyor") == true && visited("WasherWin") == false>>
     <<jump SPARC_PostConveyor>>
+<<elseif visited ("startConveyor") == true && visited("WasherWin") == true>>
+    <<jump EndOfGame>>
 <<endif>>
 <<if visited("PauliePostCleanup") == true>>
     <<jump SPARC_PatchIn>>
@@ -242,4 +244,9 @@ position:
 <<playAnim2 SceneTransitionMaskMainMenu EndOfGameAnim>>
 
 <<wait 3>>
+===
+title: WasherWin
+---
+<<LoadLevel GameManager 1>>
+<<jump SPARC_PostWash>>
 ===

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TrashIsland;
+using Yarn.Unity;
 
 public class WasherManager : MonoBehaviour
 {
@@ -211,12 +212,34 @@ public class WasherManager : MonoBehaviour
         }
 
     }
-
+    public scri scri;
+    public Texture2D cursor;
     void WinGame()
     {
         if (currentCount >= itemCount - 1)
         {
+            DialogueRunner r = FindObjectOfType<DialogueRunner>();
+            if (r != null)
+            {
+                if (r.IsDialogueRunning)
+                {
+                    //If dialogue is already running, advance it.
+                    LineView l = FindObjectOfType<LineView>();
+                    if (l != null)
+                    {
+                        l.OnContinueClicked();
+                    }
+                }
+                else
+                {
+                    r.StartDialogue("WasherWin");    
+                }
+            }
+            Cursor.SetCursor(cursor, Vector2.zero, CursorMode.Auto);
+            player.SetActive(true);
+            scri.LoadNewPoint1(player);
             Debug.Log("Won");
+            gameObject.SetActive(false);
         }
     }
 }

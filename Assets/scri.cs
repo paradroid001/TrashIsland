@@ -8,6 +8,8 @@ public class scri : MonoBehaviour
     public GameObject level2Load;
     public GameObject level2Unload;
     public Transform spawnPoint;
+    public Camera mainCamera;
+    public Camera washingCamera;
     public bool isReady;
     // Start is called before the first frame update
     void Start()
@@ -33,6 +35,20 @@ public class scri : MonoBehaviour
     {
         level2Load.SetActive(true);
         level2Unload.SetActive(false);
+        mainCamera.gameObject.SetActive(false);
+        washingCamera.gameObject.SetActive(true);
+
+
+        playerPos.transform.position = spawnPoint.position;
+    }
+    public void LoadNewPoint1(GameObject playerPos)
+    {
+        level2Load.SetActive(false);
+        level2Unload.SetActive(true);
+        washingCamera.gameObject.SetActive(false);
+        mainCamera.gameObject.SetActive(true);
+        
+
 
         playerPos.transform.position = spawnPoint.position;
     }

@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEditor;
 using TMPro;
 using UnityEngine.UI;
+using Yarn.Unity;
 
 
 namespace TrashIsland{
@@ -214,9 +215,27 @@ public class ConveyorMinigame : MonoBehaviour
 
     public void GameExit() //called to leave this scene
     {
+        
         Debug.Log("Game Exit");
         ui.gameObject.SetActive(false); //dsiable the UI
         gameManager.ReturnToMain(playerSpawn, minigameCamera); //call return method in main manager
+        DialogueRunner r = FindObjectOfType<DialogueRunner>();
+            if (r != null)
+            {
+                if (r.IsDialogueRunning)
+                {
+                    //If dialogue is already running, advance it.
+                    LineView l = FindObjectOfType<LineView>();
+                    if (l != null)
+                    {
+                        l.OnContinueClicked();
+                    }
+                }
+                else
+                {
+                    r.StartDialogue("SPARC_PostConveyor");    
+                }
+            }
         gameObject.SetActive(false); //disable this object
 
     }

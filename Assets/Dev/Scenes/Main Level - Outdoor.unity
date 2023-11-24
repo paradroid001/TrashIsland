@@ -35370,11 +35370,13 @@ MonoBehaviour:
   transitionTime: 0.3
   itemCount: 0
   IsActiveMinigame: 1
-  player: {fileID: 0}
+  player: {fileID: 7177218292296428185}
   levelPrior: {fileID: 0}
   respawnPoint: {fileID: 0}
   itemVariations:
   - {fileID: 2227335233338107283, guid: 2d89c82f006ca594ba55f8cc686bff1a, type: 3}
+  scri: {fileID: 1560639766}
+  cursor: {fileID: 0}
 --- !u!1 &1357686076
 GameObject:
   m_ObjectHideFlags: 0
@@ -38194,7 +38196,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72a970b87473c4e41a80cef64e4ef732, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startInDebugMode: 0
+  startInDebugMode: 1
   movementSpeed: 5
   maxSpeed: 1
   rotationSpeed: 720
@@ -39760,7 +39762,7 @@ MonoBehaviour:
   gameStageRef: 0
   transitionAnim: {fileID: 7239170800594480282}
   playerRef: {fileID: 7177218292296428185}
-  WillLoadMenu: 1
+  WillLoadMenu: 0
   sceneIndex: 0
   sceneSpawns:
   - {fileID: 1962934530}
@@ -41626,7 +41628,7 @@ MonoBehaviour:
   myNode: 
   selectionBody: {fileID: 1560639758}
   selectionMaterial: {fileID: 2100000, guid: 71d1258dc59a27e458965dbdd05e2f1c, type: 2}
-  outlineStrength: 0
+  outlineStrength: 0.2
   outlineColour: {r: 0, g: 1, b: 0.98302364, a: 0}
   selectedColour: {r: 1, g: 1, b: 1, a: 0}
   ActivatesWithMe: {fileID: 0}
@@ -41646,6 +41648,8 @@ MonoBehaviour:
   level2Load: {fileID: 677473491}
   level2Unload: {fileID: 715620658}
   spawnPoint: {fileID: 1375629660}
+  mainCamera: {fileID: 682041384}
+  washingCamera: {fileID: 955275751}
   isReady: 1
 --- !u!4 &1563498191 stripped
 Transform:
