@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18346149, g: 0.22903728, b: 0.30586746, a: 1}
+  m_IndirectSpecularColor: {r: 0.17711547, g: 0.22172156, b: 0.30398336, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -294,8 +294,13 @@ MonoBehaviour:
   transitionTime: 0.3
   itemCount: 0
   IsActiveMinigame: 1
+  player: {fileID: 0}
+  levelPrior: {fileID: 0}
+  respawnPoint: {fileID: 0}
   itemVariations:
   - {fileID: 2227335233338107283, guid: 2d89c82f006ca594ba55f8cc686bff1a, type: 3}
+  scri: {fileID: 0}
+  cursor: {fileID: 0}
 --- !u!4 &51905998
 Transform:
   m_ObjectHideFlags: 0
@@ -6796,14 +6801,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1131853285}
-  m_LocalRotation: {x: 0.29045945, y: -0.24684007, z: 0.07782836, w: 0.9212199}
+  m_LocalRotation: {x: 0.42243868, y: -0.4872583, z: 0.2913121, w: 0.70658493}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 35, y: -30, z: 0}
+  m_LocalEulerAnglesHint: {x: 61.747, y: -69.18, z: 0}
 --- !u!114 &1131853288
 MonoBehaviour:
   m_ObjectHideFlags: 0

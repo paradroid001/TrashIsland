@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-5164964812598927933
+--- !u!114 &-5615370192347120919
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SPARCdemoMat
+  m_Name: TestMat
   m_Shader: {fileID: -6465566751694194690, guid: 0884ac16458cb4a4b85b420605ae754e,
     type: 3}
   m_Parent: {fileID: 0}
@@ -40,7 +40,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BaseMap:
-        m_Texture: {fileID: 2800000, guid: 064cf2f728a25a14985303897c3e0aa2, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
@@ -60,7 +60,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Emission:
-        m_Texture: {fileID: 2800000, guid: 1fa1febf044a3e546bb6a9b0821e5e1e, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
@@ -102,7 +102,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _AlphaClip: 0
-    - _Angle: 0.5
+    - _Angle: 0.714
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
     - _BumpScale: 1
@@ -115,17 +115,14 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _DstBlendAlpha: 0
-    - _Emission_Strength: 0.526
+    - _Emission_Strength: 1
     - _EnvironmentReflections: 1
-    - _Falloff_Threshold: 1.33
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _Half_Tone_Density: 34.5
-    - _Harshness: 0.83
-    - _Highlight: 0
+    - _Harshness: 0.005
+    - _Highlight: 1
     - _LightTemp: 0
-    - _Lit_Threshold: 2.93
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _Offset: 0.1
@@ -134,17 +131,15 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _Rotation: 0
-    - _SecondaryCutoff: 0.35
+    - _SecondaryCutoff: 0.186
     - _SecondaryShadowStrength: 0.2
-    - _Smoothness: 0.958
+    - _Smoothness: 0.988
     - _SmoothnessTextureChannel: 0
-    - _Softness: 0.05
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1
     - _Surface: 0
-    - _TerminatorCutoff: -0.3
+    - _TerminatorCutoff: 0.022
     - _WorkflowMode: 1
     - _ZTest: 4
     - _ZWrite: 1
@@ -152,7 +147,7 @@ Material:
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Colour: {r: 1, g: 1, b: 1, a: 0}
+    - _Colour: {r: 0.4339623, g: 0.05117479, b: 0.05117479, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _HighlightColour: {r: 1, g: 1, b: 1, a: 0}
     - _LightColour: {r: 1, g: 1, b: 1, a: 0}
