@@ -17,7 +17,7 @@ public class DemoManager : MonoBehaviour
 {
     [SerializeField]
     private int gameStageRef;
-
+    public static DemoManager instance;
     public enum SceneToLoad {outside = 0, inside = 1, minigame1 = 2, minigame2 = 3};
     SceneToLoad mySceneToLoad;
 
@@ -48,6 +48,7 @@ public class DemoManager : MonoBehaviour
     private GameObject _menuUI;
     [SerializeField]
     private GameObject menuCam;
+    public DemoDialoguePortraitsStorage dialoguePortraits;
 
     //public GameObject gameEnder;
 
@@ -59,6 +60,7 @@ public class DemoManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+            instance = this;
         //transitionAnim.SetActive(true);
     }
 
