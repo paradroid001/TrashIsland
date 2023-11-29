@@ -42,7 +42,9 @@ title: Paulie_Intro
 position: -263,-369
 ---
 <<set $IsOutside = true>>
-? ? ?: Hey you're awake!
+<<SetCharacter GameManager Paulie>>
+? ? ?: Hey you're awake! 
+<<SetCharacterEmotion GameManager Paulie Joy>>
 ? ? ?: I wasn't sure what to expect when I saw you washed up on the shore... all we normally get is trash...
 ? ? ?: So much of it washes up every day... and it's too heavy for any of us to move so it just keeps piling up
 ? ? ?: Hey how about this! If you help me, I'll help you get back to wherever it is that you washed up from!
