@@ -216,6 +216,10 @@ public class WasherManager : MonoBehaviour
     public Texture2D cursor;
     void WinGame()
     {
+        player.SetActive(true);
+            scri.LoadNewPoint1(player);
+            Debug.Log("Won");
+            gameObject.SetActive(false);
         if (currentCount >= itemCount - 1)
         {
             DialogueRunner r = FindObjectOfType<DialogueRunner>();
@@ -236,10 +240,7 @@ public class WasherManager : MonoBehaviour
                 }
             }
             Cursor.SetCursor(cursor, Vector2.zero, CursorMode.Auto);
-            player.SetActive(true);
-            scri.LoadNewPoint1(player);
-            Debug.Log("Won");
-            gameObject.SetActive(false);
+            
         }
     }
 }
