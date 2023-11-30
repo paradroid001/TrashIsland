@@ -46148,7 +46148,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1713339395}
   - component: {fileID: 1713339396}
-  - component: {fileID: 1713339397}
   m_Layer: 7
   m_Name: Eyes
   m_TagString: Untagged
@@ -46223,24 +46222,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1713339397
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1713339394}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a77ae944c1fa3d4885e12a6f2cb1699, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
-  sprites:
-  - {fileID: 21300000, guid: 40f71cd1fdeef2e4a9c42e8ff2165d8b, type: 3}
-  - {fileID: 21300000, guid: 6772e25f62e64b546aeaa21d497b0eeb, type: 3}
-  - {fileID: 21300000, guid: 4d755242c435d944f8dbdef60a9f857c, type: 3}
-  whichSprite: 0
 --- !u!1 &1715823418
 GameObject:
   m_ObjectHideFlags: 0
@@ -82733,6 +82714,7 @@ GameObject:
   - component: {fileID: 8019366762222588454}
   - component: {fileID: 8019366762222588455}
   - component: {fileID: 8019366762222588456}
+  - component: {fileID: 8019366762222588457}
   m_Layer: 7
   m_Name: PaulieNPC
   m_TagString: Untagged
@@ -87160,6 +87142,24 @@ MonoBehaviour:
   - {fileID: 1845568704}
   - {fileID: 1084518256}
   ActiveInScene: 0101
+--- !u!114 &8019366762222588457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6322674493835956297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a77ae944c1fa3d4885e12a6f2cb1699, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 1713339396}
+  sprites:
+  - {fileID: 21300000, guid: 40f71cd1fdeef2e4a9c42e8ff2165d8b, type: 3}
+  - {fileID: 21300000, guid: 6772e25f62e64b546aeaa21d497b0eeb, type: 3}
+  - {fileID: 21300000, guid: 4d755242c435d944f8dbdef60a9f857c, type: 3}
+  whichSprite: 0
 --- !u!1 &8019517255767968279
 GameObject:
   m_ObjectHideFlags: 0

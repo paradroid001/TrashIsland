@@ -11,7 +11,7 @@ public class PaulieFaceControls : MonoBehaviour
     public void Start()
     {
 
-        sprite = GetComponent<SpriteRenderer>();
+        //sprite = GetComponent<SpriteRenderer>();
     }
     public void LateUpdate() 
     {
