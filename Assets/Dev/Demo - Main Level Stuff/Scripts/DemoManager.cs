@@ -37,9 +37,7 @@ public class DemoManager : MonoBehaviour
     public List<GameObject> scenes;
 
     public List<Minigame> minigameList; //add minigames here
-
-    [SerializeField]
-    private GameObject mainCam;
+    public GameObject mainCam;
     private Minigame currentMinigame;
 
     [SerializeField]

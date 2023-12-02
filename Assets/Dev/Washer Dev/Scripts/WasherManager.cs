@@ -84,6 +84,7 @@ public class WasherManager : MonoBehaviour
     
     {
         player.SetActive(false);
+        gM.SwapCameras(myCam, myCam);
 
 
     }
@@ -212,12 +213,11 @@ public class WasherManager : MonoBehaviour
         }
 
     }
-    public scri scri;
     public Texture2D cursor;
     void WinGame()
     {
         player.SetActive(true);
-            scri.LoadNewPoint1(player);
+            //scri.LoadNewPoint1();
             Debug.Log("Won");
             gameObject.SetActive(false);
         if (currentCount >= itemCount - 1)
@@ -236,7 +236,9 @@ public class WasherManager : MonoBehaviour
                 }
                 else
                 {
-                    r.StartDialogue("WasherWin");    
+                    r.StartDialogue("WasherWin");
+                    //gM.SwapCameras(myCam, gM.mainCam);
+                    FindObjectOfType<GameEnd>().GetComponent<Animator>().Play("SceneChangeFadeInV2");    
                 }
             }
             Cursor.SetCursor(cursor, Vector2.zero, CursorMode.Auto);

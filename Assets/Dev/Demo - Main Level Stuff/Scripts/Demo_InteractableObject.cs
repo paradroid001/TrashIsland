@@ -105,6 +105,12 @@ public class Demo_InteractableObject : MonoBehaviour
             ActivatesWithMe.SetActive(true);
         }
     }
+
+    [YarnCommand("DeactivateInteraction")]
+    public void DeactivateInt()
+    {
+        InteractionReady = false;
+    }
     
 
     void BecomeInteractable()
@@ -216,13 +222,7 @@ public class Demo_InteractableObject : MonoBehaviour
             TIInteractor t = c.GetComponent<TIInteractor>();
             if (t != null && InteractionReady)
             {
-                if (!interactorsInRange.Contains(t))
-                {
-                    interactorsInRange.Add(t);
-                    //t.AddInteractable(this);
-                    
-                    BecomeInteractable();
-                }
+                BecomeInteractable();
             }
     }
     void OnTriggerExit(Collider c)
@@ -230,12 +230,7 @@ public class Demo_InteractableObject : MonoBehaviour
         TIInteractor t = c.GetComponent<TIInteractor>();
         if (t != null && InteractionReady)
         {
-            if (interactorsInRange.Contains(t))
-            {
-                interactorsInRange.Remove(t);
-                //t.RemoveInteractable(this);
-                BecomeUninteractable();
-            }
+            BecomeUninteractable();
          }
     } 
 

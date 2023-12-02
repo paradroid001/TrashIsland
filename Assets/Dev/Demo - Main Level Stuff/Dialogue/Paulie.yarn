@@ -23,6 +23,8 @@ title: PaulieDirectory
 <<else>>
     <<if $gameStage == 1>>
         <<jump BeachHint>>
+    <<elseif $gameStage == 3>>
+        <<jump wHintP>>
     <<endif>>
 <<endif>>
 ===
@@ -32,7 +34,9 @@ title: SparcDirectory
 <<if $betweenQuest == false>>
     <<jump Directory>>
 <<else>>
-    
+    <<if $gameStage == 3>>
+        <<jump wHintS>>
+    <<endif>>
 <<endif>>
 ===
 
@@ -43,7 +47,7 @@ position: -249,-512
     <<jump SPARC_PatchIn>>
 <<endif>>
 
-<<if visited ("WasherWin") == true && visited("startConveyor") == false>>
+<<if visited ("WasherWin") == true && visited("startConveyor") == true>>
     <<jump SPARC_PostConveyor>>
 <<elseif visited ("startConveyor") == true && visited("WasherWin") == true>>
     <<jump EndOfGame>>
@@ -66,7 +70,6 @@ title: Paulie_Intro
 position: -263,-369
 ---
 <<set $IsOutside = true>>
-<<set $gameStage = 1>>
 
 <<SetNarrator GameManager $Paulie Joy>>
 ? ? ?: Hey you're awake! 
@@ -89,6 +92,8 @@ position: -263,-369
 <<ActivateObjectInteraction CollectableTrashPile3>>
 
 <<makeNPCWalk GameManager Paulie 0>>
+
+<<set $gameStage = 1>>
 <<set $betweenQuest = true>>
 ===
 
@@ -134,6 +139,7 @@ Paulie: Don’t worry, I’ve just thought of a way we can use this stuff to hel
 <<SetNarrator GameManager $Paulie Joy>>
 Paulie: Just come with me! You'll see soon enough!
 
+<<set $gameStage = 2>>
 <<LoadLevel GameManager 1>> //Loads level 1
 <<wait 2>>
 <<jump SPARC_Intro>>
@@ -208,17 +214,69 @@ Paulie: Well I may not be your only hope anymore! I found a human!
 {$Paulie}: Let's just say there's a reason why you don't see many birds using pressure washers
 -> You don't even have to ask, I'm in! How can I help?
 <<SetNarrator GameManager $Paulie Joy>>
-{$Paulie}: Just head straight up those stairs to the right! A lot of the facilities in this plant have instructions built in so just head on up!
+{$Paulie}: Just head straight up those stairs to the right! A lot of the facilities in this plant have instructions built in, so just head on up!
 <<ForcedOutlineEnd PaulieNPC>>
 
 //Sparc: Well, the backbone of this place is this conveyor belt, but we still need a few final components... Hey, hang on... Paulie did you guys bring any scrap from the beach?
 //Paulie: Yep, not sure how much of it is useful though…
 //Sparc: You'd be surprised at some of the stuff that finds its way to our shores. Hey human, If you're still happy to help out, could you take the trash you collected to the sink over there? You can’t recycle dirty stuff!
+<<set $gameStage = 3>>
+<<set $betweenQuest = true>>
 ===
 
-title: PreWashHint
+title: wHintP
 ---
+<<if visited("BeachHint") == true || visited ("wHintP") == true>>
+    <<SetNarrator GameManager $Paulie Default>>
+    {$Paulie}: Need directions again?
+        -> Yes please
+            <<SetNarrator GameManager $Paulie Ponder>>
+            {$Paulie}: Don't sweat it - I imagine this has all been pretty overwhelming
+            <<jump pDirections>>
+        -> Nope, I got it!
+            <<SetNarrator GameManager $Paulie Joy>>
+            {$Paulie}: I like your attitude! You go teach that gunk a lesson or two!
+            <<ForcedOutlineEnd PaulieNPC>>
+<<else>>
+    <<SetNarrator GameManager $Paulie Sad>>
+    {$Paulie}: Hey, any memory coming back to you yet?
+        -> It seems to have gotten worse, I can't remember where to go!
+            <<SetNarrator GameManager $Paulie Joy>>
+            {$Paulie}: Oh dear! That's okay though - I don't mind repeating myself
+            <<jump pDirections>>
+        -> Still nothing, but at least I still remember where the washing station is!
+            <<SetNarrator GameManager $Paulie Joy>>
+            {$Paulie}: Well at least that's something!
+            <<ForcedOutlineEnd PaulieNPC>>
+<<endif>>
+===
 
+title: pDirections
+---
+<<SetNarrator GameManager $Paulie Default>>
+{$Paulie}: The washing station is through the yellow door at the end of the catwalk that runs above the conveyor belt
+<<SetNarrator GameManager $Paulie Ponder>>
+{$Paulie}: To get up there, you'll have to go up the stairs on the right-hand side of the room
+<<ForcedOutlineEnd PaulieNPC>>
+===
+
+title: wHintS
+---
+<<if visited("wHintS") == false>>
+    <<SetNarrator GameManager $Sparc Default>>
+    {$Sparc}: Seriously, thank you for helping out! Things were looking less than optimal for a while there
+<<endif>>
+
+<<SetNarrator GameManager $Sparc Displease>>
+{$Sparc}: Oh, did you need directions to the wash room?
+    -> Yes, please!
+        <<SetNarrator GameManager $Sparc Default>>
+        {$Sparc}: No problem, the washing station is upstairs and all the way to the left, through the yellow door
+        <<SetNarrator GameManager $Sparc Delight>>
+        {$Sparc}: Head over to the stairs on our right and they'll take you up
+        <<ForcedOutlineEnd SparcNPC>>
+    -> No thanks, just checking in!
+        <<ForcedOutlineEnd SparcNPC>>
 ===
 
 title: SPARC_IntroOld
@@ -276,7 +334,8 @@ Conveyor Belt: *whiiiiiir*
 {$Paulie}: This is amazing! I never thought I'd see the day
 <<SetPortrait GameManager $Sparc>>
 {$Sparc}: Well Human, if you'll do the honours, I think the rest of that trash you cleaned up should be a perfect test run for the conveyor. Let's hope you've brushed up on your bin knowledge!
-<<jump ShouldEndGame>>
+<<set $gameStage = 4>>
+//<<jump ShouldEndGame>>
 ===
 
 title: SPARC_PostConveyor
@@ -304,13 +363,15 @@ title: ShouldEndGame
 title: EndOfGame
 position:
 ---
+<<set $gameStage = 0>>
 <<playAnim2 SceneTransitionMaskMainMenu EndOfGameAnim>>
 
 <<wait 3>>
 ===
 title: WasherWin
 ---
-<<LoadLevel GameManager 1>>
+<<set $betweenQuest = false>>
+//<<LoadLevel GameManager 1>>
 <<EnableMovment Player>>
 <<ActivateObjectInteraction StandinLever>>
 <<jump SPARC_PostWash>>

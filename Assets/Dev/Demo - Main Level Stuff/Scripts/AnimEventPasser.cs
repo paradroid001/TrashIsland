@@ -6,6 +6,8 @@ namespace TrashIsland
 {
 public class AnimEventPasser : MonoBehaviour
 {
+    [SerializeField]
+    private string animToCall;
 
     [SerializeField]
     private Texture shutEye;
@@ -65,6 +67,12 @@ public class AnimEventPasser : MonoBehaviour
     {
         DemoManager dM = FindObjectOfType<DemoManager>();
         dM.LevelChangeEvent();
+    }
+
+    public void CallTransitionAnim()
+    {
+        Animator tAnim = FindObjectOfType<GameEnd>().GetComponent<Animator>();
+        tAnim.Play(animToCall);
     }
 }
 }
