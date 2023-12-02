@@ -9,7 +9,30 @@ title: Setup
     <<set $Sparc = ("S.P.A.R.C.")>>
     <<SetNPCName SparcNPC $Sparc>>
 
+    <<set $betweenQuest = false>>
+    <<set $gameStage = 0>>
+
     <<StartGame GameManager>>
+<<endif>>
+===
+
+title: PaulieDirectory
+---
+<<if $betweenQuest == false>>
+    <<jump Directory>>
+<<else>>
+    <<if $gameStage == 1>>
+        <<jump BeachHint>>
+    <<endif>>
+<<endif>>
+===
+
+title: SparcDirectory
+---
+<<if $betweenQuest == false>>
+    <<jump Directory>>
+<<else>>
+    
 <<endif>>
 ===
 
@@ -20,13 +43,14 @@ position: -249,-512
     <<jump SPARC_PatchIn>>
 <<endif>>
 
-<<if visited ("startConveyor") == true && visited("WasherWin") == false>>
+<<if visited ("WasherWin") == true && visited("startConveyor") == false>>
     <<jump SPARC_PostConveyor>>
 <<elseif visited ("startConveyor") == true && visited("WasherWin") == true>>
     <<jump EndOfGame>>
 <<endif>>
 <<if visited("PauliePostCleanup") == true>>
-    <<jump SPARC_PatchIn>>
+    <<jump SPARC_Intro>>
+    //<<jump SPARC_PatchIn>>
 <<endif>>
 <<if visited("Paulie_Intro") == false>>
     <<jump Paulie_Intro>>
@@ -42,17 +66,22 @@ title: Paulie_Intro
 position: -263,-369
 ---
 <<set $IsOutside = true>>
-<<SetCharacter GameManager Paulie>>
+<<set $gameStage = 1>>
+
+<<SetNarrator GameManager $Paulie Joy>>
 ? ? ?: Hey you're awake! 
-<<SetCharacterEmotion GameManager Paulie Joy>>
+<<SetNarrator GameManager $Paulie Sad>>
 ? ? ?: I wasn't sure what to expect when I saw you washed up on the shore... all we normally get is trash...
+<<SetNarrator GameManager $Paulie Mad>>
 ? ? ?: So much of it washes up every day... and it's too heavy for any of us to move so it just keeps piling up
+<<SetNarrator GameManager $Paulie Ponder>>
 ? ? ?: Hey how about this! If you help me, I'll help you get back to wherever it is that you washed up from!
 
     -> Uhmm, okay sure I guess! 
 
+<<SetNarrator GameManager $Paulie Joy>>
 ? ? ?: Yipee! Thank you so much! Follow me, I'll take you to the bulk of it! *chirp*
-
+<<SetNarrator GameManager $Paulie Default>>
 {$Paulie}: Oh yeah! I'm Paulie by the way!
 
 <<ActivateObjectInteraction CollectableTrashPile1>>
@@ -60,40 +89,55 @@ position: -263,-369
 <<ActivateObjectInteraction CollectableTrashPile3>>
 
 <<makeNPCWalk GameManager Paulie 0>>
+<<set $betweenQuest = true>>
 ===
 
 
 title: BeachHint
 position: -80,-260
 ---
+
 <<if visited("BeachHint") == false>>
+    <<SetNarrator GameManager $Paulie Joy>>
     Paulie: I can't believe some of this stuff is finally going to get cleaned up! You have no idea how thankful I am! 
 <<elseif visited("collectRubbish") == false>>
+    <<SetNarrator GameManager $Paulie Default>>
     Paulie: If you're looking for the trash to clean up, it's those big green piles just down from us on the shore!
 <<elseif visited_count("collectRubbish") == 1>>
+    <<SetNarrator GameManager $Paulie Joy>>
     Paulie: Wow you made that look like nothing! Only 2 more to go!
 <<elseif visited_count("collectRubbish") == 2>>
+    <<SetNarrator GameManager $Paulie Joy>>
     Paulie: 2 down, just 1 to go!
 <<endif>>
 ===
+
 title: PauliePostCleanup
 ---
+<<SetNarrator GameManager $Paulie Mad>>
 Paulie: Ugh, look at all this trash.
+<<SetNarrator GameManager $Paulie Sad>>
 Paulie: It feels like there’s more here every day… and for the first time that I can remember it's starting to go away, all thanks to you!
 Paulie: Funnily enough this island used to be a massive recycling plant... But that has been broken down ever since most of the humans left...
 	-> Left?
+<<SetNarrator GameManager $Paulie Shock>>
 Paulie: ..!!
+<<SetNarrator GameManager $Paulie Joy>>
 Paulie: Hey hang on just a second! You're exactly what we need!
     -> Me? What for?
+<<SetNarrator GameManager $Paulie Default>>
 Paulie: You're a Human! What can’t you do!? You can make things and fix stuff! You humans have no idea how much power you really have!
     -> I'm confused... what do you need my help with?
+<<SetNarrator GameManager $Paulie Ponder>>
 Paulie: Don’t worry, I’ve just thought of a way we can use this stuff to help with your situation!
 	-> The garbage I just picked up? How?
+<<SetNarrator GameManager $Paulie Joy>>
 Paulie: Just come with me! You'll see soon enough!
 
 <<LoadLevel GameManager 1>> //Loads level 1
-<<wait 3>>
-<<jump SPARC_PatchIn>>
+<<wait 2>>
+<<jump SPARC_Intro>>
+//<<jump SPARC_PatchIn>>
 ===
 title: PauliePostCleanupOLD
 position: -243,-117
@@ -120,50 +164,61 @@ position: -243,-117
 title: SPARC_Intro
 position:
 ---
-
+<<SetNarrator GameManager $Paulie Default>>
 Paulie: S.P.A.R.C.?
+<<SetNarrator GameManager $Paulie Mad>>
 Paulie: HEY S.P.A.R.C.!
-<<SetPortrait GameManager $Sparc>>
+<<SetNarrator GameManager $Sparc Mad>>
 {$Sparc}: *bzzt* Would you keep it down? It's bad enough being stuck with you as my only hope of fixing this place up without you rattling my circuits around with that screeching
-<<ForcedOutlineEnd SparcNPC>>
-<<SetPortrait GameManager $Paulie>>
+<<SetNarrator GameManager $Paulie Joy>>
 Paulie: Well I may not be your only hope anymore! I found a human!
-<<ForcedOutlineEnd PaulieNPC>>
-<<SetPortrait GameManager $Sparc>>
+<<SetNarrator GameManager $Sparc Displease>>
 {$Sparc}: Huh?...a human?! Oh! Hi! I barely saw you there. Where did you come from? I thought you guys all left for Mars…
     -> I wish I could tell you, but all I remember is waking up on the shore...
+<<SetNarrator GameManager $Sparc Default>>
 {$Sparc}: Well, whatever the case, good timing! I have done everything in my abilities to get this stuff in working order before we get buried in trash!
+<<SetNarrator GameManager $Sparc Delight>>
 {$Sparc}: But with a literal extra set of hands, I think might be just about ready to get these machines up and running!
     -> What is this place? and what's all this stuff for?
+<<SetNarrator GameManager $Sparc Default>>
 {$Sparc}: This? This here is the long-dormant heart of a beautiful recycling plant! It was designed by my old master! One of the only humans that cared enough to stick around!
+<<SetNarrator GameManager $Sparc Displease>>
 {$Sparc}: *bzzt* I've been working my bolts off trying to get this thing back in working order since he... 
+<<SetNarrator GameManager $Sparc Sad>>
 {$Sparc}: Well, there's only so much you can do with no limbs...
 {$Sparc}: I used to help the humans run this place but they're all gone now...
     -> What happened?
+<<SetNarrator GameManager $Sparc Displease>>
 {$Sparc}: Well…the humans got too greedy. Turning a blind eye and laying waste to the planet was good for business, you see. Eventually, there was nothing left to take. 
 {$Sparc}: Those rich enough took everything they could  and left for Mars, leaving everyone else to deal the pollution.
 	-> That's terrible...
+<<SetNarrator GameManager $Sparc Mad>>
 {$Sparc}: But we're not giving up yet! This planet isn't going to save itself, and as long as there's still juice in my circuits I'll be doing everything I can! 
 
 //Sparc: The world is at its tipping point, you see. If we don’t clear this trash, it’ll leach into the environment more and more until nothing can survive!
 
 {$Sparc}: We must get this conveyor belt up and running! All I need is a few components, but all of the stuff we find is too gunked up and would damage the machines!
-<<ForcedOutlineEnd SparcNPC>>
-<<SetPortrait GameManager $Paulie>>
-{$Paulie}: That stuff you cleared up from the beach might even have exactly what we need! And that yellow door up just up above us and to the left leads to the wash station but.. there's just one problem...
-<<ForcedOutlineEnd PaulieNPC>>
-<<SetPortrait GameManager $Sparc>>
+<<SetNarrator GameManager $Paulie Joy>>
+{$Paulie}: That stuff you cleared up from the beach might even have exactly what we need! And that yellow door up just up above us and to the left leads to the wash station but.. 
+<<SetNarrator GameManager $Paulie Ponder>>
+{$Paulie}: there's just one problem...
+<<SetNarrator GameManager $Sparc Sad>>
 {$Sparc}: I'd do it myself if I could, but me and water don't mix well! And Paulie... well
-<<ForcedOutlineEnd SparcNPC>>
-<<SetPortrait GameManager $Paulie>>
+<<SetNarrator GameManager $Paulie Shock>>
 {$Paulie}: Let's just say there's a reason why you don't see many birds using pressure washers
 -> You don't even have to ask, I'm in! How can I help?
+<<SetNarrator GameManager $Paulie Joy>>
 {$Paulie}: Just head straight up those stairs to the right! A lot of the facilities in this plant have instructions built in so just head on up!
 <<ForcedOutlineEnd PaulieNPC>>
 
 //Sparc: Well, the backbone of this place is this conveyor belt, but we still need a few final components... Hey, hang on... Paulie did you guys bring any scrap from the beach?
 //Paulie: Yep, not sure how much of it is useful though…
 //Sparc: You'd be surprised at some of the stuff that finds its way to our shores. Hey human, If you're still happy to help out, could you take the trash you collected to the sink over there? You can’t recycle dirty stuff!
+===
+
+title: PreWashHint
+---
+
 ===
 
 title: SPARC_IntroOld

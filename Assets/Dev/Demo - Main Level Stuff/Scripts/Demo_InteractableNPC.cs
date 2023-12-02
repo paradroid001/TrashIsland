@@ -241,6 +241,8 @@ public class Demo_InteractableNPC : MonoBehaviour
         
     }
 
+    // Dialogue Related Commands
+
     [YarnCommand("ActivateOutline")]
     public void SetOutlineActive(bool b)
     {
@@ -300,6 +302,11 @@ public class Demo_InteractableNPC : MonoBehaviour
         }
     }
 
+    public void CheckEmotionUpdate(string eName)
+    {
+        
+    }
+
     [YarnCommand("ForcedOutlineEnd")]
     public void CheckOutlineValid()
     {
@@ -338,6 +345,8 @@ public class Demo_InteractableNPC : MonoBehaviour
         }
     }
     
+
+    // Movement Related Commands
     public void InMotion()
     {
         isMoving = true;

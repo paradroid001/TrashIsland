@@ -138,6 +138,7 @@ public class TempMovement : MonoBehaviour
         allowSelection = false;
         if(canMove)
         {
+            string NPCTalking;
             DisableMovement();
             DialogueRunner r = FindObjectOfType<DialogueRunner>();
             if (r != null)
@@ -157,9 +158,10 @@ public class TempMovement : MonoBehaviour
                     if (TalkingTo != null)
                     {
                         TalkingTo.BecomeSelected();
+                        NPCTalking = TalkingTo.myName;
                     }
 
-                    r.StartDialogue(activeNode);    
+                    r.StartDialogue(activeNode+TalkingTo);    
                 }
             }
         }

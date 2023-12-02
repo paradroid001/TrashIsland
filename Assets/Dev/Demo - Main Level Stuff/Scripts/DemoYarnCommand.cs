@@ -42,6 +42,8 @@ public class DemoYarnCommand : MonoBehaviour
     [SerializeField]
     public List<Demo_InteractableNPC> activeNPCList;
 
+    private Demo_InteractableNPC narrator;
+
 
 
 
@@ -199,6 +201,91 @@ DemoManager dM = GetComponent<DemoManager>();
         }
         
         return spriteReturned;
+    }
+
+    [YarnCommand("SetNarrator")]
+    public void SetDialogueNarrator(string name, string emotion)
+    {
+      //Debug.Log("Gathered Variables - name: "+name+", emotion: "+emotion);
+    
+      Demo_InteractableNPC activeNPC = null; 
+      NPCFaceControls nFace = null;   
+      
+      
+      string npcN = null;
+      InMemoryVariableStorage varStor = FindObjectOfType<InMemoryVariableStorage>();
+      varStor.TryGetValue(name, out npcN);
+      Sprite spriteReturned = null;
+      
+      //Debug.Log("name gathered from storage = "+ npcN);
+
+      foreach (Demo_InteractableNPC n in activeNPCList)
+      {
+        if (npcN == n.myName)
+        {
+          //Debug.Log("Assigning portrait of "+n.myName);
+          
+          activeNPC = n;
+          nFace = n.GetComponent<NPCFaceControls>();
+
+          if (narrator != activeNPC)//If we weren't already speaking
+          {
+            if (narrator != null)
+            {
+              narrator.CheckOutlineValid(); //Resets old narrating NPC's outline if we have swapped to a new narrator
+              if(narrator.GetComponent<NPCFaceControls>()!= null) //If replaced narrator has face controls, reset face back to neutral 
+              {
+                narrator.GetComponent<NPCFaceControls>().ResetFace();
+              }
+            }         
+
+            narrator = n; //Sets passed NPC as our narrator
+            activeNPC.SetOutlineActive(true);
+            activeNPC.SelectedOutlineOverride(true);
+          }
+        }
+      }
+
+      for(int i = 0; i < DemoManager.instance.dialoguePortraits.portraits.Count; i++)
+      {
+        //int npcNo;
+        if (DemoManager.instance.dialoguePortraits.portraits[i].charName == narrator.myName)
+        {
+          Debug.Log("Name Found - " + narrator.myName);
+
+          if (DemoManager.instance.dialoguePortraits.portraits[i].emotionNames.Contains(emotion))
+          {
+              Debug.Log("Emotion Found");
+              int spriteNo = DemoManager.instance.dialoguePortraits.portraits[i].emotionNames.IndexOf(emotion);
+              spriteReturned = DemoManager.instance.dialoguePortraits.portraits[i].emotionSprites[spriteNo];
+              LivePortrait.sprite = spriteReturned;
+
+              if (nFace != null)
+              {
+                nFace.UpdateFace(emotion);
+              }
+          }
+          
+          else if (i == DemoManager.instance.dialoguePortraits.portraits.Count && DemoManager.instance.dialoguePortraits.portraits[i].emotionNames[DemoManager.instance.dialoguePortraits.portraits[i].emotionNames.IndexOf(emotion)] != emotion)
+          {
+              spriteReturned = DemoManager.instance.dialoguePortraits.portraits[i].emotionSprites[0];
+              LivePortrait.sprite = spriteReturned;
+                      Debug.Log("Emotion Name Not Found");
+                  }
+              }
+              else if(i == DemoManager.instance.dialoguePortraits.portraits.Count && DemoManager.instance.dialoguePortraits.portraits[i].charName != narrator.myName)
+              {
+                  Debug.Log("Name Not Found");
+              }
+          
+        
+          //LivePortrait.sprite = n.Icon;
+        
+      else
+      {
+        //Debug.Log("NPC "+ n.name + "does not match name passed");
+      }
+    } 
     }
 
   public void SceneTransitionNPC(int sceneRef)
