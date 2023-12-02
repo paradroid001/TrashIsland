@@ -335,6 +335,7 @@ Conveyor Belt: *whiiiiiir*
 <<SetPortrait GameManager $Sparc>>
 {$Sparc}: Well Human, if you'll do the honours, I think the rest of that trash you cleaned up should be a perfect test run for the conveyor. Let's hope you've brushed up on your bin knowledge!
 <<set $gameStage = 4>>
+<<ActivateObjectInteraction StandinLever>>
 //<<jump ShouldEndGame>>
 ===
 
@@ -373,7 +374,6 @@ title: WasherWin
 <<set $betweenQuest = false>>
 //<<LoadLevel GameManager 1>>
 <<EnableMovment Player>>
-<<ActivateObjectInteraction StandinLever>>
 <<jump SPARC_PostWash>>
 
 ===
