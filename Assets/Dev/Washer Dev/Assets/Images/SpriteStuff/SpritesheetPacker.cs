@@ -142,7 +142,10 @@ public class SpritesheetPacker : ScriptableObject
     {
         int index = 0;
 
-        sprites.Clear();
+        if (sprites != null)
+        {
+            sprites.Clear();
+        }
         Debug.Log("Gathering files in " + p);
         //Object[] data = AssetDatabase.LoadAllAssetsAtPath(p);
 
