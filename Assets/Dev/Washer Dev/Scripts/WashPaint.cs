@@ -62,7 +62,9 @@ public class WashPaint : MonoBehaviour
     private WasherManager manager;
 
     [SerializeField]
-    private ParticleSystem splash;
+    private ParticleSystem[] splash;
+
+    private GameObject pParent;
     
    
 
@@ -87,6 +89,10 @@ public class WashPaint : MonoBehaviour
 
         manager = wM;
         RefreshReadTexture(_dirtMaskBase, false);
+
+        
+        pParent = GameObject.FindGameObjectWithTag("wParticle");
+        splash = pParent.GetComponentsInChildren<ParticleSystem>();
 
         /*
         int x = Mathf.FloorToInt(_dirtMaskBase.x);
@@ -116,10 +122,13 @@ public class WashPaint : MonoBehaviour
             if(Physics.Raycast(_camera.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, 100f, ~_layerMask))
             {
                 //Debug.Log("hit");
-                splash.transform.position = hit.point;
-                if (splash.isStopped && _templateDirtMask != null)
+                pParent.transform.position = hit.point;
+                foreach(ParticleSystem p in splash)
                 {
-                    splash.Play();
+                    if (p.isStopped && _templateDirtMask != null)
+                    {
+                        p.Play();
+                    }
                 }
                 
                 
@@ -161,12 +170,18 @@ public class WashPaint : MonoBehaviour
 
         if (Input.GetMouseButtonUp(0))
         {
-            splash.Stop();;
+            foreach(ParticleSystem p in splash)
+            {
+                p.Stop();
+            }
         }
 
         if (completionPercent != 100 && completionPercent >= PercentToWin)
         {
-            splash.Stop();
+            foreach(ParticleSystem p in splash)
+            {
+                p.Stop();
+            }
             Debug.Log("Win!");
             isTarget = false;
             GetComponent<Animator>().Play("CleanedAnim");

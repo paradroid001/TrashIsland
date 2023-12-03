@@ -8,6 +8,9 @@ public class WasherManager : MonoBehaviour
 {
     enum GameState {Tutorial, Play, End};
 
+    [SerializeField]
+    private bool DebugMode = false;
+
 
     [Header ("Inventories")]
     [Space(10)]
@@ -83,8 +86,11 @@ public class WasherManager : MonoBehaviour
     void OnEnable() 
     
     {
-        player.SetActive(false);
-        gM.SwapCameras(myCam, myCam);
+        if (!DebugMode)
+        {
+            player.SetActive(false);
+            gM.SwapCameras(myCam, myCam);
+        }
 
 
     }
@@ -216,33 +222,37 @@ public class WasherManager : MonoBehaviour
     public Texture2D cursor;
     void WinGame()
     {
-        player.SetActive(true);
-            //scri.LoadNewPoint1();
-            Debug.Log("Won");
-            gameObject.SetActive(false);
-        if (currentCount >= itemCount - 1)
+        if (!DebugMode)
         {
-            DialogueRunner r = FindObjectOfType<DialogueRunner>();
-            if (r != null)
+            player.SetActive(true);
+                //scri.LoadNewPoint1();
+                Debug.Log("Won");
+                gameObject.SetActive(false);
+            if (currentCount >= itemCount - 1)
             {
-                if (r.IsDialogueRunning)
+                DialogueRunner r = FindObjectOfType<DialogueRunner>();
+                if (r != null)
                 {
-                    //If dialogue is already running, advance it.
-                    LineView l = FindObjectOfType<LineView>();
-                    if (l != null)
+                    if (r.IsDialogueRunning)
                     {
-                        l.OnContinueClicked();
+                        //If dialogue is already running, advance it.
+                        LineView l = FindObjectOfType<LineView>();
+                        if (l != null)
+                        {
+                            l.OnContinueClicked();
+                        }
+                    }
+                    else
+                    {
+                        r.StartDialogue("WasherWin");
+                        //gM.SwapCameras(myCam, gM.mainCam);
+                        FindObjectOfType<GameEnd>().GetComponent<Animator>().Play("SceneChangeFadeInV2");    
                     }
                 }
-                else
-                {
-                    r.StartDialogue("WasherWin");
-                    //gM.SwapCameras(myCam, gM.mainCam);
-                    FindObjectOfType<GameEnd>().GetComponent<Animator>().Play("SceneChangeFadeInV2");    
-                }
+                Cursor.SetCursor(cursor, Vector2.zero, CursorMode.Auto);            
             }
-            Cursor.SetCursor(cursor, Vector2.zero, CursorMode.Auto);
-            
         }
     }
+
+    
 }
