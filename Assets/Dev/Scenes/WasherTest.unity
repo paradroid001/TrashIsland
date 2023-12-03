@@ -270,7 +270,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f950b3b0527e0f4bb437673f9357f91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DebugMode: 0
+  DebugMode: 1
   dirtyInventory: {fileID: 1015903567}
   cleanInventory: {fileID: 385040885}
   washingInventory: {fileID: 1160297999}
@@ -3004,6 +3004,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: drinkCan (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3125310109504599078, guid: 2d89c82f006ca594ba55f8cc686bff1a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3596900440175680861, guid: 2d89c82f006ca594ba55f8cc686bff1a,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.0029
+      objectReference: {fileID: 0}
+    - target: {fileID: 3596900440175680861, guid: 2d89c82f006ca594ba55f8cc686bff1a,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.002
+      objectReference: {fileID: 0}
+    - target: {fileID: 3596900440175680861, guid: 2d89c82f006ca594ba55f8cc686bff1a,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.0029
+      objectReference: {fileID: 0}
+    - target: {fileID: 8618434880951665730, guid: 2d89c82f006ca594ba55f8cc686bff1a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
