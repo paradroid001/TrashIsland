@@ -23,19 +23,17 @@ public class NPCFaceControls : MonoBehaviour
 
     public void UpdateFace(string emotion)
     {
-        if(emotion == "Joy")
+        switch(emotion)
         {
+            case "Joy":
             whichSprite = 1;
-        }
-
-        else if(emotion == "Sad")
-        {
+            break;
+            case "Sad":
             whichSprite = 2;
-        }
-
-        else
-        {
-            whichSprite = 0;
+            break;
+            case "":
+            whichSprite = 3;
+            break;
         }
 
         Apply();

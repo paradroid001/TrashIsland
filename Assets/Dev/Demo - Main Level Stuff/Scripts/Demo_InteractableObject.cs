@@ -52,6 +52,8 @@ public class Demo_InteractableObject : MonoBehaviour
     private GameObject ActivatesWithMe;
     [SerializeField]
     private int interactionCount;
+    [Header("Energy Settings")]
+    public int energyCost;
 
     protected int FindIndexOfMaterial(Material m)
         {
@@ -98,12 +100,12 @@ public class Demo_InteractableObject : MonoBehaviour
     [YarnCommand("ActivateObjectInteraction")]
     public void ActivateObjectInteraction()
     {
-        InteractionReady = true;
+            InteractionReady = true;
 
-        if(ActivatesWithMe != null)
-        {
-            ActivatesWithMe.SetActive(true);
-        }
+            if(ActivatesWithMe != null)
+            {
+                ActivatesWithMe.SetActive(true);
+            }
     }
 
     [YarnCommand("DeactivateInteraction")]
@@ -190,16 +192,21 @@ public class Demo_InteractableObject : MonoBehaviour
 
     public void BecomeSelected()
     { 
-        if (IsInteractable)
+        
+        if(energyCost <= Energy.instance.currentEnergy && energyCost != 0)
         {
-            IsSelected = true;
-
-            if(myRenderer != null)
+            if (IsInteractable)
             {
-                int materialCount = myRenderer.materials.Length - 1;
-                myRenderer.materials[materialCount].SetColor("_OutlineColor", selectedColour);
+                IsSelected = true;
+
+                if(myRenderer != null)
+                {
+                    int materialCount = myRenderer.materials.Length - 1;
+                    myRenderer.materials[materialCount].SetColor("_OutlineColor", selectedColour);
+                }
+                StartObjectDialogue();
+                Energy.instance.currentEnergy -= energyCost;
             }
-            StartObjectDialogue();
         }
         
     }

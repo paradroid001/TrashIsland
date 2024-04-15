@@ -64,9 +64,10 @@ DemoManager dM = GetComponent<DemoManager>();
     NavMeshAgent agent;
     Transform destination;
 
-    if (agentName == "Paulie")
+    switch(agentName)
     {
-        //Paulie is target       
+      case "Paulie":
+      //Paulie is target       
         agent = Paulie;
 
         //Paulie.SetDestination
@@ -75,20 +76,18 @@ DemoManager dM = GetComponent<DemoManager>();
             destination = PaulieTransforms[positionRef];
             SetNPCDestination(agent, destination);
         }
-    }
-    
-    if (agentName == "Sparc")
-    {
-        //Sparc is target
-        agent = Sparc;
-
-        //Paulie.SetDestination
-        if(positionRef <= SparcTransforms.Count && positionRef >= 0)
-        {
-            destination = SparcTransforms[positionRef];            
-            SetNPCDestination(agent, destination);
-        }
-    }
+        break;
+    case "Sparc":
+      //Sparc is target
+      agent = Sparc;
+      //Paulie.SetDestination
+      if(positionRef <= SparcTransforms.Count && positionRef >= 0)
+      {
+          destination = SparcTransforms[positionRef];            
+          SetNPCDestination(agent, destination);
+      }
+      break;
+    }    
   }
 
   [YarnCommand("LoadLevel")]
@@ -199,7 +198,6 @@ DemoManager dM = GetComponent<DemoManager>();
                 Debug.Log("Name Not Found");
             }
         }
-        
         return spriteReturned;
     }
 
@@ -299,6 +297,10 @@ DemoManager dM = GetComponent<DemoManager>();
       }
     }    
   }
-
+  [YarnCommand("AddInventory")]
+  public void AddToInventory()
+  {
+    
+  }
 }
 }
