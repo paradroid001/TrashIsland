@@ -1,14 +1,25 @@
 title: Setup
 ---
 // Called on Start through the GameManager, sets values for variables before progressing any further with Dialogue 
+
+// Skips the setup stage if we have already visited this node
 <<if visited("Setup") == true>>
     <<jump Directory>>
 <<else>>
+    // Sets up names for NPCs and overrides every other instace so we can be sure that this string will be consistent across all fronts
+
+    // Creates our baseline string variable
     <<set $Paulie = ("Paulie")>>
+
+    // Yarn command that sets our created string to the PaulieNPC's local script ('Demo_InteractableNPC' - MyName variable)
+    // This Yarn Command is declared in Demo_InteractableNPC script instead of DemoYarnCommand script
     <<SetNPCName PaulieNPC $Paulie>>
+
+    // Repeats this cycle with sparc
     <<set $Sparc = ("S.P.A.R.C.")>>
     <<SetNPCName SparcNPC $Sparc>>
 
+    // At time of writing this, I believe these two are somewhat redundant as we will skip this entire node if we have already begun the game
     <<set $betweenQuest = false>>
     <<set $gameStage = 0>>
 
@@ -43,10 +54,12 @@ title: SparcDirectory
 title: Directory
 position: -249,-512
 ---
+// Checks to see if we are in Debug Mode (Admin yarn script)
 <<if visited("Admin") == true>>
     <<jump SPARC_PatchIn>>
 <<endif>>
 
+// Checks to see what game stage we are at by process of elimination
 <<if visited ("WasherWin") == true && visited("startConveyor") == true>>
     <<jump SPARC_PostConveyor>>
 <<elseif visited ("startConveyor") == true && visited("WasherWin") == true>>

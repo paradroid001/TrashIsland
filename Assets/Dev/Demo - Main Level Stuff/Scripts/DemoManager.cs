@@ -182,6 +182,7 @@ public class DemoManager : MonoBehaviour
 
     public void endMenu()
     {
+        // Cycles the main menu with the in game UI, called by animation event on SceneTransitionMaskMainMenu game object (WhiteFadeIn - StartGame void in AnimEventPasser script)
         TempMovement tM = playerRef.GetComponent<TempMovement>();
          _menuUI.SetActive(false);
         _mainUI.SetActive(true);
