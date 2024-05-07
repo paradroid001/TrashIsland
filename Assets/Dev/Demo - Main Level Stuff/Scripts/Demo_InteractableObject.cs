@@ -192,22 +192,24 @@ public class Demo_InteractableObject : MonoBehaviour
 
     public void BecomeSelected()
     { 
-        
+        if (IsInteractable)
+        {
+            IsSelected = true;
+
+            if(myRenderer != null)
+            {
+                int materialCount = myRenderer.materials.Length - 1;
+                myRenderer.materials[materialCount].SetColor("_OutlineColor", selectedColour);
+            }
+                StartObjectDialogue();
+                //Energy.instance.currentEnergy -= energyCost;
+        }
+        /*
         if(energyCost <= Energy.instance.currentEnergy && energyCost != 0)
         {
-            if (IsInteractable)
-            {
-                IsSelected = true;
-
-                if(myRenderer != null)
-                {
-                    int materialCount = myRenderer.materials.Length - 1;
-                    myRenderer.materials[materialCount].SetColor("_OutlineColor", selectedColour);
-                }
-                StartObjectDialogue();
-                Energy.instance.currentEnergy -= energyCost;
-            }
+            
         }
+        */
         
     }
 
