@@ -1,0 +1,117 @@
+title: Sparc_PostSorting
+---
+<<SetNarrator GameManager $Sparc Default>>
+{$Sparc}: Great work sorting out that trash! Now we just need to take that trash and process it! 
+    ->How do I do that?
+<<SetNarrator GameManager $Sparc Delight>>
+{$Sparc}: : It's easy! Walk up to the yellow bin and take out a piece of trash!
+<<ForcedOutlineEnd SparcNPC>>
+===
+
+title: Sparc_MachineExplain
+---
+<<SetNarrator GameManager $Sparc Displease>>
+{$Sparc}: When there were people on the island, the machines here used to help them make the island a better place...
+<<SetNarrator GameManager $Sparc Delight>>
+{$Sparc}: But now that you're here, we can get started again!
+<<SetNarrator GameManager $Sparc Default>>
+{$Sparc}: *bzzt* As you can see, there are many different types of machines here, each with their own use. 
+{$Sparc}: Each piece of trash needs to be processed by several machines before it can be recycled.
+===
+
+title: TrashChoose0
+---
+{$Sparc}: Let's see what trash you grabbed out!
+-> *Show {$Sparc} your junk*
+{$Sparc}: Ahh! You got some {$SelectedTrash} Material! I'll run you over the basics.
+<<jump TrashTypeDetection>>
+===
+
+title: AluminiumExplain
+---
+S.P.A.R.C: Aluminium cans need to be processed in the shredder. *beep!*. Go ahead and put it into the shredder! Watch your fingers!
+    -> *Put the can into the shredder*
+S.P.A.R.C: Now that you've shredded it, you need to clean it!
+    -> *Take out can and put into washer*
+//Washer progress bar
+//if washer is done:
+
+S.P.A.R.C: Lastly, you can put the cleaned aluminium into the smelter. *bzzt*
+    -> *Put the cleaned aluminium into smelter*
+S.P.A.R.C: This will smelt it down into crude aluminium that you can use to craft with!
+<<set $HoldingItem = false>>
+//<<jump TrashChoose1>>
+===
+title: CardboardExplain
+---
+S.P.A.R.C: *beep!* Cardboard and Paper trash needs to be washed first! Washing any trash item will always take 5 seconds, regardless of their material.
+    -> *Put cardboard in washer*
+S.P.A.R.C: Now we need to smelt it. Let's pop it in for 5 seconds.
+    -> *Put cardboard in smelter*
+S.P.A.R.C: Last step is to use the roller! This should create paper scraps that we can use! *bzzzt!*
+    -> *Use the roller on the paper*
+S.P.A.R.C: Great work!
+
+<<set $HoldingItem = false>>
+//<<jump TrashChoose1>>
+===
+title: GlassExplain
+---
+S.P.A.R.C: Glass items such as bottles and jars need to be processed in the crusher. *beep!*
+
+    -> *Put the glass item into the shredder*
+
+S.P.A.R.C: Now that you've crushed it, you need to clean it!
+
+    -> *Take out glass and put into washer*
+
+//Washer progress bar
+//if washer is done:
+
+S.P.A.R.C: Now all you need to do is put the cleaned glass into the smelter. Glass smelts into 
+Foggy Glass!
+
+<<set $HoldingItem = false>>
+//<<jump TrashChoose1>>
+===
+title: PlasicExplain
+---
+S.P.A.R.C: Plastic items like containers and lids need to go into the shredder.
+    -> *Put plastic into the shredder*
+S.P.A.R.C: *beep* Now you'll need to clean them. 
+    -> *Take out plastic container and put into washer*
+//Washer progress bar
+//if washer is done:
+S.P.A.R.C: Great work! Now put the cleaned plastic into the smelter!
+    -> *Put the cleaned plastic into the smelter*
+ S.P.A.R.C: *bzzt* This will smelt it down into Re-pearl that you can use to craft items!
+
+<<set $HoldingItem = false>>
+//<<jump TrashChoose1>>
+===
+
+
+title: TrashChoose1
+---
+<<if visited_count("TrashChoose1") > 3>>
+// jump Paulie_EndRecycle
+<<else>>
+    {$Sparc}: Let's see what you grabbed this time!
+    -> *Show {$Sparc} the {$SelectedTrash} trash you grabbed*
+    <<jump TrashTypeDetection>>  
+<<endif>>
+===
+
+
+title: TrashTypeDetection
+---
+<<if visited ("SelectedAluminium") == true && visited ("AluminiumExplain") == false>>
+    <<jump AluminiumExplain>>
+<<elseif visited ("SelectedOrganic") == true && visited ("CardboardExplain") == false>>
+    <<jump CardboardExplain>>
+<<elseif visited ("SelectedGlass") == true && visited ("GlassExplain") == false>>
+    <<jump GlassExplain>>
+<<elseif visited ("SelectedPlastic") == true&& visited ("PlasicExplain") == false>>
+    <<jump PlasicExplain>>
+<<endif>>
+===

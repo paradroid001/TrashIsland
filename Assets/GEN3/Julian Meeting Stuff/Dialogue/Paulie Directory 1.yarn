@@ -1,0 +1,10 @@
+﻿title: Paulie_Directory
+tags:
+---
+// if we havent visited our first node yet 
+<<if visited ("Sparc_PostSorting") == false>>
+    <<jump Sparc_PostSorting>>
+<<else>>
+//jump to next
+<<endif>>
+===

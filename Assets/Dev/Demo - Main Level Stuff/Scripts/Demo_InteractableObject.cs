@@ -128,8 +128,10 @@ public class Demo_InteractableObject : MonoBehaviour
         {
             gameObject.layer = 8;
         }
-
+        if(selectionMaterial!=null)
+        {
         int index = FindIndexOfMaterial(selectionMaterial);
+        
         if (index < 0)
         {
         //Copy out old mats
@@ -147,6 +149,7 @@ public class Demo_InteractableObject : MonoBehaviour
             myRenderer.materials = newmats;
         }
         myRenderer.SetPropertyBlock(selectedPropertyBlock);
+        }
     }
 
     void BecomeUninteractable()
@@ -192,7 +195,7 @@ public class Demo_InteractableObject : MonoBehaviour
 
     public void BecomeSelected()
     { 
-        
+        /*
         if(energyCost <= Energy.instance.currentEnergy && energyCost != 0)
         {
             if (IsInteractable)
@@ -208,6 +211,18 @@ public class Demo_InteractableObject : MonoBehaviour
                 Energy.instance.currentEnergy -= energyCost;
             }
         }
+        */
+        if (IsInteractable)
+            {
+                IsSelected = true;
+
+                if(myRenderer != null)
+                {
+                    int materialCount = myRenderer.materials.Length - 1;
+                    myRenderer.materials[materialCount].SetColor("_OutlineColor", selectedColour);
+                }
+                StartObjectDialogue();
+            }
         
     }
 

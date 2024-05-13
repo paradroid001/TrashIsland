@@ -14,6 +14,10 @@ ScriptedImporter:
   - {fileID: 6391573757903218779, guid: 4cfa3a9b1d1c9cf419576e4793885ea2, type: 3}
   - {fileID: 6391573757903218779, guid: 45b7e4ef3f2887742a3d82d74af13b41, type: 3}
   - {fileID: 6391573757903218779, guid: 6b556092e705d9f4cb956a983d7c1ef7, type: 3}
+  - {fileID: 6391573757903218779, guid: 977b27a91534d8240808c509dbc238ea, type: 3}
+  - {fileID: 6391573757903218779, guid: 7764ce54d93dd9e4c8cac5b294e106c4, type: 3}
+  - {fileID: 6391573757903218779, guid: a50e8e870029793488adc2bb079239f9, type: 3}
+  - {fileID: 6391573757903218779, guid: 7600a2081c74ef64bbded66d094a9324, type: 3}
   compileErrors: []
   serializedDeclarations:
   - name: $Paulie
@@ -27,6 +31,24 @@ ScriptedImporter:
       type: 3}
   - name: $Sparc
     typeName: String
+    defaultValueBool: 0
+    defaultValueNumber: 0
+    defaultValueString: 
+    description: Implicitly declared in Paulie.yarn, node Setup
+    isImplicit: 1
+    sourceYarnAsset: {fileID: 6391573757903218779, guid: 3561217b77771c04391920ddc4d97b5e,
+      type: 3}
+  - name: $betweenQuest
+    typeName: Bool
+    defaultValueBool: 0
+    defaultValueNumber: 0
+    defaultValueString: 
+    description: Implicitly declared in Paulie.yarn, node Setup
+    isImplicit: 1
+    sourceYarnAsset: {fileID: 6391573757903218779, guid: 3561217b77771c04391920ddc4d97b5e,
+      type: 3}
+  - name: $gameStage
+    typeName: Number
     defaultValueBool: 0
     defaultValueNumber: 0
     defaultValueString: 

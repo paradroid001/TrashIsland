@@ -1,0 +1,91 @@
+﻿title: BinInteraction
+tags:
+---
+<<if visited("Sparc_PostSorting")==true && $HoldingItem == false>>
+    <<if visited ("BinInteraction")==false>>
+        <<SetNarrator GameManager $Paulie Default>>
+        {$Paulie}: There are a few trash options, which would you like?
+        -> Paper-Based Organics
+            {$Paulie}: Great! As a general rule of thumb, trash that goes into the yellow bins are paper, cardboard, cans, glass or plastic containers!
+            {$Paulie}: I think S.P.A.R.C. wanted to see you once you grabbed the trash, so go have a chat!
+            -> Neat!
+                <<ForcedOutlineEnd PaulieNPC>>
+                <<jump SelectedOrganic>>
+        -> Aluminium Materials
+            {$Paulie}: Great! As a general rule of thumb, trash that goes into the yellow bins are paper, cardboard, cans, glass or plastic containers!
+            {$Paulie}: I think S.P.A.R.C. wanted to see you once you grabbed the trash, so go have a chat!
+            -> Neat!
+                <<ForcedOutlineEnd PaulieNPC>>
+                <<jump SelectedAluminium>>
+        -> Glass Materials
+            {$Paulie}: Great! As a general rule of thumb, trash that goes into the yellow bins are paper, cardboard, cans, glass or plastic containers!
+            {$Paulie}: I think S.P.A.R.C. wanted to see you once you grabbed the trash, so go have a chat!
+            -> Neat!
+                <<ForcedOutlineEnd PaulieNPC>>
+                <<jump SelectedGlass>>
+        -> Plastics
+            {$Paulie}: Great! As a general rule of thumb, trash that goes into the yellow bins are paper, cardboard, cans, glass or plastic containers!
+            {$Paulie}: I think S.P.A.R.C. wanted to see you once you grabbed the trash, so go have a chat!
+            -> Neat!
+                <<ForcedOutlineEnd PaulieNPC>>
+                <<jump SelectedPlastic>>
+    <<elseif visited_count("TrashChoose0")>=1 && visited_count("TrashChoose1") <= 3>>
+            <<SetNarrator GameManager $Paulie Default>>
+            {$Paulie}: You know the drill, grab a type of trash you haven't gotten yet!
+            -> Paper-Based Organics
+                <<if visited("SelectedOrganic")==true>>
+                    {$Paulie}: You've already taken one of those! Choose one you haven't picked yet
+                    <<jump BinInteraction>>
+                <<else>>
+                    <<jump SelectedOrganic>>
+                <<endif>>
+            -> Aluminium Materials
+                <<if visited("SelectedAluminium")==true>>
+                    {$Paulie}: You've already taken one of those! Choose one you haven't picked yet
+                    <<jump BinInteraction>>
+                <<else>>
+                    <<jump SelectedAluminium>>
+                <<endif>>
+            -> Glass Materials
+                <<if visited("SelectedGlass")==true>>
+                    {$Paulie}: You've already taken one of those! Choose one you haven't picked yet
+                    <<jump BinInteraction>>
+                <<else>>
+                    <<jump SelectedGlass>>
+                <<endif>>
+            -> Plastics
+                <<if visited("SelectedPlastic")==true>>
+                    {$Paulie}: You've already taken one of those! Choose one you haven't picked yet
+                    <<jump BinInteraction>>
+                <<else>>
+                    <<jump SelectedPlastic>>
+                <<endif>>
+        <<endif>>
+<<else>>
+<<endif>>
+===
+
+title: SelectedOrganic
+---
+<<set $SelectedTrash = ("Paper-Based")>>
+<<set $HoldingItem = true>>
+-> *You grasp the junk firmly in both hands*
+===
+
+title: SelectedAluminium
+---
+<<set $SelectedTrash = ("Aluminium-Based")>>
+-> *You grasp the junk firmly in both hands*
+===
+
+title: SelectedGlass
+---
+<<set $SelectedTrash = ("Glass-Based")>>
+-> *You grasp the junk firmly in both hands*
+===
+
+title: SelectedPlastic
+---
+<<set $SelectedTrash = ("Plastic-Based")>>
+-> *You grasp the junk firmly in both hands*
+===
