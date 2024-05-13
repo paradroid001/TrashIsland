@@ -29,46 +29,46 @@ title: TrashChoose0
 
 title: AluminiumExplain
 ---
-S.P.A.R.C: Aluminium cans need to be processed in the shredder. *beep!*. Go ahead and put it into the shredder! Watch your fingers!
+{$Sparc}: Aluminium cans need to be processed in the shredder. *beep!*. Go ahead and put it into the shredder! Watch your fingers!
     -> *Put the can into the shredder*
-S.P.A.R.C: Now that you've shredded it, you need to clean it!
+{$Sparc}: Now that you've shredded it, you need to clean it!
     -> *Take out can and put into washer*
 //Washer progress bar
 //if washer is done:
 
-S.P.A.R.C: Lastly, you can put the cleaned aluminium into the smelter. *bzzt*
+{$Sparc}: Lastly, you can put the cleaned aluminium into the smelter. *bzzt*
     -> *Put the cleaned aluminium into smelter*
-S.P.A.R.C: This will smelt it down into crude aluminium that you can use to craft with!
+{$Sparc}: This will smelt it down into crude aluminium that you can use to craft with!
 <<set $HoldingItem = false>>
 //<<jump TrashChoose1>>
 ===
 title: CardboardExplain
 ---
-S.P.A.R.C: *beep!* Cardboard and Paper trash needs to be washed first! Washing any trash item will always take 5 seconds, regardless of their material.
+{$Sparc}: *beep!* Cardboard and Paper trash needs to be washed first! Washing any trash item will always take 5 seconds, regardless of their material.
     -> *Put cardboard in washer*
-S.P.A.R.C: Now we need to smelt it. Let's pop it in for 5 seconds.
+{$Sparc}: Now we need to smelt it. Let's pop it in for 5 seconds.
     -> *Put cardboard in smelter*
-S.P.A.R.C: Last step is to use the roller! This should create paper scraps that we can use! *bzzzt!*
+{$Sparc}: Last step is to use the roller! This should create paper scraps that we can use! *bzzzt!*
     -> *Use the roller on the paper*
-S.P.A.R.C: Great work!
+{$Sparc}: Great work!
 
 <<set $HoldingItem = false>>
 //<<jump TrashChoose1>>
 ===
 title: GlassExplain
 ---
-S.P.A.R.C: Glass items such as bottles and jars need to be processed in the crusher. *beep!*
+{$Sparc}: Glass items such as bottles and jars need to be processed in the crusher. *beep!*
 
     -> *Put the glass item into the shredder*
 
-S.P.A.R.C: Now that you've crushed it, you need to clean it!
+{$Sparc}: Now that you've crushed it, you need to clean it!
 
     -> *Take out glass and put into washer*
 
 //Washer progress bar
 //if washer is done:
 
-S.P.A.R.C: Now all you need to do is put the cleaned glass into the smelter. Glass smelts into 
+{$Sparc}: Now all you need to do is put the cleaned glass into the smelter. Glass smelts into 
 Foggy Glass!
 
 <<set $HoldingItem = false>>
@@ -76,15 +76,15 @@ Foggy Glass!
 ===
 title: PlasicExplain
 ---
-S.P.A.R.C: Plastic items like containers and lids need to go into the shredder.
+{$Sparc}: Plastic items like containers and lids need to go into the shredder.
     -> *Put plastic into the shredder*
-S.P.A.R.C: *beep* Now you'll need to clean them. 
+{$Sparc}: *beep* Now you'll need to clean them. 
     -> *Take out plastic container and put into washer*
 //Washer progress bar
 //if washer is done:
-S.P.A.R.C: Great work! Now put the cleaned plastic into the smelter!
+{$Sparc}: Great work! Now put the cleaned plastic into the smelter!
     -> *Put the cleaned plastic into the smelter*
- S.P.A.R.C: *bzzt* This will smelt it down into Re-pearl that you can use to craft items!
+{$Sparc}: *bzzt* This will smelt it down into Re-pearl that you can use to craft items!
 
 <<set $HoldingItem = false>>
 //<<jump TrashChoose1>>
