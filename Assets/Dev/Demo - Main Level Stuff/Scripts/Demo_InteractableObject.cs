@@ -11,6 +11,9 @@ public class Demo_InteractableObject : MonoBehaviour
     [SerializeField]
     private bool InteractionReady;
 
+    [SerializeField]
+    private bool yarnBasedInteractable = true;
+
 
     [SerializeField]
     protected Collider interactionCollider;
@@ -215,13 +218,24 @@ public class Demo_InteractableObject : MonoBehaviour
         if (IsInteractable)
             {
                 IsSelected = true;
-
                 if(myRenderer != null)
                 {
                     int materialCount = myRenderer.materials.Length - 1;
                     myRenderer.materials[materialCount].SetColor("_OutlineColor", selectedColour);
                 }
-                StartObjectDialogue();
+
+                if (yarnBasedInteractable)
+                {
+                    StartObjectDialogue();
+                }
+                else
+                {
+                    JDemo_Machines machineSript = gameObject.GetComponent<JDemo_Machines>();
+                    if (machineSript != null)
+                    {
+                        machineSript.InteractWithMachine();
+                    }
+                }
             }
         
     }

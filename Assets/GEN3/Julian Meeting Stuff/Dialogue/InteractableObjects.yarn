@@ -1,5 +1,6 @@
 ﻿title: BinInteraction
 tags:
+position: -204,-477
 ---
 <<if visited("Sparc_PostSorting")==true && $HoldingItem == false>>
     <<if visited ("BinInteraction")==false>>
@@ -65,27 +66,42 @@ tags:
 <<endif>>
 ===
 
-title: SelectedOrganic
+title: SelectedAluminium
+position: -297,-234
 ---
-<<set $SelectedTrash = ("Paper-Based")>>
+<<GiveItem Player aluminiumTrash 1 1>>
+
+<<set $SelectedTrash = ("Aluminium-Based")>>
 <<set $HoldingItem = true>>
--> *You grasp the junk firmly in both hands*
+-> *You take the trash*
 ===
 
-title: SelectedAluminium
+title: SelectedOrganic
+position: -67,-230
 ---
-<<set $SelectedTrash = ("Aluminium-Based")>>
--> *You grasp the junk firmly in both hands*
+<<GiveItem Player paperTrash 2 1>>
+
+<<set $SelectedTrash = ("Paper-Based")>>
+<<set $HoldingItem = true>>
+-> *You take the trash*
 ===
 
 title: SelectedGlass
+position: 148,-476
 ---
+<<GiveItem Player glassTrash 3 1>>
+
 <<set $SelectedTrash = ("Glass-Based")>>
--> *You grasp the junk firmly in both hands*
+<<set $HoldingItem = true>>
+-> *You take the trash*
 ===
 
 title: SelectedPlastic
+position: 151,-338
 ---
+<<GiveItem Player plasticTrash 4 1>>
+
 <<set $SelectedTrash = ("Plastic-Based")>>
--> *You grasp the junk firmly in both hands*
+<<set $HoldingItem = true>>
+-> *You take the trash*
 ===

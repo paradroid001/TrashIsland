@@ -1,11 +1,22 @@
 ﻿title: SPARC_Directory
 tags:
 ---
-<<if visited ("Sparc_PostSorting") == false>>
-    <<jump Sparc_PostSorting>>
-<<elseif visited("BinInteraction") == true && visited ("TrashChoose0") == false>>
-    <<jump TrashChoose0>>
-<<elseif visited("TrashChoose0") == true>>
-    <<jump TrashChoose1>>
+<<if $OverrideMode == true>>
+    <<jump SPARC_Override>>
+<<else>>
+    <<if visited ("Sparc_PostSorting") == false>>
+        <<jump Sparc_PostSorting>>
+    <<elseif visited("BinInteraction") == true && visited ("TrashChoose0") == false>>
+        <<jump TrashChoose0>>
+    <<elseif visited("TrashChoose0") == true>>
+        <<jump TrashChoose1>>
+    <<endif>>
 <<endif>>
+===
+
+title: SPARC_Override
+---
+<<SetNarrator GameManager $Sparc Default>>
+{$Sparc}: Once you have processed the materials, come back and see me!
+<<ForcedOutlineEnd SparcNPC>>
 ===
