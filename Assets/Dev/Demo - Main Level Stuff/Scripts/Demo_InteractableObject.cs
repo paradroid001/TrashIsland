@@ -115,6 +115,7 @@ public class Demo_InteractableObject : MonoBehaviour
     public void DeactivateInt()
     {
         InteractionReady = false;
+        BecomeDeselected();
         BecomeUninteractable();
     }
     

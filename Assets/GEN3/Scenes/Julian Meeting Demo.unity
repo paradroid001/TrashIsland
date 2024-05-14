@@ -6766,6 +6766,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f30e1642d5a85844a85ee28d2b7ed587, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  machineType: 1
   timerLength: 0
   requiredItemName: 
   outputItemName: 
@@ -41556,6 +41557,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f30e1642d5a85844a85ee28d2b7ed587, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  machineType: 0
   timerLength: 0
   requiredItemName: 
   outputItemName: 
@@ -47583,9 +47585,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 4349456384828089993}
   - {fileID: 233299453}
   - {fileID: 2986079250754622514}
-  - {fileID: 4349456384828089993}
   - {fileID: 406235414809720111}
   - {fileID: 8532870442210660243}
   m_Father: {fileID: 0}
@@ -61290,6 +61292,7 @@ GameObject:
   - component: {fileID: 919132147967560405}
   - component: {fileID: 919132147967560410}
   - component: {fileID: 919132147967560409}
+  - component: {fileID: 919132147967560411}
   m_Layer: 7
   m_Name: SparcNPC
   m_TagString: Untagged
@@ -61429,6 +61432,21 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &919132147967560411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132147967560404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 148b2df8a007734489cc7e86ee223102, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  overrideBranch: 0
+  overrideProgressionRef: 0
+  oNodeName: 
 --- !u!1 &919132148241584172
 GameObject:
   m_ObjectHideFlags: 0
@@ -83477,6 +83495,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f30e1642d5a85844a85ee28d2b7ed587, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  machineType: 2
   timerLength: 0
   requiredItemName: 
   outputItemName: 
@@ -84787,6 +84806,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f30e1642d5a85844a85ee28d2b7ed587, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  machineType: 0
   timerLength: 0
   requiredItemName: 
   outputItemName: 
@@ -85207,6 +85227,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   heldItemName: 
   heldItemID: 0
+  heldItemProgression: 0
   playerHasItem: 0
 --- !u!1 &8300603817302639583
 GameObject:
@@ -86281,6 +86302,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f30e1642d5a85844a85ee28d2b7ed587, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  machineType: 3
   timerLength: 0
   requiredItemName: 
   outputItemName: 
@@ -86765,6 +86787,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f30e1642d5a85844a85ee28d2b7ed587, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  machineType: 4
   timerLength: 0
   requiredItemName: 
   outputItemName: 

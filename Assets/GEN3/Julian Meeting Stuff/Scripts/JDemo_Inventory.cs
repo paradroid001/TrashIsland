@@ -20,6 +20,7 @@ public class JDemo_Inventory : MonoBehaviour
         {
             heldItemName = itemName;
             heldItemID = itemID;
+            heldItemProgression = itemProg;
             playerHasItem = true;
         }
         else

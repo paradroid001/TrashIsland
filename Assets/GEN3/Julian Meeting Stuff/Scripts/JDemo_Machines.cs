@@ -6,7 +6,10 @@ namespace TrashIsland
 {
 public class JDemo_Machines : MonoBehaviour
 {
-    enum MachineType {Shredder, Roller, Crusher}
+    enum MachineType {Shredder, Roller, Recycler, Washer, Smelter}
+
+    [SerializeField]
+    MachineType machineType;
 
     [Header("Timer Variables")]
     [SerializeField]
@@ -18,7 +21,9 @@ public class JDemo_Machines : MonoBehaviour
 
     [Header("Item Variables")]
     [SerializeField]
-    private string requiredItemName;
+    private int storedID;
+    [SerializeField]
+    private int storedProg;
     [SerializeField]
     private string outputItemName;
     [SerializeField]
@@ -48,12 +53,18 @@ public class JDemo_Machines : MonoBehaviour
 
             if (uptime >= timerLength)
             {
+                UpdateItemStats();
                 hasCollectableItem = true;
                 Debug.Log(gameObject.name+": Processing Finished");
                 GetComponent<Demo_InteractableObject>().ActivateObjectInteraction();
                 isActive = false;
             }
         }
+    }
+
+    private void UpdateItemStats()
+    {
+        storedProg = storedProg+1;
     }
 
     public void InteractWithMachine()
@@ -100,9 +111,19 @@ public class JDemo_Machines : MonoBehaviour
 
     public void AttemptMachineProcess(string heldItemName, JDemo_Inventory pInvRef)
     {
-        if (heldItemName == requiredItemName)
+
+        int passedID = pInvRef.heldItemID;
+        int passedProg = pInvRef.heldItemProgression;
+        string passedName = pInvRef.heldItemName;
+
+        if (ValidateItemAcceptance(passedID, passedProg))
         {
             Debug.Log("Success! Processing Item");
+
+            outputItemName = passedName;
+            storedID = passedID;
+            storedProg = passedProg;
+
             pInvRef.ClearInventory();
             GetComponent<Demo_InteractableObject>().DeactivateInt();
             uptime = 0;
@@ -110,7 +131,7 @@ public class JDemo_Machines : MonoBehaviour
         }
         else 
         {
-            Debug.Log("Missing Required Item For Machine Type (requires: " + requiredItemName);
+            Debug.Log("Missing Required Item For Machine Type");
         }
     }
 
@@ -118,10 +139,15 @@ public class JDemo_Machines : MonoBehaviour
     {
         if (!hasHeldItem && hasCollectableItem)
         {
-            pInventory.AttemptAddItem(outputItemName, outputItemID, /* int progression */);
+            pInventory.AttemptAddItem(outputItemName, storedID, storedProg);
 
+            FindObjectOfType<NodeOverriderSPARC>().UpdateProgression();
             hasCollectableItem = false;
 
+            outputItemName = null;
+            storedID = 0;
+            storedProg = 0;
+            
             GetComponent<Demo_InteractableObject>().DeactivateInt();
         }
     }
@@ -139,6 +165,147 @@ public class JDemo_Machines : MonoBehaviour
         if (pInvRef!=null)
         {
             pInvRef = null;
+        }
+    }
+
+    bool ValidateItemAcceptance(int itemID, int itemProgRef)
+    {
+        // 1 = Aluminium        
+        // 2 = Paper
+        // 3 = Glass
+        // 4 = Plastic
+
+        if (machineType == MachineType.Shredder)
+        {
+            if (itemID == 1) // if item is Aluminium
+            {
+                if(itemProgRef == 1) // in Trash Form
+                {
+                    return true;
+                }
+                else
+                    return false;
+            }
+
+            if (itemID == 3) // if item is Glass
+            {
+                if(itemProgRef == 1) // in Trash Form
+                {
+                    return true;
+                }
+                else
+                    return false;
+            }
+            else
+                    return false;
+        }        
+        if (machineType == MachineType.Roller)
+        {
+            if (itemID == 2) // if item is Paper
+            {
+                if(itemProgRef == 3) // in Smelted Form
+                {
+                    return true;
+                }
+                else
+                    return false;
+            }
+            else
+                    return false;
+        }
+        if (machineType == MachineType.Recycler)
+        {
+            return false;
+        }
+        if (machineType == MachineType.Washer)
+        {
+            if(itemID == 1) // if item is Aluminium
+            {
+                if(itemProgRef == 2) // in washed form
+                {
+                    return true;
+                }
+                else
+                    return false;
+            }
+
+            if(itemID == 2) // if item is Paper
+            {
+                if(itemProgRef == 1) // in trash form 
+                {
+                    return true;
+                }
+                else
+                    return false;
+            }
+
+            if(itemID == 3) // if item is Glass
+            {
+                if(itemProgRef == 2) // in shredded form
+                {
+                    return true;
+                }
+                else
+                    return false;
+            }
+            
+            if(itemID == 4) // if item is Plastic
+            {
+                if(itemProgRef == 2) // in shredded form
+                {
+                    return true;
+                }
+                else
+                    return false;
+            }
+            else
+                    return false;
+        }
+        if (machineType == MachineType.Smelter)
+        {
+            if (itemID == 1) // if item is Aluminium
+            {
+                if(itemProgRef == 3) // in washed form
+                {
+                    return true;
+                }
+                else
+                    return false;
+            }
+
+            if (itemID == 2) // if item is Paper
+            {
+                if(itemProgRef == 2) // in washed form
+                {
+                    return true;
+                }
+                else
+                    return false;
+            }
+            if (itemID == 3) // if item is Glass
+            {
+                if (itemProgRef == 3) // in washed form
+                {
+                    return true;
+                }
+                else
+                    return false;
+            }
+            if (itemID == 4) // if item is Plastic
+            {
+                if(itemProgRef == 3) // in washed form
+                {
+                    return true;
+                }
+                else
+                    return false;
+            }
+            else
+                return false;
+        }
+        else
+        {
+            return false;
         }
     }
 }

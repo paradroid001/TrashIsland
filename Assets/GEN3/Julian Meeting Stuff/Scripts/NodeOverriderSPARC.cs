@@ -64,6 +64,7 @@ public class NodeOverriderSPARC : MonoBehaviour
     public void DeactivateOverride()
     {
         overrideBranch = OverrideBranch.None;
+        overrideProgressionRef = 0;
         oNodeName = "SPARC_Directory";
         SetNode(oNodeName);
     }

@@ -38,12 +38,13 @@ position: -506,422
 
 
 title: AluminiumExplain
-position: -50,350
+position: -56,345
 ---
 <<ActivateOverride SparcNPC 1>>
 <<set $OverrideMode = true>>
 {$Sparc}: Aluminium cans need to be processed in the shredder. *beep!*. Go ahead and put it into the shredder! Watch your fingers!
     -> Got it, I will head to the shredder!
+<<ActivateObjectInteraction Shredder>>
 ===
 
 title: AluminiumExplain2
@@ -51,15 +52,15 @@ position: -50,480
 ---
 {$Sparc}: Now that you've shredded it, you need to clean it!
     -> Got it, I will head to the washer!
+<<ActivateObjectInteraction Washer>>
 ===
 title: AluminiumExplain3
 position: -50,610
 ---
-//Washer progress bar
-//if washer is done:
 
 {$Sparc}: Lastly, you can put the cleaned aluminium into the smelter. *bzzt*
     -> Got it, I will head to the smelter!
+<<ActivateObjectInteraction Smelter>>
 ===
 title: AluminiumExplain4
 position: -50,740
@@ -69,6 +70,7 @@ position: -50,740
 
 <<set $OverrideMode = false>>
 <<set $HoldingItem = false>>
+<<ClearInventory Player>>
 <<DeactivateOverride SparcNPC>>
 //<<jump TrashChoose1>>
 ===
@@ -84,6 +86,7 @@ position: 170,350
 <<set $OverrideMode = true>>
 {$Sparc}: *beep!* Cardboard and Paper trash needs to be washed first! Washing any trash item will always take 5 seconds, regardless of their material.
     -> Got it, I will head to the washer!
+<<ActivateObjectInteraction Washer>>
 ===
 title: CardboardExplain2
 position: 170,480
@@ -91,6 +94,7 @@ position: 170,480
 
 {$Sparc}: Now we need to smelt it. Let's pop it in for 5 seconds.
     -> Got it, I will head to the smelter!
+<<ActivateObjectInteraction Smelter>>
 ===
 title: CardboardExplain3
 position: 170,610
@@ -98,6 +102,7 @@ position: 170,610
 
 {$Sparc}: Last step is to use the roller! This should create paper scraps that we can use! *bzzzt!*
     -> Got it, I will head to the roller
+<<ActivateObjectInteraction Roller>>
 ===
 title: CardboardExplain4
 position: 170,740
@@ -106,6 +111,7 @@ position: 170,740
 
 <<set $OverrideMode = false>>
 <<set $HoldingItem = false>>
+<<ClearInventory Player>>
 <<DeactivateOverride SparcNPC>>
 //<<jump TrashChoose1>>
 ===
@@ -117,10 +123,11 @@ position: 390,350
 ---
 <<ActivateOverride SparcNPC 3>>
 <<set $OverrideMode = true>>
-{$Sparc}: Glass items such as bottles and jars need to be processed in the crusher. *beep!*
+{$Sparc}: Glass items such as bottles and jars need to be crushed in the shredder. *beep!*
 
-    -> Got it, I will head to the crusher!
+    -> Got it, I will head to the shredder!
 
+<<ActivateObjectInteraction Shredder>>
 ===
 title: GlassExplain2
 position: 390,480
@@ -129,6 +136,7 @@ position: 390,480
 {$Sparc}: Now that you've crushed it, you need to clean it in the washer!
 
     -> Got it, I will head to the washer!
+<<ActivateObjectInteraction Washer>>
 ===
 title: GlassExplain3
 position: 390,610
@@ -137,6 +145,8 @@ position: 390,610
 //if washer is done:
 
 {$Sparc}: Now all you need to do is put the cleaned glass into the smelter. Glass smelts into Foggy Glass!
+    -> Got it, I will head to the smelter
+<<ActivateObjectInteraction Smelter>>
 ===
 title: GlassExplain4
 position: 390,740
@@ -145,6 +155,7 @@ position: 390,740
 
 <<set $HoldingItem = false>>
 <<set $OverrideMode = false>>
+<<ClearInventory Player>>
 <<DeactivateOverride SparcNPC>>
 //<<jump TrashChoose1>>
 ===
@@ -156,12 +167,16 @@ position: 610,350
 {$Sparc}: Plastic items like containers and lids need to go into the shredder.
     -> Got it, I will head to the shredder!
 
+<<ActivateObjectInteraction Shredder>>
+
 ===
 title:PlasicExplain2
 position: 610,480
 ---
 {$Sparc}: *beep* Now you'll need to clean them in the washer. 
     -> Got it, I will head to the washer!
+
+<<ActivateObjectInteraction Washer>>
 //Washer progress bar
 //if washer is done:
 ===
@@ -170,6 +185,8 @@ position: 610,610
 ---
 {$Sparc}: Great work! Now put the cleaned plastic into the smelter!
     -> Got it, I will head to the smelter!
+
+<<ActivateObjectInteraction Smelter>>
 ===
 title:PlasicExplain4
 position: 610,740
@@ -178,6 +195,7 @@ position: 610,740
 
 <<set $HoldingItem = false>>
 <<set $OverrideMode = false>>
+<<ClearInventory Player>>
 <<DeactivateOverride SparcNPC>>
 //<<jump TrashChoose1>>
 ===

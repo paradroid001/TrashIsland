@@ -69,10 +69,10 @@ position: -204,-477
 title: SelectedAluminium
 position: -297,-234
 ---
-<<GiveItem Player aluminiumTrash 1 1>>
+<<GiveItem Player aluminiumTrash 1 1>> // Relevant for Player Inventory and Machines
 
-<<set $SelectedTrash = ("Aluminium-Based")>>
-<<set $HoldingItem = true>>
+<<set $SelectedTrash = ("Aluminium-Based")>> //Relevant for Yarn Routing
+<<set $HoldingItem = true>> // Relevant for Yarn Routing
 -> *You take the trash*
 ===
 
