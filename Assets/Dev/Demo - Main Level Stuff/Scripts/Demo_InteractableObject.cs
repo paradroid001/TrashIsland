@@ -294,6 +294,18 @@ public class Demo_InteractableObject : MonoBehaviour
                 BecomeInteractable();
             }
     }
+    void OnTriggerStay(Collider c)
+    {
+        if(InteractionReady)
+        {
+            TIInteractor t = c.GetComponent<TIInteractor>();
+            if (t != null && InteractionReady)
+            {
+                BecomeInteractable();
+            }
+        }
+            
+    }
     void OnTriggerExit(Collider c)
     {
         TIInteractor t = c.GetComponent<TIInteractor>();

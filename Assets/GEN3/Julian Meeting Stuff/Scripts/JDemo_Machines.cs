@@ -174,148 +174,145 @@ public class JDemo_Machines : MonoBehaviour
         // 2 = Paper
         // 3 = Glass
         // 4 = Plastic
-
-        if (machineType == MachineType.Shredder)
+        switch(machineType)
         {
-            if (itemID == 1) // if item is Aluminium
-            {
-                if(itemProgRef == 1) // in Trash Form
-                {
-                    return true;
-                }
-                else
-                    return false;
-            }
-
-            if (itemID == 3) // if item is Glass
-            {
-                if(itemProgRef == 1) // in Trash Form
-                {
-                    return true;
-                }
-                else
-                    return false;
-            }
-            if (itemID == 4) // if item is Glass
-            {
-                if(itemProgRef == 1) // in Trash Form
-                {
-                    return true;
-                }
-                else
-                    return false;
-            }
-            else
+            default:
                 return false;
-        }        
-        if (machineType == MachineType.Roller)
-        {
-            if (itemID == 2) // if item is Paper
-            {
-                if(itemProgRef == 3) // in Smelted Form
+            break;
+            case MachineType.Shredder:
+                switch(itemID)
                 {
-                    return true;
+                    case 1:
+                        if(itemProgRef == 1) // in Trash Form
+                        {
+                            return true;
+                        }
+                        else
+                            return false;
+                    break;
+                    case 3:
+                        if(itemProgRef == 1) // in Trash Form
+                        {
+                            return true;
+                        }
+                        else
+                            return false;
+                    break;
+                    case 4:
+                        if(itemProgRef == 1) // in Trash Form
+                        {
+                            return true;
+                        }
+                        else
+                            return false;
+                    break;
+                    default:
+                        return false;
+                    break;
                 }
-                else
-                    return false;
-            }
-            else
-                    return false;
-        }
-        if (machineType == MachineType.Recycler)
-        {
-            return false;
-        }
-        if (machineType == MachineType.Washer)
-        {
-            if(itemID == 1) // if item is Aluminium
-            {
-                if(itemProgRef == 2) // in washed form
+            break;
+            case MachineType.Roller:
+                switch(itemID)
                 {
-                    return true;
+                    case 2:
+                        if(itemProgRef == 3) // in Smelted Form
+                        {
+                            return true;
+                        }
+                        else
+                            return false;
+                    break;
+                    default:
+                        return false;
+                    break;
                 }
-                else
-                    return false;
-            }
-
-            if(itemID == 2) // if item is Paper
-            {
-                if(itemProgRef == 1) // in trash form 
-                {
-                    return true;
-                }
-                else
-                    return false;
-            }
-
-            if(itemID == 3) // if item is Glass
-            {
-                if(itemProgRef == 2) // in shredded form
-                {
-                    return true;
-                }
-                else
-                    return false;
-            }
-            
-            if(itemID == 4) // if item is Plastic
-            {
-                if(itemProgRef == 2) // in shredded form
-                {
-                    return true;
-                }
-                else
-                    return false;
-            }
-            else
-                    return false;
-        }
-        if (machineType == MachineType.Smelter)
-        {
-            if (itemID == 1) // if item is Aluminium
-            {
-                if(itemProgRef == 3) // in washed form
-                {
-                    return true;
-                }
-                else
-                    return false;
-            }
-
-            if (itemID == 2) // if item is Paper
-            {
-                if(itemProgRef == 2) // in washed form
-                {
-                    return true;
-                }
-                else
-                    return false;
-            }
-            if (itemID == 3) // if item is Glass
-            {
-                if (itemProgRef == 3) // in washed form
-                {
-                    return true;
-                }
-                else
-                    return false;
-            }
-            if (itemID == 4) // if item is Plastic
-            {
-                if(itemProgRef == 3) // in washed form
-                {
-                    return true;
-                }
-                else
-                    return false;
-            }
-            else
+            break;
+            case MachineType.Recycler:
                 return false;
-        }
-        else
-        {
-            return false;
+            break;
+            case MachineType.Washer:
+                switch(itemID)
+                {
+                    case 1:
+                        if(itemProgRef == 2) // in washed form
+                            {
+                                return true;
+                            }
+                            else
+                                return false;
+                    break;
+                    case 2:
+                        if(itemProgRef == 1) // in trash form 
+                        {
+                            return true;
+                        }
+                        else
+                            return false;
+                    break;
+                    case 3:
+                        if(itemProgRef == 2) // in shredded form
+                        {
+                            return true;
+                        }
+                        else
+                            return false;
+                    break;
+                    case 4:
+                        if(itemProgRef == 2) // in shredded form
+                        {
+                            return true;
+                        }
+                        else
+                            return false;
+                    break;
+                    default:
+                        return false;
+                    break;
+                }
+            break;
+            case MachineType.Smelter:
+                switch(itemID)
+                {
+                    case 1:
+                    if(itemProgRef == 3) // in washed form
+                    {
+                        return true;
+                    }
+                    else
+                        return false;
+                    break;
+                    case 2:
+                        if(itemProgRef == 2) // in washed form
+                        {
+                            return true;
+                        }
+                        else
+                            return false;
+                        break;
+                    case 3:
+                        if (itemProgRef == 3) // in washed form
+                        {
+                            return true;
+                        }
+                        else
+                            return false;
+                        break;
+                    case 4:
+                        if(itemProgRef == 3) // in washed form
+                        {
+                            return true;
+                        }
+                        else
+                        return false;
+                        break;
+                    
+                    default:
+                        return false;
+                    break;
+                break;
+                }
+            }
         }
     }
 }
-}
+
