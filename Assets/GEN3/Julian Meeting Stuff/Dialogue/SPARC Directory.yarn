@@ -8,7 +8,7 @@ tags:
         <<jump Sparc_PostSorting>>
     <<elseif visited("BinInteraction") == true && visited ("TrashChoose0") == false>>
         <<jump TrashChoose0>>
-    <<elseif visited("TrashChoose0") == true>>
+    <<elseif visited("TrashChoose0") == true && $HoldingItem != false>>
         <<jump TrashChoose1>>
     <<endif>>
 <<endif>>

@@ -2324,6 +2324,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ab1b298c9a8a334595ad2d480efa2d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hasWhackOutline: 0
   InteractionReady: 0
   yarnBasedInteractable: 1
   interactionCollider: {fileID: 1738320801}
@@ -6740,6 +6741,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ab1b298c9a8a334595ad2d480efa2d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hasWhackOutline: 0
   InteractionReady: 0
   yarnBasedInteractable: 0
   interactionCollider: {fileID: 233299454}
@@ -6767,8 +6769,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   machineType: 1
-  timerLength: 0
-  requiredItemName: 
+  timerLength: 2
+  storedID: 0
+  storedProg: 0
   outputItemName: 
   outputItemID: 0
   hasCollectableItem: 0
@@ -6890,6 +6893,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ab1b298c9a8a334595ad2d480efa2d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hasWhackOutline: 0
   InteractionReady: 1
   yarnBasedInteractable: 1
   interactionCollider: {fileID: 235019112}
@@ -10972,6 +10976,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ab1b298c9a8a334595ad2d480efa2d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hasWhackOutline: 0
   InteractionReady: 0
   yarnBasedInteractable: 1
   interactionCollider: {fileID: 393313522}
@@ -23593,6 +23598,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ab1b298c9a8a334595ad2d480efa2d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hasWhackOutline: 0
   InteractionReady: 0
   yarnBasedInteractable: 1
   interactionCollider: {fileID: 1051493967}
@@ -24917,6 +24923,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ab1b298c9a8a334595ad2d480efa2d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hasWhackOutline: 0
   InteractionReady: 0
   yarnBasedInteractable: 1
   interactionCollider: {fileID: 966499179}
@@ -32156,6 +32163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ab1b298c9a8a334595ad2d480efa2d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hasWhackOutline: 0
   InteractionReady: 0
   yarnBasedInteractable: 1
   interactionCollider: {fileID: 1916605475}
@@ -41531,6 +41539,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ab1b298c9a8a334595ad2d480efa2d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hasWhackOutline: 0
   InteractionReady: 0
   yarnBasedInteractable: 0
   interactionCollider: {fileID: 1535274366}
@@ -41559,7 +41568,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   machineType: 0
   timerLength: 0
-  requiredItemName: 
+  storedID: 0
+  storedProg: 0
   outputItemName: 
   outputItemID: 0
   hasCollectableItem: 0
@@ -56390,6 +56400,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ab1b298c9a8a334595ad2d480efa2d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hasWhackOutline: 0
   InteractionReady: 0
   yarnBasedInteractable: 1
   interactionCollider: {fileID: 2067284316}
@@ -61592,6 +61603,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ab1b298c9a8a334595ad2d480efa2d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hasWhackOutline: 0
   InteractionReady: 1
   yarnBasedInteractable: 1
   interactionCollider: {fileID: 3054126926311838310}
@@ -67955,6 +67967,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ab1b298c9a8a334595ad2d480efa2d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hasWhackOutline: 0
   InteractionReady: 1
   yarnBasedInteractable: 1
   interactionCollider: {fileID: 3469287837127150506}
@@ -70873,7 +70886,7 @@ MonoBehaviour:
   lineText: {fileID: 5898394082086308696}
   showCharacterNameInLineView: 1
   characterNameText: {fileID: 5898394083547419446}
-  useTypewriterEffect: 1
+  useTypewriterEffect: 0
   onCharacterTyped:
     m_PersistentCalls:
       m_Calls: []
@@ -83469,6 +83482,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ab1b298c9a8a334595ad2d480efa2d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hasWhackOutline: 0
   InteractionReady: 0
   yarnBasedInteractable: 0
   interactionCollider: {fileID: 3385042520207838697}
@@ -83496,8 +83510,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   machineType: 2
-  timerLength: 0
-  requiredItemName: 
+  timerLength: 2
+  storedID: 0
+  storedProg: 0
   outputItemName: 
   outputItemID: 0
   hasCollectableItem: 0
@@ -84780,13 +84795,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ab1b298c9a8a334595ad2d480efa2d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hasWhackOutline: 1
   InteractionReady: 0
   yarnBasedInteractable: 0
   interactionCollider: {fileID: 8125028313551230683}
   myRenderer: {fileID: 1113193324}
   IsInteractable: 0
   myNode: 
-  selectionBody: {fileID: 3969798985711615027}
+  selectionBody: {fileID: 0}
   selectionMaterial: {fileID: 2100000, guid: 40343c144cd31b04da87bfb952996ad2, type: 2}
   outlineStrength: 0.2
   outlineColour: {r: 0.36862746, g: 1, b: 0.8392157, a: 0}
@@ -84807,8 +84823,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   machineType: 0
-  timerLength: 0
-  requiredItemName: 
+  timerLength: 2
+  storedID: 0
+  storedProg: 0
   outputItemName: 
   outputItemID: 0
   hasCollectableItem: 0
@@ -86276,13 +86293,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ab1b298c9a8a334595ad2d480efa2d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hasWhackOutline: 0
   InteractionReady: 0
   yarnBasedInteractable: 0
   interactionCollider: {fileID: 155802481416576689}
   myRenderer: {fileID: 1578529440742592064}
   IsInteractable: 0
   myNode: 
-  selectionBody: {fileID: 1074368380277550997}
+  selectionBody: {fileID: 0}
   selectionMaterial: {fileID: 2100000, guid: 78a2a36bfaec1604383bf20410a65cd0, type: 2}
   outlineStrength: 0.1
   outlineColour: {r: 0.9843137, g: 0.5882353, b: 1, a: 0}
@@ -86303,8 +86321,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   machineType: 3
-  timerLength: 0
-  requiredItemName: 
+  timerLength: 2
+  storedID: 0
+  storedProg: 0
   outputItemName: 
   outputItemID: 0
   hasCollectableItem: 0
@@ -86729,6 +86748,7 @@ GameObject:
   - component: {fileID: 9016497660778370348}
   - component: {fileID: 9016497660778370347}
   - component: {fileID: 9016497660778370346}
+  - component: {fileID: 9016497660778370349}
   m_Layer: 0
   m_Name: Smelter
   m_TagString: Untagged
@@ -86761,17 +86781,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ab1b298c9a8a334595ad2d480efa2d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hasWhackOutline: 1
   InteractionReady: 0
   yarnBasedInteractable: 0
   interactionCollider: {fileID: 9016497660778370346}
   myRenderer: {fileID: 1535274369}
   IsInteractable: 0
   myNode: 
-  selectionBody: {fileID: 9016497660778370345}
+  selectionBody: {fileID: 0}
   selectionMaterial: {fileID: 2100000, guid: b70279e70fb8b8b408c3f3de042d5069, type: 2}
   outlineStrength: 0.1
   outlineColour: {r: 0.59607846, g: 0.5882353, b: 1, a: 0}
-  selectedColour: {r: 0, g: 0, b: 0, a: 0}
+  selectedColour: {r: 1, g: 1, b: 1, a: 0}
   ActivatesWithMe: {fileID: 0}
   interactionCount: 0
   energyCost: 0
@@ -86788,12 +86809,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   machineType: 4
-  timerLength: 0
-  requiredItemName: 
+  timerLength: 2
+  storedID: 0
+  storedProg: 0
   outputItemName: 
   outputItemID: 0
   hasCollectableItem: 0
   pInvRef: {fileID: 0}
+--- !u!65 &9016497660778370349
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9016497660778370345}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.2758765, y: 1.965343, z: 0.7979907}
+  m_Center: {x: 0.052412122, y: 0.9826715, z: -0.000000059604645}
 --- !u!4 &9019697039082467533
 Transform:
   m_ObjectHideFlags: 0

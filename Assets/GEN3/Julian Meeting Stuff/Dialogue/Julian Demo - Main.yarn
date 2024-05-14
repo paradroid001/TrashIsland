@@ -159,7 +159,7 @@ position: 390,740
 <<DeactivateOverride SparcNPC>>
 //<<jump TrashChoose1>>
 ===
-title: PlasicExplain
+title: PlasticExplain
 position: 610,350
 ---
 <<ActivateOverride SparcNPC 4>>
@@ -170,7 +170,7 @@ position: 610,350
 <<ActivateObjectInteraction Shredder>>
 
 ===
-title:PlasicExplain2
+title:PlasticExplain2
 position: 610,480
 ---
 {$Sparc}: *beep* Now you'll need to clean them in the washer. 
@@ -180,7 +180,7 @@ position: 610,480
 //Washer progress bar
 //if washer is done:
 ===
-title:PlasicExplain3
+title:PlasticExplain3
 position: 610,610
 ---
 {$Sparc}: Great work! Now put the cleaned plastic into the smelter!
@@ -188,7 +188,7 @@ position: 610,610
 
 <<ActivateObjectInteraction Smelter>>
 ===
-title:PlasicExplain4
+title:PlasticExplain4
 position: 610,740
 ---
 {$Sparc}: *bzzt* Smelting this down has given us Re-pearl! A handy material that you can use to craft items!
@@ -204,6 +204,10 @@ position: 610,740
 title: TrashChoose1
 position: -507,552
 ---
+<<if $HoldingItem == false>>
+    <<jump GetMoreTrash>>
+<<endif>>
+
 <<if visited_count("TrashChoose1") > 3>>
 <<jump Paulie_EndRecycle>>
 <<else>>
@@ -211,6 +215,11 @@ position: -507,552
     -> *Show {$Sparc} the {$SelectedTrash} trash you grabbed*
     <<jump TrashTypeDetection>>  
 <<endif>>
+===
+
+title: GetMoreTrash
+---
+{$Sparc}: *bzzt* come back when you have some trash from the yellow bin
 ===
 
 title: TrashTypeDetection
@@ -222,8 +231,8 @@ position: 210,-248
     <<jump CardboardExplain>>
 <<elseif visited ("SelectedGlass") == true && visited ("GlassExplain") == false>>
     <<jump GlassExplain>>
-<<elseif visited ("SelectedPlastic") == true&& visited ("PlasicExplain") == false>>
-    <<jump PlasicExplain>>
+<<elseif visited ("SelectedPlastic") == true&& visited ("PlasticExplain") == false>>
+    <<jump PlasticExplain>>
 <<endif>>
 ===
 

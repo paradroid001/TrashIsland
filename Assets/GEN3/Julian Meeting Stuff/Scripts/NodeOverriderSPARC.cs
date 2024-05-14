@@ -122,17 +122,17 @@ public class NodeOverriderSPARC : MonoBehaviour
         {
             if(overrideProgressionRef == 2)
             {
-                oNodeName = "CardboardExplain2";
+                oNodeName = "GlassExplain2";
                 SetNode(oNodeName);
             }
             if(overrideProgressionRef == 3)
             {
-                oNodeName = "CardboardExplain3";
+                oNodeName = "GlassExplain3";
                 SetNode(oNodeName);
             }
             if(overrideProgressionRef == 4)
             {
-                oNodeName = "CardboardExplain4";
+                oNodeName = "GlassExplain4";
                 SetNode(oNodeName);
             }
             else

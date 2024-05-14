@@ -9,6 +9,9 @@ namespace TrashIsland
 public class Demo_InteractableObject : MonoBehaviour
 {
     [SerializeField]
+    private bool hasWhackOutline = false;
+
+    [SerializeField]
     private bool InteractionReady;
 
     [SerializeField]
@@ -104,6 +107,10 @@ public class Demo_InteractableObject : MonoBehaviour
     public void ActivateObjectInteraction()
     {
             InteractionReady = true;
+            if (interactionCollider!=null)
+            {
+                interactionCollider.enabled = true;
+            }
 
             if(ActivatesWithMe != null)
             {
@@ -114,6 +121,7 @@ public class Demo_InteractableObject : MonoBehaviour
     [YarnCommand("DeactivateInteraction")]
     public void DeactivateInt()
     {
+        
         InteractionReady = false;
         BecomeDeselected();
         BecomeUninteractable();
@@ -130,30 +138,42 @@ public class Demo_InteractableObject : MonoBehaviour
         }
         else
         {
+            if(interactionCollider!=null)
+            {
+                interactionCollider.enabled = true;
+            }
             gameObject.layer = 8;
         }
-        if(selectionMaterial!=null)
+        if(hasWhackOutline)
         {
-        int index = FindIndexOfMaterial(selectionMaterial);
-        
-        if (index < 0)
+            myRenderer.gameObject.SetActive(true);
+        }
+        else
         {
-        //Copy out old mats
-            Material[] mats = myRenderer.materials;
-            Material[] newmats = new Material[mats.Length + 1];
-            for (int i = 0; i < mats.Length; i++)
+            if(selectionMaterial!=null)
             {
-                newmats[i] = mats[i];
+            int index = FindIndexOfMaterial(selectionMaterial);
+            
+            if (index < 0)
+                {
+                //Copy out old mats
+                    Material[] mats = myRenderer.materials;
+                    Material[] newmats = new Material[mats.Length + 1];
+                    for (int i = 0; i < mats.Length; i++)
+                    {
+                        newmats[i] = mats[i];
+                    }
+                    //Add the semection mat on the end
+                    newmats[newmats.Length - 1] = selectionMaterial;
+                    selectionMaterial.SetColor("_OutlineColor", outlineColour);
+                    selectionMaterial.SetFloat("_Outline", outlineStrength);
+                    //Set the whole array back onto the renderer
+                    myRenderer.materials = newmats;
+                }
+            myRenderer.SetPropertyBlock(selectedPropertyBlock);
             }
-            //Add the semection mat on the end
-            newmats[newmats.Length - 1] = selectionMaterial;
-            selectionMaterial.SetColor("_OutlineColor", outlineColour);
-            selectionMaterial.SetFloat("_Outline", outlineStrength);
-            //Set the whole array back onto the renderer
-            myRenderer.materials = newmats;
         }
-        myRenderer.SetPropertyBlock(selectedPropertyBlock);
-        }
+        
     }
 
     void BecomeUninteractable()
@@ -219,7 +239,7 @@ public class Demo_InteractableObject : MonoBehaviour
         if (IsInteractable)
             {
                 IsSelected = true;
-                if(myRenderer != null)
+                if(myRenderer != null && !hasWhackOutline)
                 {
                     int materialCount = myRenderer.materials.Length - 1;
                     myRenderer.materials[materialCount].SetColor("_OutlineColor", selectedColour);
@@ -245,12 +265,23 @@ public class Demo_InteractableObject : MonoBehaviour
     public void BecomeDeselected()
     {
         IsSelected = false;
-
-        if(myRenderer != null && IsInteractable)
+        if (hasWhackOutline)
+        {
+            myRenderer.gameObject.SetActive(false);
+        }
+        else
+        {
+            if(myRenderer != null)
         {
             int materialCount = myRenderer.materials.Length - 1;
-            myRenderer.materials[materialCount].SetColor("_OutlineColor", outlineColour);
+            if(IsInteractable)
+            {
+                myRenderer.materials[materialCount].SetColor("_OutlineColor", outlineColour);
+            }
+            
         }
+        }
+        
     }
 
 

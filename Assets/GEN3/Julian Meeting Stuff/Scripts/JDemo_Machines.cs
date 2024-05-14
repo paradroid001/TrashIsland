@@ -196,8 +196,17 @@ public class JDemo_Machines : MonoBehaviour
                 else
                     return false;
             }
-            else
+            if (itemID == 4) // if item is Glass
+            {
+                if(itemProgRef == 1) // in Trash Form
+                {
+                    return true;
+                }
+                else
                     return false;
+            }
+            else
+                return false;
         }        
         if (machineType == MachineType.Roller)
         {
