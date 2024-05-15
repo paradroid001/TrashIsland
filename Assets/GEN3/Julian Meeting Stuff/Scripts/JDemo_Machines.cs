@@ -47,19 +47,6 @@ public class JDemo_Machines : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isActive && !hasCollectableItem)
-        {
-            uptime+=Time.deltaTime;
-
-            if (uptime >= timerLength)
-            {
-                UpdateItemStats();
-                hasCollectableItem = true;
-                Debug.Log(gameObject.name+": Processing Finished");
-                GetComponent<Demo_InteractableObject>().ActivateObjectInteraction();
-                isActive = false;
-            }
-        }
     }
 
     private void UpdateItemStats()
@@ -127,11 +114,30 @@ public class JDemo_Machines : MonoBehaviour
             pInvRef.ClearInventory();
             GetComponent<Demo_InteractableObject>().DeactivateInt();
             uptime = 0;
+
             isActive = true;
+            StartCoroutine(Countdown());
         }
         else 
         {
             Debug.Log("Missing Required Item For Machine Type");
+        }
+    }
+    public IEnumerator Countdown()
+    {
+        yield return new WaitForSeconds(1);
+        uptime++;
+        if (uptime >= timerLength)
+        {
+            UpdateItemStats();
+            hasCollectableItem = true;
+            Debug.Log(gameObject.name+": Processing Finished");
+            GetComponent<Demo_InteractableObject>().ActivateObjectInteraction();
+            isActive = false;
+        }
+        else
+        {
+            StartCoroutine(Countdown());
         }
     }
 

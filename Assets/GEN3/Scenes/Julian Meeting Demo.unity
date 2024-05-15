@@ -2327,6 +2327,7 @@ MonoBehaviour:
   hasWhackOutline: 0
   InteractionReady: 0
   yarnBasedInteractable: 1
+  interactionType: 0
   interactionCollider: {fileID: 1738320801}
   myRenderer: {fileID: 1738320797}
   IsInteractable: 0
@@ -6744,6 +6745,7 @@ MonoBehaviour:
   hasWhackOutline: 0
   InteractionReady: 0
   yarnBasedInteractable: 0
+  interactionType: 1
   interactionCollider: {fileID: 233299454}
   myRenderer: {fileID: 1499854219}
   IsInteractable: 0
@@ -6896,6 +6898,7 @@ MonoBehaviour:
   hasWhackOutline: 0
   InteractionReady: 1
   yarnBasedInteractable: 1
+  interactionType: 0
   interactionCollider: {fileID: 235019112}
   myRenderer: {fileID: 1503441620}
   IsInteractable: 1
@@ -10979,6 +10982,7 @@ MonoBehaviour:
   hasWhackOutline: 0
   InteractionReady: 0
   yarnBasedInteractable: 1
+  interactionType: 0
   interactionCollider: {fileID: 393313522}
   myRenderer: {fileID: 608650335}
   IsInteractable: 0
@@ -23601,6 +23605,7 @@ MonoBehaviour:
   hasWhackOutline: 0
   InteractionReady: 0
   yarnBasedInteractable: 1
+  interactionType: 0
   interactionCollider: {fileID: 1051493967}
   myRenderer: {fileID: 145167896}
   IsInteractable: 0
@@ -24926,6 +24931,7 @@ MonoBehaviour:
   hasWhackOutline: 0
   InteractionReady: 0
   yarnBasedInteractable: 1
+  interactionType: 0
   interactionCollider: {fileID: 966499179}
   myRenderer: {fileID: 682500252587843283}
   IsInteractable: 1
@@ -25336,6 +25342,160 @@ MonoBehaviour:
   m_Area: 1
   m_IgnoreFromBuild: 0
   m_AffectedAgents: ffffffff
+--- !u!1 &980280982
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 980280988}
+  - component: {fileID: 980280987}
+  - component: {fileID: 980280986}
+  - component: {fileID: 980280985}
+  - component: {fileID: 980280984}
+  - component: {fileID: 980280983}
+  - component: {fileID: 980280989}
+  m_Layer: 0
+  m_Name: Cube
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &980280983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 980280982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ab1b298c9a8a334595ad2d480efa2d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasWhackOutline: 0
+  InteractionReady: 1
+  yarnBasedInteractable: 0
+  interactionType: 2
+  interactionCollider: {fileID: 980280984}
+  myRenderer: {fileID: 980280986}
+  IsInteractable: 0
+  myNode: 
+  selectionBody: {fileID: 0}
+  selectionMaterial: {fileID: 0}
+  outlineStrength: 0
+  outlineColour: {r: 0, g: 0, b: 0, a: 0}
+  selectedColour: {r: 0, g: 0, b: 0, a: 0}
+  ActivatesWithMe: {fileID: 0}
+  interactionCount: 0
+  energyCost: 0
+--- !u!135 &980280984
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 980280982}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &980280985
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 980280982}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &980280986
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 980280982}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &980280987
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 980280982}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &980280988
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 980280982}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 6.0134916, y: 0, z: -19.835396}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &980280989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 980280982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b3a78309f709de43896d875128a84ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: e68e789d60768374798bc2b6c8d6f021, type: 2}
 --- !u!1 &980922451
 GameObject:
   m_ObjectHideFlags: 0
@@ -32166,6 +32326,7 @@ MonoBehaviour:
   hasWhackOutline: 0
   InteractionReady: 0
   yarnBasedInteractable: 1
+  interactionType: 0
   interactionCollider: {fileID: 1916605475}
   myRenderer: {fileID: 1916605471}
   IsInteractable: 0
@@ -40487,6 +40648,8 @@ GameObject:
   - component: {fileID: 1516432131}
   - component: {fileID: 1516432135}
   - component: {fileID: 1516432136}
+  - component: {fileID: 1516432137}
+  - component: {fileID: 1516432138}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -40720,6 +40883,7 @@ MonoBehaviour:
   LivePortrait: {fileID: 3418626905663319322}
   playerScript: {fileID: 0}
   activeNPCList: []
+  gen3_Invent: {fileID: 1516432137}
 --- !u!114 &1516432136
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40733,6 +40897,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activeNode: Setup
+--- !u!114 &1516432137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1516432127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c895c762f2ec763429192408bbb1079e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  items: []
+--- !u!114 &1516432138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1516432127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dc2c5ff09c660d439a6075844b4d221, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemRefs:
+  - {fileID: 11400000, guid: e68e789d60768374798bc2b6c8d6f021, type: 2}
+  - {fileID: 11400000, guid: c0d63b0849676604db99cffe9b189f79, type: 2}
+  - {fileID: 11400000, guid: 70f37a9175499b04aa34be58ed746347, type: 2}
 --- !u!1 &1519036738
 GameObject:
   m_ObjectHideFlags: 0
@@ -41542,6 +41735,7 @@ MonoBehaviour:
   hasWhackOutline: 0
   InteractionReady: 0
   yarnBasedInteractable: 0
+  interactionType: 0
   interactionCollider: {fileID: 1535274366}
   myRenderer: {fileID: 0}
   IsInteractable: 0
@@ -56403,6 +56597,7 @@ MonoBehaviour:
   hasWhackOutline: 0
   InteractionReady: 0
   yarnBasedInteractable: 1
+  interactionType: 0
   interactionCollider: {fileID: 2067284316}
   myRenderer: {fileID: 2067284317}
   IsInteractable: 0
@@ -61606,6 +61801,7 @@ MonoBehaviour:
   hasWhackOutline: 0
   InteractionReady: 1
   yarnBasedInteractable: 1
+  interactionType: 0
   interactionCollider: {fileID: 3054126926311838310}
   myRenderer: {fileID: 3956567591702163837}
   IsInteractable: 0
@@ -67970,6 +68166,7 @@ MonoBehaviour:
   hasWhackOutline: 0
   InteractionReady: 1
   yarnBasedInteractable: 1
+  interactionType: 0
   interactionCollider: {fileID: 3469287837127150506}
   myRenderer: {fileID: 1711813855482281837}
   IsInteractable: 0
@@ -83485,6 +83682,7 @@ MonoBehaviour:
   hasWhackOutline: 0
   InteractionReady: 0
   yarnBasedInteractable: 0
+  interactionType: 0
   interactionCollider: {fileID: 3385042520207838697}
   myRenderer: {fileID: 87644957760555133}
   IsInteractable: 0
@@ -84798,6 +84996,7 @@ MonoBehaviour:
   hasWhackOutline: 1
   InteractionReady: 0
   yarnBasedInteractable: 0
+  interactionType: 1
   interactionCollider: {fileID: 8125028313551230683}
   myRenderer: {fileID: 1113193324}
   IsInteractable: 0
@@ -86296,6 +86495,7 @@ MonoBehaviour:
   hasWhackOutline: 0
   InteractionReady: 0
   yarnBasedInteractable: 0
+  interactionType: 1
   interactionCollider: {fileID: 155802481416576689}
   myRenderer: {fileID: 1578529440742592064}
   IsInteractable: 0
@@ -86784,6 +86984,7 @@ MonoBehaviour:
   hasWhackOutline: 1
   InteractionReady: 0
   yarnBasedInteractable: 0
+  interactionType: 1
   interactionCollider: {fileID: 9016497660778370346}
   myRenderer: {fileID: 1535274369}
   IsInteractable: 0

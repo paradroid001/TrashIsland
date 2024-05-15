@@ -9,12 +9,15 @@ position: -204,-477
         -> Paper-Based Organics
             {$Paulie}: Great! As a general rule of thumb, trash that goes into the yellow bins are paper, cardboard, cans, glass or plastic containers!
             {$Paulie}: I think S.P.A.R.C. wanted to see you once you grabbed the trash, so go have a chat!
+            <<AddInventory GameManager 1>>
+            <<CheckInventory GameManager 1>>
             -> Neat!
                 <<ForcedOutlineEnd PaulieNPC>>
                 <<jump SelectedOrganic>>
         -> Aluminium Materials
             {$Paulie}: Great! As a general rule of thumb, trash that goes into the yellow bins are paper, cardboard, cans, glass or plastic containers!
             {$Paulie}: I think S.P.A.R.C. wanted to see you once you grabbed the trash, so go have a chat!
+            
             -> Neat!
                 <<ForcedOutlineEnd PaulieNPC>>
                 <<jump SelectedAluminium>>

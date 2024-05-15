@@ -44,6 +44,7 @@ public class DemoYarnCommand : MonoBehaviour
 
     private Demo_InteractableNPC narrator;
 
+    public Gen3_Invent gen3_Invent;
 
 
 
@@ -298,9 +299,85 @@ DemoManager dM = GetComponent<DemoManager>();
     }    
   }
   [YarnCommand("AddInventory")]
-  public void AddToInventory()
+  public void AddToInventory(int itemRef)
   {
-    
+    InventoryItem given = GetComponent<Gen3_ItemRefs>().itemRefs[itemRef];
+    if(gen3_Invent.items.Count != 0)
+        {
+            for(int i = 0; i < gen3_Invent.items.Count; i++)
+            {
+                if(gen3_Invent.items[i].item.name == given.name)
+                {
+                    gen3_Invent.items[i].amount++;
+                    Debug.Log("Added more to this item");
+                }
+                else 
+                {
+                    gen3_Invent.items.Add(new Gen3_InventItem(given, 1));
+                    Debug.Log("Added first instance of item to inventory");
+                }
+            }
+        }
+        else 
+        {
+            gen3_Invent.items.Add(new Gen3_InventItem(given, 1));
+            Debug.Log("Added first item to inventory");
+        }
   }
+  [YarnCommand("CheckInventory")]
+  public bool CheckForItem(int itemRef)
+  {
+    InventoryItem given = GetComponent<Gen3_ItemRefs>().itemRefs[itemRef];
+    for(int i = 0; i <= gen3_Invent.items.Count; i++)
+    {
+      if(gen3_Invent.items[i].item == given && i < gen3_Invent.items.Count)
+      {
+        Debug.Log("True");
+        return true;
+      }
+      else
+      {
+        Debug.Log("False");
+        return false;
+      }
+    }
+    Debug.Log("False");
+    return false;
+    }
+    [YarnCommand("RemoveFromInventory")]
+    public void RemoveFromInventory(int itemRef, string reason)
+    {
+      Debug.Log("A");
+      InventoryItem given = GetComponent<Gen3_ItemRefs>().itemRefs[itemRef];
+        switch(reason)
+        {
+            default:
+
+            break;
+            case "Give":
+                if(gen3_Invent.items.Count != 0)
+                {
+                    for(int i = 0; i < gen3_Invent.items.Count; i++)
+                    {
+                        if(gen3_Invent.items[i].item.name == given.name)
+                        {
+                            gen3_Invent.items[i].amount--;
+                            Debug.Log("Removed from inventory");
+                            if(gen3_Invent.items[i].amount <= 0)
+                            {
+                                gen3_Invent.items.Remove(gen3_Invent.items[i]);
+                            }
+                        }
+                    }
+                }
+            break;
+            case "Machine":
+
+            break;
+            case "Craft":
+
+            break;
+        }
+    }
 }
 }

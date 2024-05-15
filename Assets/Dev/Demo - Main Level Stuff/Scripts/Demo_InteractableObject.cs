@@ -16,6 +16,9 @@ public class Demo_InteractableObject : MonoBehaviour
 
     [SerializeField]
     private bool yarnBasedInteractable = true;
+    private enum InteractionType{Yarn, Machine, Item};
+    [SerializeField]
+    private InteractionType interactionType;
 
 
     [SerializeField]
@@ -245,7 +248,25 @@ public class Demo_InteractableObject : MonoBehaviour
                     myRenderer.materials[materialCount].SetColor("_OutlineColor", selectedColour);
                 }
 
-                if (yarnBasedInteractable)
+                switch(interactionType)
+                {
+                    case InteractionType.Yarn:
+                        StartObjectDialogue();
+                    break;
+                    case InteractionType.Machine:
+                        JDemo_Machines machineSript = gameObject.GetComponent<JDemo_Machines>();
+                        if (machineSript != null)
+                        {
+                            machineSript.InteractWithMachine();
+                        }
+                    break;
+                    case InteractionType.Item:
+                        Gen3_Invent invent = FindObjectOfType<Gen3_Invent>();
+                        PickupItem pickedUp = GetComponent<PickupItem>();
+                        invent.AddToInventory(pickedUp);
+                    break;
+                }
+                /*if (yarnBasedInteractable)
                 {
                     StartObjectDialogue();
                 }
@@ -256,7 +277,7 @@ public class Demo_InteractableObject : MonoBehaviour
                     {
                         machineSript.InteractWithMachine();
                     }
-                }
+                }*/
             }
         
     }
