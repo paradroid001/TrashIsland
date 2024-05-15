@@ -6,7 +6,7 @@ position: -1026,461
 {$Sparc}: Great work sorting out that trash! Now we just need to take that trash and process it! 
     ->How do I do that?
 <<SetNarrator GameManager $Sparc Delight>>
-{$Sparc}: : It's easy! You just walk up to the yellow bin and take out a piece of trash!
+{$Sparc}: It's easy! You just walk up to the yellow bin and take out a piece of trash!
 
 <<jump Sparc_MachineExplain>>
 ===
@@ -29,6 +29,7 @@ position: -765,460
 title: TrashChoose0
 position: -506,422
 ---
+<<SetNarrator GameManager $Sparc Default>>
 {$Sparc}: Let's see what trash you grabbed out!
 -> *Show {$Sparc} your collected trash*
 {$Sparc}: Ahh! You got some {$SelectedTrash} Material! I'll run you over the basics.
