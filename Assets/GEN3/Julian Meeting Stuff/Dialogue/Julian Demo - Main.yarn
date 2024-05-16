@@ -42,6 +42,7 @@ title: AluminiumExplain
 position: -56,345
 ---
 <<ActivateOverride SparcNPC 1>>
+<<SetNarrator GameManager $Sparc Default>>
 <<set $OverrideMode = true>>
 {$Sparc}: Aluminium cans need to be processed in the shredder. *beep!*. Go ahead and put it into the shredder! Watch your fingers!
     -> Got it, I will head to the shredder!
@@ -85,6 +86,7 @@ position: 170,350
 ---
 <<ActivateOverride SparcNPC 2>>
 <<set $OverrideMode = true>>
+<<SetNarrator GameManager $Sparc Default>>
 {$Sparc}: *beep!* Cardboard and Paper trash needs to be washed first! Washing any trash item will always take 5 seconds, regardless of their material.
     -> Got it, I will head to the washer!
 <<ActivateObjectInteraction Washer>>
@@ -123,6 +125,7 @@ title: GlassExplain
 position: 390,350
 ---
 <<ActivateOverride SparcNPC 3>>
+<<SetNarrator GameManager $Sparc Default>>
 <<set $OverrideMode = true>>
 {$Sparc}: Glass items such as bottles and jars need to be crushed in the shredder. *beep!*
 
@@ -163,6 +166,7 @@ position: 390,740
 title: PlasticExplain
 position: 610,350
 ---
+<<SetNarrator GameManager $Sparc Default>>
 <<ActivateOverride SparcNPC 4>>
 <<set $OverrideMode = true>>
 {$Sparc}: Plastic items like containers and lids need to go into the shredder.
@@ -212,6 +216,7 @@ position: -507,552
 <<if visited_count("TrashChoose1") > 3>>
 <<jump Paulie_EndRecycle>>
 <<else>>
+<<SetNarrator GameManager $Sparc Default>>
     {$Sparc}: Let's see what you grabbed this time!
     -> *Show {$Sparc} the {$SelectedTrash} trash you grabbed*
     <<jump TrashTypeDetection>>  
