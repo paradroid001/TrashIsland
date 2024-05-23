@@ -344,6 +344,23 @@ DemoManager dM = GetComponent<DemoManager>();
     Debug.Log("False");
     return false;
     }
+    [YarnCommand("CheckForItemSpot")]
+    public int CheckForItemSpot(int itemRef)
+    {
+      InventoryItem given = GetComponent<Gen3_ItemRefs>().itemRefs[itemRef];
+        for(int i = 0; i <= gen3_Invent.items.Count; i++)
+        {
+            if(gen3_Invent.items[i].item == given && i < gen3_Invent.items.Count)
+            {
+                return i;
+            }
+            else
+            {
+                return -1;
+            }
+        }
+        return -1;
+    }
     [YarnCommand("RemoveFromInventory")]
     public void RemoveFromInventory(int itemRef, string reason)
     {
@@ -352,7 +369,7 @@ DemoManager dM = GetComponent<DemoManager>();
         switch(reason)
         {
             default:
-
+              Debug.Log("Failed");
             break;
             case "Give":
                 if(gen3_Invent.items.Count != 0)
@@ -370,9 +387,27 @@ DemoManager dM = GetComponent<DemoManager>();
                         }
                     }
                 }
+                else
+                {
+                  Debug.Log("Nothing in Inventory");
+                }
             break;
             case "Machine":
-
+              bool has = CheckForItem(itemRef);
+              if(has == true)
+              {
+                int pos = CheckForItemSpot(itemRef);
+                gen3_Invent.items[pos].amount--;
+                Debug.Log("Removed from inventory");
+                if(gen3_Invent.items[pos].amount <= 0)
+                {
+                  gen3_Invent.items.Remove(gen3_Invent.items[pos]);
+                }
+              }
+              else 
+              {
+                Debug.Log("Failed!");
+              }
             break;
             case "Craft":
 

@@ -52,6 +52,21 @@ public class Gen3_Invent : MonoBehaviour
         }
         return false;
     }
+    public int CheckForItemSpot(InventoryItem item)
+    {
+        for(int i = 0; i <= items.Count; i++)
+        {
+            if(items[i].item == item && i < items.Count)
+            {
+                return i;
+            }
+            else
+            {
+                return -1;
+            }
+        }
+        return -1;
+    }
     public void RemoveFromInventory(int itemRef, string reason)
     {
         switch(reason)
@@ -61,20 +76,20 @@ public class Gen3_Invent : MonoBehaviour
             break;
             case "Give":
                 if(items.Count != 0)
-        {
-            for(int i = 0; i < items.Count; i++)
             {
-                if(items[i].item.name == items[itemRef].item.name)
+                for(int i = 0; i < items.Count; i++)
                 {
-                    items[i].amount--;
-                    Debug.Log("Added more to this item");
-                    if(items[i].amount <= 0)
+                    if(items[i].item.name == items[itemRef].item.name)
                     {
-                        items.Remove(items[i]);
+                        items[i].amount--;
+                        Debug.Log("Added more to this item");
+                        if(items[i].amount <= 0)
+                        {
+                            items.Remove(items[i]);
+                        }
                     }
                 }
             }
-        }
             break;
             case "Machine":
 

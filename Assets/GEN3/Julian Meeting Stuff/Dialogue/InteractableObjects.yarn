@@ -46,6 +46,7 @@ position: -204,-477
             -> Aluminium Materials
                 <<if visited("SelectedAluminium")==true>>
                     {$Paulie}: You've already taken one of those! Choose one you haven't picked yet
+                    
                     <<jump BinInteraction>>
                 <<else>>
                     <<jump SelectedAluminium>>
