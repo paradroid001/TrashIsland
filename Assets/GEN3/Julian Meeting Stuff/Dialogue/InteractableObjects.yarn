@@ -33,7 +33,9 @@ position: -204,-477
             -> Neat!
                 <<ForcedOutlineEnd PaulieNPC>>
                 <<jump SelectedPlastic>>
-    <<elseif visited_count("TrashChoose0")>=1 && visited_count("TrashChoose1") <= 3>>
+    <<elseif visited("AluminiumExplain4") == true && visited("CardboardExplain4") == true && visited("GlassExplain4") == true && visited("PlasticExplain4") == true>>
+        <<jump Paulie_EndRecycle>>
+    <<elseif visited_count("TrashChoose0")>=1 && visited_count("TrashChoose1") <= 3>>               
             <<SetNarrator GameManager $Paulie Default>>
             {$Paulie}: You know the drill, grab a type of trash you haven't gotten yet!
             -> Paper-Based Organics
@@ -46,7 +48,7 @@ position: -204,-477
             -> Aluminium Materials
                 <<if visited("SelectedAluminium")==true>>
                     {$Paulie}: You've already taken one of those! Choose one you haven't picked yet
-                    
+                
                     <<jump BinInteraction>>
                 <<else>>
                     <<jump SelectedAluminium>>
@@ -65,7 +67,9 @@ position: -204,-477
                 <<else>>
                     <<jump SelectedPlastic>>
                 <<endif>>
-        <<endif>>
+            -> Leave
+    
+    <<endif>>
 <<else>>
 <<endif>>
 ===

@@ -239,11 +239,71 @@ position: 210,-248
     <<jump GlassExplain>>
 <<elseif visited ("SelectedPlastic") == true&& visited ("PlasticExplain") == false>>
     <<jump PlasticExplain>>
+
 <<endif>>
 ===
 
 title:Paulie_EndRecycle
 position: -48,1025
 ---
-ASDKLASJDJKLASD
+<<SetNarrator GameManager $Sparc Delight>>
+{$Sparc}: You're a natural! That trash didn't stand a chance!
+{$Sparc}: As you can see, we can use the trash on this island to create all sorts of useful materials that we can craft with. *beep-boop!* We can get into that later, my clock tells me it's getting a bit late now.
+{$Paulie}: Let's stop here for today! You must be tired...
+{$Paulie}: *Squark!* Hey, why don't I show you the forest? After all, you're gonna need a place to sleep and rest!
+    -> Yeah, I'm pretty tired...
+        {$Paulie}: You've had a pretty big day, I'm getting tired just thinking about it....
+    -> Sleep is for the weak!
+        //<<SetNarrator GameManager $Paulie Shocked>>
+        {$Paulie}: I know you're excited and eager for more but you've got to conserve your energy!
+        //<<SetNarrator GameManager $Paulie Default>>
+        {$Paulie}: We can get back into it once you've had a good night's sleep...
+
+{$Paulie}: Follow me! I'll take you to the forest.
+<<jump Paulie_ForestIntro>>
+===
+title: Paulie_House
+---
+<<if visited_count("Paulie_House") gt 00>>
+    <<jump HouseChoice>> 
+<<else>>  
+{$Paulie}: Over here is your House! Here, you can sleep, relax or craft decorations for the forest.
+    -> Looks cosy!
+        <<jump HouseChoice>> 
+<<endif>> 
+=== 
+
+title: HouseChoice
+--- 
+-> *Go to Greenhouse* 
+    <<jump Paulie_Greenhouse>>
+-> *Enter*
+===
+title: Paulie_ForestIntro
+---
+<<SetNarrator GameManager $Paulie Default>>
+{$Paulie}: Here we are at the Forest!
+{$Paulie}: ...It's seen better days but this is your new home now!
+//<<SetNarrator GameManager $Paulie Joy>>
+{$Paulie}: Why don't you go have a look around?
+-> *Go to Greenhouse*
+        <<jump Paulie_Greenhouse>>    
+===
+title: Paulie_Greenhouse
+---
+<<if visited_count("Paulie_Greenhouse") gt 00>>
+    <<jump GreenhouseChoice>>
+<<else>>
+    {$Paulie}: This is the Greenhouse, it's a bit old now but eventually we'll be able to grow plants for the island! 
+        -> Sounds awesome!
+            //<<SetNarrator GameManager $Paulie Joy>>
+            {$Paulie}: Glad to hear you're enthusiastic!
+            <<jump GreenhouseChoice>>
+<<endif>>
+===
+title: GreenhouseChoice
+---
+-> *Go to House*
+    <<jump Paulie_House>>
+-> *Enter*
 ===
