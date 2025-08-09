@@ -133,6 +133,7 @@ public class TempMovement : MonoBehaviour
         }   
     }
 
+    // This is called by an animation event at the end of the intro cinematic, starting our dialogue
     public void EnterDialogue()
     {
         allowSelection = false;
