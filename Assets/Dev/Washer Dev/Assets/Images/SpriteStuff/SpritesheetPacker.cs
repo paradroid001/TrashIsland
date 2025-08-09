@@ -4,6 +4,8 @@ using UnityEngine;
 using System.IO;
 using UnityEditor;
 
+#if UNITY_EDITOR
+
 [ExecuteInEditMode]
 [CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/SpritesheetPacker", order = 1)]
 public class SpritesheetPacker : ScriptableObject
@@ -211,5 +213,7 @@ public class SpritesheetPacker : ScriptableObject
         //Undo.RecordObject(this, "Applied Changes to Spritesheet Packer");
     }
 }
+
+#endif
 
 
